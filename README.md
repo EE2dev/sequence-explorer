@@ -9,7 +9,7 @@ Sequence explorer implements the following [d3.js reusable charts pattern](https
 ### To do
 
 - change initialization of single/ multiples
-- change <pre> into divs, also if <pre>
+- change tag(pre) into divs, also if tag(pre)
 - change conditions dimCol == "" /dimRow into allGraphs.cols/ .rows === 1
 - tooltip
 - add names for x and y axes for tooltip
@@ -69,7 +69,7 @@ quantity,grade_previous,year1,grade_next,year2
 
 ### 3. Visualization options
 function | parameter | explanation
------------- | -------------
+------------ | -------|------
 `debugOn()` | *boolean* | e.g. `sankeySeq.debug(true)` turns on/off the console.log debugging. The default setting is false.
 `size()` | *2-dim array* |, e.g. `sankeySeq.size([600, 400])` explicitely sets size of the SVG based on an array [width, height]. The default size is [700, 500].
 `margin()` | *integer* | e.g. `sankeySeq.margin(10)` explicitely sets margin in pixels for top, right, bottom, left. The default margin is 0 px.
