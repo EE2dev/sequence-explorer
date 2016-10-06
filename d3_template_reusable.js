@@ -505,11 +505,6 @@ var reUsableChart = function(_myData) {
 					.on("mouseout", function() {
 						return tooltip.style("visibility", "hidden");
 					});
-					
-				/*
-				link.append("title")
-					.text(function(d) { return d.source.name + " ? " + d.target.name; });
-					*/
 			 
 				// drawing nodes
 				node = sankeyG.append("g").selectAll(".node")
@@ -682,7 +677,7 @@ var reUsableChart = function(_myData) {
 		var container;
 		
 		console.log(_file.columns);
-		valueName = _file.columns[0];
+		if (typeof valueName === 'undefined') {valueName = _file.columns[0]};
 		
 		// processing main file first
 		if (_file.columns.length === 5)  { // standard case
