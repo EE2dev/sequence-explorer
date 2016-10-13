@@ -8,6 +8,8 @@ Sequence explorer implements the following [d3.js reusable charts pattern](https
 
 ### To do
 
+- options based on [this](http://bl.ocks.org/steveharoz/8c3e2524079a8c440df60c1ab72b5d03)
+- add option to scale based on overall multiples/single
 - change initialization of single/ multiples
 - change tag(pre) into divs, also if tag(pre)
 - change conditions dimCol == "" /dimRow into allGraphs.cols/ .rows === 1
