@@ -800,9 +800,13 @@ var reUsableChart = function(_myData) {
 					
 					// add nodeInfos if available
 					var nInfos;
-					if (dim2.key !== "" && dim1.key !== "") { // two additional dimensions
+					console.log(allGraphs);
+					// debugger;
+					// old: if (dim2.key !== "" && dim1.key !== "") { // two additional dimensions
+					if (allGraphs.cols !== 1 && allGraphs.rows !== 1) { // two additional dimensions
 						nInfos = nodeMap.get(dim2.key + "," + dim1.key + "," + xValue + "," + yValue);
-					} else if (dim2.key === "" && dim1.key !== "") { // one additional dimension
+					// old: } else if (dim2.key === "" && dim1.key !== "") { // one additional dimension
+					} else if (allGraphs.cols === 1 && dim1.rows !== 1) { // one additional dimension
 						nInfos = nodeMap.get(dim1.key + "," + xValue + "," + yValue);
 					} else { // standard case
 						nInfos = nodeMap.get(xValue + "," + yValue);
@@ -843,7 +847,8 @@ var reUsableChart = function(_myData) {
 				container.dimRow = dim1.key;
 				container.dimCol = dim2.key;
 				
-				if (dim2.key === "" && dim1.key === "") { container.transform = "single";} // standard case
+				// old: if (dim2.key === "" && dim1.key === "") { container.transform = "single";} // standard case
+				if (allGraphs.cols === 1 && allGraphs.rows === 1) { container.transform = "single";} // standard case
 				else { container.transform = "multiples";} // additional dimensions
 				
 				allGraphs[col].push(container);

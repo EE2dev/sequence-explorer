@@ -12,7 +12,7 @@ Sequence explorer implements the following [d3.js reusable charts pattern](https
 - add option to scale based on overall multiples/single
 - change initialization of single/ multiples
 - change tag(pre) into divs, also if tag(pre)
-- change conditions dimCol == "" /dimRow into allGraphs.cols/ .rows === 1
+- nodeFile has to have names sourceX sourceY
 - tooltip
 - add names for x and y axes for tooltip
 - multiplesColumns(boolean)
