@@ -8,6 +8,8 @@ d3.sankeySeq = function() {
 	  sequence = [],
 	  categories = [],
 		ky, // scaling factor for height of node
+		maxValue, // the max of all node values
+		maxValueSpecified = false, // true if maxValue is specified through API
 		nodes = [],
 		links = [],
 	  xScale,
@@ -116,6 +118,13 @@ d3.sankeySeq = function() {
 	sankey.getNodeHeight = function(value) {
 		return value * ky;
 	};
+	
+	sankey.maxValue = function(value) {
+		if (!arguments.length) return maxValue;
+    maxValue = value;
+		maxValueSpecified = true;
+    return sankey;
+	};
   // end of API functions
   
   // Populate the sourceLinks and targetLinks for each node.
@@ -147,20 +156,21 @@ d3.sankeySeq = function() {
 
   // Compute the y extend of nodes and links
   function computeNodeSizes() {
-	// calculate scaling factor ky based on #categories, height, nodePAdding and maxNodeValue
-	ky = ((size[1] / categories.length) - nodePadding) 
-		/ d3.max(nodes, function (d) { return d.value;});
-    
-	if (debugOn) {console.log("ky: " + ky);}
-	
-    nodes.forEach(function(node, i) {
-      node.dy = node.value * ky;
-      node.dx = nodeWidth;
-    });
+		maxValue = maxValueSpecified ? maxValue : d3.max(nodes, function (d) { return d.value;});
+		// calculate scaling factor ky based on #categories, height, nodePAdding and maxNodeValue
+		ky = ((size[1] / categories.length) - nodePadding) 
+			/ maxValue;
+			
+		if (debugOn) {console.log("ky: " + ky);}
+		
+		nodes.forEach(function(node, i) {
+			node.dy = node.value * ky;
+			node.dx = nodeWidth;
+		});
 
-    links.forEach(function(link) {
-      link.dy = link.value * ky;
-    });
+		links.forEach(function(link) {
+			link.dy = link.value * ky;
+		});
   }  
   
   function computeNodePositions() {

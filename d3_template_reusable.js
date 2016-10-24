@@ -1,9 +1,12 @@
 var reUsableChart = function(_myData) {
   "use strict";
+	
+	// 0.1 All options not accessible to caller 
   var file; // reference to data (embedded or in file)
 	var nodeFile; // optional file with additional node infos
 	var nodeInfoKeys; // the key names of the additional node infos
 	var nodeInfoKey; // the selected key
+	var nodeInfoNone = "(none)"; // displayed string for no info key
 	var valueName; // the column name of the frequency value
   
   ///////////////////////////////////////////////////
@@ -16,7 +19,7 @@ var reUsableChart = function(_myData) {
 	  nodePadding = 8, 
 	  size = [700, 500],
 	  // margin = {left: 5, top: 5, right: 5, bottom: 5},
-		margin = {left: 0, top: 0, right: 0, bottom: 0},
+		margin = {left: 5, top: 0, right: 0, bottom: 0},
 	  sequence,
 	  categories,
 		sequenceName = "sequence",
@@ -238,6 +241,10 @@ var reUsableChart = function(_myData) {
 					d3.select(this).selectAll("text.col.single") // display row + col title on top
 						.transition(trans)
 						.style("opacity", 1);	
+						
+					d3.select(this).selectAll("text.nodeLabel") // display nodeLabels
+						.transition(trans)
+						.style("opacity", 1);	
 					
 					d3.select(this).selectAll("g.pLeft") // hide left padding g
 						.transition(trans)
@@ -288,6 +295,10 @@ var reUsableChart = function(_myData) {
 					d3.select(this).selectAll("text.col.single") // hide row + col title on top
 						.transition(trans)
 						.style("opacity", 0);						
+
+					d3.select(this).selectAll("text.nodeLabel") // hide nodeLabels
+						.transition(trans)
+						.style("opacity", 0);	
 						
 					d3.select(this).selectAll("g.pLeft") // display left padding g
 						.transition(trans)
@@ -326,6 +337,7 @@ var reUsableChart = function(_myData) {
 					.attr("class", "sankeyMenu")
 					.style("border-color", "lightgrey")
 					.style("background-color", "rgba(255,255,255,0.1)")
+					.style("padding-right", "2px")
 				.append("form")
 				.selectAll("span")
 					.data(nodeInfoKeys) 
@@ -407,6 +419,7 @@ var reUsableChart = function(_myData) {
 					.nodes(graph.nodes)
 					.links(graph.links)
 					.debugOn(debugOn)
+					.maxValue(1000)
 					.layout();	  
 				
 				transformString = initializeFrame(svg, props, allGraphs, colIndex, rowIndex);
@@ -432,8 +445,6 @@ var reUsableChart = function(_myData) {
 					
 				topP.append("text")
 					.attr("class", "multiples col c" + colIndex)
-					.style("text-anchor", "middle")
-					.style("font-size", "12px")
 					.text(function() {
 						var topLabel = ""; // for single Sankey no title
 						if (allGraphs.cols === 1 && allGraphs.rows > 1) { topLabel = container.dimRow;} // switch label to top
@@ -445,8 +456,6 @@ var reUsableChart = function(_myData) {
 					
 				topP.append("text")
 					.attr("class", "single col c" + colIndex)
-					.style("text-anchor", "middle")
-					.style("font-size", "18px")
 					.style("opacity", 0)
 					.text(function() {
 						var topLabel = ""; // for single Sankey no title
@@ -462,9 +471,7 @@ var reUsableChart = function(_myData) {
 					.attr("class", "sankeyPad multiples pLeft")
 					.attr("transform", transformString.pLeft.multiples)
 					.append("text")
-					.attr("class", "row r" + rowIndex)
-					.style("text-anchor", "middle")
-					.style("font-size", "12px")
+					.attr("class", "multiples row r" + rowIndex)
 					.attr("transform", "rotate(-90)")
 					.text(function() {
 						var topLabel = ""; // for single Sankey and one dimension no title
@@ -542,6 +549,7 @@ var reUsableChart = function(_myData) {
 					.attr("dy", ".35em")
 					.attr("text-anchor", "start")
 					.attr("transform", null)
+					.style("opacity", 0)
 					.text(function(d) { return d.nameY; })
 				.filter(function(d) { return d.x > width * .9; })
 					.attr("x", -3)
@@ -555,7 +563,7 @@ var reUsableChart = function(_myData) {
 					.attr("y", function(d) { return d.dy;})
 					.attr("height", function(d) { 
 						nodeInfoKeys.forEach( function(key) {
-							if (key !== " ") {// skip placeholder for no nodeInfo selection
+							if (key !== nodeInfoNone) {// skip placeholder for no nodeInfo selection
 								d.nodeInfos[key + "_dy"] = sankey.getNodeHeight(+d.nodeInfos[key]);
 							}
 						});
@@ -588,14 +596,14 @@ var reUsableChart = function(_myData) {
 				var trans = d3.transition().duration(1000);
 				d3.select("div.sankeyMenu")
 					.transition(trans)
-					.style("border-color", function() { return (nodeInfoKey === " ") ? "lightgrey" : "orange";})
+					.style("border-color", function() { return (nodeInfoKey === nodeInfoNone) ? "lightgrey" : "orange";})
 					.style("background-color", function() { 
-						return (nodeInfoKey === " ") ? "rgba(255,255,255,0.1)" : "rgba(255,165,0,0.1)";});
+						return (nodeInfoKey === nodeInfoNone) ? "rgba(255,255,255,0.1)" : "rgba(255,165,0,0.1)";});
 					
 				d3.selectAll("rect.sankeyNodeInfo")
 					.transition(trans)
 					.attr("y", function(d) { 
-						if (nodeInfoKey === " ") { return d.dy; }
+						if (nodeInfoKey === nodeInfoNone) { return d.dy; }
 						else {
 							if (debugOn) {
 								console.log("value: " + +d.nodeInfos[nodeInfoKey]);
@@ -605,7 +613,7 @@ var reUsableChart = function(_myData) {
 						}
 					})
 					.attr("height", function(d) { 
-						if (nodeInfoKey === " ") { return 0; }
+						if (nodeInfoKey === nodeInfoNone) { return 0; }
 						else {return d.nodeInfos[nodeInfoKey + "_dy"]; }
 					});
 			};
@@ -675,6 +683,8 @@ var reUsableChart = function(_myData) {
 		var hashNode;
 		var data; // data from each group (categories of dimension)
 		var container;
+		var value;	// for iterating over value to find maxValue
+		var maxValue = 0; // maxValue for scaling option 
 		
 		console.log(_file.columns);
 		if (typeof valueName === 'undefined') {valueName = _file.columns[0]};
@@ -693,7 +703,7 @@ var reUsableChart = function(_myData) {
 						if (debugOn) { console.log(node);}
 					});		
 					nodeInfoKeys = nodeFile.columns;
-					nodeInfoKeys.splice(0,2," ");	
+					nodeInfoKeys.splice(0,2,nodeInfoNone);	
 				}
 		} else if (_file.columns.length === 6)  { // one additional dimension
 				dataGroups = d3.nest()
@@ -708,7 +718,7 @@ var reUsableChart = function(_myData) {
 						if (debugOn) { console.log(node);}
 					});		
 					nodeInfoKeys = nodeFile.columns;
-					nodeInfoKeys.splice(0,3," ");	
+					nodeInfoKeys.splice(0,3,nodeInfoNone);	
 				}
 		} else if (_file.columns.length === 7)  { // two additional dimensions
 				dataGroups = d3.nest()
@@ -724,7 +734,7 @@ var reUsableChart = function(_myData) {
 						if (debugOn) { console.log(node);}
 					});		
 					nodeInfoKeys = nodeFile.columns;
-					nodeInfoKeys.splice(0,4," ");	
+					nodeInfoKeys.splice(0,4,nodeInfoNone);	
 				}
 		}
 		
@@ -767,9 +777,9 @@ var reUsableChart = function(_myData) {
 					graph.nodes.push({ "name": target });
 					graph.links.push({ "source": source,
 						 "target": target,
-						 "value": +d[columns[0]] });					 
+						 "value": +d[columns[0]] });		
 				});
-				
+
 				if (debugOn) {
 					console.log("graph1: ");
 					console.log(JSON.stringify(graph));
@@ -801,11 +811,9 @@ var reUsableChart = function(_myData) {
 					// add nodeInfos if available
 					var nInfos;
 					console.log(allGraphs);
-					// debugger;
-					// old: if (dim2.key !== "" && dim1.key !== "") { // two additional dimensions
+
 					if (allGraphs.cols !== 1 && allGraphs.rows !== 1) { // two additional dimensions
 						nInfos = nodeMap.get(dim2.key + "," + dim1.key + "," + xValue + "," + yValue);
-					// old: } else if (dim2.key === "" && dim1.key !== "") { // one additional dimension
 					} else if (allGraphs.cols === 1 && dim1.rows !== 1) { // one additional dimension
 						nInfos = nodeMap.get(dim1.key + "," + xValue + "," + yValue);
 					} else { // standard case
@@ -847,14 +855,35 @@ var reUsableChart = function(_myData) {
 				container.dimRow = dim1.key;
 				container.dimCol = dim2.key;
 				
-				// old: if (dim2.key === "" && dim1.key === "") { container.transform = "single";} // standard case
+				
+				var sourceValues = d3.nest()
+					.key(function(d) { return d.source; })
+					.rollup(function(values) { return d3.sum(values, function(d) {return +d.value; }) })
+					.entries(graph.links);
+					
+				var maxOfSources = d3.max(sourceValues, function(d) {
+					return d.value;});
+				
+				/*	
+				var targetValues = d3.nest()
+					.key(function(d) { return d.source; })
+					.rollup(function(values) { return d3.sum(values, function(d) {return +d.value; }) })
+					.entries(graph.links);
+					*/
+				console.log("myNest:");
+				console.log(maxOfSources);
+				debugger;
+				// maxValue = value > maxValue ? value : maxValue; 
+				
+				
 				if (allGraphs.cols === 1 && allGraphs.rows === 1) { container.transform = "single";} // standard case
 				else { container.transform = "multiples";} // additional dimensions
 				
 				allGraphs[col].push(container);
 			});	
 		});
-			
+		
+		// console.log("maxValue: " + maxValue);
 		return allGraphs;
   }
     

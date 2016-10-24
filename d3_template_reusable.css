@@ -68,6 +68,19 @@
 		border-radius: 6px;
 		font: 12px sans-serif;
 	}
+	
+	/* title top and left for multiples */
+	text.multiples {
+		text-anchor: middle;
+		font-size: 12px;
+	}
+	
+	/* title top for single */
+	text.single {
+		text-anchor: middle;
+		font-size: 18px;
+	}
+	
 	/*
 	removing node labels
 	text.nodeLabel {
