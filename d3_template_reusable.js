@@ -464,7 +464,7 @@ var reUsableChart = function(_myData) {
 					.append("text")
 					.attr("class", "row r" + rowIndex)
 					.style("text-anchor", "middle")
-					.style("font-size", 12)
+					.style("font-size", "12px")
 					.attr("transform", "rotate(-90)")
 					.text(function() {
 						var topLabel = ""; // for single Sankey and one dimension no title
