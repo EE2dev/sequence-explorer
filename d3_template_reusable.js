@@ -8,6 +8,7 @@ var reUsableChart = function(_myData) {
 	var nodeInfoKey; // the selected key
 	var nodeInfoNone = "(none)"; // displayed string for no info key
 	var valueName; // the column name of the frequency value
+	var scaleGlobal = true; // scale the node height for multiples over all sankeys 
   
   ///////////////////////////////////////////////////
   // 1.0 add visualization specific variables here //
@@ -418,9 +419,11 @@ var reUsableChart = function(_myData) {
 					.nodePadding(nodePadding)
 					.nodes(graph.nodes)
 					.links(graph.links)
-					.debugOn(debugOn)
-					.maxValue(1000)
-					.layout();	  
+					.debugOn(debugOn);
+				
+				if (scaleGlobal) {sankey.maxValue(allGraphs.maxValue);}
+				sankey.layout();	 
+				// container.sankey = sankey;
 				
 				transformString = initializeFrame(svg, props, allGraphs, colIndex, rowIndex);
 
@@ -683,8 +686,8 @@ var reUsableChart = function(_myData) {
 		var hashNode;
 		var data; // data from each group (categories of dimension)
 		var container;
-		var value;	// for iterating over value to find maxValue
-		var maxValue = 0; // maxValue for scaling option 
+		var sourceValues, targetValues; // for iterating over value to find maxValue
+		var value, maxValue = 0; // maxValue for scaling option 
 		
 		console.log(_file.columns);
 		if (typeof valueName === 'undefined') {valueName = _file.columns[0]};
@@ -810,7 +813,6 @@ var reUsableChart = function(_myData) {
 					
 					// add nodeInfos if available
 					var nInfos;
-					console.log(allGraphs);
 
 					if (allGraphs.cols !== 1 && allGraphs.rows !== 1) { // two additional dimensions
 						nInfos = nodeMap.get(dim2.key + "," + dim1.key + "," + xValue + "," + yValue);
@@ -855,35 +857,31 @@ var reUsableChart = function(_myData) {
 				container.dimRow = dim1.key;
 				container.dimCol = dim2.key;
 				
-				
-				var sourceValues = d3.nest()
+				// computing the value of the largest node
+				sourceValues = d3.nest()
 					.key(function(d) { return d.source; })
 					.rollup(function(values) { return d3.sum(values, function(d) {return +d.value; }) })
 					.entries(graph.links);
 					
-				var maxOfSources = d3.max(sourceValues, function(d) {
-					return d.value;});
-				
-				/*	
-				var targetValues = d3.nest()
-					.key(function(d) { return d.source; })
+				targetValues = d3.nest()
+					.key(function(d) { return d.target; })
 					.rollup(function(values) { return d3.sum(values, function(d) {return +d.value; }) })
-					.entries(graph.links);
-					*/
-				console.log("myNest:");
-				console.log(maxOfSources);
-				debugger;
-				// maxValue = value > maxValue ? value : maxValue; 
+					.entries(graph.links);	
 				
-				
+				sourceValues = sourceValues.concat(targetValues);
+				value = d3.max(sourceValues, function(d) {
+					return d.value;});
+
+				maxValue = value > maxValue ? value : maxValue; 
+								
 				if (allGraphs.cols === 1 && allGraphs.rows === 1) { container.transform = "single";} // standard case
 				else { container.transform = "multiples";} // additional dimensions
 				
 				allGraphs[col].push(container);
 			});	
 		});
-		
-		// console.log("maxValue: " + maxValue);
+		if (debugOn) {console.log("maxValue: " + maxValue);}
+		allGraphs.maxValue = maxValue;
 		return allGraphs;
   }
     
