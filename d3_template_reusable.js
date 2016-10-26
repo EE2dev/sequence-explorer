@@ -9,6 +9,7 @@ var reUsableChart = function(_myData) {
 	var nodeInfoNone = "(none)"; // displayed string for no info key
 	var valueName; // the column name of the frequency value
 	var scaleGlobal = true; // scale the node height for multiples over all sankeys 
+  var allGraphs; // data structure containing columns of rows of sankey input data;
   
   ///////////////////////////////////////////////////
   // 1.0 add visualization specific variables here //
@@ -334,18 +335,19 @@ var reUsableChart = function(_myData) {
 			console.log(nodeInfoKeys);
 		}
 
-		var div = selection.append("div")
+		var div1 = selection.append("div")
 					.attr("class", "sankeyMenu")
 					.style("border-color", "lightgrey")
 					.style("background-color", "rgba(255,255,255,0.1)")
 					.style("padding-right", "2px")
-				.append("form")
-				.selectAll("span")
+				.append("form");
+        
+		var div2 = div1.selectAll("span")
 					.data(nodeInfoKeys) 
 					.enter()
 				.append("span");
 				
-			div.append("input")
+			div2.append("input")
 					.attr("type", "radio")
 					.attr("name", "menu")
 					.attr("value", function(d) { return d; })
@@ -356,18 +358,65 @@ var reUsableChart = function(_myData) {
 						updateNodeInfo();
 					});	
 
-			div.append("label")
+			div2.append("label")
 				.text(function(d) { return d; });
 				
-			div.append("br");				
+			div2.append("br");		
+
+      div1.append("span")
+        .append("input")
+        .attr("class", "nodeScaling")
+        .attr("type", "checkbox")
+        .attr("value", scaleGlobal)
+        .attr("checked", "checked")
+        .on("change", updateScaling);
+      div1.append("label")
+				.text("global scale"); 
 	}
-					
+	
+  function updateScaling() {
+    var mySankey;
+    var linkSelector;
+    var currentValue = d3.select(".nodeScaling").attr("value");
+    if (currentValue == "global") {
+      d3.select(".nodeScaling").attr("value", "local");
+      scaleGlobal = false;
+    }
+    else {
+      d3.select(".nodeScaling").attr("value", "global");
+      scaleGlobal = true;
+    }
+    console.log(d3.select(".nodeScaling").attr("value"));
+    
+    allGraphs.forEach( function (col, colIndex) {
+			col.forEach( function (container, rowIndex) {
+				mySankey = container.sankey;
+        if (scaleGlobal) {mySankey.maxValue(allGraphs.maxValue);}
+        else {mySankey.maxValue(-1);}
+				mySankey.layout();	 
+				container.sankey = mySankey;
+        // console.log(mySankey.link);
+        
+        linkSelector = "g.sankeySeq.s" + colIndex + "-" + rowIndex;
+        console.log("linkSelector: " + linkSelector);
+       // debugger;
+       var trans = d3.transition()
+          .duration(1000);
+        d3.select(linkSelector).selectAll(".link")
+          //.data(container.graph.links)
+          .transition(trans)
+          .attr("d", mySankey.link())
+          .style("stroke-width", function(d) { return Math.max(1, d.dy) + "px"; })
+          //.style("stroke-width", "30px");
+      });
+    });
+  }
   ////////////////////////////////////////////////////
   // 4.0 add visualization specific processing here //
   //////////////////////////////////////////////////// 
   
   function createChart(selection, _file) {
-	var allGraphs = constructSankeyFromCSV(_file); // main data structure build from csv file
+	allGraphs = constructSankeyFromCSV(_file); // main data structure build from csv file
 	var sankey; // sankeySeq
 	var width; // width of drawing area within SVG
 	var height; // height of drawing area within SVG
@@ -421,9 +470,9 @@ var reUsableChart = function(_myData) {
 					.links(graph.links)
 					.debugOn(debugOn);
 				
-				if (scaleGlobal) {sankey.maxValue(allGraphs.maxValue);}
+				// if (scaleGlobal) {sankey.maxValue(allGraphs.maxValue);}
 				sankey.layout();	 
-				// container.sankey = sankey;
+				container.sankey = sankey;
 				
 				transformString = initializeFrame(svg, props, allGraphs, colIndex, rowIndex);
 
@@ -500,7 +549,7 @@ var reUsableChart = function(_myData) {
 				.enter().append("path")
 					.attr("class", "link")
 					.attr("d", sankey.link())
-					.style("stroke-width", function(d) { return Math.max(1, d.dy); })
+					.style("stroke-width", function(d) { return Math.max(1, d.dy) + "px"; })
 					.sort(function(a, b) { return b.dy - a.dy; })
 					.on("mouseover", function(d) {
 						var info = sequenceName + ": " + d.source.nameX + " -> " + d.target.nameX;

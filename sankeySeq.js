@@ -121,6 +121,7 @@ d3.sankeySeq = function() {
 	
 	sankey.maxValue = function(value) {
 		if (!arguments.length) return maxValue;
+    if (value === -1) { maxValueSpecified = false; return;}
     maxValue = value;
 		maxValueSpecified = true;
     return sankey;
@@ -174,7 +175,7 @@ d3.sankeySeq = function() {
   }  
   
   function computeNodePositions() {
-	  console.log(size);
+	  if (debugOn) {console.log(size);}
 	  xScale = d3.scalePoint().domain(sequence).range([0, size[0] - nodeWidth]);    
     yScale = d3.scalePoint().domain(categories).range([size[1], (size[1] / categories.length)]); 	
     
