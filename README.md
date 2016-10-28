@@ -8,7 +8,7 @@ Sequence explorer implements the following [d3.js reusable charts pattern](https
 
 ### To do
 - fix d.nodeInfos: read just columns > 3,4 or 5 no sourceX, age...
-- fix nodeInfo global scale -> nodeInfos: y setting + errors 
+- fix nodeInfo transition : first local scale then nodeInfo
 - options based on [this](http://bl.ocks.org/steveharoz/8c3e2524079a8c440df60c1ab72b5d03)
 - add option to scale based on overall multiples/single
 - change initialization of single/ multiples

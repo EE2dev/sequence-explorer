@@ -370,7 +370,7 @@ var reUsableChart = function(_myData) {
         .append("input")
         .attr("class", "nodeScaling")
         .attr("type", "checkbox")
-        .attr("value", scaleGlobal)
+        .attr("value", "global")
         .attr("checked", "checked")
         .on("change", updateScaling);
       div1.append("label")
@@ -393,6 +393,7 @@ var reUsableChart = function(_myData) {
   function updateScaling() {
     var mySankey;
     var parentSelector;
+    var graph;
     var trans = d3.transition().duration(1000);
     console.log(d3.select(".nodeScaling").attr("value"));
 
@@ -409,21 +410,36 @@ var reUsableChart = function(_myData) {
     allGraphs.forEach( function (col, colIndex) {
       col.forEach( function (container, rowIndex) {
         mySankey = container.sankey;
+        graph = container.graph;
+        
+        /*
+        mySankey = d3.sankeySeq()
+            .size(container.sankey.size())
+            .sequence(sequence) 
+            .categories(categories)
+            .nodeWidth(nodeWidth)
+            .nodePadding(nodePadding)
+            .nodes(graph.nodes)
+            .links(graph.links)
+            .debugOn(debugOn);*/
+        
         if (scaleGlobal) {mySankey.maxValue(allGraphs.maxValue);}
         else {mySankey.maxValue(-1);}
         mySankey.layout();   
-        container.sankey = mySankey;
+       // container.sankey = mySankey;
         
         // transition links
         parentSelector = "g.sankeySeq.s" + colIndex + "-" + rowIndex;
         d3.select(parentSelector).selectAll(".link")
+          .data(graph.links, function(d) { return d.id; }) // data join for clarity. Data attributes have been changed even without join!
           .transition(trans)
           .attr("d", mySankey.link())
-          .style("stroke-width", function(d) { return Math.max(1, d.dy) + "px"; })
+          .style("stroke-width", function(d) { return Math.max(1, d.dy) + "px"; });
           
         // transition nodes
         d3.select(parentSelector).selectAll(".node")
-          .transition(trans)
+           .data(graph.nodes)
+           .transition(trans)
           .attr("transform", function(d) {return "translate(" + d.x + "," + d.y + ")"; });
           
         d3.select(parentSelector).selectAll("rect.sankeyNode")
@@ -435,25 +451,28 @@ var reUsableChart = function(_myData) {
           .attr("y", function(d) { return d.dy / 2; });
           
         d3.select(parentSelector).selectAll("rect.sankeyNodeInfo")
-          .filter(function(d) { return (typeof d.nodeInfos !== 'undefined'); })
-          .attr("height", function(d) { 
-            nodeInfoKeys.forEach( function(key) {
+          .filter(function(d) {             nodeInfoKeys.forEach( function(key) {
               if (key !== nodeInfoNone) {// skip case for no nodeInfo selection
                 d.nodeInfos[key + "_dy"] = mySankey.getNodeHeight(+d.nodeInfos[key]);
               }
             });
-            // console.log(d3.select(this).attr("height"));
-            return d3.select(this).attr("height"); 
+            return (typeof d.nodeInfos !== 'undefined') && (typeof nodeInfoKey !== 'undefined'); })
+           
+          .attr("height", function(d) { 
+            console.log(d3.select(this).attr("height"));
+            return d3.select(this).attr("height");
+            // return 0;
+            // d3.select(this).attr("height"); 
           })
+          
           .transition(trans)   
-          .attr("y", function(d) { 
+          .attr("y", function(d) {
             if (nodeInfoKey === nodeInfoNone) { return d.dy; }
             else {
               if (debugOn) {
                 console.log("value: " + +d.nodeInfos[nodeInfoKey]);
                 console.log("newHeight: " + d.nodeInfos[nodeInfoKey + "_dy"]);
               } 
-              console.log("hier2");
               return d.dy - d.nodeInfos[nodeInfoKey + "_dy"];
             }
           })
@@ -894,6 +913,7 @@ var reUsableChart = function(_myData) {
           graph.nodes.push({ "name": target });
           graph.links.push({ "source": source,
              "target": target,
+             "id": source + "->" + target,
              "value": +d[columns[0]] });    
         });
 
