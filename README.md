@@ -7,10 +7,7 @@ Sequence explorer implements the following [d3.js reusable charts pattern](https
 --->
 
 ### To do
-- fix d.nodeInfos: read just columns > 3,4 or 5 no sourceX, age...
-- fix nodeInfo transition : first local scale then nodeInfo
 - options based on [this](http://bl.ocks.org/steveharoz/8c3e2524079a8c440df60c1ab72b5d03)
-- add option to scale based on overall multiples/single
 - change initialization of single/ multiples
 - docu for sankeySeq (separate repo)
 - change axis representation
@@ -20,7 +17,6 @@ Sequence explorer implements the following [d3.js reusable charts pattern](https
 - nodeFile has to have names sourceX sourceY
 - multiplesColumns(boolean)
 - css styling
-- node text an/aus
 - testing browsers (change display:table)
 - remove test layout in css
 - licence
