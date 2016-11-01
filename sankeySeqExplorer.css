@@ -1,0 +1,103 @@
+  .unselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  pre#data, pre#nodes {
+    display:none;
+  }
+  
+  div.chart {
+    margin: 0 auto;   
+    display: table;
+  }
+      
+  div.sankeyMenu {
+    border-style: solid;
+    border-width: 2px;
+    display:table;
+    margin:0 auto;
+    margin-top: 20px;
+    margin-left: 20px;
+    float: left;
+  }
+      
+  div.sankeyChart {
+    display:table;
+  }
+      
+  svg {
+      fill: #023858;
+    }
+  
+  .node rect.sankeyNode {
+    fill-opacity: .75;
+    shape-rendering: crispEdges;
+  }
+  
+  .node rect.sankeyNodeInfo {
+    shape-rendering: crispEdges;
+  }
+
+  .node text {
+    pointer-events: none;
+    text-shadow: 0 1px 0 #fff;
+  }
+
+  .link {
+    fill: none;
+    stroke: #969696;
+    stroke-opacity: .2;
+  }
+
+  .link:hover {
+    stroke-opacity: .5;
+  }
+  
+  div.tooltip {
+    position: absolute;
+    z-index: 10;
+    visibility: hidden;
+    color: white;
+    padding: 8px;
+    background-color: rgba(0,0,0,0.75);
+    border-radius: 6px;
+    font: 12px sans-serif;
+  }
+  
+  /* title top and left for multiples */
+  text.multiples {
+    text-anchor: middle;
+    font-size: 12px;
+  }
+  
+  /* title top for single */
+  text.single {
+    text-anchor: middle;
+    font-size: 18px;
+  }
+  
+  /*
+  removing node labels
+  text.nodeLabel {
+    font-size: 0px;
+  }
+  
+  */
+  /* test layout
+  div.chart {
+      border-style: solid;
+      border-color: black;
+      border-width: 2px;
+    }
+    
+    div.sankeyChart {
+      border-style: dashed;
+      border-color: red;
+    }
+  */
+  

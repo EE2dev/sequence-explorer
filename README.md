@@ -28,6 +28,9 @@ Sequence explorer implements the following [d3.js reusable charts pattern](https
 
 - [demography](http://www.bib-demografie.de/DE/ZahlenundFakten/02/Tabellen/t_02_01_bevstand_d_1960_2060.html;jsessionid=F996B8093DC563B8B2A5F791C5683174.2_cid292?nn=3074120)
 -----------------------
+### Examples
+The main example is here.
+
 
 ### 1. Data formatting
 
@@ -69,21 +72,51 @@ quantity,grade_previous,year1,grade_next,year2
 ...
 ```
 
-####Pivot by additional categories
+### 1.1 adding more categories
+The csv file may contain 1 or 2 more columns, each referring to an additional category, such that multiple sankey charts are displayed at once as small multiples. 
+The sixth column is used to arrange sankey chart one row for each category, whereas the seventh column deteremines the columns of the small multiples.
+Example of valid csv files:
+```
+quantity,grade_previous,year1,grade_next,year2,gender,region
+10,A,2010,A,2011,boys,city
+6,A,2010,B,2011,girls,city
+20,A,2011,A,2012,boys,country
+14,B,2011,B,2012,girls,country
+...
+```
 
-### 3. Visualization options
+### 1.2 adding additional categories with node info
+You might add additional categories with their respective quantity in a separate file.
+This additional file has to be in the same directory as the main csv file and has to be named as the main file with "_nodes" added to the file name.
+E.g. original file: `my_sankey_file.csv`--> `my_sankey_file_nodes.csv`
+
+This csv file containing additional node infos has to start off with the first column denoting the sequence state and the second column referring to 
+the category on the y axis. If there are one or two more categories determined for the small multiples, they would follow.
+Then there is an arbitrary number of node info columns. For each column the corresponding quantity is set.
+ 
+Example of valid csv files:
+```
+sourceX,sourceY,first_product,info1,Info3-test
+2000,1,A,10,10
+2000,2,A,220,60
+2001,0,A,40,200
+2000,1,C,80,60
+...
+```
+
+### 3. API for sequence explorer 
 function | parameter | explanation
 ------------ | -------|------
-`debugOn()` | *boolean* | e.g. `sankeySeq.debug(true)` turns on/off the console.log debugging. The default setting is false.
-`size()` | *2-dim array* |, e.g. `sankeySeq.size([600, 400])`y sets size of the SVG based on an array [width, height]. The default size is [700, 500].
-`margin()` | *integer* | e.g. `sankeySeq.margin(10)` sets margin in pixels for top, right, bottom, left. The default margin is 5 px.
-`sequence()` | *array* | e.g. `sankeySeq.sequence(["2000", "2001", "2002"])` sets the order of the sequence based on an array. The default order is ascending.
-`categories()` | *array* | e.g. `sankeySeq.categories(["A", "B", "C"])` sets the order of the categories based on an array. The default order is ascending.
-`sequenceName()` | *string* | e.g. `sankeySeq.sequenceName("year")` sets the name of the x axis. The default name is "sequence".
-`categoryName()` | *string* | e.g. `sankeySeq.categoryName("state")` sets the name of the y axis. The default name is "category".
-`valueName()` | *string* | e.g. `sankeySeq.valueName("frequency")` sets the name of the value. The default name is "value".
-`nodeWidth()` | *integer* | e.g. `sankeySeq.nodeWidth(20)` sets the width of a node in pixels. The default width is 15.
-`nodePadding()` | *integer* | e.g. `sankeySeq.nodePadding(10)` sets the y-padding between the categories in pixels. The default padding is 8.
+`debugOn()` | *boolean* | e.g. `reUsableChart.debug(true)` turns on/off the console.log debugging. The default setting is false.
+`size()` | *2-dim array* |, e.g. `reUsableChart.size([600, 400])`y sets size of the SVG based on an array [width, height]. The default size is [700, 500].
+`margin()` | *integer* | e.g. `reUsableChart.margin(10)` sets margin in pixels for top, right, bottom, left. The default margin is 5 px.
+`sequence()` | *array* | e.g. `reUsableChart.sequence(["2000", "2001", "2002"])` sets the order of the sequence based on an array. The default order is ascending.
+`categories()` | *array* | e.g. `reUsableChart.categories(["A", "B", "C"])` sets the order of the categories based on an array. The default order is ascending.
+`sequenceName()` | *string* | e.g. `reUsableChart.sequenceName("year")` sets the name of the x axis. The default name is "sequence".
+`categoryName()` | *string* | e.g. `reUsableChart.categoryName("state")` sets the name of the y axis. The default name is "category".
+`valueName()` | *string* | e.g. `reUsableChart.valueName("frequency")` sets the name of the value. The default name is "value".
+`nodeWidth()` | *integer* | e.g. `reUsableChart.nodeWidth(20)` sets the width of a node in pixels. The default width is 15.
+`nodePadding()` | *integer* | e.g. `reUsableChart.nodePadding(10)` sets the y-padding between the categories in pixels. The default padding is 8.
 
 -----------------------
 
