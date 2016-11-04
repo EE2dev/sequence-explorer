@@ -329,193 +329,207 @@ var reUsableChart = function(_myData) {
   }
 
   function displaySankeyMenu(selection) {
-    if (typeof nodeFile === 'undefined') { return;}
+    var div1 = selection.append("div").attr("class", "sankeyMenu");
     
-    if (debugOn) {
-      console.log("nodeInfoKeys: ");
-      console.log(nodeInfoKeys);
-    }
-
-    var div1 = selection.append("div")
-          .attr("class", "sankeyMenu")
-          .style("border-color", "lightgrey")
-          .style("background-color", "rgba(255,255,255,0.1)")
-          .style("padding-right", "2px")
-        .append("form");
-        
-    var div2 = div1.selectAll("span")
-          .data(nodeInfoKeys) 
-          .enter()
-        .append("span");
-        
-      div2.append("input")
-          .attr("type", "radio")
-          .attr("name", "menu")
-          .attr("value", function(d) { return d; })
-          .attr('checked', function(d, i) { if (i === 0) { return 'checked' }; })
-          .on("change", function change() {
-            nodeInfoKey = this.value;
-            console.log("nodeInfokey: "+ nodeInfoKey);
-            updateNodeInfo();
-          }); 
-
-      div2.append("label")
-        .text(function(d) { return d; });
-        
-      div2.append("br");
-
-      var div3 = div1.append("br");
-      
-      var div4 = div1.append("span")
+    // options menu
+    var divOm = div1.append("div").attr("class", "OptionsMenu");
+    
+    divOm.append("div")
+      .attr("class", "titleMenu")
+      .append("label")
+      .text("options");     
+    
+    if (!(allGraphs.cols === 1 && allGraphs.rows === 1)) {
+      var div2 = divOm.append("span")
+        .attr("class", "span1")
         .append("input")
         .attr("class", "nodeScaling")
         .attr("type", "checkbox")
         .attr("value", "global")
         .attr("checked", "checked")
         .on("change", updateScaling);
-      div1.append("label")
+      
+      divOm.select("span.span1")
+        .append("label")
         .text("global scale"); 
       
-      var div4 = div1.append("br");
+      divOm.append("br");
+    }
         
-      var div5 = div1
-        .append("span")
-        .append("input")
-        .attr("class", "labelOnOff")
-        .attr("type", "checkbox")
-        .attr("value", showNodeLabels)
-        .attr("checked", "checked")
-        .on("change", updateNodeLabels);
-      div1.append("label")
-        .text("node labels"); 
+    var div3 = divOm.append("span")
+      .attr("class", "span2")
+      .append("input")
+      .attr("class", "labelOnOff")
+      .attr("type", "checkbox")
+      .attr("value", showNodeLabels)
+      .attr("checked", "checked")
+      .on("change", updateNodeLabels);
+      
+    div1.select("span.span2")
+      .append("label")
+      .text("node labels"); 
+      
+    // node info menu  
+    if (typeof nodeFile === 'undefined') { return;}
+    
+    if (debugOn) {
+      console.log("nodeInfoKeys: ");
+      console.log(nodeInfoKeys);
+    }
+    var divNim = d3.select("div.sankeyMenu")
+        .append("div")
+        .attr("class", "NodeInfoMenu");
+   
+    divNim.append("div")
+        .attr("class", "titleMenu")
+        .append("label")
+        .text("node info");
+          
+    divNim = divNim.append("form")
+        .selectAll("span")
+        .data(nodeInfoKeys) 
+        .enter()
+      .append("span");
+      
+    divNim.append("input")
+      .attr("type", "radio")
+      .attr("name", "menu")
+      .attr("value", function(d) { return d; })
+      .attr('checked', function(d, i) { if (i === 0) { return 'checked' }; })
+      .on("change", function change() {
+        nodeInfoKey = this.value;
+        console.log("nodeInfokey: "+ nodeInfoKey);
+        updateNodeInfo();
+      }); 
+
+    divNim.append("label")
+      .text(function(d) { return d; });
+      
+    divNim.append("br");        
+  }
+    
+  function updateScaling() {
+    var mySankey;
+    var parentSelector;
+    var graph;
+    var trans = d3.transition().duration(1000);
+
+    var currentValue = d3.select(".nodeScaling").attr("value");
+    if (currentValue == "global") {
+      d3.select(".nodeScaling").attr("value", "local");
+      scaleGlobal = false;
+    }
+    else {
+      d3.select(".nodeScaling").attr("value", "global");
+      scaleGlobal = true;
+    }
+
+    allGraphs.forEach( function (col, colIndex) {
+      col.forEach( function (container, rowIndex) {
+      mySankey = container.sankey;
+      graph = container.graph;
+      
+      if (scaleGlobal) {mySankey.maxValue(allGraphs.maxValue);}
+      else {mySankey.maxValue(-1);}
+      mySankey.layout();   
+      
+      // transition links
+      parentSelector = "g.sankeySeq.s" + colIndex + "-" + rowIndex;
+      d3.select(parentSelector).selectAll(".link")
+        .data(graph.links, function(d) { return d.id; }) // data join for clarity. Data attributes have been changed even without join!
+        .transition(trans)
+        .attr("d", mySankey.link())
+        .style("stroke-width", function(d) { return Math.max(1, d.dy) + "px"; });
+        
+      // transition nodes
+      d3.select(parentSelector).selectAll(".node")
+         .data(graph.nodes)
+         .transition(trans)
+         .attr("transform", function(d) {return "translate(" + d.x + "," + d.y + ")"; });
+        
+      d3.select(parentSelector).selectAll("rect.sankeyNode")
+         .transition(trans)
+         .attr("height", function(d) { return d.dy; });
+        
+      d3.select(parentSelector).selectAll("text.nodeLabel")
+         .transition(trans)        
+         .attr("y", function(d) { return d.dy / 2; });
+        
+      d3.select(parentSelector).selectAll("rect.sankeyNodeInfo")
+         .filter(function(d) {             nodeInfoKeys.forEach( function(key) {
+          if (key !== nodeInfoNone) {// skip case for no nodeInfo selection
+          d.nodeInfos[key + "_dy"] = mySankey.getNodeHeight(+d.nodeInfos[key]);
+          }
+          else {
+            if (nodeInfoKey === nodeInfoNone) {
+              d3.selectAll("rect.sankeyNodeInfo").attr("y", function(d) {return d.dy;});
+            }
+          }
+        });
+         // return (typeof d.nodeInfos !== 'undefined') && (typeof nodeInfoKey !== 'undefined'); })
+        return (typeof d.nodeInfos !== 'undefined'); })
+         
+        .attr("height", function(d) { 
+        return d3.select(this).attr("height");
+        })
+        
+        .transition(trans)   
+        .attr("y", function(d) {
+        if (nodeInfoKey === nodeInfoNone) { return d.dy; }
+        else {
+          if (debugOn) {
+          console.log("value: " + +d.nodeInfos[nodeInfoKey]);
+          console.log("newHeight: " + d.nodeInfos[nodeInfoKey + "_dy"]);
+          } 
+          return d.dy - d.nodeInfos[nodeInfoKey + "_dy"];
+        }
+        })
+        .attr("height", function(d) { 
+        if (nodeInfoKey === nodeInfoNone) { return 0; }
+        else {return d.nodeInfos[nodeInfoKey + "_dy"]; }
+        });
+      });
+    });
   }
   
-	function updateScaling() {
-		var mySankey;
-		var parentSelector;
-		var graph;
-		var trans = d3.transition().duration(1000);
-		console.log(d3.select(".nodeScaling").attr("value"));
-
-		var currentValue = d3.select(".nodeScaling").attr("value");
-		if (currentValue == "global") {
-		  d3.select(".nodeScaling").attr("value", "local");
-		  scaleGlobal = false;
-		}
-		else {
-		  d3.select(".nodeScaling").attr("value", "global");
-		  scaleGlobal = true;
-		}
-
-		allGraphs.forEach( function (col, colIndex) {
-		  col.forEach( function (container, rowIndex) {
-			mySankey = container.sankey;
-			graph = container.graph;
-			
-			if (scaleGlobal) {mySankey.maxValue(allGraphs.maxValue);}
-			else {mySankey.maxValue(-1);}
-			mySankey.layout();   
-			
-			// transition links
-			parentSelector = "g.sankeySeq.s" + colIndex + "-" + rowIndex;
-			d3.select(parentSelector).selectAll(".link")
-			  .data(graph.links, function(d) { return d.id; }) // data join for clarity. Data attributes have been changed even without join!
-			  .transition(trans)
-			  .attr("d", mySankey.link())
-			  .style("stroke-width", function(d) { return Math.max(1, d.dy) + "px"; });
-			  
-			// transition nodes
-			d3.select(parentSelector).selectAll(".node")
-			   .data(graph.nodes)
-			   .transition(trans)
-			   .attr("transform", function(d) {return "translate(" + d.x + "," + d.y + ")"; });
-			  
-			d3.select(parentSelector).selectAll("rect.sankeyNode")
-			   .transition(trans)
-			   .attr("height", function(d) { return d.dy; });
-			  
-			d3.select(parentSelector).selectAll("text.nodeLabel")
-			   .transition(trans)        
-			   .attr("y", function(d) { return d.dy / 2; });
-			  
-			d3.select(parentSelector).selectAll("rect.sankeyNodeInfo")
-			   .filter(function(d) {             nodeInfoKeys.forEach( function(key) {
-				  if (key !== nodeInfoNone) {// skip case for no nodeInfo selection
-					d.nodeInfos[key + "_dy"] = mySankey.getNodeHeight(+d.nodeInfos[key]);
-				  }
-				  else {
-					  if (nodeInfoKey === nodeInfoNone) {
-						console.log("y before:" + d3.selectAll("rect.sankeyNodeInfo").attr("y"));
-						console.log("dy now:" + d.dy);
-						d3.selectAll("rect.sankeyNodeInfo").attr("y", function(d) {return d.dy;});
-					  }
-				  }
-				});
-			   // return (typeof d.nodeInfos !== 'undefined') && (typeof nodeInfoKey !== 'undefined'); })
-				return (typeof d.nodeInfos !== 'undefined'); })
-			   
-			  .attr("height", function(d) { 
-				return d3.select(this).attr("height");
-			  })
-			  
-			  .transition(trans)   
-			  .attr("y", function(d) {
-				if (nodeInfoKey === nodeInfoNone) { return d.dy; }
-				else {
-				  if (debugOn) {
-					console.log("value: " + +d.nodeInfos[nodeInfoKey]);
-					console.log("newHeight: " + d.nodeInfos[nodeInfoKey + "_dy"]);
-				  } 
-				  return d.dy - d.nodeInfos[nodeInfoKey + "_dy"];
-				}
-			  })
-			  .attr("height", function(d) { 
-				if (nodeInfoKey === nodeInfoNone) { return 0; }
-				else {return d.nodeInfos[nodeInfoKey + "_dy"]; }
-			  });
-		  });
-		});
-	}
+  function updateNodeLabels() {
+    var currentValue = d3.select(".labelOnOff").attr("value");
+    if (currentValue === "on") {
+      d3.select(".labelOnOff").attr("value", "off");
+      d3.selectAll("text.nodeLabel").style("display", "none");
+    }
+    else {
+      d3.select(".labelOnOff").attr("value", "on");
+      d3.selectAll("text.nodeLabel").style("display", "");
+    }
+  }
   
-	function updateNodeLabels() {
-		var currentValue = d3.select(".labelOnOff").attr("value");
-		if (currentValue === "on") {
-		  d3.select(".labelOnOff").attr("value", "off");
-		  d3.selectAll("text.nodeLabel").style("display", "none");
-		}
-		else {
-		  d3.select(".labelOnOff").attr("value", "on");
-		  d3.selectAll("text.nodeLabel").style("display", "");
-		}
-	}
+  function updateNodeInfo() {
+    var trans = d3.transition().duration(1000);
+    d3.select("div.NodeInfoMenu")
+    .transition(trans)
+    .style("border-color", function() { return (nodeInfoKey === nodeInfoNone) ? "rgba(0,0,0,0.1)" : "orange";})
+    .style("background-color", function() { 
+      return (nodeInfoKey === nodeInfoNone) ? "rgba(0,0,0,0.1)" : "rgba(255,165,0,0.1)";});  
+          
+    d3.selectAll("rect.sankeyNodeInfo")
+    .transition(trans)
+    .attr("y", function(d) { 
+      if (nodeInfoKey === nodeInfoNone) { return d.dy; }
+      else {
+      if (debugOn) {
+        console.log("value: " + +d.nodeInfos[nodeInfoKey]);
+        console.log("newHeight: " + d.nodeInfos[nodeInfoKey + "_dy"]);
+      } 
+      return d.dy - d.nodeInfos[nodeInfoKey + "_dy"];
+      }
+    })
+    .attr("height", function(d) { 
+      if (nodeInfoKey === nodeInfoNone) { return 0; }
+      else {return d.nodeInfos[nodeInfoKey + "_dy"]; }
+    });
+  };
   
-	function updateNodeInfo() {
-	  var trans = d3.transition().duration(1000);
-	  d3.select("div.sankeyMenu")
-		.transition(trans)
-		.style("border-color", function() { return (nodeInfoKey === nodeInfoNone) ? "lightgrey" : "orange";})
-		.style("background-color", function() { 
-		  return (nodeInfoKey === nodeInfoNone) ? "rgba(255,255,255,0.1)" : "rgba(255,165,0,0.1)";});
-		  
-	  console.log("y: " + d3.select("rect.sankeyNodeInfo").attr("y"));
-		
-	  d3.selectAll("rect.sankeyNodeInfo")
-		.transition(trans)
-		.attr("y", function(d) { 
-		  if (nodeInfoKey === nodeInfoNone) { return d.dy; }
-		  else {
-			if (debugOn) {
-			  console.log("value: " + +d.nodeInfos[nodeInfoKey]);
-			  console.log("newHeight: " + d.nodeInfos[nodeInfoKey + "_dy"]);
-			} 
-			return d.dy - d.nodeInfos[nodeInfoKey + "_dy"];
-		  }
-		})
-		.attr("height", function(d) { 
-		  if (nodeInfoKey === nodeInfoNone) { return 0; }
-		  else {return d.nodeInfos[nodeInfoKey + "_dy"]; }
-		});
-	};
   ////////////////////////////////////////////////////
   // 4.0 add visualization specific processing here //
   //////////////////////////////////////////////////// 
@@ -751,8 +765,8 @@ var reUsableChart = function(_myData) {
       });
    }
 
-	// 4.2 update functions
-	
+  // 4.2 update functions
+  
   ////////////////////////////////////////////////////
   // 5.0 processing data begins here                //
   //////////////////////////////////////////////////// 
