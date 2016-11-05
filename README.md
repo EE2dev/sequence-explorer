@@ -76,13 +76,13 @@ quantity,grade_previous,year1,grade_next,year2,gender,region
 ...
 ```
 
-### 3.2 Adding additional categories with node info
-You might add additional categories with their respective quantity in a separate file.
+### 3.2 Adding additional quantities to the nodes
+You might add additional node quantities from a separate file.
 This additional file has to be in the same directory as the main csv file and has to be named as the main file with "_nodes" added to the file name.
 E.g. original file: `my_sankey_file.csv`--> `my_sankey_file_nodes.csv`
 
 This csv file containing additional node infos has to start off with the first column denoting the sequence state and the second column referring to 
-the category on the y axis. At this point, just ```sourceX``` and `sourceY` are allowed as column names. 
+the category on the y axis. In the first line, the column names for these two columns have to be ```sourceX``` and `sourceY`. 
 If there are one or two more categories determined for the small multiples, they would follow after that.
 Then there is an arbitrary number of node info columns. For each column the corresponding quantity is set.
  
@@ -113,4 +113,4 @@ function | parameter | explanation
 -----------------------
 
 ### 5. License
-This code is release under the [BSD license](License).
+This code is released under the [BSD license](License).
