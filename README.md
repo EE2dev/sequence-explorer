@@ -63,9 +63,9 @@ quantity,grade_previous,year1,grade_next,year2
 ...
 ```
 
-### 3.1 Adding more categories
-The csv file may contain 1 or 2 more columns, each referring to an additional category, such that multiple sankey charts are displayed at once as small multiples. 
-The sixth column is used to arrange sankey chart one row for each category, whereas the seventh column deteremines the columns of the small multiples.
+### 3.1 Adding more dimensions
+The csv file may contain 1 or 2 more columns, each referring to an additional dimension, such that multiple sankey charts are displayed at once as small multiples. 
+The sixth column is used to arrange sankey chart one row for each category, whereas the seventh column determines the columns of the small multiples.
 Example of valid csv files:
 ```
 quantity,grade_previous,year1,grade_next,year2,gender,region
