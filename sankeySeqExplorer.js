@@ -21,7 +21,6 @@ var reUsableChart = function(_myData) {
     nodeWidth = 15,
     nodePadding = 8, 
     size = [700, 500],
-    // margin = {left: 5, top: 5, right: 5, bottom: 5},
     margin = {left: 5, top: 0, right: 0, bottom: 0},
     sequence,
     categories,
