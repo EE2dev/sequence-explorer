@@ -3,7 +3,7 @@
 Adapting the [sankey diagram](https://bost.ocks.org/mike/sankey/) for sequential data. There are many applications for exploring the development of categories over some sequence (e.g. time points such as days, months or years).
 Sequence explorer implements the following [d3.js reusable charts pattern](https://github.com/EE2dev/d3-template) to let you customize the chart. The core library [sankeySeq.js](docs/README.md) can also be used separately.
 
-SankeySeq adapts the sankey layout for sequential data. SankeySeqExplorer is a wrapper on top of sankeySeq with the following features:
+SankeySeq.js adapts the sankey layout for sequential data. SankeySeqExplorer.js is a wrapper on top of sankeySeq with the following features:
 * data is read from a csv file. See section about [data formatting](#3-data-formatting).
 * can be used with just a browser and no web server. In that case, data has to be embedded in the html file. 
 * sankeySeq places the nodes on a fixed grid. The state of the sequence (e.g. point in time) has a fixed x position. And a certain category has a fixed y position.
