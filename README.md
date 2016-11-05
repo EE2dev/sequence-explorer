@@ -113,4 +113,4 @@ function | parameter | explanation
 -----------------------
 
 ### 5. License
-This code is released under the [BSD license](License).
+This code is released under the [BSD license](https://github.com/EE2dev/sequence-explorer/LICENSE).
