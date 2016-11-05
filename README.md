@@ -21,7 +21,7 @@ SankeySeq adapts the sankey layout for sequential data. SankeySeqExplorer is a w
 * supports small multiples
 * addition quantitative features can be visualized within the nodes
 
-For additional features see section API for sequence explorer.
+For additional features see section [API for sequence explorer](https://github.com/EE2dev/sequence-explorer#4-api-for-sequence-explorer).
 
 ### 3. Data formatting
 
