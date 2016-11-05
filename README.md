@@ -10,11 +10,20 @@ Sequence explorer implements the following [d3.js reusable charts pattern](https
 
 - [demography](http://www.bib-demografie.de/DE/ZahlenundFakten/02/Tabellen/t_02_01_bevstand_d_1960_2060.html;jsessionid=F996B8093DC563B8B2A5F791C5683174.2_cid292?nn=3074120)
 -----------------------
-### Examples
+### 1. Examples
 The main example is here.
 
+### 2. Overview
+SankeySeq adapts the sankey layout for sequential data. SankeySeqExplorer is a wrapper on top of sankeySeq with the following features:
+* data is read from a csv file. See section about data formatting.
+* can be used with just a browser and no web server. In that case, data has to be embedded in the html file. 
+* sankeySeq places the nodes on a fixed grid. The state of the sequence (e.g. point in time) has a fixed x position. And a certain category has a fixed y position.
+* supports small multiples
+* addition quantitative features can be visualized within the nodes
 
-### 1. Data formatting
+For additional features see section API for sequence explorer.
+
+### 3. Data formatting
 
 The file must contain each pair of sequential categories with the corresponding quantity.
 The file must be a comma separated file with the first row containing the attribute names.
@@ -54,7 +63,7 @@ quantity,grade_previous,year1,grade_next,year2
 ...
 ```
 
-### 1.1 adding more categories
+### 3.1 adding more categories
 The csv file may contain 1 or 2 more columns, each referring to an additional category, such that multiple sankey charts are displayed at once as small multiples. 
 The sixth column is used to arrange sankey chart one row for each category, whereas the seventh column deteremines the columns of the small multiples.
 Example of valid csv files:
@@ -67,7 +76,7 @@ quantity,grade_previous,year1,grade_next,year2,gender,region
 ...
 ```
 
-### 1.2 adding additional categories with node info
+### 3.2 adding additional categories with node info
 You might add additional categories with their respective quantity in a separate file.
 This additional file has to be in the same directory as the main csv file and has to be named as the main file with "_nodes" added to the file name.
 E.g. original file: `my_sankey_file.csv`--> `my_sankey_file_nodes.csv`
@@ -87,7 +96,7 @@ sourceX,sourceY,first_product,info1,Info3-test
 ...
 ```
 
-### 3. API for sequence explorer 
+### 4. API for sequence explorer 
 function | parameter | explanation
 ------------ | -------|------
 `debugOn()` | *boolean* | e.g. `reUsableChart.debug(true)` turns on/off the console.log debugging. The default setting is false.
