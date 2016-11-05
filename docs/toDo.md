@@ -1,11 +1,9 @@
 ### To do
+- sankeySeq as plugin
 - change axis representation
 - transition on x axis click
 - transition on y axis click
 - change tag(pre) into divs, also if tag(pre)
-- nodeFile has to have names sourceX sourceY
 - multiplesColumns(boolean)
 - css styling
-- testing browsers (change display:table)
-- remove test layout in css
-- licence
+- testing browsers

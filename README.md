@@ -112,3 +112,5 @@ function | parameter | explanation
 
 -----------------------
 
+### 5. License
+This code is release under the [BSD license](License).
