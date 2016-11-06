@@ -103,7 +103,7 @@
    * selector for nodes: ".n" + "sourceX" + "-" + "sourceY"
    * selector for links: ".l" + "<sourceX>" + "_" + "<sourceY>" + "-" + "<targetX>" + "_" + "<targetY>"
    */   
-   
+   /*
   .l2000_1-2001_1, .l2001_1-2002_1, .l2002_1-2003_2 {
     stroke: red;
   }
