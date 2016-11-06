@@ -111,10 +111,11 @@ function | parameter | explanation
 
 ### 5. Highlighting nodes and links
 Nodes and links can be styled individually with CSS by using the following selectors:
-   * selector for nodes: `".n"` + `<sourceX>` + "-"` + `<sourceY>` 
+   * selector for nodes: `".n"` + `<sourceX>` + `"-"` + `<sourceY>` 
    * selector for links: `".l"` + `<sourceX>` + `"_"` + `<sourceY>` + `"-"` + `<targetX>` + `"_"` + `<targetY>`
    
-where '<sourceX>', '<sourceY>', '<targetX>', '<targetY>' have to replaced by their corresponding instances.
+where `<sourceX>`, `<sourceY>`, `<targetX>`, `<targetY>` have to be replaced by their corresponding instances.
+Note that nodes are `<rect>` and links are `<path>` elements.
 E.g. if your data looks like this:
 ```
 value,sourceX,sourceY,targetX,targetY

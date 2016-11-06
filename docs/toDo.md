@@ -5,4 +5,3 @@
 - transition on y axis click
 - change tag(pre) into divs, also if tag(pre)
 - multiplesColumns(boolean)
-- css styling
