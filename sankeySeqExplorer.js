@@ -665,8 +665,7 @@ var reUsableChart = function(_myData) {
           link = sankeyG.append("g").selectAll(".link")
             .data(graph.links)
           .enter().append("path")
-            .attr("class", "link")
-            .attr("class", function(d) { return "link" + " l" + d.id.replace(">",""); })
+            .attr("class", function(d) { return "link" + " l" + d.id.replace(">","").replace(" ", "_"); })
             .attr("d", sankey.link())
             .style("stroke-width", function(d) { return Math.max(1, d.dy) + "px"; })
             .sort(function(a, b) { return b.dy - a.dy; })
@@ -692,7 +691,7 @@ var reUsableChart = function(_myData) {
             .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
 
           node.append("rect")
-            .attr("class", function(d) { return "sankeyNode" + " n" + d.nameX + "-" + d.nameY; })
+            .attr("class", function(d) { return "sankeyNode" + " n" + d.nameX.replace(" ", "_") + "_" + d.nameY.replace(" ", "_"); })
             .attr("height", function(d) { return d.dy; })
             .attr("width", sankey.nodeWidth())
             .on("mouseover", function(d) {

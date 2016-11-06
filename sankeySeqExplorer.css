@@ -50,11 +50,11 @@
     display: table-cell;
   }
   
-  .node rect.sankeyNode {
+  .sankeyNode {
     fill: #023858;
     fill-opacity: .75;
     shape-rendering: crispEdges;
-  }
+  } 
     
   .node rect.sankeyNodeInfo {
     shape-rendering: crispEdges;
@@ -98,16 +98,17 @@
     font-size: 18px;
   }
   
-  rect.n2000-2 {
-    fill: red;
-  }
-  
   /* examples for hightlighting individual nodes and links
-  .l2000_2-2001_0 {
+   *
+   * selector for nodes: ".n" + "sourceX" + "-" + "sourceY"
+   * selector for links: ".l" + "<sourceX>" + "_" + "<sourceY>" + "-" + "<targetX>" + "_" + "<targetY>"
+   */   
+   
+  .l2000_1-2001_1, .l2001_1-2002_1, .l2002_1-2003_2 {
     stroke: red;
   }
 
-  rect.sankeyNode.n2000-2 {
-    fill: red;
+  .n2000_2 {
+    fill: yellow;
   }  
   */

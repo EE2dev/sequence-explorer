@@ -30,36 +30,36 @@ The file must be a comma separated file with the first row containing the attrib
 
 The order of the columns must be:
 * first column: the quantity to be displayed 
-* second column: the first category 
-* third column: the state of the sequence corresponding to the first category
-* fourth column: the second category (according to the sequence) 
-* fifth column: the state of the sequence corresponding to the second category
+* second column: the state of the sequence corresponding to the first category 
+* third column: the first category
+* fourth column: the state of the sequence corresponding to the second category 
+* fifth column: the second category (according to the sequence)
 
 Example of valid csv files:
 ```
-frequency,mood_from,day_from,mood_to,day_to
-50,good,Monday,good,Tuesday
-60,good,Monday,ok,Tuesday
-20,good,Monday,bad,Tuesday
-30,ok,Tuesday,good,Wednesday
+frequency,day_from,mood_from,day_to,mood_to
+50,Monday,good,Tuesday,good
+60,Monday,good,Tuesday,ok
+20,Monday,good,Tuesday,bad
+30,Tuesday,ok,Wednesday,good
 ...
 ```
 or
 ```
-_value,cat1,state1,cat2,state2
-2650,fruit,1,fruit,2
-7860,candy,1,fruit,2
-3450,meat,2,fruit,3
-5430,fish,2,fish,3
+_value,state1,cat1,state2,cat2
+2650,1,fruit,2,fruit
+7860,1,candy,2,fruit
+3450,2,meat,3,fruit
+5430,2,fish,3,fish
 ...
 ```
 or
 ```
-quantity,grade_previous,year1,grade_next,year2
-10,A,2010,A,2011
-6,A,2010,B,2011
-20,A,2011,A,2012
-14,B,2011,B,2012
+quantity,year1,grade_previous,year2,grade_next
+10,2010,A,2011,A
+6,2010,A,2011,B
+20,2011,A,2012,A
+14,2011,A,2012,B
 ...
 ```
 
@@ -68,11 +68,11 @@ The csv file may contain 1 or 2 more columns, each referring to an additional di
 The sixth column is used to arrange sankey chart one row for each category, whereas the seventh column determines the columns of the small multiples.
 Example of valid csv files:
 ```
-quantity,grade_previous,year1,grade_next,year2,gender,region
-10,A,2010,A,2011,boys,city
-6,A,2010,B,2011,girls,city
-20,A,2011,A,2012,boys,country
-14,B,2011,B,2012,girls,country
+quantity,year1,grade_previous,year2,grade_next,gender,region
+10,2010,A,2011,A,boys,city
+6,2010,A,2011,B,girls,city
+20,2011,A,2012,A,boys,country
+14,2011,B,2012,B,girls,country
 ...
 ```
 
@@ -88,11 +88,8 @@ Then there is an arbitrary number of node info columns. For each column the corr
  
 Example of valid csv files:
 ```
-sourceX,sourceY,first_product,info1,Info3-test
-2000,1,A,10,10
-2000,2,A,220,60
-2001,0,A,40,200
-2000,1,C,80,60
+value,sourceX,sourceY,targetX,targetY
+99,2000,A,2001,B
 ...
 ```
 
@@ -112,5 +109,29 @@ function | parameter | explanation
 
 -----------------------
 
-### 5. License
+### 5. Highlighting nodes and links
+Nodes and links can be styled individually with CSS by using the following selectors:
+   * selector for nodes: `".n"` + `<sourceX>` + "-"` + `<sourceY>` 
+   * selector for links: `".l"` + `<sourceX>` + `"_"` + `<sourceY>` + `"-"` + `<targetX>` + `"_"` + `<targetY>`
+   
+where '<sourceX>', '<sourceY>', '<targetX>', '<targetY>' have to replaced by their corresponding instances.
+E.g. if your data looks like this:
+```
+value,sourceX,sourceY,targetX,targetY
+99,2000,A,2001,B
+...
+```
+
+Then the css selectors for this link and the two nodes would:
+```
+  .l2000_A-2001_B {
+    stroke: red;
+  }
+
+  .n2000_A, .n2001_B {
+    fill: red;
+  }  
+```
+
+### 6. License
 This code is released under the [BSD license](https://github.com/EE2dev/sequence-explorer/LICENSE).
