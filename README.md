@@ -115,7 +115,7 @@ Nodes and links can be styled individually with CSS by using the following selec
    * selector for links: `".l"` + `<sourceX>` + `"_"` + `<sourceY>` + `"-"` + `<targetX>` + `"_"` + `<targetY>`
    
 where `<sourceX>`, `<sourceY>`, `<targetX>`, `<targetY>` have to be replaced by their corresponding instances.
-Note that nodes are `<rect>` and links are `<path>` elements.
+If these instances contain spaces, they will be replaced by `"_"`. Note that nodes are `<rect>` and links are `<path>` elements.
 E.g. if your data looks like this:
 ```
 value,sourceX,sourceY,targetX,targetY
@@ -135,4 +135,4 @@ Then the css selectors for this link and the two nodes would:
 ```
 
 ### 6. License
-This code is released under the [BSD license](https://github.com/EE2dev/sequence-explorer/LICENSE).
+This code is released under the [BSD license](https://github.com/EE2dev/sequence-explorer//blob/master/LICENSE).
