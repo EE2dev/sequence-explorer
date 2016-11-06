@@ -16,10 +16,6 @@ For additional features see section [API for sequence explorer](#4-api-for-seque
 [Here](https://youtu.be/B8a2O6L31_w) is a link to a video explaining how to use item explorer with your own data and [here](http://www.ankerst.de/Mihael/proj/mbc/) is a web site introducing item explorer.
 --->
 
-### Data
-
-- [demography](http://www.bib-demografie.de/DE/ZahlenundFakten/02/Tabellen/t_02_01_bevstand_d_1960_2060.html;jsessionid=F996B8093DC563B8B2A5F791C5683174.2_cid292?nn=3074120)
------------------------
 ### 2. Examples
 The main example is here.
 
