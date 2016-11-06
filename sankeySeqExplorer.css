@@ -49,16 +49,13 @@
   div.sankeyChart {
     display: table-cell;
   }
-      
-  svg {
-      fill: #023858;
-  }
   
   .node rect.sankeyNode {
+    fill: #023858;
     fill-opacity: .75;
     shape-rendering: crispEdges;
   }
-  
+    
   .node rect.sankeyNodeInfo {
     shape-rendering: crispEdges;
   }
@@ -70,7 +67,7 @@
 
   .link {
     fill: none;
-    stroke: #969696;
+    stroke: #023858;
     stroke-opacity: .2;
   }
 
@@ -101,3 +98,16 @@
     font-size: 18px;
   }
   
+  rect.n2000-2 {
+    fill: red;
+  }
+  
+  /* examples for hightlighting individual nodes and links
+  .l2000_2-2001_0 {
+    stroke: red;
+  }
+
+  rect.sankeyNode.n2000-2 {
+    fill: red;
+  }  
+  */

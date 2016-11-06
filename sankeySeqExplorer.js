@@ -666,6 +666,7 @@ var reUsableChart = function(_myData) {
             .data(graph.links)
           .enter().append("path")
             .attr("class", "link")
+            .attr("class", function(d) { return "link" + " l" + d.id.replace(">",""); })
             .attr("d", sankey.link())
             .style("stroke-width", function(d) { return Math.max(1, d.dy) + "px"; })
             .sort(function(a, b) { return b.dy - a.dy; })
@@ -707,10 +708,6 @@ var reUsableChart = function(_myData) {
             .on("mouseout", function() {
               return tooltip.style("visibility", "hidden");
             });
-            /*
-          .append("title")  
-            .text(function(d) { return d.name; });
-            */
           
           node.append("text")
             .attr("class", "nodeLabel")
