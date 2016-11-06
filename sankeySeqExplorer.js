@@ -465,7 +465,6 @@ var reUsableChart = function(_myData) {
             }
           }
         });
-         // return (typeof d.nodeInfos !== 'undefined') && (typeof nodeInfoKey !== 'undefined'); })
         return (typeof d.nodeInfos !== 'undefined'); })
          
         .attr("height", function(d) { 
