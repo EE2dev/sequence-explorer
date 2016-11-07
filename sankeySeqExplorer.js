@@ -498,7 +498,7 @@ var reUsableChart = function(_myData) {
     }
     else {
       d3.select(".labelOnOff").attr("value", "on");
-      d3.selectAll("text.nodeLabel").style("display", "");
+      d3.selectAll("text.nodeLabel").style("display", "block");
     }
   }
   
