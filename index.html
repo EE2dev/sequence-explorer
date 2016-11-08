@@ -11,7 +11,7 @@
   
   <body>
   
-  <!-- A: paste data in pre tag -->
+  <!-- A: paste data in pre#data tag -->
   <pre id="data">
 value,sourceX,sourceY,targetX,targetY
 100,2000,1,2001,0,100
@@ -25,11 +25,11 @@ value,sourceX,sourceY,targetX,targetY
 90,2002,1,2003,1,90
 </pre> 
 
-<!-- A: paste node infos in pre tag -->
-<div id="dataNodes"></div>
+<!-- A: paste node infos in pre#dataNodes tag -->
+<pre id="dataNodes"></pre>
 
     <script>
-    // no parameter when data is embedded in <pre> tag, otherwise reUsableChart(file);
+    // no parameter when data is embedded in <pre id="data"> tag, otherwise reUsableChart(file);
     // var myChart = reUsableChart()
     var myChart = reUsableChart("data/sankey_new_n2.csv")
     .nodeWidth(15)

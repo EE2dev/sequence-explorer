@@ -7,7 +7,7 @@
     user-select: none;
   }
 
-  pre#data, pre#nodes {
+  pre#data, pre#dataNodes {
     display:none;
   }
 

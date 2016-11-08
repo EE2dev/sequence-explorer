@@ -202,7 +202,7 @@ var reUsableChart = function(_myData) {
     
     var transformString = {};   
     transformString.sankeyFrame = {};
-    transformString.sankeyFrame.single = "translate(" + (tx + width/2*sx) + ", " + (ty + height/2*sy) + ") scale(0)"; 
+    transformString.sankeyFrame.single = "translate(" + (tx + width/2*sx) + ", " + (ty + height/2*sy) + ") scale(0.05)"; 
     transformString.sankeyFrame.multiples = "translate(" + tx + ", " + ty + ") "; 
     
     transformString.sankeySeq = {};
@@ -230,7 +230,7 @@ var reUsableChart = function(_myData) {
 
           d3.select(this) // transition frame
             .transition(trans)
-            .attr("transform", "translate(0, 0)")
+            .attr("transform", "translate(0, 0)");
             
           d3.select(this).selectAll("g.pTop") // transition top padding
             .transition(trans)
@@ -268,7 +268,8 @@ var reUsableChart = function(_myData) {
             console.log("not clicked");
             d3.select(this)
               .transition(trans)
-              .attr("transform", function(d) {return d.single;});
+              .attr("transform", function(d) {return d.single;})
+              .style("opacity", 0);
         }
     });
     return false;
@@ -321,7 +322,8 @@ var reUsableChart = function(_myData) {
         } else {
           d3.select(this)
             .transition(trans)
-            .attr("transform", function(d) {return d.multiples;});
+            .attr("transform", function(d) {return d.multiples;})
+            .style("opacity", 1);;
         }
     });   
     return true;
@@ -795,7 +797,7 @@ var reUsableChart = function(_myData) {
     } 
     else {
       file = d3.csvParse(d3.select("pre#data").text());
-      nodeFile = d3.csvParse(d3.select("pre#nodes").text());
+      nodeFile = d3.csvParse(d3.select("pre#dataNodes").text());
       if (nodeFile.length === 0) {
         var a;
         nodeFile = a; // set to undefined
