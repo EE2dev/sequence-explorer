@@ -8,7 +8,7 @@ SankeySeq.js adapts the sankey layout for sequential data. SankeySeqExplorer.js 
 * can be used with just a browser and no web server. In that case, data has to be embedded in the html file. 
 * sankeySeq places the nodes on a fixed grid. The state of the sequence (e.g. point in time) has a fixed x position. And a certain category has a fixed y position.
 * supports small multiples
-* addition quantitative features can be visualized within the nodes
+* additional quantitative features can be visualized within the nodes
 * links and nodes can be css styled individually for presentations
 
 For additional features see section [API for sequence explorer](#4-api-for-sequence-explorer).
