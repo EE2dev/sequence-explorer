@@ -85,8 +85,8 @@ Then there is an arbitrary number of node info columns. For each column the corr
  
 Example of valid csv files:
 ```
-value,sourceX,sourceY,targetX,targetY
-99,2000,A,2001,B
+sourceX,sourceY,info1,info2
+2010,A,5,7
 ...
 ```
 
