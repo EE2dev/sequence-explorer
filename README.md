@@ -120,7 +120,7 @@ value,sourceX,sourceY,targetX,targetY
 ...
 ```
 
-Then the css selectors for this link and the two nodes would:
+Then the css selectors for this link and the two nodes would be:
 ```
   .l2000_A-2001_B {
     stroke: red;
