@@ -108,27 +108,40 @@ function | parameter | explanation
 
 ### 5. Highlighting nodes and links
 Nodes and links can be styled individually with CSS by using the following selectors:
-   * selector for nodes: `".n"` + `<sourceX>` + `"-"` + `<sourceY>` 
-   * selector for links: `".l"` + `<sourceX>` + `"_"` + `<sourceY>` + `"-"` + `<targetX>` + `"_"` + `<targetY>`
+   * selector for nodes: `"rect.nx"` + `<sourceX>` + `".ny"` + `<sourceY>` 
+   * selector for links: `"path.lsx"` + `<sourceX>` + `".lsy"` + `<sourceY>` + `".ltx"` + `<targetX>` + `".lty"` + `<targetY>`
    
 where `<sourceX>`, `<sourceY>`, `<targetX>`, `<targetY>` have to be replaced by their corresponding instances.
-If these instances contain spaces, they will be replaced by `"_"`. Note that nodes are `<rect>` and links are `<path>` elements.
+These instances can just contain letters,numbers and spaces, where the spaces will be replaced by `"_"`. Note that nodes are `<rect>` and links are `<path>` elements.
 E.g. if your data looks like this:
 ```
 value,sourceX,sourceY,targetX,targetY
 99,2000,A,2001,B
+150,2001,B,2002,C
 ...
 ```
 
-Then the css selectors for this link and the two nodes would be:
+Then the css selectors would be:
 ```
-  .l2000_A-2001_B {
+  /* drawing one specific link in red */
+  path.lsx2000.lsyA.ltx2001.ltyB {
     stroke: red;
   }
 
-  .n2000_A, .n2001_B {
+  /* drawing all links from A to B in yellow */
+  path.lsy1.lty2 {
+    stroke: yellow;
+  }
+  
+  /* drawing one specific node in red */
+  rect.nx2000.nyA {
     fill: red;
-  }  
+  } 
+
+  /* drawing all B nodes  in red */
+  rect.nyB {
+    fill: red;
+  }
 ```
 
 ### 6. License

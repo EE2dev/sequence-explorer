@@ -51,13 +51,19 @@
   }
   
   .sankeyNode {
-    fill: #023858;
-    fill-opacity: .75;
+    fill: #023858; 
+    fill-opacity: .75;  
     shape-rendering: crispEdges;
+    stroke: #000;
+    stroke-width: 1px;
+    stroke-opacity: .5;
   } 
     
   .node rect.sankeyNodeInfo {
     shape-rendering: crispEdges;
+    stroke: #000;
+    stroke-width: 1px;
+    stroke-opacity: .5;
   }
 
   .node text {
@@ -68,6 +74,7 @@
   .link {
     fill: none;
     stroke: #023858;
+    stroke: #000;  
     stroke-opacity: .2;
   }
 
@@ -98,17 +105,64 @@
     font-size: 18px;
   }
   
+  /* colors for the nodes */
+  
+  /* qualitative color scheme */
+  /*
+  .color0{ fill: #393b79;}
+  .color1{ fill: #637939;}
+  .color2{ fill: #843c39;}
+  .color3{ fill: #8c6d31;}
+  .color4{ fill: #7b4173;}
+  */
+
+  /*
+  .color0{ fill: #9c9ede;}
+  .color1{ fill: #6b6ecf;}
+  .color2{ fill: #5254a3;}
+  .color3{ fill: #393b79;}
+  */
+  
+
+  /* different shades of blue from light to dark */
+  /*
+  .color0{ fill: #74a9cf;}
+  .color1{ fill: #3690c0;}
+  .color2{ fill: #0570b0;}
+  .color3{ fill: #045a8d;} 
+  .color4{ fill: #023858;}
+  */
+  
+  .color0{ fill: #9ecae1;}
+  .color1{ fill: #6baed6;}
+  .color2{ fill: #4292c6;}
+  .color3{ fill: #2171b5;}
+  .color4{ fill: #084594;}   
+  
+/*
+  .color0{ fill: #023858; fill-opacity: .15;}
+  .color1{ fill: #023858; fill-opacity: .35;}
+  .color2{ fill: #023858; fill-opacity: .55;}
+  .color3{ fill: #023858; fill-opacity: .75;}
+  .color4{ fill: #023858; fill-opacity: .95;}  
+*/
+
   /* examples for hightlighting individual nodes and links
    *
-   * selector for nodes: ".n" + "sourceX" + "-" + "sourceY"
-   * selector for links: ".l" + "<sourceX>" + "_" + "<sourceY>" + "-" + "<targetX>" + "_" + "<targetY>"
+   * selector for nodes: `"rect.nx"` + `<sourceX>` + `".ny"` + `<sourceY>` 
+   * selector for links: `"path.lsx"` + `<sourceX>` + `".lsy"` + `<sourceY>` + `".ltx"` + `<targetX>` + `".lty"` + `<targetY>`
    */   
-   /*
-  .l2000_1-2001_1, .l2001_1-2002_1, .l2002_1-2003_2 {
-    stroke: red;
-  }
 
-  .n2000_2 {
-    fill: yellow;
-  }  
-  */
+  rect.ny2.nx2001{
+   /* fill: red; */
+  }
+  
+  rect.nymisc.nx5{
+     fill: orange;
+  }
+  
+  path.lsytravel.ltyweather {
+    stroke: red;
+    stroke-opacity: 1;
+  }
+  
