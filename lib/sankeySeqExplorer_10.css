@@ -55,14 +55,14 @@
     fill-opacity: .75;  
     shape-rendering: crispEdges;
     stroke: #000;
-    stroke-width: 1px;
+    stroke-width: 0px;
     stroke-opacity: .5;
   } 
     
   .node rect.sankeyNodeInfo {
     shape-rendering: crispEdges;
     stroke: #000;
-    stroke-width: 1px;
+    stroke-width: 0px;
     stroke-opacity: .5;
   }
 
@@ -133,20 +133,20 @@
   .color4{ fill: #023858;}
   */
   
+  /*
   .color0{ fill: #9ecae1;}
   .color1{ fill: #6baed6;}
   .color2{ fill: #4292c6;}
   .color3{ fill: #2171b5;}
-  .color4{ fill: #084594;}   
+  .color4{ fill: #084594;} 
+  */
   
-/*
-  .color0{ fill: #023858; fill-opacity: .15;}
-  .color1{ fill: #023858; fill-opacity: .35;}
-  .color2{ fill: #023858; fill-opacity: .55;}
-  .color3{ fill: #023858; fill-opacity: .75;}
+  .color0{ fill: #023858; fill-opacity: .25;}
+  .color1{ fill: #023858; fill-opacity: .45;}
+  .color2{ fill: #023858; fill-opacity: .65;}
+  .color3{ fill: #023858; fill-opacity: .85;}
   .color4{ fill: #023858; fill-opacity: .95;}  
-*/
-
+  
   /* examples for hightlighting individual nodes and links
    *
    * selector for nodes: `"rect.nx"` + `<sourceX>` + `".ny"` + `<sourceY>` 
