@@ -1,10 +1,10 @@
 # Sequence explorer
 ### 1. Overview
-Adapting the [sankey diagram](https://bost.ocks.org/mike/sankey/) for sequential data. There are many applications for exploring the development of categories over some sequence (e.g. time points such as days, months or years).
+Adapting the [sankey diagram](https://bost.ocks.org/mike/sankey/) for sequential data. Click stream analysis or customer journey analysis are just two of many applications for exploring the development of categories over some sequence (e.g. time points such as days, months or years).
 Sequence explorer implements the following [d3.js reusable charts pattern](https://github.com/EE2dev/d3-template) to let you customize the chart. The core library [sankeySeq.js](docs/README.md) can also be used separately.
 
 SankeySeq.js adapts the sankey layout for sequential data. SankeySeqExplorer.js is a wrapper on top of sankeySeq with the following features:
-* data is read from a csv file. See section about [data formatting](#3-data-formatting).
+* data is read from a csv file. Since the visualization is motivated by the [markov assumption](https://en.wikipedia.org/wiki/Markov_property), the data can be provided in an efficient format just referencing the successors in a sequence and their connection value. See section about [data formatting](#3-data-formatting).
 * can be used with just a browser and no web server. In that case, data has to be embedded in the html file. 
 * sankeySeq places the nodes on a fixed grid. The state of the sequence (e.g. point in time) has a fixed x position. And a certain category has a fixed y position.
 * supports small multiples
@@ -101,6 +101,7 @@ function | parameter | explanation
 `sequenceName()` | *string* | e.g. `reUsableChart.sequenceName("year")` sets the name of the x axis. The default name is "sequence".
 `categoryName()` | *string* | e.g. `reUsableChart.categoryName("state")` sets the name of the y axis. The default name is "category".
 `valueName()` | *string* | e.g. `reUsableChart.valueName("frequency")` sets the name of the value. The default name is "value".
+`thousandsSeparator()` | *char* | e.g. `reUsableChart.thousandsSeparator(".")` sets the thousands separator. The default separator is ",".
 `nodeWidth()` | *integer* | e.g. `reUsableChart.nodeWidth(20)` sets the width of a node in pixels. The default width is 15.
 `nodePadding()` | *integer* | e.g. `reUsableChart.nodePadding(10)` sets the y-padding between the categories in pixels. The default padding is 8.
 

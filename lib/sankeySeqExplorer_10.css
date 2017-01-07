@@ -76,6 +76,9 @@
     stroke: #023858;
     stroke: #000;  
     stroke-opacity: .2;
+    /* change stroke-opacity for subtle background + highlighting individual path 
+    stroke-opacity: .06; 
+    */
   }
 
   .link:hover {
@@ -151,10 +154,19 @@
    *
    * selector for nodes: `"rect.nx"` + `<sourceX>` + `".ny"` + `<sourceY>` 
    * selector for links: `"path.lsx"` + `<sourceX>` + `".lsy"` + `<sourceY>` + `".ltx"` + `<targetX>` + `".lty"` + `<targetY>`
+   *
+   * E.g. to highlight individual path for a presentation:
+   *  (1) update stroke-opacity in .link from 0.2 to 0.06
+   *  (2) style individual path with stroke-opacity: .3
    */   
 
   rect.ny2.nx2001{
    /* fill: red; */
+  }
+  
+  path.lsx2000.lsy1.ltx2001.lty1, path.lsx2001.lsy1.ltx2002.lty1, path.lsx2002.lsy1.ltx2003.lty1 { 
+    /* stroke: red;*/
+    stroke-opacity: .3;
   }
   
   rect.nymisc.nx5{
