@@ -160,21 +160,27 @@
    *  (2) style individual path with stroke-opacity: .3
    */   
 
-  rect.ny2.nx2001{
-   /* fill: red; */
+   /*
+  rect.ny2.nx2001 {
+    fill: red;
   }
   
   path.lsx2000.lsy1.ltx2001.lty1, path.lsx2001.lsy1.ltx2002.lty1, path.lsx2002.lsy1.ltx2003.lty1 { 
-    /* stroke: red;*/
+    stroke: red;
     stroke-opacity: .3;
   }
   
   rect.nymisc.nx5{
      fill: orange;
   }
-  
-  path.lsytravel.ltyweather {
-    stroke: red;
-    stroke-opacity: 1;
+   
+  path.lsyproduct.ltyproduct {
+    stroke: orange;
+    stroke-opacity: .5;
   }
+  
+  rect.nyproduct{
+     fill: orange;
+  }  
+  */
   

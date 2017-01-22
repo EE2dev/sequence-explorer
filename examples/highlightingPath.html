@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+  <meta charset="utf-8"> <!-- also save this file as unicode-8 ! -->
+  <head>
+    <link rel="stylesheet" type="text/css" href="../lib/sankeySeqExplorer_10.css">
+  
+    <!--script src="../../../lib/d3_v4_2_1/d3.js"></script-->
+    <script src="http://d3js.org/d3.v4.js"></script> 
+    <script src="../lib/sankeySeqExplorer_10.min.js"></script>
+    <script src="../lib/sankeySeq_10.min.js"></script>
+    
+    <style>      
+      path.lsx0.lsyhome.ltx1.ltysearch, path.lsx1.lsysearch.ltx2.ltyproduct, 
+      path.lsx2.lsyproduct.ltx3.ltysearch, path.lsx3.lsysearch.ltx4.ltyproduct {
+        stroke: orange;
+        stroke-opacity: .5;
+      }
+      
+      rect.nx0.nyhome, rect.nx1.nysearch, rect.nx2.nyproduct,
+      rect.nx3.nysearch, rect.nx4.nyproduct {
+         fill: orange;
+      }       
+    </style>
+  </head>
+  
+  <body>
+    <script>
+    // no parameter when data is embedded in <pre id="data"> tag, otherwise sequenceExplorerChart(file);
+    // var myChart = sequenceExplorerChart();
+    var myChart = sequenceExplorerChart("../data/sequence1.csv")
+      .categories(["home", "product", "search", "account", "other"])
+      .sequenceName("visit");
+      
+    d3.select("body")
+      .append("div")
+      .attr("class", "chart")
+      .call(myChart);
+      
+    </script>
+  </body>
+</html>  

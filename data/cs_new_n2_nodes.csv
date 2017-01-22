@@ -1,0 +1,14 @@
+sourceX,sourceY,region,age,browser:Chrome,os:Windows,client:desktop
+1st,travel,United States,18-30,10,10,90
+3rd,sports,United States,18-30,30,70,50
+4th,weather,United States,18-30,10,10,80
+1st,health,United States,18-30,90,30,160
+1st,travel,India,18-30,10,10,90
+3rd,sports,India,18-30,30,70,50
+4th,weather,India,18-30,10,10,80
+1st,health,India,18-30,90,30,160
+1st,health,Germany,18-30,90,30,160
+4th,weather,Germany,18-30,10,10,80
+1st,health,Germany,18-30,90,30,160
+2nd,sports,India,50+,160,600,690
+1st,health,India,50+,400,50,700

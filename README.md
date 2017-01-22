@@ -4,7 +4,7 @@ Adapting the [sankey diagram](https://bost.ocks.org/mike/sankey/) for sequential
 Sequence explorer implements the following [d3.js reusable charts pattern](https://github.com/EE2dev/d3-template) to let you customize the chart. The core library [sankeySeq.js](docs/README.md) can also be used separately.
 
 SankeySeq.js adapts the sankey layout for sequential data. SankeySeqExplorer.js is a wrapper on top of sankeySeq with the following features:
-* data is read from a csv file. Since the visualization is motivated by the [markov assumption](https://en.wikipedia.org/wiki/Markov_property), the data can be provided in an efficient format just referencing the successors in a sequence and their connection value. See section about [data formatting](#3-data-formatting).
+* data is read from a csv file. Since the visualization is motivated by the [Markov assumption](https://en.wikipedia.org/wiki/Markov_property), the data can be provided in an efficient format just referencing the successors in a sequence and their connection value. See section about [data formatting](#3-data-formatting).
 * can be used with just a browser and no web server. In that case, data has to be embedded in the html file. 
 * sankeySeq places the nodes on a fixed grid. The state of the sequence (e.g. point in time) has a fixed x position. And a certain category has a fixed y position.
 * supports small multiples
@@ -62,7 +62,7 @@ quantity,year1,grade_previous,year2,grade_next
 
 ### 3.1 Adding more dimensions
 The csv file may contain 1 or 2 more columns, each referring to an additional dimension, such that multiple sankey charts are displayed at once as small multiples. 
-The sixth column is used to arrange sankey chart one row for each category, whereas the seventh column determines the columns of the small multiples.
+The sixth column is used to arrange sankey chart one row for each dimension, whereas the seventh column determines the columns of the small multiples.
 Example of valid csv files:
 ```
 quantity,year1,grade_previous,year2,grade_next,gender,region
@@ -90,24 +90,49 @@ sourceX,sourceY,info1,info2
 ...
 ```
 
-### 4. API for sequence explorer 
+### 3.3 Data references with no web server
+If you are running sequence explorer without a web server, you can put the data (csv format) into the `<pre id="data"></pre>` tag. 
+The optional node infos can be put into the `<pre id="dataNodes"></pre>` tag. 
+
+### 4. Using sequence explorer
+If a csv file with data in the correct format exists, the typical call of item explorer from your html file looks as follows:
+
+```
+    ...
+    // include the following three files:
+    <link rel="stylesheet" type="text/css" href="http://www.ankerst.de/lib/sankeySeqExplorer_10.css">
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="http://www.ankerst.de/lib/sankeySeq_10.min.js"></script>
+    ...
+    // setup a chart with a csv file and add the visualization to a DOM element
+    // no parameter when data is embedded in <pre id="data"> tag, otherwise sequenceExplorerChart(file);
+    // var myChart = sequenceExplorerChart();
+    var myChart = sequenceExplorerChart("myData.csv");
+    
+    d3.select("body")
+      .append("div")
+      .attr("class", "chart")
+      .call(myChart);
+```
+
+### 5. API for sequence explorer 
 function | parameter | explanation
 ------------ | -------|------
-`debugOn()` | *boolean* | e.g. `reUsableChart.debug(true)` turns on/off the console.log debugging. The default setting is false.
-`size()` | *2-dim array* |, e.g. `reUsableChart.size([600, 400])`y sets size of the SVG based on an array [width, height]. The default size is [700, 500].
-`margin()` | *integer* | e.g. `reUsableChart.margin(10)` sets margin in pixels for top, right, bottom, left. The default margin is 5 px.
-`sequence()` | *array* | e.g. `reUsableChart.sequence(["2000", "2001", "2002"])` sets the order of the sequence based on an array. The default order is ascending.
-`categories()` | *array* | e.g. `reUsableChart.categories(["A", "B", "C"])` sets the order of the categories based on an array. The default order is ascending.
-`sequenceName()` | *string* | e.g. `reUsableChart.sequenceName("year")` sets the name of the x axis. The default name is "sequence".
-`categoryName()` | *string* | e.g. `reUsableChart.categoryName("state")` sets the name of the y axis. The default name is "category".
-`valueName()` | *string* | e.g. `reUsableChart.valueName("frequency")` sets the name of the value. The default name is "value".
-`thousandsSeparator()` | *char* | e.g. `reUsableChart.thousandsSeparator(".")` sets the thousands separator. The default separator is ",".
-`nodeWidth()` | *integer* | e.g. `reUsableChart.nodeWidth(20)` sets the width of a node in pixels. The default width is 15.
-`nodePadding()` | *integer* | e.g. `reUsableChart.nodePadding(10)` sets the y-padding between the categories in pixels. The default padding is 8.
+`debugOn()` | *boolean* | e.g. `sequenceExplorerChart.debug(true)` turns on/off the console.log debugging. The default setting is false.
+`size()` | *2-dim array* |, e.g. `sequenceExplorerChart.size([600, 400])`y sets size of the SVG based on an array [width, height]. The default size is [700, 500].
+`margin()` | *integer* | e.g. `sequenceExplorerChart.margin(10)` sets margin in pixels for top, right, bottom, left. The default margin is 5 px.
+`sequence()` | *array* | e.g. `sequenceExplorerChart.sequence(["2000", "2001", "2002"])` sets the order of the sequence based on an array. The default order is ascending.
+`categories()` | *array* | e.g. `sequenceExplorerChart.categories(["A", "B", "C"])` sets the order of the categories based on an array. The default order is ascending.
+`sequenceName()` | *string* | e.g. `sequenceExplorerChart.sequenceName("year")` sets the name of the x axis. The default name is "sequence".
+`categoryName()` | *string* | e.g. `sequenceExplorerChart.categoryName("state")` sets the name of the y axis. The default name is "category".
+`valueName()` | *string* | e.g. `sequenceExplorerChart.valueName("frequency")` sets the name of the value. The default name is "value".
+`thousandsSeparator()` | *char* | e.g. `sequenceExplorerChart.thousandsSeparator(".")` sets the thousands separator. The default separator is ",".
+`nodeWidth()` | *integer* | e.g. `sequenceExplorerChart.nodeWidth(20)` sets the width of a node in pixels. The default width is 15.
+`nodePadding()` | *integer* | e.g. `sequenceExplorerChart.nodePadding(10)` sets the y-padding between the categories in pixels. The default padding is 8.
 
 -----------------------
 
-### 5. Highlighting nodes and links
+### 6. Highlighting nodes and links
 Nodes and links can be styled individually with CSS by using the following selectors:
    * selector for nodes: `"rect.nx"` + `<sourceX>` + `".ny"` + `<sourceY>` 
    * selector for links: `"path.lsx"` + `<sourceX>` + `".lsy"` + `<sourceY>` + `".ltx"` + `<targetX>` + `".lty"` + `<targetY>`
@@ -139,11 +164,11 @@ Then the css selectors would be:
     fill: red;
   } 
 
-  /* drawing all B nodes  in red */
+  /* drawing all B nodes in red */
   rect.nyB {
     fill: red;
   }
 ```
 
-### 6. License
+### 7. License
 This code is released under the [BSD license](https://github.com/EE2dev/sequence-explorer//blob/master/LICENSE).
