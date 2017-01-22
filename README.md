@@ -18,7 +18,14 @@ For additional features see section [API for sequence explorer](#4-api-for-seque
 --->
 
 ### 2. Examples
-The main example is here.
+[The main example is here](http://bl.ocks.org/EE2dev/raw/0e709563a63ddfd5c7152e3441593093/).
+
+Complete list of examples:
+
+  * [main demo](http://bl.ocks.org/EE2dev/0e709563a63ddfd5c7152e3441593093)
+  * [single chart](http://bl.ocks.org/EE2dev/52b57438d4e017eefac1765e5727459a)
+  * [hightlight a path](http://bl.ocks.org/ee2dev/325fdb28bfcba4369ff364c7e5224c35)
+  * [demo without web server](http://bl.ocks.org/EE2dev/1a4a65727e2e55ac6ae93a9aaef2f312)
 
 ### 3. Data formatting
 
