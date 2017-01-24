@@ -106,9 +106,10 @@ If a csv file with data in the correct format exists, the typical call of item e
 
 ```
     ...
-    // include the following three files:
+    // include the following four files:
     <link rel="stylesheet" type="text/css" href="http://www.ankerst.de/lib/sankeySeqExplorer_10.css">
     <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="http://www.ankerst.de/lib/sankeySeqExplorer_10.min.js"></script>
     <script src="http://www.ankerst.de/lib/sankeySeq_10.min.js"></script>
     ...
     // setup a chart with a csv file and add the visualization to a DOM element
