@@ -1,5 +1,5 @@
 # Sequence explorer
-![Image of css styled sankey chart](https://github.com/EE2dev/sequence-explorer/sankeySeq.png)
+![Image of css styled sankey chart](https://github.com/EE2dev/sequence-explorer/blob/master/sankeySeq.png)
 ### 1. Overview
 Adapting the [sankey diagram](https://bost.ocks.org/mike/sankey/) for sequential data. Click stream analysis or customer journey analysis are just two of many applications for exploring the development of categories over some sequence (e.g. time points such as days, months or years).
 Sequence explorer implements the following [d3.js reusable charts pattern](https://github.com/EE2dev/d3-template) to let you customize the chart. The core library [sankeySeq.js](docs/README.md) can also be used separately.
