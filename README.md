@@ -82,7 +82,7 @@ quantity,year1,grade_previous,year2,grade_next,gender,region
 ```
 
 ### 3.2 Adding additional quantities to the nodes
-You might add additional node quantities from a separate file.
+You might add additional node quantities which have to be stored in a separate file.
 This additional file has to be in the same directory as the main csv file and has to be named as the main file with "_nodes" added to the file name.
 E.g. original file: `my_sankey_file.csv`--> `my_sankey_file_nodes.csv`
 
@@ -91,7 +91,7 @@ the category on the y axis. In the first line, the column names for these two co
 If there are one or two more categories determined for the small multiples, they would follow after that.
 Then there is an arbitrary number of node info columns. For each column the corresponding quantity is set.
  
-Example of valid csv files:
+Example of a valid csv file:
 ```
 sourceX,sourceY,info1,info2
 2010,A,5,7
