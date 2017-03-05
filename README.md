@@ -32,7 +32,7 @@ Complete list of examples:
 
 The file must contain each pair of sequential categories with the corresponding quantity.
 The file must be a comma separated file with the first row containing the attribute names.
-The categories and sequence states must no contain an underscore '''_'''.
+The categories and sequence states must not contain an `_`(*underscore*).
 
 The order of the columns must be:
 * first column: the quantity to be displayed 
