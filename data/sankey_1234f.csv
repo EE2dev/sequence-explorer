@@ -1,0 +1,425 @@
+value,sourceX,sourceY,targetX,targetY,member group,responder type
+6,meetup3,did not respond,meetup4,responded but did not show up,before meetup 3,very late responders
+1,meetup1,responded but did not show up,meetup2,responded No,before meetup 1,normal responders
+1,meetup3,responded No,meetup4,responded and showed up,before meetup 1,normal responders
+10,meetup3,did not respond,meetup4,responded and showed up,all members,all responders
+1,meetup2,responded No,meetup3,responded but did not show up,all members,early responders
+2,meetup3,responded No,meetup4,responded No,all members,normal responders
+2,meetup2,responded and showed up,meetup3,responded but did not show up,before meetup 2,all responders
+699,meetup3,did not respond,meetup4,did not respond,all members,all responders
+3,meetup3,did not respond,meetup4,responded and showed up,before meetup 2,all responders
+14,meetup3,joined meetup group,meetup4,responded No,before meetup 4,all responders
+2,meetup1,responded and showed up,meetup2,responded No,all members,early responders
+1,meetup3,responded but did not show up,meetup4,responded but did not show up,all members,normal responders
+7,meetup1,did not respond,meetup2,responded No,before meetup 1,all responders
+1,meetup2,did not respond,meetup3,responded No,before meetup 2,early responders
+1,meetup3,responded and showed up,meetup4,responded and showed up,before meetup 2,normal responders
+3,meetup2,responded and showed up,meetup3,responded No,before meetup 1,early responders
+1,meetup2,responded but did not show up,meetup3,responded and showed up,before meetup 2,early responders
+3,meetup2,responded and showed up,meetup3,responded and showed up,all members,very late responders
+1,meetup2,did not respond,meetup3,did not respond,before meetup 2,normal responders
+3,meetup1,joined meetup group,meetup2,responded and showed up,all members,very late responders
+4,meetup2,responded No,meetup3,responded and showed up,before meetup 1,early responders
+11,meetup2,did not respond,meetup3,responded but did not show up,all members,all responders
+1,meetup1,responded but did not show up,meetup2,responded but did not show up,all members,all responders
+11,meetup2,responded and showed up,meetup3,did not respond,before meetup 1,all responders
+1,meetup3,joined meetup group,meetup4,responded No,before meetup 4,normal responders
+3,meetup1,responded and showed up,meetup2,responded and showed up,all members,normal responders
+7,meetup3,joined meetup group,meetup4,responded but did not show up,before meetup 4,very late responders
+9,before meetup1,joined meetup group,meetup1,responded and showed up,before meetup 1,early responders
+1,meetup3,responded but did not show up,meetup4,responded and showed up,before meetup 2,all responders
+1,meetup2,responded but did not show up,meetup3,responded but did not show up,before meetup 2,all responders
+2,meetup3,did not respond,meetup4,responded and showed up,all members,normal responders
+5,meetup3,did not respond,meetup4,responded but did not show up,before meetup 1,all responders
+6,before meetup1,joined meetup group,meetup1,responded No,all members,early responders
+3,meetup3,joined meetup group,meetup4,responded No,all members,early responders
+1,meetup1,did not respond,meetup2,did not respond,all members,very late responders
+1,meetup3,responded but did not show up,meetup4,responded but did not show up,before meetup 3,early responders
+13,meetup2,responded No,meetup3,did not respond,before meetup 2,all responders
+1,meetup2,joined meetup group,meetup3,did not respond,before meetup 3,early responders
+12,meetup3,responded and showed up,meetup4,responded and showed up,all members,early responders
+6,meetup3,responded No,meetup4,did not respond,before meetup 2,all responders
+1,meetup3,responded and showed up,meetup4,responded but did not show up,before meetup 3,normal responders
+5,meetup2,did not respond,meetup3,responded No,before meetup 1,all responders
+2,meetup2,responded No,meetup3,responded and showed up,before meetup 2,all responders
+2,meetup3,responded No,meetup4,responded but did not show up,all members,early responders
+38,meetup2,responded No,meetup3,did not respond,all members,all responders
+2,meetup3,responded and showed up,meetup4,responded No,before meetup 2,all responders
+1,meetup3,responded and showed up,meetup4,responded but did not show up,before meetup 1,early responders
+1,meetup3,responded No,meetup4,responded but did not show up,before meetup 2,all responders
+7,meetup1,responded and showed up,meetup2,responded but did not show up,all members,all responders
+10,meetup1,did not respond,meetup2,responded but did not show up,all members,all responders
+1,meetup2,responded and showed up,meetup3,responded and showed up,before meetup 2,normal responders
+2,meetup1,responded No,meetup2,responded and showed up,before meetup 1,early responders
+21,meetup1,responded and showed up,meetup2,did not respond,before meetup 1,all responders
+16,meetup2,joined meetup group,meetup3,responded No,all members,all responders
+60,before meetup1,joined meetup group,meetup1,responded but did not show up,before meetup 1,all responders
+2,meetup2,responded and showed up,meetup3,responded and showed up,before meetup 1,early responders
+1,meetup1,responded but did not show up,meetup2,responded and showed up,before meetup 1,early responders
+5,meetup3,responded No,meetup4,responded and showed up,all members,all responders
+2,meetup2,did not respond,meetup3,responded No,all members,early responders
+1,meetup1,joined meetup group,meetup2,responded but did not show up,before meetup 2,early responders
+16,meetup2,responded and showed up,meetup3,responded No,all members,all responders
+1,meetup3,responded and showed up,meetup4,responded and showed up,before meetup 2,very late responders
+2,meetup3,did not respond,meetup4,responded but did not show up,before meetup 1,early responders
+3,meetup1,responded and showed up,meetup2,responded and showed up,all members,early responders
+4,meetup3,responded and showed up,meetup4,responded and showed up,before meetup 3,early responders
+2,meetup1,joined meetup group,meetup2,responded but did not show up,before meetup 2,very late responders
+2,meetup3,responded No,meetup4,responded No,before meetup 2,all responders
+4,meetup2,responded but did not show up,meetup3,responded and showed up,all members,all responders
+10,meetup2,joined meetup group,meetup3,responded and showed up,all members,early responders
+2,meetup2,responded No,meetup3,responded but did not show up,before meetup 2,all responders
+2,meetup1,responded No,meetup2,responded No,before meetup 1,early responders
+2,meetup3,responded No,meetup4,responded No,before meetup 2,normal responders
+416,meetup2,did not respond,meetup3,did not respond,all members,all responders
+1,meetup3,responded but did not show up,meetup4,responded but did not show up,before meetup 1,normal responders
+3,meetup2,responded No,meetup3,responded No,before meetup 1,all responders
+1,meetup3,responded No,meetup4,responded No,all members,very late responders
+2,meetup2,responded but did not show up,meetup3,responded but did not show up,all members,all responders
+1,meetup2,joined meetup group,meetup3,did not respond,before meetup 3,normal responders
+2,meetup2,responded and showed up,meetup3,did not respond,before meetup 1,very late responders
+1,meetup2,responded but did not show up,meetup3,did not respond,all members,very late responders
+1,meetup3,responded and showed up,meetup4,responded and showed up,before meetup 1,very late responders
+2,meetup3,did not respond,meetup4,responded and showed up,before meetup 2,very late responders
+1,meetup3,did not respond,meetup4,responded No,all members,normal responders
+2,meetup2,responded and showed up,meetup3,responded and showed up,before meetup 1,very late responders
+4,meetup1,responded No,meetup2,responded but did not show up,before meetup 1,all responders
+59,before meetup1,joined meetup group,meetup1,responded and showed up,all members,all responders
+1,meetup1,responded and showed up,meetup2,did not respond,all members,normal responders
+4,meetup2,responded and showed up,meetup3,did not respond,all members,very late responders
+1,meetup3,responded but did not show up,meetup4,responded and showed up,all members,normal responders
+11,meetup1,responded No,meetup2,responded No,all members,all responders
+3,before meetup1,joined meetup group,meetup1,did not respond,all members,early responders
+1,meetup1,did not respond,meetup2,responded and showed up,all members,early responders
+12,meetup2,responded and showed up,meetup3,responded and showed up,before meetup 1,all responders
+1,meetup2,responded but did not show up,meetup3,responded but did not show up,all members,early responders
+1,meetup3,did not respond,meetup4,responded and showed up,before meetup 2,early responders
+26,meetup2,joined meetup group,meetup3,responded but did not show up,all members,all responders
+47,before meetup1,joined meetup group,meetup1,responded No,all members,all responders
+5,meetup2,responded and showed up,meetup3,responded and showed up,all members,early responders
+1,before meetup1,joined meetup group,meetup1,did not respond,all members,very late responders
+3,meetup2,responded but did not show up,meetup3,responded and showed up,before meetup 2,all responders
+1,before meetup1,joined meetup group,meetup1,responded No,before meetup 1,very late responders
+7,meetup1,responded but did not show up,meetup2,responded No,before meetup 1,all responders
+165,meetup1,joined meetup group,meetup2,did not respond,before meetup 2,all responders
+211,before meetup1,joined meetup group,meetup1,did not respond,before meetup 1,all responders
+300,meetup3,did not respond,meetup4,did not respond,before meetup 1,all responders
+3,meetup3,responded No,meetup4,responded but did not show up,all members,all responders
+11,meetup1,responded No,meetup2,responded No,before meetup 1,all responders
+27,meetup1,responded No,meetup2,did not respond,all members,all responders
+1,meetup1,responded but did not show up,meetup2,did not respond,all members,very late responders
+2,meetup1,responded and showed up,meetup2,responded but did not show up,all members,early responders
+11,meetup3,joined meetup group,meetup4,responded and showed up,before meetup 4,very late responders
+3,meetup1,responded and showed up,meetup2,responded and showed up,all members,very late responders
+1,before meetup1,joined meetup group,meetup1,responded but did not show up,all members,early responders
+1,meetup3,responded and showed up,meetup4,responded but did not show up,before meetup 2,very late responders
+3,meetup1,joined meetup group,meetup2,responded and showed up,before meetup 2,very late responders
+8,meetup2,did not respond,meetup3,responded and showed up,before meetup 1,all responders
+1,meetup2,responded No,meetup3,did not respond,before meetup 1,normal responders
+2,meetup3,did not respond,meetup4,responded but did not show up,all members,early responders
+2,meetup2,responded and showed up,meetup3,did not respond,before meetup 2,very late responders
+1,meetup2,responded and showed up,meetup3,responded and showed up,before meetup 2,very late responders
+10,meetup2,joined meetup group,meetup3,responded and showed up,before meetup 3,early responders
+26,meetup2,joined meetup group,meetup3,responded but did not show up,before meetup 3,all responders
+3,meetup3,responded but did not show up,meetup4,responded and showed up,before meetup 1,all responders
+47,before meetup1,joined meetup group,meetup1,responded No,before meetup 1,all responders
+5,meetup2,responded No,meetup3,responded but did not show up,all members,all responders
+210,meetup2,joined meetup group,meetup3,did not respond,all members,all responders
+1,meetup3,responded but did not show up,meetup4,responded and showed up,all members,very late responders
+6,meetup3,responded and showed up,meetup4,responded and showed up,before meetup 3,all responders
+1,meetup3,responded but did not show up,meetup4,responded No,before meetup 1,all responders
+2,meetup1,responded and showed up,meetup2,did not respond,all members,early responders
+1,meetup3,responded but did not show up,meetup4,responded and showed up,before meetup 1,very late responders
+1,meetup1,joined meetup group,meetup2,responded but did not show up,all members,early responders
+13,meetup2,responded and showed up,meetup3,responded No,before meetup 1,all responders
+1,meetup3,responded No,meetup4,responded and showed up,before meetup 2,early responders
+2,meetup3,did not respond,meetup4,responded No,all members,very late responders
+164,meetup3,joined meetup group,meetup4,did not respond,all members,all responders
+5,before meetup1,joined meetup group,meetup1,responded and showed up,before meetup 1,normal responders
+2,meetup3,joined meetup group,meetup4,responded No,all members,very late responders
+9,meetup3,responded and showed up,meetup4,responded No,all members,all responders
+263,meetup2,did not respond,meetup3,did not respond,before meetup 1,all responders
+1,meetup3,did not respond,meetup4,responded and showed up,before meetup 3,normal responders
+1,meetup3,responded and showed up,meetup4,responded but did not show up,all members,normal responders
+45,meetup2,responded but did not show up,meetup3,did not respond,all members,all responders
+10,meetup3,responded and showed up,meetup4,responded and showed up,before meetup 1,all responders
+2,meetup1,responded No,meetup2,responded and showed up,all members,early responders
+2,meetup3,responded No,meetup4,responded No,before meetup 1,early responders
+5,meetup3,did not respond,meetup4,responded No,before meetup 2,all responders
+2,meetup2,did not respond,meetup3,did not respond,all members,very late responders
+1,meetup3,responded No,meetup4,responded and showed up,before meetup 2,all responders
+2,meetup3,responded but did not show up,meetup4,responded but did not show up,all members,all responders
+9,meetup2,did not respond,meetup3,responded No,all members,all responders
+1,meetup1,responded No,meetup2,responded and showed up,before meetup 1,very late responders
+3,meetup2,joined meetup group,meetup3,responded and showed up,all members,normal responders
+4,meetup3,responded and showed up,meetup4,responded and showed up,before meetup 2,early responders
+60,before meetup1,joined meetup group,meetup1,responded but did not show up,all members,all responders
+4,meetup3,joined meetup group,meetup4,responded but did not show up,before meetup 4,normal responders
+1,meetup1,responded but did not show up,meetup2,did not respond,before meetup 1,very late responders
+1,meetup1,did not respond,meetup2,did not respond,before meetup 1,very late responders
+3,meetup3,responded and showed up,meetup4,responded No,before meetup 3,early responders
+7,meetup1,responded and showed up,meetup2,responded but did not show up,before meetup 1,all responders
+45,meetup2,joined meetup group,meetup3,responded and showed up,before meetup 3,all responders
+1,meetup3,did not respond,meetup4,responded but did not show up,all members,normal responders
+5,meetup2,did not respond,meetup3,did not respond,before meetup 1,early responders
+36,meetup3,responded No,meetup4,did not respond,all members,all responders
+3,meetup3,responded and showed up,meetup4,did not respond,before meetup 2,all responders
+2,meetup3,did not respond,meetup4,responded No,before meetup 2,early responders
+11,meetup3,responded but did not show up,meetup4,did not respond,before meetup 2,all responders
+211,before meetup1,joined meetup group,meetup1,did not respond,all members,all responders
+3,meetup1,joined meetup group,meetup2,responded and showed up,before meetup 2,normal responders
+27,meetup1,responded No,meetup2,did not respond,before meetup 1,all responders
+7,meetup3,joined meetup group,meetup4,responded and showed up,all members,early responders
+1,meetup3,joined meetup group,meetup4,responded No,all members,normal responders
+20,meetup1,responded and showed up,meetup2,responded and showed up,before meetup 1,all responders
+7,meetup1,responded but did not show up,meetup2,responded and showed up,all members,all responders
+1,before meetup1,joined meetup group,meetup1,responded but did not show up,before meetup 1,early responders
+1,meetup3,responded No,meetup4,responded but did not show up,before meetup 1,early responders
+1,meetup3,did not respond,meetup4,responded but did not show up,before meetup 1,very late responders
+11,meetup3,joined meetup group,meetup4,responded and showed up,all members,very late responders
+6,meetup3,responded and showed up,meetup4,responded No,all members,early responders
+6,meetup3,responded and showed up,meetup4,responded and showed up,all members,normal responders
+23,meetup3,responded and showed up,meetup4,responded and showed up,all members,all responders
+1,meetup1,responded No,meetup2,responded and showed up,all members,normal responders
+4,meetup3,joined meetup group,meetup4,responded but did not show up,all members,normal responders
+2,meetup1,responded No,meetup2,did not respond,before meetup 1,early responders
+6,meetup3,did not respond,meetup4,responded but did not show up,before meetup 3,all responders
+1,meetup2,joined meetup group,meetup3,responded but did not show up,all members,early responders
+4,meetup3,joined meetup group,meetup4,responded and showed up,before meetup 4,normal responders
+2,meetup2,responded and showed up,meetup3,responded No,before meetup 2,normal responders
+3,meetup1,responded and showed up,meetup2,responded and showed up,before meetup 1,early responders
+2,meetup2,responded and showed up,meetup3,responded but did not show up,before meetup 1,very late responders
+28,meetup1,joined meetup group,meetup2,responded and showed up,before meetup 2,all responders
+1,meetup1,responded but did not show up,meetup2,responded but did not show up,before meetup 1,very late responders
+1,meetup3,responded No,meetup4,responded but did not show up,before meetup 1,all responders
+7,meetup1,did not respond,meetup2,responded No,all members,all responders
+3,before meetup1,joined meetup group,meetup1,did not respond,before meetup 1,early responders
+1,meetup3,responded and showed up,meetup4,responded but did not show up,all members,very late responders
+199,meetup3,did not respond,meetup4,did not respond,before meetup 3,all responders
+7,meetup1,responded but did not show up,meetup2,responded No,all members,all responders
+2,meetup1,joined meetup group,meetup2,responded No,all members,early responders
+2,meetup3,did not respond,meetup4,responded and showed up,before meetup 1,very late responders
+1,meetup1,responded but did not show up,meetup2,responded but did not show up,before meetup 1,all responders
+3,meetup2,joined meetup group,meetup3,responded and showed up,before meetup 3,normal responders
+2,meetup2,responded and showed up,meetup3,responded but did not show up,all members,very late responders
+4,before meetup1,joined meetup group,meetup1,responded but did not show up,before meetup 1,very late responders
+3,meetup2,responded No,meetup3,responded but did not show up,before meetup 1,all responders
+3,meetup3,joined meetup group,meetup4,responded No,before meetup 4,early responders
+31,meetup3,responded and showed up,meetup4,did not respond,before meetup 3,all responders
+4,meetup2,responded and showed up,meetup3,responded No,all members,early responders
+1,meetup3,responded and showed up,meetup4,responded but did not show up,before meetup 2,all responders
+1,meetup3,responded but did not show up,meetup4,responded and showed up,before meetup 3,normal responders
+2,meetup2,responded but did not show up,meetup3,responded No,before meetup 1,all responders
+3,meetup2,responded and showed up,meetup3,responded but did not show up,before meetup 1,all responders
+3,meetup2,responded and showed up,meetup3,responded and showed up,before meetup 2,early responders
+4,meetup3,joined meetup group,meetup4,responded and showed up,all members,normal responders
+6,before meetup1,joined meetup group,meetup1,responded No,before meetup 1,early responders
+1,meetup2,responded but did not show up,meetup3,responded and showed up,before meetup 2,very late responders
+1,meetup2,did not respond,meetup3,responded No,before meetup 1,early responders
+1,meetup2,responded and showed up,meetup3,did not respond,before meetup 1,early responders
+3,meetup3,responded and showed up,meetup4,responded and showed up,before meetup 1,normal responders
+3,meetup3,responded but did not show up,meetup4,responded and showed up,all members,early responders
+6,meetup3,responded and showed up,meetup4,responded but did not show up,all members,all responders
+2,meetup1,responded No,meetup2,responded No,all members,early responders
+1,meetup2,did not respond,meetup3,did not respond,before meetup 1,normal responders
+165,meetup1,joined meetup group,meetup2,did not respond,all members,all responders
+7,meetup2,responded No,meetup3,responded and showed up,all members,all responders
+59,before meetup1,joined meetup group,meetup1,responded and showed up,before meetup 1,all responders
+5,meetup3,did not respond,meetup4,responded and showed up,before meetup 1,all responders
+2,meetup3,responded but did not show up,meetup4,responded and showed up,before meetup 3,all responders
+5,meetup3,did not respond,meetup4,responded and showed up,all members,very late responders
+1,meetup1,joined meetup group,meetup2,responded No,all members,very late responders
+7,meetup3,did not respond,meetup4,responded No,all members,early responders
+1,meetup3,did not respond,meetup4,responded No,before meetup 3,early responders
+4,before meetup1,joined meetup group,meetup1,responded but did not show up,all members,very late responders
+2,meetup1,joined meetup group,meetup2,did not respond,before meetup 2,early responders
+3,meetup2,responded and showed up,meetup3,did not respond,all members,early responders
+1,meetup2,joined meetup group,meetup3,responded No,all members,early responders
+7,meetup3,joined meetup group,meetup4,responded and showed up,before meetup 4,early responders
+2,meetup3,responded and showed up,meetup4,responded and showed up,before meetup 3,normal responders
+8,meetup3,did not respond,meetup4,responded but did not show up,all members,very late responders
+1,meetup3,did not respond,meetup4,responded and showed up,before meetup 1,normal responders
+40,meetup3,responded but did not show up,meetup4,did not respond,all members,all responders
+1,meetup3,did not respond,meetup4,responded and showed up,before meetup 3,very late responders
+1,meetup2,joined meetup group,meetup3,responded but did not show up,before meetup 3,normal responders
+1,meetup3,responded No,meetup4,responded and showed up,before meetup 1,early responders
+1,meetup2,responded No,meetup3,did not respond,all members,normal responders
+4,meetup1,responded No,meetup2,responded but did not show up,all members,all responders
+25,meetup2,responded No,meetup3,did not respond,before meetup 1,all responders
+36,meetup3,joined meetup group,meetup4,responded and showed up,all members,all responders
+16,meetup3,responded No,meetup4,did not respond,before meetup 1,all responders
+6,meetup1,joined meetup group,meetup2,responded and showed up,all members,early responders
+1,meetup3,responded No,meetup4,responded and showed up,before meetup 3,all responders
+2,meetup3,responded but did not show up,meetup4,responded and showed up,before meetup 1,early responders
+1,meetup2,responded but did not show up,meetup3,responded but did not show up,before meetup 1,all responders
+2,meetup3,responded and showed up,meetup4,responded No,before meetup 1,early responders
+4,meetup3,responded and showed up,meetup4,responded No,before meetup 3,all responders
+1,meetup2,responded and showed up,meetup3,responded No,before meetup 2,early responders
+1,meetup2,responded but did not show up,meetup3,did not respond,before meetup 2,very late responders
+1,meetup2,responded No,meetup3,responded but did not show up,before meetup 1,normal responders
+1,meetup1,responded but did not show up,meetup2,responded but did not show up,all members,very late responders
+1,meetup3,did not respond,meetup4,responded and showed up,all members,early responders
+7,meetup2,did not respond,meetup3,responded but did not show up,before meetup 2,all responders
+2,meetup3,responded and showed up,meetup4,responded and showed up,all members,very late responders
+187,meetup1,did not respond,meetup2,did not respond,all members,all responders
+14,meetup3,responded No,meetup4,did not respond,before meetup 3,all responders
+4,meetup2,did not respond,meetup3,responded No,before meetup 2,all responders
+1,meetup2,responded No,meetup3,responded and showed up,before meetup 2,early responders
+3,meetup3,did not respond,meetup4,responded No,before meetup 3,all responders
+27,meetup2,responded but did not show up,meetup3,did not respond,before meetup 2,all responders
+1,meetup2,joined meetup group,meetup3,responded but did not show up,all members,normal responders
+4,meetup2,responded and showed up,meetup3,responded and showed up,all members,normal responders
+3,meetup2,responded and showed up,meetup3,responded No,before meetup 2,all responders
+36,meetup3,joined meetup group,meetup4,responded and showed up,before meetup 4,all responders
+1,meetup3,responded but did not show up,meetup4,responded but did not show up,before meetup 3,all responders
+18,meetup3,joined meetup group,meetup4,responded but did not show up,all members,all responders
+5,meetup1,responded No,meetup2,responded and showed up,all members,all responders
+1,meetup2,responded but did not show up,meetup3,responded and showed up,before meetup 1,early responders
+1,meetup2,responded No,meetup3,did not respond,before meetup 2,very late responders
+1,meetup3,responded but did not show up,meetup4,responded No,before meetup 1,very late responders
+5,before meetup1,joined meetup group,meetup1,responded and showed up,all members,normal responders
+164,meetup3,joined meetup group,meetup4,did not respond,before meetup 4,all responders
+1,meetup1,responded and showed up,meetup2,responded No,before meetup 1,normal responders
+7,meetup3,joined meetup group,meetup4,responded but did not show up,all members,very late responders
+1,meetup3,responded but did not show up,meetup4,responded No,all members,all responders
+1,meetup1,joined meetup group,meetup2,did not respond,all members,normal responders
+14,meetup3,joined meetup group,meetup4,responded No,all members,all responders
+1,meetup3,responded but did not show up,meetup4,responded but did not show up,before meetup 1,all responders
+1,meetup3,responded No,meetup4,responded but did not show up,before meetup 3,all responders
+2,meetup2,did not respond,meetup3,did not respond,all members,normal responders
+2,meetup2,responded No,meetup3,responded No,before meetup 2,all responders
+1,meetup1,responded but did not show up,meetup2,responded No,all members,normal responders
+4,meetup3,responded and showed up,meetup4,responded but did not show up,all members,early responders
+2,meetup1,responded No,meetup2,did not respond,all members,early responders
+19,meetup1,joined meetup group,meetup2,responded No,all members,all responders
+3,meetup3,responded No,meetup4,responded No,before meetup 1,all responders
+32,meetup1,joined meetup group,meetup2,responded but did not show up,before meetup 2,all responders
+1,meetup2,responded but did not show up,meetup3,responded No,before meetup 2,all responders
+1,meetup3,responded and showed up,meetup4,responded No,all members,very late responders
+1,meetup2,responded but did not show up,meetup3,responded and showed up,all members,very late responders
+2,meetup2,did not respond,meetup3,did not respond,before meetup 1,very late responders
+46,meetup3,responded and showed up,meetup4,did not respond,all members,all responders
+12,meetup3,did not respond,meetup4,responded but did not show up,all members,all responders
+45,meetup1,responded but did not show up,meetup2,did not respond,before meetup 1,all responders
+5,meetup2,responded No,meetup3,responded and showed up,before meetup 1,all responders
+27,meetup2,responded and showed up,meetup3,did not respond,all members,all responders
+1,meetup2,joined meetup group,meetup3,responded but did not show up,before meetup 3,early responders
+18,meetup3,joined meetup group,meetup4,responded but did not show up,before meetup 4,all responders
+18,meetup2,responded but did not show up,meetup3,did not respond,before meetup 1,all responders
+2,meetup2,responded but did not show up,meetup3,responded and showed up,all members,early responders
+1,meetup3,responded No,meetup4,responded and showed up,all members,normal responders
+1,before meetup1,joined meetup group,meetup1,responded but did not show up,all members,normal responders
+3,meetup1,responded and showed up,meetup2,responded and showed up,before meetup 1,normal responders
+45,meetup2,joined meetup group,meetup3,responded and showed up,all members,all responders
+2,meetup1,responded and showed up,meetup2,responded No,before meetup 1,early responders
+1,meetup1,responded No,meetup2,responded and showed up,all members,very late responders
+3,meetup3,responded and showed up,meetup4,responded but did not show up,before meetup 3,early responders
+1,meetup3,did not respond,meetup4,responded No,before meetup 2,normal responders
+1,meetup2,responded but did not show up,meetup3,responded and showed up,before meetup 1,all responders
+1,meetup3,responded but did not show up,meetup4,responded and showed up,before meetup 2,early responders
+1,before meetup1,joined meetup group,meetup1,did not respond,before meetup 1,very late responders
+7,meetup1,responded but did not show up,meetup2,responded and showed up,before meetup 1,all responders
+5,meetup2,responded No,meetup3,responded and showed up,all members,early responders
+2,meetup3,did not respond,meetup4,responded and showed up,before meetup 3,all responders
+200,meetup3,did not respond,meetup4,did not respond,before meetup 2,all responders
+2,meetup1,responded but did not show up,meetup2,responded and showed up,all members,very late responders
+16,meetup2,responded and showed up,meetup3,did not respond,before meetup 2,all responders
+4,meetup3,joined meetup group,meetup4,responded but did not show up,before meetup 4,early responders
+1,meetup2,responded but did not show up,meetup3,responded but did not show up,before meetup 1,early responders
+1,meetup2,responded and showed up,meetup3,responded but did not show up,all members,early responders
+2,meetup1,joined meetup group,meetup2,did not respond,all members,early responders
+19,meetup2,responded and showed up,meetup3,responded and showed up,all members,all responders
+10,meetup1,did not respond,meetup2,responded but did not show up,before meetup 1,all responders
+11,meetup1,responded and showed up,meetup2,responded No,before meetup 1,all responders
+1,meetup2,responded and showed up,meetup3,responded No,before meetup 1,normal responders
+19,meetup1,joined meetup group,meetup2,responded No,before meetup 2,all responders
+1,before meetup1,joined meetup group,meetup1,responded No,all members,very late responders
+4,meetup3,responded and showed up,meetup4,responded but did not show up,before meetup 3,all responders
+1,meetup2,responded No,meetup3,responded but did not show up,before meetup 2,early responders
+7,meetup1,did not respond,meetup2,responded and showed up,all members,all responders
+2,meetup1,did not respond,meetup2,did not respond,all members,early responders
+1,meetup3,responded but did not show up,meetup4,responded but did not show up,all members,early responders
+1,meetup2,joined meetup group,meetup3,did not respond,all members,normal responders
+1,meetup2,responded No,meetup3,responded but did not show up,all members,normal responders
+12,meetup3,responded and showed up,meetup4,did not respond,before meetup 1,all responders
+1,before meetup1,joined meetup group,meetup1,responded No,before meetup 1,normal responders
+1,meetup1,joined meetup group,meetup2,responded No,before meetup 2,very late responders
+1,meetup3,did not respond,meetup4,responded but did not show up,before meetup 1,normal responders
+6,meetup1,joined meetup group,meetup2,responded and showed up,before meetup 2,early responders
+4,meetup2,did not respond,meetup3,responded but did not show up,before meetup 1,all responders
+7,meetup1,did not respond,meetup2,responded and showed up,before meetup 1,all responders
+2,meetup1,joined meetup group,meetup2,responded No,before meetup 2,early responders
+20,meetup1,responded and showed up,meetup2,responded and showed up,all members,all responders
+5,meetup2,responded No,meetup3,responded No,all members,all responders
+1,meetup3,responded but did not show up,meetup4,responded No,all members,very late responders
+1,meetup3,responded No,meetup4,responded and showed up,before meetup 3,early responders
+16,meetup2,joined meetup group,meetup3,responded No,before meetup 3,all responders
+3,meetup2,responded but did not show up,meetup3,responded No,all members,all responders
+153,meetup2,did not respond,meetup3,did not respond,before meetup 2,all responders
+1,meetup2,responded but did not show up,meetup3,responded No,before meetup 1,very late responders
+1,meetup1,joined meetup group,meetup2,did not respond,before meetup 2,normal responders
+187,meetup1,did not respond,meetup2,did not respond,before meetup 1,all responders
+7,meetup3,responded and showed up,meetup4,responded and showed up,before meetup 2,all responders
+2,meetup2,responded and showed up,meetup3,did not respond,before meetup 2,early responders
+7,meetup3,did not respond,meetup4,responded No,before meetup 1,all responders
+7,meetup2,joined meetup group,meetup3,did not respond,before meetup 3,very late responders
+1,before meetup1,joined meetup group,meetup1,responded No,all members,normal responders
+5,meetup3,responded No,meetup4,responded No,all members,all responders
+3,meetup2,responded and showed up,meetup3,responded and showed up,before meetup 1,normal responders
+6,meetup2,did not respond,meetup3,did not respond,all members,early responders
+3,before meetup1,joined meetup group,meetup1,responded and showed up,before meetup 1,very late responders
+6,meetup3,responded but did not show up,meetup4,responded and showed up,all members,all responders
+21,meetup1,responded and showed up,meetup2,did not respond,all members,all responders
+1,meetup3,did not respond,meetup4,responded No,before meetup 1,very late responders
+3,meetup3,responded No,meetup4,responded and showed up,before meetup 1,all responders
+1,meetup3,responded No,meetup4,responded No,before meetup 1,very late responders
+1,meetup2,did not respond,meetup3,did not respond,before meetup 2,early responders
+3,before meetup1,joined meetup group,meetup1,responded and showed up,all members,very late responders
+2,meetup1,did not respond,meetup2,did not respond,before meetup 1,early responders
+3,meetup1,joined meetup group,meetup2,responded and showed up,all members,normal responders
+4,meetup3,did not respond,meetup4,responded No,before meetup 1,early responders
+23,meetup3,responded but did not show up,meetup4,did not respond,before meetup 3,all responders
+15,meetup3,did not respond,meetup4,responded No,all members,all responders
+2,meetup3,responded No,meetup4,responded No,all members,early responders
+9,before meetup1,joined meetup group,meetup1,responded and showed up,all members,early responders
+2,meetup1,responded but did not show up,meetup2,responded and showed up,before meetup 1,very late responders
+210,meetup2,joined meetup group,meetup3,did not respond,before meetup 3,all responders
+1,meetup3,responded and showed up,meetup4,responded but did not show up,before meetup 1,all responders
+1,meetup1,did not respond,meetup2,responded and showed up,before meetup 1,early responders
+4,meetup3,responded and showed up,meetup4,responded and showed up,before meetup 1,early responders
+6,meetup3,responded but did not show up,meetup4,did not respond,before meetup 1,all responders
+1,meetup3,did not respond,meetup4,responded but did not show up,before meetup 2,all responders
+1,meetup2,did not respond,meetup3,responded and showed up,before meetup 2,all responders
+1,meetup3,did not respond,meetup4,responded No,before meetup 2,very late responders
+2,meetup1,joined meetup group,meetup2,responded but did not show up,all members,very late responders
+5,meetup1,responded No,meetup2,responded and showed up,before meetup 1,all responders
+1,meetup2,responded and showed up,meetup3,responded but did not show up,before meetup 1,early responders
+2,meetup1,responded and showed up,meetup2,responded but did not show up,before meetup 1,early responders
+1,meetup1,responded and showed up,meetup2,responded No,all members,normal responders
+3,meetup2,responded and showed up,meetup3,responded No,all members,normal responders
+1,meetup2,joined meetup group,meetup3,responded No,before meetup 3,early responders
+1,meetup2,responded No,meetup3,did not respond,all members,very late responders
+1,meetup3,responded No,meetup4,responded but did not show up,before meetup 2,early responders
+32,meetup1,joined meetup group,meetup2,responded but did not show up,all members,all responders
+11,meetup1,responded and showed up,meetup2,responded No,all members,all responders
+9,meetup2,did not respond,meetup3,responded and showed up,all members,all responders
+1,meetup3,responded and showed up,meetup4,responded No,before meetup 1,very late responders
+1,meetup3,responded and showed up,meetup4,responded No,before meetup 2,early responders
+1,before meetup1,joined meetup group,meetup1,responded but did not show up,before meetup 1,normal responders
+7,meetup2,joined meetup group,meetup3,did not respond,all members,very late responders
+1,meetup1,responded but did not show up,meetup2,responded and showed up,all members,early responders
+2,meetup1,responded and showed up,meetup2,did not respond,before meetup 1,early responders
+5,meetup2,responded and showed up,meetup3,responded but did not show up,all members,all responders
+1,meetup1,responded and showed up,meetup2,did not respond,before meetup 1,normal responders
+3,meetup1,responded and showed up,meetup2,responded and showed up,before meetup 1,very late responders
+7,meetup2,responded and showed up,meetup3,responded and showed up,before meetup 2,all responders
+3,meetup3,responded and showed up,meetup4,responded No,before meetup 1,all responders
+1,meetup2,responded but did not show up,meetup3,responded No,all members,very late responders
+1,meetup2,joined meetup group,meetup3,did not respond,all members,early responders
+4,meetup3,joined meetup group,meetup4,responded but did not show up,all members,early responders
+1,meetup1,responded No,meetup2,responded and showed up,before meetup 1,normal responders
+2,meetup3,joined meetup group,meetup4,responded No,before meetup 4,very late responders
+3,meetup3,responded No,meetup4,responded and showed up,all members,early responders
+1,meetup3,did not respond,meetup4,responded but did not show up,before meetup 2,very late responders
+28,meetup1,joined meetup group,meetup2,responded and showed up,all members,all responders
+45,meetup1,responded but did not show up,meetup2,did not respond,all members,all responders
