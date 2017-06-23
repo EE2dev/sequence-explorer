@@ -600,7 +600,7 @@ export default function(_myData) {
             .on("mouseover", function(d) {
               var info = sequenceName + ": " + d.nameX;
               info += "<br>" + categoryName + ": " + d.nameY;
-              info += "<br>" + valueName + " ("+ nodeInfoKey + "): " + d.nodeInfos[nodeInfoKey];
+              info += "<br>" + valueName + " ("+ nodeInfoKey + "): " + formatNumber(d.nodeInfos[nodeInfoKey], thousandsSeparator);
               tooltip.html(info);
               tooltip.style("visibility", "visible");
             })
