@@ -2,7 +2,7 @@
 ![Image of css styled sankey chart](https://github.com/EE2dev/sequence-explorer/blob/master/sankeySeq.png)
 ### 1. Overview
 Adapting the [sankey diagram](https://bost.ocks.org/mike/sankey/) for sequential data. Click stream analysis or customer journey analysis are just two of many applications for exploring the development of categories over some sequence (e.g. time points such as days, months or years).
-Sequence explorer implements the following [d3.js reusable charts pattern](https://github.com/EE2dev/d3-template) to let you customize the chart. The core library [sankeySeq.js](https://github.com/EE2dev/d3-sankeySeq) can also be used separately.
+Sequence explorer implements the following [d3.js reusable charts pattern](https://github.com/EE2dev/d3-template) to let you customize the chart. The core library [d3-sankeySeq.js](https://github.com/EE2dev/d3-sankeySeq) can also be used separately.
 
 SankeySeq.js adapts the sankey layout for sequential data. SankeySeqExplorer.js is a wrapper on top of sankeySeq with the following features:
 * data is read from a csv file. Since the visualization is motivated by the [Markov assumption](https://en.wikipedia.org/wiki/Markov_property), the data can be provided in an efficient format just referencing the successors in a sequence and their connection value. See section about [data formatting](#3-data-formatting).
@@ -19,7 +19,7 @@ For additional features see section [API for sequence explorer](#4-api-for-seque
 --->
 
 ### 2. Examples
-[The main example is here](http://bl.ocks.org/EE2dev/0e709563a63ddfd5c7152e3441593093/).
+[The main example is here](http://bl.ocks.org/ee2dev/91abcc611b66aaed6403bca1d48aedbf).
 
 Complete list of examples:
 
@@ -165,7 +165,7 @@ Then the css selectors would be:
   }
 
   /* drawing all links from A to B in yellow */
-  path.lsy1.lty2 {
+  path.lsyA.ltyB {
     stroke: yellow;
   }
   
