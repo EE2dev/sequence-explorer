@@ -226,7 +226,8 @@ export default function(_myData) {
       
     divNim.append("br");        
   }
-    
+
+  // method called when menu: options-> global scaling is changed  
   function updateScaling() {
     var mySankey;
     var parentSelector;
@@ -265,7 +266,6 @@ export default function(_myData) {
         var yOfBottomAxis = d3.select("rect.coverSankeySeq").attr("height");    
         d3.select(parentSelector).selectAll("text.nodeLabel")
          .transition(trans)        
-         // .attr("y", function(d) { return d.dy / 2; });
          .attr("y", function(d) {  // adjustment if text would cross x axis           
            var transNode = getTranslation(d3.select(this.parentNode).attr("transform"))[1];
            var pyHeight = parseInt(d3.select(this).style("font-size"));              

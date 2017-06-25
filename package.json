@@ -21,7 +21,7 @@
     "old_postpublish": "zip -j build/sequence-explorer.zip -- LICENSE README.md build/sequence-explorer.js build/sequence-explorer.min.js",
     "pretest": "rm -rf build && mkdir build && rollup -c",
     "test": "node test/sankeySeqExplorer-test.js | tap-spec && eslint index.js src",
-    "prepublish": "npm run test && uglifyjs build/sequenceExplorer.v2.js -c -m -o build/sequenceExplorer.v2.min.js"
+    "prepublish": "npm run test && uglifyjs build/sequence-explorer.js -c -m -o build/sequence-explorer.min.js"
   },
   "devDependencies": {
     "babel-plugin-external-helpers": "^6.22.0",

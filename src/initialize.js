@@ -84,7 +84,7 @@ export function initializeFrame(selection, props, allGraphs, colIndex, rowIndex)
     
   var transformString = {};   
   transformString.sankeyFrame = {};
-  transformString.sankeyFrame.single = "translate(" + (tx + width/2*sx) + ", " + (ty + height/2*sy) + ") scale(0.05)"; 
+  transformString.sankeyFrame.single = "translate(" + (tx + width/2*sx) + ", " + (ty + height/2*sy) + ") scale(0.3)"; 
   transformString.sankeyFrame.multiples = "translate(" + tx + ", " + ty + ") "; 
     
   transformString.sankeySeq = {};
