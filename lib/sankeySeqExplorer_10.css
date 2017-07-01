@@ -59,11 +59,12 @@
     stroke-opacity: .5;
   } 
     
-  .node rect.sankeyNodeInfo {
+  rect.sankeyNodeInfo {
     shape-rendering: crispEdges;
     stroke: #000;
     stroke-width: 0px;
     stroke-opacity: .5;
+    fill: orange;
   }
 
   .node text {

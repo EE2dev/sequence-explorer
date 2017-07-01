@@ -320,11 +320,14 @@ export default function(_myData) {
   
   function updateNodeInfo() {
     var trans = d3.transition().duration(1000);
+    var borderCol = d3.select("rect.sankeyNodeInfo").style("fill");
+    var backgroundCol = d3.color(borderCol).rgb(); 
+    backgroundCol.opacity = 0.1;
     d3.select("div.NodeInfoMenu")
     .transition(trans)
-    .style("border-color", function() { return (nodeInfoKey === nodeInfoNone) ? "rgba(0,0,0,0.1)" : "orange";})
+    .style("border-color", function() { return (nodeInfoKey === nodeInfoNone) ? "rgba(0,0,0,0.1)" : borderCol;})
     .style("background-color", function() { 
-      return (nodeInfoKey === nodeInfoNone) ? "rgba(0,0,0,0.1)" : "rgba(255,165,0,0.1)";});  
+      return (nodeInfoKey === nodeInfoNone) ? "rgba(0,0,0,0.1)" : backgroundCol.toString();}); 
           
     d3.selectAll("rect.sankeyNodeInfo")
     .style("display", "inline")  // reset style to inline if switch from none to other
@@ -592,7 +595,6 @@ export default function(_myData) {
               });
               return 0; })
             .attr("width", sankey.nodeWidth())
-            .style("fill", "orange")
             .style("display", function() { // set style to none if nodeInfo == none
               if (nodeInfoKey === nodeInfoNone) { return "none"; }
               else { return "inline";} 

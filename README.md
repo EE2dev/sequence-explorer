@@ -4,7 +4,7 @@
 Adapting the [sankey diagram](https://bost.ocks.org/mike/sankey/) for sequential data. Click stream analysis or customer journey analysis are just two of many applications for exploring the development of categories over some sequence (e.g. time points such as days, months or years).
 Sequence explorer implements the following [d3.js reusable charts pattern](https://github.com/EE2dev/d3-template) to let you customize the chart. The core library [d3-sankeySeq.js](https://github.com/EE2dev/d3-sankeySeq) can also be used separately.
 
-SankeySeq.js adapts the sankey layout for sequential data. SankeySeqExplorer.js is a wrapper on top of sankeySeq with the following features:
+d3-sankeySeq.js adapts the sankey layout for sequential data. sequence-explorer.js is a wrapper on top of sankeySeq with the following features:
 * data is read from a csv file. Since the visualization is motivated by the [Markov assumption](https://en.wikipedia.org/wiki/Markov_property), the data can be provided in an efficient format just referencing the successors in a sequence and their connection value. See section about [data formatting](#3-data-formatting).
 * can be used with just a browser and no web server. In that case, data has to be embedded in the html file. 
 * sankeySeq places the nodes on a fixed grid. The state of the sequence (e.g. point in time) has a fixed x position. And a certain category has a fixed y position.
@@ -13,10 +13,6 @@ SankeySeq.js adapts the sankey layout for sequential data. SankeySeqExplorer.js 
 * links and nodes can be css styled individually for presentations
 
 For additional features see section [API for sequence explorer](#4-api-for-sequence-explorer).
-
-<!--
-[Here](https://youtu.be/B8a2O6L31_w) is a link to a video explaining how to use item explorer with your own data and [here](http://www.ankerst.de/Mihael/proj/mbc/) is a web site introducing item explorer.
---->
 
 ### 2. Examples
 [The main example is here](http://bl.ocks.org/ee2dev/91abcc611b66aaed6403bca1d48aedbf).
@@ -146,6 +142,7 @@ function | parameter | explanation
 Nodes and links can be styled individually with CSS by using the following selectors:
    * selector for nodes: `"rect.nx"` + `<sourceX>` + `".ny"` + `<sourceY>` 
    * selector for links: `"path.lsx"` + `<sourceX>` + `".lsy"` + `<sourceY>` + `".ltx"` + `<targetX>` + `".lty"` + `<targetY>`
+   * selector for node infos: `"rect.sankeyNodeInfo"`
    
 where `<sourceX>`, `<sourceY>`, `<targetX>`, `<targetY>` have to be replaced by their corresponding instances.
 These instances can just contain letters,numbers and spaces, where the spaces will be replaced by `"_"`. Note that nodes are `<rect>` and links are `<path>` elements.
@@ -178,6 +175,11 @@ Then the css selectors would be:
   rect.nyB {
     fill: red;
   }
+
+  /* drawing node infos in yellow */
+  rect.sankeyNodeInfo {
+    fill: yellow;
+  }  
 ```
 
 ### 7. License
