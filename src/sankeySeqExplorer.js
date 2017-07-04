@@ -1,6 +1,6 @@
 import * as d3 from "d3";
 import { default as sankeySeq } from "./sankeySeq";
-import { positionTooltipNode, getTranslation, formatNumber } from "./helper";
+import { positionTooltipNode, getTranslation, formatNumber, orderDimension } from "./helper";
 import { initialize_whp_and_axes, initializeFrame } from "./initialize";
 import { transitionToSingle, transitionToMultiples } from "./transition";
 
@@ -18,6 +18,7 @@ export default function(_myData) {
   var valueName; // the column name of the frequency value
   var scaleGlobal = true; // scale the node height for multiples over all sankeys 
   var showNodeLabels = true; // show node labels
+  var tooltipFormat = "Default"; // format of the tooltip text
   var allGraphs; // data structure containing columns of rows of sankey input data;
   var tooltip;
   
@@ -33,6 +34,8 @@ export default function(_myData) {
     margin = {left: 5, top: 5, right: 5, bottom: 5},
     sequence,
     categories,
+    colOrder,
+    rowOrder,
     sequenceName = "sequence",
     categoryName = "category",
     thousandsSeparator = ",";
@@ -139,6 +142,24 @@ export default function(_myData) {
   chartAPI.showNodeLabels = function(_) {
     if (!arguments.length) return showNodeLabels;
     showNodeLabels = _;
+    return chartAPI;
+  };
+
+  chartAPI.tooltipFormat = function(_) {
+    if (!arguments.length) return tooltipFormat;
+    tooltipFormat = _;
+    return chartAPI;
+  };
+
+  chartAPI.rowOrder = function(_) {
+    if (!arguments.length) return rowOrder;
+    rowOrder = _;
+    return chartAPI;
+  };
+
+  chartAPI.colOrder = function(_) {
+    if (!arguments.length) return colOrder;
+    colOrder = _;
     return chartAPI;
   };
 
@@ -266,7 +287,10 @@ export default function(_myData) {
         var yOfBottomAxis = d3.select("rect.coverSankeySeq").attr("height");    
         d3.select(parentSelector).selectAll("text.nodeLabel")
          .transition(trans)        
-         .attr("y", function(d) {  // adjustment if text would cross x axis           
+         .attr("y", function(d) {  // adjustment if text would cross x axis    
+           if (debugOn) {
+             console.log("transform: " + d3.select(this.parentNode).attr("transform"));
+           }       
            var transNode = getTranslation(d3.select(this.parentNode).attr("transform"))[1];
            var pyHeight = parseInt(d3.select(this).style("font-size"));              
            if (transNode + pyHeight > yOfBottomAxis) {
@@ -571,6 +595,10 @@ export default function(_myData) {
             .style("opacity", 0)
             .text(function(d) { return d.nameY; })
           .each(function() { // adjust height for lowest category in case text overlaps with x axis
+            if (debugOn) {
+              console.log( d3.select(this.parentNode).node()); 
+              console.log("transform: " + d3.select(this.parentNode).attr("transform"));
+            } 
             var transNode = getTranslation(d3.select(this.parentNode).attr("transform"))[1];
             var pyHeight = parseInt(d3.select(this).style("font-size"));              
             if (transNode + pyHeight > yOfBottomAxis) {
@@ -672,7 +700,7 @@ export default function(_myData) {
     }
   } 
 
-  // 5.2 processes sankey from a csv file. Returns the necessary graph data structure. 
+  // 5.4 processes sankey from a csv file. Returns the necessary graph data structure. 
   // based on the approach from timelyportfolio, see http://bl.ocks.org/timelyportfolio/5052095
   function constructSankeyFromCSV(_file) {
     //set up graph in same style as original example but empty
@@ -687,6 +715,8 @@ export default function(_myData) {
     var container;
     var sourceValues, targetValues; // for iterating over value to find maxValue
     var value, maxValue = 0; // maxValue for scaling option 
+    let sequenceSet = d3.set();
+    let categorySet = d3.set();
     
     console.log(_file.columns);
     if (typeof valueName === "undefined") {valueName = _file.columns[0];}
@@ -710,7 +740,7 @@ export default function(_myData) {
     } else if (_file.columns.length === 6)  { // one additional dimension
       dataGroups = d3.nest()
         .key(function() { return ""; })
-        .key(function(d) { return d[columns[5]]; }).sortKeys(d3.ascending)
+        .key(function(d) { return d[columns[5]]; }).sortKeys(orderDimension(rowOrder))
         .entries(_file);
         
       if (typeof nodeFile !== "undefined") {
@@ -724,8 +754,8 @@ export default function(_myData) {
       }
     } else if (_file.columns.length === 7)  { // two additional dimensions
       dataGroups = d3.nest()
-        .key(function(d) { return d[columns[6]]; }).sortKeys(d3.ascending)
-        .key(function(d) { return d[columns[5]]; }).sortKeys(d3.ascending)
+        .key(function(d) { return d[columns[6]]; }).sortKeys(orderDimension(colOrder))
+        .key(function(d) { return d[columns[5]]; }).sortKeys(orderDimension(rowOrder))
         .entries(_file);
         
       if (debugOn) { console.log("----------- nodeInfos ------------");}
@@ -781,6 +811,12 @@ export default function(_myData) {
             "target": target,
             "id": source + "->" + target,
             "value": +d[columns[0]] });    
+
+          // build sets for sequence and categories
+          sequenceSet.add(d[columns[1]]);
+          sequenceSet.add(d[columns[3]]);
+          categorySet.add(d[columns[2]]);
+          categorySet.add(d[columns[4]]);
         });
 
         if (debugOn) {
@@ -831,17 +867,6 @@ export default function(_myData) {
           console.log(graph);
         }
         
-        // default setting of categories and sequence as an array sorted lexicographically
-        if (!sequence) {
-          sequence = d3.set(graph.nodes.map(function (d) {return d.nameX;}))
-          .values().sort(d3.ascending);
-        }
-        
-        if (!categories) {
-          categories = d3.set(graph.nodes.map(function (d) {return d.nameY;}))
-          .values().sort(d3.ascending); 
-        }
-        
         if (debugOn) {
           console.log("categoriesSorted: ");
           console.log(categories);
@@ -876,6 +901,25 @@ export default function(_myData) {
         allGraphs[col].push(container);
       }); 
     });
+
+    // get array of sequence and categories from sets
+    let d_sequence = sequenceSet.values().sort(d3.ascending); 
+    let d_categories = categorySet.values().sort(d3.ascending); 
+
+    // output sequence and categories for debugging
+    console.log(" data sequence: " + d_sequence);
+    if (sequence) {
+      console.log("input sequence: " + sequence);
+    } else {
+      sequence = d_sequence;
+    }
+    console.log(" data categories: " + d_categories);
+    if (categories) {
+      console.log("input categories: " + categories);
+    } else {
+      categories = d_categories;
+    }
+
     if (debugOn) {console.log("maxValue: " + maxValue);}
     allGraphs.maxValue = maxValue;
     return allGraphs;

@@ -189,8 +189,8 @@ export default function() {
       element.y = yScale(element.nameY) - element.dy;
       
       if (debugOn) {
-        console.log("x " + element.nameX + " -> " + xScale(element.nameX));
-        console.log("y " + element.nameY + " -> " + xScale(element.nameY));
+        console.log("x " + element.nameX + " -> " + element.x);
+        console.log("y " + element.nameY + " -> " + element.y);
       }
     });  
 

@@ -107,13 +107,12 @@ If a csv file with data in the correct format exists, the typical call of item e
     // include the following four files:
     <link rel="stylesheet" type="text/css" href="http://www.ankerst.de/lib/sankeySeqExplorer_10.css">
     <script src="https://d3js.org/d3.v4.js"></script>
-    <script src="http://www.ankerst.de/lib/sankeySeqExplorer_10.min.js"></script>
-    <script src="http://www.ankerst.de/lib/sankeySeq_10.min.js"></script>
+    <script src="http://www.ankerst.de/lib/sequence-explorer.min.js"></script>
     ...
     // setup a chart with a csv file and add the visualization to a DOM element
-    // no parameter when data is embedded in <pre id="data"> tag, otherwise sequenceExplorerChart(file);
-    // var myChart = sequenceExplorerChart();
-    var myChart = sequenceExplorerChart("myData.csv");
+    // no parameter when data is embedded in <pre id="data"> tag, otherwise sequenceExplorer.chart(file);
+    // var myChart = sequenceExplorer.chart();
+    var myChart = sequenceExplorer.chart("myData.csv");
     
     d3.select("body")
       .append("div")
@@ -124,17 +123,19 @@ If a csv file with data in the correct format exists, the typical call of item e
 ### 5. API for sequence explorer 
 function | parameter | explanation
 ------------ | -------|------
-`debugOn()` | *boolean* | e.g. `sequenceExplorerChart.debug(true)` turns on/off the console.log debugging. The default setting is false.
-`size()` | *2-dim array* |, e.g. `sequenceExplorerChart.size([600, 400])`y sets size of the SVG based on an array [width, height]. The default size is [700, 500].
-`margin()` | *integer* | e.g. `sequenceExplorerChart.margin(10)` sets margin in pixels for top, right, bottom, left. The default margin is 5 px.
-`sequence()` | *array* | e.g. `sequenceExplorerChart.sequence(["2000", "2001", "2002"])` sets the order of the sequence based on an array. The default order is ascending.
-`categories()` | *array* | e.g. `sequenceExplorerChart.categories(["A", "B", "C"])` sets the order of the categories based on an array. The default order is ascending.
-`sequenceName()` | *string* | e.g. `sequenceExplorerChart.sequenceName("year")` sets the name of the x axis. The default name is "sequence".
-`categoryName()` | *string* | e.g. `sequenceExplorerChart.categoryName("state")` sets the name of the y axis. The default name is "category".
-`valueName()` | *string* | e.g. `sequenceExplorerChart.valueName("frequency")` sets the name of the value. The default name is "value".
-`thousandsSeparator()` | *char* | e.g. `sequenceExplorerChart.thousandsSeparator(".")` sets the thousands separator. The default separator is ",".
-`nodeWidth()` | *integer* | e.g. `sequenceExplorerChart.nodeWidth(20)` sets the width of a node in pixels. The default width is 15.
-`nodePadding()` | *integer* | e.g. `sequenceExplorerChart.nodePadding(10)` sets the y-padding between the categories in pixels. The default padding is 8.
+`debugOn()` | *boolean* | e.g. `sequenceExplorer.chart().debug(true)` turns on/off the console.log debugging. The default setting is false.
+`size()` | *2-dim array* |, e.g. `sequenceExplorer.chart().size([600, 400])` sets the size of the SVG based on an array [width, height]. The default size is [700, 500].
+`margin()` | *integer* | e.g. `sequenceExplorer.chart().margin(10)` sets the margin in pixels for top, right, bottom, left. The default margin is 5 px.
+`sequence()` | *array* | e.g. `sequenceExplorer.chart().sequence(["2000", "2001", "2002"])` sets the order of the sequence based on an array. The default order is ascending.
+`categories()` | *array* | e.g. `sequenceExplorer.chart().categories(["A", "B", "C"])` sets the order of the categories based on an array. The default order is ascending.
+`rowOrder()` | *array* | e.g. `sequenceExplorer.chart().rowOrder(["USA", "Canada", "Africa"])` sets the order of the rows (first additional dimension) based on an array. The default order is ascending.
+`colOrder()` | *array* | e.g. `sequenceExplorer.chart().colOrder(["20-40", "41-60", "61-80"])` sets the order of the columns (second additional dimension) based on an array. The default order is ascending.
+`sequenceName()` | *string* | e.g. `sequenceExplorer.chart().sequenceName("year")` sets the name of the x axis. The default name is "sequence".
+`categoryName()` | *string* | e.g. `sequenceExplorer.chart().categoryName("state")` sets the name of the y axis. The default name is "category".
+`valueName()` | *string* | e.g. `sequenceExplorer.chart().valueName("frequency")` sets the name of the value. The default name is "value".
+`thousandsSeparator()` | *char* | e.g. `sequenceExplorer.chart().thousandsSeparator(".")` sets the thousands separator. The default separator is ",".
+`nodeWidth()` | *integer* | e.g. `sequenceExplorer.chart().nodeWidth(20)` sets the width of a node in pixels. The default width is 15.
+`nodePadding()` | *integer* | e.g. `sequenceExplorer.chart().nodePadding(10)` sets the y-padding between the categories in pixels. The default padding is 8.
 
 -----------------------
 
@@ -176,7 +177,7 @@ Then the css selectors would be:
     fill: red;
   }
 
-  /* drawing node infos in yellow */
+  /* drawing node infos in yellow (if '_nodes' file exists) */
   rect.sankeyNodeInfo {
     fill: yellow;
   }  

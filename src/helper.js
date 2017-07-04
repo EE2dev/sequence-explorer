@@ -61,3 +61,13 @@ export function formatNumber(str, thousandsSeparator) {
     }
   }
 }  
+
+// helper function to sort row and col dimension ascending or as specified
+export function orderDimension (dim) {
+  if (typeof dim === "undefined") {
+    return d3.ascending;
+  } 
+  else {
+    return function(a, b) { return dim.indexOf(a) - dim.indexOf(b);};
+  }
+}
