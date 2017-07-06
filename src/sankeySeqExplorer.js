@@ -56,7 +56,12 @@ export default function(_myData) {
         createChart(selection, d);
       }
       else { // data processing here
-        readData(_myData, selection);
+        if (typeof _myData !== "undefined") { 
+          readData(_myData, selection);
+        } 
+        else {
+          readData("<pre>", selection);
+        }
       }
     });
   }  
@@ -293,7 +298,7 @@ export default function(_myData) {
            }       
            var transNode = getTranslation(d3.select(this.parentNode).attr("transform"))[1];
            var pyHeight = parseInt(d3.select(this).style("font-size"));              
-           if (transNode + pyHeight > yOfBottomAxis) {
+           if (transNode - d.dy + pyHeight > yOfBottomAxis) {
              return d.dy - pyHeight / 2 - 1;
            } 
            else {
