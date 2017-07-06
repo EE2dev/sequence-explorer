@@ -288,22 +288,25 @@ export default function(_myData) {
         d3.select(parentSelector).selectAll("rect.sankeyNode")
          .transition(trans)
          .attr("height", function(d) { return d.dy; });
-
-        var yOfBottomAxis = d3.select("rect.coverSankeySeq").attr("height");    
+   
+        // var yOfBottomAxis = parseInt(d3.select("rect.coverSankeySeq").attr("height"));
         d3.select(parentSelector).selectAll("text.nodeLabel")
          .transition(trans)        
          .attr("y", function(d) {  // adjustment if text would cross x axis    
            if (debugOn) {
+             var transNode = getTranslation(d3.select(this.parentNode).attr("transform"))[1];
              console.log("transform: " + d3.select(this.parentNode).attr("transform"));
-           }       
+             console.log(transNode);
+           }      
+           
+           var pyHeight = parseInt(d3.select(this).style("font-size")); 
+           return d.dy < pyHeight ? d.dy - pyHeight / 2 - 2 : Math.min(d.dy / 2, d.dy - pyHeight / 2 - 2); 
+           /*
            var transNode = getTranslation(d3.select(this.parentNode).attr("transform"))[1];
            var pyHeight = parseInt(d3.select(this).style("font-size"));              
-           if (transNode - d.dy + pyHeight > yOfBottomAxis) {
-             return d.dy - pyHeight / 2 - 1;
-           } 
-           else {
-             return d.dy / 2;
-           }
+           if (transNode + pyHeight > yOfBottomAxis) {
+             return d.dy - pyHeight / 2 - 2;
+           }    */          
          });
         
         d3.select(parentSelector).selectAll("rect.sankeyNodeInfo")
@@ -529,8 +532,8 @@ export default function(_myData) {
             .style("stroke-width", function(d) { return Math.max(1, d.dy) + "px"; })
             .sort(function(a, b) { return b.dy - a.dy; })
             .on("mouseover", function(d) {
-              var info = sequenceName + ": " + d.source.nameX + " -> " + d.target.nameX;
-              info += "<br>" + categoryName + ": " + d.source.nameY + " -> " + d.target.nameY;
+              var info = sequenceName + ": " + d.source.nameX + " \u21FE " + d.target.nameX;
+              info += "<br>" + categoryName + ": " + d.source.nameY + " \u21FE " + d.target.nameY;
               info += "<br>" + valueName + ": " + formatNumber(d.value, thousandsSeparator);
               tooltip.html(info);
               tooltip.style("visibility", "visible");
@@ -587,7 +590,7 @@ export default function(_myData) {
               return tooltip.style("visibility", "hidden");
             });
           
-          var yOfBottomAxis = d3.select("rect.coverSankeySeq").attr("height");
+          // var yOfBottomAxis = parseInt(d3.select("rect.coverSankeySeq").attr("height"));
           node.append("text")
             .attr("class", "nodeLabel")
             .style("display", function() { 
@@ -604,11 +607,14 @@ export default function(_myData) {
               console.log( d3.select(this.parentNode).node()); 
               console.log("transform: " + d3.select(this.parentNode).attr("transform"));
             } 
-            var transNode = getTranslation(d3.select(this.parentNode).attr("transform"))[1];
-            var pyHeight = parseInt(d3.select(this).style("font-size"));              
+            // var transNode = getTranslation(d3.select(this.parentNode).attr("transform"))[1];
+            var pyHeight = parseInt(d3.select(this).style("font-size"));    
+            d3.select(this).attr("y", function(d) { return d.dy < pyHeight ? d.dy - pyHeight / 2 - 2 : 
+              Math.min(d.dy / 2, d.dy - pyHeight / 2 - 2);});
+           /*          
             if (transNode + pyHeight > yOfBottomAxis) {
-              d3.select(this).attr("y", function(d) { return d.dy - pyHeight / 2 - 1; });
-            } 
+              d3.select(this).attr("y", function(d) { return d.dy - pyHeight / 2 - 2; });
+            } */
           })  
           .filter(function(d) { return d.x > width * .9; })
             .attr("x", -3)
