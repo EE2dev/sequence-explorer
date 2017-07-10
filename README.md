@@ -136,6 +136,7 @@ function | parameter | explanation
 `thousandsSeparator()` | *char* | e.g. `sequenceExplorer.chart().thousandsSeparator(".")` sets the thousands separator. The default separator is ",".
 `nodeWidth()` | *integer* | e.g. `sequenceExplorer.chart().nodeWidth(20)` sets the width of a node in pixels. The default width is 15.
 `nodePadding()` | *integer* | e.g. `sequenceExplorer.chart().nodePadding(10)` sets the y-padding between the categories in pixels. The default padding is 8.
+`tooltipFormat()` | *array* | e.g. `sequenceExplorer.chart().tooltipFormat(["%event"])` sets the output of the tooltip text to add a line with % of all categories at the same event. 
 
 -----------------------
 
@@ -182,6 +183,12 @@ Then the css selectors would be:
     fill: yellow;
   }  
 ```
+### 7. Format of the tooltip text
+sequenceExplorer.chart().tooltipFormat([...])
+* default : event, category, count
+* `"%event"` : event, category, count, % of all categories at the same event
+* `"%firstCategory"` : event, category, count, % of same category at the first event
+* `"%prevCategory"` : event, category, count, % of the same category at the previous event
 
-### 7. License
+### 8. License
 This code is released under the [BSD license](https://github.com/EE2dev/sequence-explorer//blob/master/LICENSE).

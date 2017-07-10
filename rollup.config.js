@@ -11,7 +11,8 @@ export default {
     'd3': 'd3',
     'd3-interpolate': 'd3',
     'd3-array': 'd3',
-    'd3-scale': 'd3'
+    'd3-scale': 'd3',
+    'd3-collection': 'd3'
   },
   plugins: [
     /*

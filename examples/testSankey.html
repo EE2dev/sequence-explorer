@@ -38,6 +38,7 @@
       // .categories(["3+","1","2","3","0"])
       .colOrder(["normal responders", "very late responders", "early responders", "all responders"])
       .rowOrder(["B","C","A","D"])
+      .tooltipFormat(["%event", "%firstCategory","%prevCategory"])
       .valueName("members"); 
       
     d3.select("body")

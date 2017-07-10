@@ -41,11 +41,12 @@ export function getTranslation(transform) {
 }
 
 // helper function to apply thousandSeparator
-export function formatNumber(str, thousandsSeparator) {
-  var format = d3.format(",.0f");
+export function formatNumber(str, thousandsSeparator, form) {
+  if (isNaN(parseFloat(str))) {return "-";}
+  var format = d3.format(form);
   if (thousandsSeparator === ".") { // German convention
     if (+str % 1 !== 0) {
-      return str.split(".").join(",");
+      return format(str).split(".").join(",");
     }
     else {
       var newStr = format(str).split(",").join(".");
@@ -54,7 +55,7 @@ export function formatNumber(str, thousandsSeparator) {
   }
   else {    // US convention
     if (+str % 1 !== 0) { 
-      return str;
+      return format(str);
     }
     else {        
       return format(str);

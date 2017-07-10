@@ -18,7 +18,7 @@ export default function(_myData) {
   var valueName; // the column name of the frequency value
   var scaleGlobal = true; // scale the node height for multiples over all sankeys 
   var showNodeLabels = true; // show node labels
-  var tooltipFormat = "Default"; // format of the tooltip text
+  var tooltipFormat = []; // format of the tooltip text
   var allGraphs; // data structure containing columns of rows of sankey input data;
   var tooltip;
   
@@ -300,13 +300,7 @@ export default function(_myData) {
            }      
            
            var pyHeight = parseInt(d3.select(this).style("font-size")); 
-           return d.dy < pyHeight ? d.dy - pyHeight / 2 - 2 : Math.min(d.dy / 2, d.dy - pyHeight / 2 - 2); 
-           /*
-           var transNode = getTranslation(d3.select(this.parentNode).attr("transform"))[1];
-           var pyHeight = parseInt(d3.select(this).style("font-size"));              
-           if (transNode + pyHeight > yOfBottomAxis) {
-             return d.dy - pyHeight / 2 - 2;
-           }    */          
+           return d.dy < pyHeight ? d.dy - pyHeight / 2 - 2 : Math.min(d.dy / 2, d.dy - pyHeight / 2 - 2);           
          });
         
         d3.select(parentSelector).selectAll("rect.sankeyNodeInfo")
@@ -448,7 +442,7 @@ export default function(_myData) {
             .debugOn(debugOn);
           
           if (scaleGlobal) {sankey.maxValue(allGraphs.maxValue);}
-          sankey.layout();   
+          sankey.layout().addValues();   
           container.sankey = sankey;
           
           transformString = initializeFrame(svg, props, allGraphs, colIndex, rowIndex);
@@ -534,7 +528,7 @@ export default function(_myData) {
             .on("mouseover", function(d) {
               var info = sequenceName + ": " + d.source.nameX + " \u21FE " + d.target.nameX;
               info += "<br>" + categoryName + ": " + d.source.nameY + " \u21FE " + d.target.nameY;
-              info += "<br>" + valueName + ": " + formatNumber(d.value, thousandsSeparator);
+              info += "<br>" + valueName + ": " + formatNumber(d.value, thousandsSeparator, ",.0f");
               tooltip.html(info);
               tooltip.style("visibility", "visible");
             })
@@ -581,7 +575,16 @@ export default function(_myData) {
             .on("mouseover", function(d) {
               var info = sequenceName + ": " + d.nameX;
               info += "<br>" + categoryName + ": " + d.nameY;
-              info += "<br>" + valueName + ": " + formatNumber(d.value, thousandsSeparator);
+              info += "<br>" + valueName + ": " + formatNumber(d.value, thousandsSeparator, ",.0f");
+              tooltipFormat.forEach(function(line){
+                if (line === "%event") {
+                  info += "<br>% of '" + d.nameX + "': " + formatNumber("" + (d.value/d.valueX), thousandsSeparator, ",.1%");
+                } else if (line === "%prevCategory") {
+                  info += "<br>% of previous '" + d.nameY + "': " + formatNumber("" + (d.value/d.valueYPrev), thousandsSeparator, ",.1%");
+                } else if (line === "%firstCategory") {
+                  info += "<br>% of first '" + d.nameY + "': " + formatNumber("" + (d.value/d.valueYFirst), thousandsSeparator, ",.1%");
+                }
+              });
               tooltip.html(info);
               tooltip.style("visibility", "visible");
             })
@@ -641,7 +644,7 @@ export default function(_myData) {
             .on("mouseover", function(d) {
               var info = sequenceName + ": " + d.nameX;
               info += "<br>" + categoryName + ": " + d.nameY;
-              info += "<br>" + valueName + " ("+ nodeInfoKey + "): " + formatNumber(d.nodeInfos[nodeInfoKey], thousandsSeparator);
+              info += "<br>" + valueName + " ("+ nodeInfoKey + "): " + formatNumber(d.nodeInfos[nodeInfoKey], thousandsSeparator, ",.0f");
               tooltip.html(info);
               tooltip.style("visibility", "visible");
             })

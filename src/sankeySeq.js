@@ -3,6 +3,7 @@
 import { interpolateNumber } from "d3-interpolate";
 import { sum, max } from "d3-array";
 import { scalePoint } from "d3-scale";
+import { map } from "d3-collection";
 
 export default function() {
   var sankey  = {},
@@ -131,6 +132,48 @@ export default function() {
     maxValueSpecified = true;
     return sankey;
   };
+
+  // adds value properties to nodes which can be used by the tooltip text.
+  // Has to be called after layout function 
+  sankey.addValues = function() {
+    let newValues = map();
+    let rIndex;
+    sequence.forEach(function(seq) {
+      newValues.set(seq, 0);
+    });
+    categories.forEach(function(cat) {
+      newValues.set(cat, 0);
+    });
+
+    nodes.forEach(function(node) {
+      newValues.set(node.nameX, newValues.get(node.nameX) + node.value);
+      newValues.set(node.nameY, newValues.get(node.nameY) + node.value);
+      
+      rIndex = -1;
+      sequence.forEach(function(seq, i) {
+        if (seq === node.nameX) {
+          rIndex = i;
+        } 
+      });
+
+      if (rIndex === 0) {
+        newValues.set("first" + sequence[0] + node.nameY, node.value);
+      }
+      if (rIndex !== sequence.length-1) {
+        newValues.set("prev" + sequence[rIndex+1] + node.nameY, node.value);
+      }
+    });
+
+    nodes.forEach(function(node) {
+      node.valueX = newValues.get(node.nameX); // sum of category values
+      node.valueY = newValues.get(node.nameY); // sum of event values
+      node.valueYPrev = newValues.get("prev" + node.nameX + node.nameY); // value of category at previous event
+      node.valueYFirst = newValues.get("first" + sequence[0] + node.nameY); // value of category at first event
+      // node.allValues = newValues;
+    });
+
+  };
+
   // end of API functions
   
   // Populate the sourceLinks and targetLinks for each node.
