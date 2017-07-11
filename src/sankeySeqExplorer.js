@@ -645,6 +645,7 @@ export default function(_myData) {
               var info = sequenceName + ": " + d.nameX;
               info += "<br>" + categoryName + ": " + d.nameY;
               info += "<br>" + valueName + " ("+ nodeInfoKey + "): " + formatNumber(d.nodeInfos[nodeInfoKey], thousandsSeparator, ",.0f");
+              info += "<br>% of node: " + formatNumber("" + (d.nodeInfos[nodeInfoKey]/d.value), thousandsSeparator, ",.1%");
               tooltip.html(info);
               tooltip.style("visibility", "visible");
             })
