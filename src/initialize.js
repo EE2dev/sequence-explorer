@@ -20,11 +20,14 @@ export function initialize_whp_and_axes(svg, size, margin, categories, sequence,
       .style("opacity", 0)
       .call(d3.axisBottom(d3.scalePoint().domain(sequence)));
 
+  var lengthOfLastEvent = d3.select("g.dummy.d2 g.tick:last-child text"); // text which can extend the width of the x axis
+
   paddingSingle.left = axisL.node().getBBox().width; 
   paddingSingle.bottom = axisB.node().getBBox().height;
+  var extendBAxis = lengthOfLastEvent.node().getBBox().width/2;
 
     // update width and height for sankeyG
-  width = width - paddingSingle.left;
+  width = width - paddingSingle.left - extendBAxis;
   height = height - paddingSingle.bottom - paddingMultiples.top;
         
   d3.selectAll("g.dummy").remove();  
@@ -47,7 +50,7 @@ export function initialize_whp_and_axes(svg, size, margin, categories, sequence,
 
   var xScale = d3.scalePoint()
       .domain(sequence)
-      .range([0, width - nodeWidth]);
+      .range([0, width - nodeWidth]); // last node starts at end of domain
   var axisBottom = d3.axisBottom(xScale);
   axisSelection = svg.append("g")
       .attr("class", "axis bottom")
