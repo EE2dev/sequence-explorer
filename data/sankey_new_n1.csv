@@ -38,3 +38,4 @@ value,sourceX,sourceY,targetX,targetY,first_product
 100,2001,1,2002,1,D
 10,2002,1,2003,2,D
 90,2002,1,2003,1,D
+100,2000,1,2003,3+,A

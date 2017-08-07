@@ -2,7 +2,7 @@ import * as d3 from "d3";
 import { default as sankeySeq } from "./sankeySeq";
 import { positionTooltipNode, getTranslation, formatNumber, orderDimension } from "./helper";
 import { initialize_whp_and_axes, initializeFrame } from "./initialize";
-import { transitionToSingle, transitionToMultiples } from "./transition";
+import { transitionToSingle, transitionToMultiples, addTransitionX } from "./transition";
 
 // var sequenceExplorerChart = function(_myData) {
 // export function chart(_myData) {
@@ -36,6 +36,8 @@ export default function(_myData) {
     categories,
     colOrder,
     rowOrder,
+    transitionX,
+    transitionY,
     sequenceName = "sequence",
     categoryName = "category",
     thousandsSeparator = ",";
@@ -165,6 +167,18 @@ export default function(_myData) {
   chartAPI.colOrder = function(_) {
     if (!arguments.length) return colOrder;
     colOrder = _;
+    return chartAPI;
+  };
+
+  chartAPI.transitionX = function(_) {
+    if (!arguments.length) return transitionX;
+    transitionX = _;
+    return chartAPI;
+  };
+
+  chartAPI.transitionY = function(_) {
+    if (!arguments.length) return transitionY;
+    transitionY = _;
     return chartAPI;
   };
 
@@ -449,7 +463,11 @@ export default function(_myData) {
 
           sankeyF = svg.append("g")
           .datum(transformString.sankeyFrame)
-          .attr("class", "sankeyFrame f" + colIndex + "-" + rowIndex)
+          // .attr("class", "sankeyFrame f" + colIndex + "-" + rowIndex)
+          .attr("class", function(){ 
+            let c = "sankeyFrame f" + colIndex + "-" + rowIndex; 
+            c += (allGraphs.cols === 1 && allGraphs.rows === 1) ? " single" : " multiples";
+            return c;})
           .attr("transform", transformString.sankeyFrame.multiples)
           .on("click", function () {
             if (allGraphs.cols === 1 && allGraphs.rows === 1) { return;}
@@ -515,7 +533,9 @@ export default function(_myData) {
           tooltip = d3.select("body").append("div").attr("class", "tooltip");
             
           // drawing links
-          sankeyG.append("g").selectAll(".link")
+          sankeyG.append("g")
+            .attr("class", "links")
+            .selectAll(".link")
             .data(graph.links)
           .enter().append("path")
             .attr("class", function(d) { return "link" + " lsx" + d.source.nameX.replace(/ /g, "_")
@@ -554,7 +574,9 @@ export default function(_myData) {
             });
          
           // drawing nodes
-          node = sankeyG.append("g").selectAll(".node")
+          node = sankeyG.append("g")
+            .attr("class", "nodes")
+            .selectAll(".node")
             .data(graph.nodes)
           .enter().append("g")
             .attr("class", "node")
@@ -656,6 +678,10 @@ export default function(_myData) {
             
           if (container.transform === "single") { 
             transitionToSingle(sankeyF.node(), d3.transition().duration(0));
+          }
+
+          if (typeof transitionX !== "undefined") {
+            d3.selectAll("g.axis.bottom > g.tick").on("click", function(){addTransitionX(svg, transitionX);} );            
           }
         });
       });  

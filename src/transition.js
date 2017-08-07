@@ -8,6 +8,10 @@ export function transitionToSingle(clickedElement, _trans) {
       if (this === clickedElement) {
         console.log("clicked");
 
+        d3.select(this) // set class
+            .classed("multiples", false)
+            .classed("single", true);
+
         d3.select(this) // transition frame
             .transition(trans)
             .attr("transform", "translate(0, 0)");
@@ -50,6 +54,10 @@ export function transitionToSingle(clickedElement, _trans) {
 
       } else {
         console.log("not clicked");
+
+        d3.select(this) // set class
+            .classed("multiples", false);
+
         d3.select(this)
               .transition(trans)
               .attr("transform", function(d) {return d.single;})
@@ -68,9 +76,14 @@ export function transitionToMultiples(clickedElement) {
       .duration(1000);
       
   d3.selectAll("g.sankeyFrame")
+    .classed("multiples", true)
     .each(function() {
       if (this === clickedElement) {
         console.log("clicked");
+
+        d3.select(this) // set class
+            .classed("single", false);
+
         d3.select(this)
             .transition(trans)
             .attr("transform", function(d) { return d.multiples;});
@@ -123,4 +136,54 @@ export function transitionToMultiples(clickedElement) {
       }
     });   
   return true;
+}
+
+export function addTransitionX(svg, transitionX){
+  console.log("clicked on axis" + transitionX);
+  const trans = d3.transition().duration(1000);
+  const myFrame = d3.select("g.sankeyFrame.single");
+  const frameY = myFrame.node().getBBox().height;
+  console.log("frame (670): " + frameY);
+
+  // hide links
+  myFrame.select("g.links")
+    .transition(trans)
+    .style("opacity", 0);
+
+  // hide not selected nodes
+  let hideNodes = myFrame.selectAll("g.node").filter((d) => d.nameX !== "meetup3");
+  hideNodes.transition(trans)
+        .style("opacity", 0);
+
+  // hide y axis
+  d3.select("g.axis.left")
+    .transition(trans)
+    .style("opacity", 0);
+
+  // transition selected nodes
+  let updateNodes = myFrame.selectAll("g.node").filter((d) => d.nameX === "meetup3");
+  const sumOfValues = updateNodes.filter((d, i) => i === 0).datum().valueX; 
+  const rectY = d3.scaleLinear().domain([0, sumOfValues]).range([0,frameY]);
+
+  updateNodes.select("rect")
+    .transition(trans)
+    .attr("height", (d) => rectY(d.value));
+
+  // replace with each()...
+    /*.data(["meetup3"], (d) => d.nameX);
+
+  updateNodes
+    .transition(trans)
+    .style("transform", function(){
+      let trans = d3.select(this).style("transform");
+      return  trans + " " + "scale(1,2)";
+    });
+
+  updateNodes.exit()
+    .transition(trans)
+    .style("opacity", 0);
+    */
+
+  // d3.selectAll("rect.sankeyNode." + "nxmeetup3").style("opacity", 1);
+  // d3.selectAll("g.sankeySeq > g > rect").filter((d,i) => d3.select(this). )
 }
