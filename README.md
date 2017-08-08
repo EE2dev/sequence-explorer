@@ -190,6 +190,7 @@ Then the css selectors would be:
 sequenceExplorer.chart().tooltipFormat([...])
 * default : event, category, count
 * `"%event"` : event, category, count, % of all categories at the same event
+* `"%category"` : event, category, count, % of same category at all events
 * `"%firstCategory"` : event, category, count, % of same category at the first event
 * `"%prevCategory"` : event, category, count, % of the same category at the previous event
 

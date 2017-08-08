@@ -601,6 +601,8 @@ export default function(_myData) {
               tooltipFormat.forEach(function(line){
                 if (line === "%event") {
                   info += "<br>% of '" + d.nameX + "': " + formatNumber("" + (d.value/d.valueX), thousandsSeparator, ",.1%");
+                } else if (line === "%category") {
+                  info += "<br>% of '" + d.nameY + "': " + formatNumber("" + (d.value/d.valueY), thousandsSeparator, ",.1%");
                 } else if (line === "%prevCategory") {
                   info += "<br>% of previous '" + d.nameY + "': " + formatNumber("" + (d.value/d.valueYPrev), thousandsSeparator, ",.1%");
                 } else if (line === "%firstCategory") {
