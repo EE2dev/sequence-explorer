@@ -1,4 +1,5 @@
 import * as d3 from "d3";
+import {getTranslation} from "./helper";
 
 export function transitionToSingle(clickedElement, _trans) {
   var trans = (typeof _trans !== "undefined") ? _trans : d3.transition().duration(1000);
@@ -138,11 +139,11 @@ export function transitionToMultiples(clickedElement) {
   return true;
 }
 
-export function addTransitionX(svg, transitionX){
+export function addTransitionX(svg, transitionX, categories){
   console.log("clicked on axis" + transitionX);
   const trans = d3.transition().duration(1000);
   const myFrame = d3.select("g.sankeyFrame.single");
-  const frameY = myFrame.node().getBBox().height;
+  const frameY = myFrame.select(".coverSankeySeq").node().getBBox().height;
   console.log("frame (670): " + frameY);
 
   // hide links
@@ -160,11 +161,47 @@ export function addTransitionX(svg, transitionX){
     .transition(trans)
     .style("opacity", 0);
 
-  // transition selected nodes
+  // calculate position for nodes
   let updateNodes = myFrame.selectAll("g.node").filter((d) => d.nameX === "meetup3");
-  const sumOfValues = updateNodes.filter((d, i) => i === 0).datum().valueX; 
+  let arrOfValues = []; 
+  let newValue = 0;
+  let tempValue = 0;
+  categories.forEach(function(element) {
+    arrOfValues.push({name: element, value: 0});
+  });
+
+  const sumOfValues = updateNodes.filter(function(d, i) {
+    arrOfValues.forEach(function(element) {
+      if (element.name === d.nameY) {
+        element.value = d.value;
+      }
+    });
+    return i === 0;
+  }).datum().valueX;
+  arrOfValues.forEach(function(element){
+    tempValue = element.value;
+    element.value = newValue;
+    newValue += tempValue;
+  });
+
   const rectY = d3.scaleLinear().domain([0, sumOfValues]).range([0,frameY]);
 
+  updateNodes.transition(trans)
+    .attr("transform", function(d){
+      const transX = getTranslation(d3.select(this).attr("transform"))[0];
+      let transY = 0;
+      arrOfValues.forEach(function(element) {
+        if (element.name === d.nameY) {
+          transY = frameY - rectY(element.value + d.value);
+        }
+      });
+      console.log("name: " + d.name);
+      console.log("transX: " + transX);
+      console.log("transY: " + transY);
+      console.log(" ");
+      return "translate (" + transX + "," + transY + ")";
+    });
+  
   updateNodes.select("rect")
     .transition(trans)
     .attr("height", (d) => rectY(d.value));

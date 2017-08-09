@@ -683,7 +683,7 @@ export default function(_myData) {
           }
 
           if (typeof transitionX !== "undefined") {
-            d3.selectAll("g.axis.bottom > g.tick").on("click", function(){addTransitionX(svg, transitionX);} );            
+            d3.selectAll("g.axis.bottom > g.tick").on("click", function(){addTransitionX(svg, transitionX, categories);} );            
           }
         });
       });  
