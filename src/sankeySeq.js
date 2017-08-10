@@ -90,6 +90,7 @@ export default function() {
     var curvature = .5;
  
     function link(d) {
+      curvature = (Math.abs(d.source.x - d.target.x) < d.source.dx) ? -3 : 0.5;
       var x0 = d.source.x + d.source.dx,
         x1 = d.target.x,
         xi = interpolateNumber(x0, x1),
