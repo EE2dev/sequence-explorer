@@ -90,7 +90,7 @@ export default function() {
     var curvature = .5;
  
     function link(d) {
-      curvature = (Math.abs(d.source.x - d.target.x) < d.source.dx) ? -3 : 0.5;
+      curvature = (Math.abs(d.source.x - d.target.x) < d.source.dx) ? -3 : 0.5; // makes curved paths for nodes at the same horizontal position
       var x0 = d.source.x + d.source.dx,
         x1 = d.target.x,
         xi = interpolateNumber(x0, x1),

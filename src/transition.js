@@ -139,37 +139,53 @@ export function transitionToMultiples(clickedElement) {
   return true;
 }
 
-export function addTransitionX(svg, transitionX, categories){
+export function transitionXaxis(transitionX, nameX){
   console.log("clicked on axis" + transitionX);
   const trans = d3.transition().duration(1000);
   const myFrame = d3.select("g.sankeyFrame.single");
   const frameY = myFrame.select(".coverSankeySeq").node().getBBox().height;
-  console.log("frame (670): " + frameY);
 
   // hide links
   myFrame.select("g.links")
     .transition(trans)
-    .style("opacity", 0);
+    .style("opacity", 0)
+    .on("end",  function(){ d3.select(this).classed("hide", true); return;});
 
   // hide not selected nodes
-  let hideNodes = myFrame.selectAll("g.node").filter((d) => d.nameX !== "meetup3");
+  let hideNodes = myFrame.selectAll("g.node").filter((d) => d.nameX !== nameX);
   hideNodes.transition(trans)
-        .style("opacity", 0);
+        .style("opacity", 0)
+        .on("end",  function(){ d3.select(this).classed("hide", true); return;});
+
+  // in case some categories are excluded for transition
+  let hideNodes2 = myFrame.selectAll("g.node")
+    .filter((d) => d.nameX === nameX)
+    .filter((d) => transitionX().indexOf(d.nameY) === -1);
+  hideNodes2.transition(trans)
+        .style("opacity", 0)
+        .on("end",  function(){ d3.select(this).classed("hide", true); return;});      
 
   // hide y axis
   d3.select("g.axis.left")
     .transition(trans)
-    .style("opacity", 0);
+    .style("opacity", 0)
+    .on("end",  function(){ 
+      d3.select(this).classed("hide", true); 
+      return;
+    });
 
   // calculate position for nodes
-  let updateNodes = myFrame.selectAll("g.node").filter((d) => d.nameX === "meetup3");
+  let updateNodes = myFrame.selectAll("g.node")
+    .filter((d) => d.nameX === nameX)
+    .filter((d) => transitionX().indexOf(d.nameY) !== -1);
   let arrOfValues = []; 
   let newValue = 0;
   let tempValue = 0;
-  categories.forEach(function(element) {
+  transitionX().forEach(function(element) {
     arrOfValues.push({name: element, value: 0});
   });
 
+/*
   const sumOfValues = updateNodes.filter(function(d, i) {
     arrOfValues.forEach(function(element) {
       if (element.name === d.nameY) {
@@ -178,13 +194,25 @@ export function addTransitionX(svg, transitionX, categories){
     });
     return i === 0;
   }).datum().valueX;
+  */
+
+  let sumOfValues = 0;
+  updateNodes.each(function(d) {
+    arrOfValues.forEach(function(element) {
+      if (element.name === d.nameY) {
+        element.value = d.value;
+        sumOfValues += d.value;
+      }
+    });
+  });
+
   arrOfValues.forEach(function(element){
     tempValue = element.value;
     element.value = newValue;
     newValue += tempValue;
   });
 
-  const rectY = d3.scaleLinear().domain([0, sumOfValues]).range([0,frameY]);
+  const rectY = d3.scaleLinear().domain([0, sumOfValues]).range([0, frameY - 10]);
 
   updateNodes.transition(trans)
     .attr("transform", function(d){
@@ -195,32 +223,52 @@ export function addTransitionX(svg, transitionX, categories){
           transY = frameY - rectY(element.value + d.value);
         }
       });
+      /*
       console.log("name: " + d.name);
       console.log("transX: " + transX);
       console.log("transY: " + transY);
       console.log(" ");
+      */
       return "translate (" + transX + "," + transY + ")";
     });
-  
+
+  // scale height nodes
   updateNodes.select("rect")
     .transition(trans)
     .attr("height", (d) => rectY(d.value));
+}
 
-  // replace with each()...
-    /*.data(["meetup3"], (d) => d.nameX);
+export function transitionXaxisBack(nameX){
+  const myFrame = d3.select("g.sankeyFrame.single");
+  const trans = d3.transition().duration(1000);
 
-  updateNodes
+  // show links
+  myFrame.select("g.links")
+    .classed("hide", false)
     .transition(trans)
-    .style("transform", function(){
-      let trans = d3.select(this).style("transform");
-      return  trans + " " + "scale(1,2)";
+    .style("opacity", 1);
+
+  // show not selected nodes
+  let hideNodes = myFrame.selectAll("g.node").filter((d) => d.nameX !== nameX);
+  hideNodes.classed("hide", false)
+        .transition(trans)
+        .style("opacity", 1);
+
+  // show y axis
+  d3.select("g.axis.left")
+    .classed("hide", false)
+    .transition(trans)
+    .style("opacity", 1);
+
+  // translate nodes to original position
+  let updateNodes = myFrame.selectAll("g.node").filter((d) => d.nameX === nameX);
+  updateNodes.transition(trans)
+    .attr("transform", function(d){
+      return "translate (" + d.x + "," + d.y + ")";
     });
 
-  updateNodes.exit()
+  // rescale height nodes
+  updateNodes.select("rect")
     .transition(trans)
-    .style("opacity", 0);
-    */
-
-  // d3.selectAll("rect.sankeyNode." + "nxmeetup3").style("opacity", 1);
-  // d3.selectAll("g.sankeySeq > g > rect").filter((d,i) => d3.select(this). )
+    .attr("height", (d) => d.dy);
 }

@@ -27,18 +27,18 @@
     // no parameter when data is embedded in <pre id="data"> tag, otherwise sequenceExplorerChart(file);
     // var myChart = sequenceExplorerChart();
     var myChart = sequenceExplorer.chart("../data/sankey_1234f.csv")
-      .debugOn(true)
+      //.debugOn(true)
       .showNodeLabels(false)
       .size([900,700])
       .sequenceName("meetup")
       .categoryName("action")
-      .categories(["joined meetup group","responded but did not show up","did not respond","responded No","responded and showed up"])
-      .sequence(["before meetup1","meetup1","meetup2","meetup3", "meetup4"])
+      .categoryOrder(["joined meetup group","responded but did not show up","did not respond","responded No","responded and showed up"])
+      //.sequence(["before meetup1","meetup1","meetup2","meetup3", "meetup4"])
       // .categories(["3+","1","2","3","0"])
       .colOrder(["normal responders", "very late responders", "early responders", "all responders"])
      // .rowOrder(["B","C","A","D"])
       .tooltipFormat(["%event", "%category", "%firstCategory","%prevCategory"])
-      .transitionX("yeah")
+      .transitionX(["joined meetup group","responded and showed up"])
       .valueName("members"); 
       
     d3.select("body")

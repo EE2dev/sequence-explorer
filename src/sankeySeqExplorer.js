@@ -2,7 +2,7 @@ import * as d3 from "d3";
 import { default as sankeySeq } from "./sankeySeq";
 import { positionTooltipNode, getTranslation, formatNumber, orderDimension } from "./helper";
 import { initialize_whp_and_axes, initializeFrame } from "./initialize";
-import { transitionToSingle, transitionToMultiples, addTransitionX } from "./transition";
+import { transitionToSingle, transitionToMultiples, transitionXaxis, transitionXaxisBack } from "./transition";
 
 // var sequenceExplorerChart = function(_myData) {
 // export function chart(_myData) {
@@ -36,8 +36,8 @@ export default function(_myData) {
     categories,
     colOrder,
     rowOrder,
-    transitionX,
-    transitionY,
+    transitionX, // a function returning an array of categories (-> transition after clicking on the x axis)
+    transitionY, // a function returning an array of categories (-> transition after clicking on the y axis)
     sequenceName = "sequence",
     categoryName = "category",
     thousandsSeparator = ",";
@@ -104,13 +104,13 @@ export default function(_myData) {
     return chartAPI;
   };
   
-  chartAPI.sequence = function(_) {
+  chartAPI.sequenceOrder = function(_) {
     if (!arguments.length) return sequence;
     sequence = _;
     return chartAPI;
   };
   
-  chartAPI.categories = function(_) {
+  chartAPI.categoryOrder = function(_) {
     if (!arguments.length) return categories;
     categories = _;
     return chartAPI;
@@ -170,9 +170,13 @@ export default function(_myData) {
     return chartAPI;
   };
 
-  chartAPI.transitionX = function(_) {
-    if (!arguments.length) return transitionX;
-    transitionX = _;
+  chartAPI.transitionX = function(_) { // returns function that return an array of categories
+    if (!arguments.length) return transitionX();
+    else if (_ === true) {
+      transitionX = chartAPI.sequence;
+    } else {
+      transitionX = function() {return _;};
+    }
     return chartAPI;
   };
 
@@ -408,9 +412,12 @@ export default function(_myData) {
     var node; // selection with nodes
     var graph; // graph for each sankeySeq
     var props; // properties calculated in initialization function
-    var multiplesOn = true; // small multiples currently shown?
     var transformString; // object that transform strings for transitioning between small multiples and single
     var svg; 
+    const SINGLE = 1; // single sankey diagram
+    const MULTIPLES = 2; // small multiples diagramm
+    const ZOOM = 3; // transitioned to a zoomed display of fractions
+    let visMode = MULTIPLES;
     
     selection.each(function () {
         // 4.1 insert code here  
@@ -429,6 +436,7 @@ export default function(_myData) {
       if (allGraphs.cols === 1 && allGraphs.rows === 1) { 
         d3.selectAll(".axis").style("opacity", 1);
         d3.selectAll(".sankeyNode,.sankeyNodeInfo").style("stroke-width", "1px");
+        visMode = SINGLE; 
       }
       width = props.width;
       height = props.height;
@@ -461,6 +469,15 @@ export default function(_myData) {
           
           transformString = initializeFrame(svg, props, allGraphs, colIndex, rowIndex);
 
+          d3.select("div.sankeyChart > svg")
+          .on("click", function () { // after click anywhere in svg, return to single mode
+            if (visMode === ZOOM) { 
+              let nameX = d3.select("g.zoomed").classed("zoomed", false).datum();
+              transitionXaxisBack(nameX); 
+              visMode = SINGLE;
+            }
+          });
+
           sankeyF = svg.append("g")
           .datum(transformString.sankeyFrame)
           // .attr("class", "sankeyFrame f" + colIndex + "-" + rowIndex)
@@ -469,9 +486,16 @@ export default function(_myData) {
             c += (allGraphs.cols === 1 && allGraphs.rows === 1) ? " single" : " multiples";
             return c;})
           .attr("transform", transformString.sankeyFrame.multiples)
-          .on("click", function () {
-            if (allGraphs.cols === 1 && allGraphs.rows === 1) { return;}
-            multiplesOn = (multiplesOn) ? transitionToSingle(this) :  transitionToMultiples(this);          
+          .on("click", function () {   
+            if (!(allGraphs.cols === 1 && allGraphs.rows === 1)) {
+              if (visMode === MULTIPLES) {
+                transitionToSingle(this);
+                visMode = SINGLE;
+              } else if (visMode === SINGLE) {
+                transitionToMultiples(this); 
+                visMode = MULTIPLES;
+              }
+            }         
           }); 
           
           sankeyG = sankeyF.append("g")
@@ -585,7 +609,7 @@ export default function(_myData) {
           node.append("rect")
             .attr("class", function(d) {
               var res = "sankeyNode" + " nx" + d.nameX.replace(/ /g, "_") + " ny" + d.nameY.replace(/ /g, "_");
-              chartAPI.categories().forEach( function(cat, i) {
+              categories.forEach( function(cat, i) {
                 if (cat === d.nameY) {
                   res += " color" + (i % 5);
                 }
@@ -683,7 +707,14 @@ export default function(_myData) {
           }
 
           if (typeof transitionX !== "undefined") {
-            d3.selectAll("g.axis.bottom > g.tick").on("click", function(){addTransitionX(svg, transitionX, categories);} );            
+            d3.selectAll("g.axis.bottom > g.tick").on("click", function(){
+              if (visMode === SINGLE) {
+                let nameX = d3.select(this).classed("zoomed", true).datum();
+                transitionXaxis(transitionX, nameX);
+                d3.event.stopPropagation();
+                visMode = ZOOM;
+              } 
+            });            
           }
         });
       });  

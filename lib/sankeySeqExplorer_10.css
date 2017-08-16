@@ -108,6 +108,16 @@
     text-anchor: middle;
     font-size: 18px;
   }
+
+  /* hide DOM elements after zoom transition */
+  .hide {
+    display: none;
+  }
+
+  /* show element after returning from zoom transition */
+  .show {
+    display: inline;
+  }
   
   /* colors for the nodes */
   
