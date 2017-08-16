@@ -173,7 +173,7 @@ export default function(_myData) {
   chartAPI.transitionX = function(_) { // returns function that return an array of categories
     if (!arguments.length) return transitionX();
     else if (_ === true) {
-      transitionX = chartAPI.sequence;
+      transitionX = chartAPI.categoryOrder;
     } else {
       transitionX = function() {return _;};
     }

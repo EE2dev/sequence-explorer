@@ -38,7 +38,8 @@
       .colOrder(["normal responders", "very late responders", "early responders", "all responders"])
      // .rowOrder(["B","C","A","D"])
       .tooltipFormat(["%event", "%category", "%firstCategory","%prevCategory"])
-      .transitionX(["joined meetup group","responded and showed up"])
+      // .transitionX(["joined meetup group","responded and showed up"])
+      .transitionX(true)
       .valueName("members"); 
       
     d3.select("body")
