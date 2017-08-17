@@ -138,6 +138,7 @@ function | parameter | explanation
 `size()` | *2-dim array* |, e.g. `sequenceExplorer.chart().size([600, 400])` sets the size of the SVG based on an array [width, height]. The default size is [700, 500].
 `thousandsSeparator()` | *char* | e.g. `sequenceExplorer.chart().thousandsSeparator(".")` sets the thousands separator. The default separator is ",".
 `tooltipFormat()` | *array* | e.g. `sequenceExplorer.chart().tooltipFormat(["%event"])` sets the output of the tooltip text to add a line with % of all categories at the same event. 
+`transitionX()` | *boolean* or *array* | e.g. `sequenceExplorer.chart().transitionX(true)` turns on the transition of the sankey upon click on a label on the x axis. In this case, all percentages at this state are shown. An array with a subset of categories reduces the percentages shown. The default is *false*. 
 `valueName()` | *string* | e.g. `sequenceExplorer.chart().valueName("frequency")` sets the name of the value. The default name is "value".
 
 
