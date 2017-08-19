@@ -323,14 +323,13 @@ export default function(_myData) {
              var transNode = getTranslation(d3.select(this.parentNode).attr("transform"))[1];
              console.log("transform: " + d3.select(this.parentNode).attr("transform"));
              console.log(transNode);
-           }      
-           
+           }     
            var pyHeight = parseInt(d3.select(this).style("font-size")); 
            return d.dy < pyHeight ? d.dy - pyHeight / 2 - 2 : Math.min(d.dy / 2, d.dy - pyHeight / 2 - 2);           
          });
         
         d3.select(parentSelector).selectAll("rect.sankeyNodeInfo")
-         .filter(function(d) {             nodeInfoKeys.forEach( function(key) {
+         .filter(function(d) { nodeInfoKeys.forEach( function(key) {
            if (key !== nodeInfoNone) {// skip case for no nodeInfo selection
              d.nodeInfos[key + "_dy"] = mySankey.getNodeHeight(+d.nodeInfos[key]);
            }
@@ -341,13 +340,10 @@ export default function(_myData) {
            }
          });
            return (typeof d.nodeInfos !== "undefined"); })
-         /*
         .attr("height", function() { 
           return d3.select(this).attr("height");
         })
-        */
-        
-        .transition(trans)   
+        .transition(trans)
         .attr("y", function(d) {
           if (nodeInfoKey === nodeInfoNone) { return d.dy; }
           else {
@@ -361,7 +357,7 @@ export default function(_myData) {
         .attr("height", function(d) { 
           if (nodeInfoKey === nodeInfoNone) { return 0; }
           else {return d.nodeInfos[nodeInfoKey + "_dy"]; }
-        });
+        }); 
       });
     });
   }
@@ -377,52 +373,25 @@ export default function(_myData) {
     var backgroundCol = d3.color(borderCol).rgb(); 
     backgroundCol.opacity = 0.1;
     d3.select("div.NodeInfoMenu")
-    .transition(trans)
-    .style("border-color", function() { return (nodeInfoKey === nodeInfoNone) ? "rgba(0,0,0,0.1)" : borderCol;})
-    .style("background-color", function() { 
-      return (nodeInfoKey === nodeInfoNone) ? "rgba(0,0,0,0.1)" : backgroundCol.toString();}); 
+      .transition(trans)
+      .style("border-color", function() { return (nodeInfoKey === nodeInfoNone) ? "rgba(0,0,0,0.1)" : borderCol;})
+      .style("background-color", function() { 
+        return (nodeInfoKey === nodeInfoNone) ? "rgba(0,0,0,0.1)" : backgroundCol.toString();}); 
           
     d3.selectAll("rect.sankeyNodeInfo")
-    .style("display", "inline")  // reset style to inline if switch from none to other
-    .transition(trans)
-    .attr("y", (d) => (visMode === ZOOM) ? 
-      d.nodeInfos[nodeInfoKey + "_transY"] : d.dy - d.nodeInfos[nodeInfoKey + "_dy"])
-    .attr("height", (d) => (visMode === ZOOM) ? 
-      d.nodeInfos[nodeInfoKey + "_transHeight"] : d.nodeInfos[nodeInfoKey + "_dy"])
-    /*
-    .attr("y", function(d) { 
-      if (visMode === ZOOM) {
-        return d.nodeInfos[nodeInfoKey + "_transY"];
-      } else {
-        return d.dy - d.nodeInfos[nodeInfoKey + "_dy"]; 
-      }
-      /*
-      if (nodeInfoKey === nodeInfoNone) { return d.dy; }
-      else {
-        if (debugOn) {
-          console.log("value: " + d.nodeInfos[nodeInfoKey]);
-          console.log("newHeight: " + d.nodeInfos[nodeInfoKey + "_dy"]);
-        } 
-        return d.dy - d.nodeInfos[nodeInfoKey + "_dy"];
-      }*/
-    /*
-    })
-    .attr("height", function(d) { 
-      if (visMode === ZOOM) {
-        return d.nodeInfos[nodeInfoKey + "_transHeight"];
-      }
-
-      if (nodeInfoKey === nodeInfoNone) { return 0; }
-      else {return d.nodeInfos[nodeInfoKey + "_dy"]; }
-    })
-    */
-    .transition()
-    .delay(10)
-    .duration(10)
-    .style("display", function() { // set style to none if switch from other to none
-      if (nodeInfoKey === nodeInfoNone) { return "none"; }
-      else { return "inline";} 
-    });
+      .style("display", "inline")  // reset style to inline if switch from none to other
+      .transition(trans)
+      .attr("y", (d) => (visMode === ZOOM) ? 
+        d.nodeInfos[nodeInfoKey + "_transY"] : d.dy - d.nodeInfos[nodeInfoKey + "_dy"])
+      .attr("height", (d) => (visMode === ZOOM) ? 
+        d.nodeInfos[nodeInfoKey + "_transHeight"] : d.nodeInfos[nodeInfoKey + "_dy"])
+      .transition()
+      .delay(10)
+      .duration(10)
+      .style("display", function() { // set style to none if switch from other to none
+        if (nodeInfoKey === nodeInfoNone) { return "none"; }
+        else { return "inline";} 
+      });
   }
   
   ////////////////////////////////////////////////////
@@ -494,6 +463,8 @@ export default function(_myData) {
           d3.select("div.sankeyChart > svg")
           .on("click", function () { // after click anywhere in svg, return to single mode
             if (visMode === ZOOM) { 
+              d3.select(".nodeScaling").node().disabled = false;
+              d3.select(".labelOnOff").node().disabled = false;
               let nameX = d3.select("g.zoomed").classed("zoomed", false).datum();
               transitionXaxisBack(nameX); 
               visMode = SINGLE;
@@ -726,6 +697,10 @@ export default function(_myData) {
           if (typeof transitionX !== "undefined") {
             d3.selectAll("g.axis.bottom > g.tick").on("click", function(){
               if (visMode === SINGLE) {
+                d3.select(".nodeScaling").node().disabled = true;
+                d3.select(".labelOnOff").node().checked = false;
+                updateNodeLabels();
+                d3.select(".labelOnOff").node().disabled = true;
                 let nameX = d3.select(this).classed("zoomed", true).datum();
                 transitionXaxis(transitionX, nameX, nodeInfos);
                 d3.event.stopPropagation();

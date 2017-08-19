@@ -176,8 +176,8 @@ export function transitionXaxis(transitionX, nameX, nodeInfos){
 
   // calculate position for nodes
   let updateNodes = myFrame.selectAll("g.node")
-    .filter((d) => d.nameX === nameX)
-    .filter((d) => transitionX().indexOf(d.nameY) !== -1);
+    .filter(d => d.nameX === nameX)
+    .filter(d => transitionX().indexOf(d.nameY) !== -1);
   let newValue = 0;
   let tempValue = 0;
   let arrOfValues = [];
@@ -245,20 +245,23 @@ export function transitionXaxis(transitionX, nameX, nodeInfos){
   let updateNodeInfos = updateNodes.select("rect.sankeyNodeInfo");
   updateNodeInfos.each(function(d) {
     nodeInfos.nodeInfoKeys.forEach( function(key) {
+      d.nodeInfos[key + "_transY"] = rectY(d.value - +d.nodeInfos[key]);
+      d.nodeInfos[key + "_transHeight"] = rectY(+d.nodeInfos[key]);
+      /*
       d.nodeInfos[key + "_transY"] = (key === nodeInfos.nodeInfoNone) 
         ? rectY(d.value) : rectY(d.value - +d.nodeInfos[key]);
 
       d.nodeInfos[key + "_transHeight"] = (key === nodeInfos.nodeInfoNone) 
         ? 0 : rectY(+d.nodeInfos[key]);
+      */
     });
   });
 
-  // updateNodes.select("rect.sankeyNodeInfo")
   updateNodeInfos
     .transition(trans)
     // .attr("height", (d) => rectY(d.value))
-    .attr("y", (d) => d.nodeInfos[nodeInfos.nodeInfoKey + "_transY"])
-    .attr("height", (d) => d.nodeInfos[nodeInfos.nodeInfoKey + "_transHeight"]);
+    .attr("y", d => d.nodeInfos[nodeInfos.nodeInfoKey + "_transY"])
+    .attr("height", d => d.nodeInfos[nodeInfos.nodeInfoKey + "_transHeight"]);
 /*
     .attr("y", function(d) {
       if (nodeInfoKey === nodeInfoNone) { return rectY(d.value); }
