@@ -10,7 +10,7 @@
   "license": "BSD-3-Clause",
   "main": "build/sequence-explorer.js",
   "jsnext:main": "index",
-  "homepage": "https://github.com/ee2dev/sequence-explorer", 
+  "homepage": "https://github.com/ee2dev/sequence-explorer",
   "repository": {
     "type": "git",
     "url": "https://github.com/ee2dev/sequence-explorer.git"

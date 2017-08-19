@@ -139,7 +139,7 @@ export function transitionToMultiples(clickedElement) {
   return true;
 }
 
-export function transitionXaxis(transitionX, nameX){
+export function transitionXaxis(transitionX, nameX, nodeInfos){
   console.log("clicked on axis" + transitionX);
   const trans = d3.transition().duration(1000);
   const myFrame = d3.select("g.sankeyFrame.single");
@@ -178,9 +178,10 @@ export function transitionXaxis(transitionX, nameX){
   let updateNodes = myFrame.selectAll("g.node")
     .filter((d) => d.nameX === nameX)
     .filter((d) => transitionX().indexOf(d.nameY) !== -1);
-  let arrOfValues = []; 
   let newValue = 0;
   let tempValue = 0;
+  let arrOfValues = [];
+  // initialize arrOfValues with selected categories 
   transitionX().forEach(function(element) {
     arrOfValues.push({name: element, value: 0});
   });
@@ -196,6 +197,7 @@ export function transitionXaxis(transitionX, nameX){
   }).datum().valueX;
   */
 
+  // add individual values to categories in arrOfValues
   let sumOfValues = 0;
   updateNodes.each(function(d) {
     arrOfValues.forEach(function(element) {
@@ -206,12 +208,14 @@ export function transitionXaxis(transitionX, nameX){
     });
   });
 
+  // update values to reflect cumulative values
   arrOfValues.forEach(function(element){
     tempValue = element.value;
     element.value = newValue;
     newValue += tempValue;
   });
 
+  // set up scale to map cumulative values to position on SVG
   const rectY = d3.scaleLinear().domain([0, sumOfValues]).range([0, frameY - 10]);
 
   updateNodes.transition(trans)
@@ -232,10 +236,44 @@ export function transitionXaxis(transitionX, nameX){
       return "translate (" + transX + "," + transY + ")";
     });
 
-  // scale height nodes
-  updateNodes.select("rect")
+  // transition regular nodes
+  updateNodes.select("rect.sankeyNode")
     .transition(trans)
     .attr("height", (d) => rectY(d.value));
+
+  // transition node infos
+  let updateNodeInfos = updateNodes.select("rect.sankeyNodeInfo");
+  updateNodeInfos.each(function(d) {
+    nodeInfos.nodeInfoKeys.forEach( function(key) {
+      d.nodeInfos[key + "_transY"] = (key === nodeInfos.nodeInfoNone) 
+        ? rectY(d.value) : rectY(d.value - +d.nodeInfos[key]);
+
+      d.nodeInfos[key + "_transHeight"] = (key === nodeInfos.nodeInfoNone) 
+        ? 0 : rectY(+d.nodeInfos[key]);
+    });
+  });
+
+  // updateNodes.select("rect.sankeyNodeInfo")
+  updateNodeInfos
+    .transition(trans)
+    // .attr("height", (d) => rectY(d.value))
+    .attr("y", (d) => d.nodeInfos[nodeInfos.nodeInfoKey + "_transY"])
+    .attr("height", (d) => d.nodeInfos[nodeInfos.nodeInfoKey + "_transHeight"]);
+/*
+    .attr("y", function(d) {
+      if (nodeInfoKey === nodeInfoNone) { return rectY(d.value); }
+      else {
+       // return rectY(d.dy - d.nodeInfos[nodeInfoKey + "_dy"]);
+        return rectY(d.value - d.nodeInfos[nodeInfoKey]);
+      }
+    })
+    .attr("height", function(d) { 
+      if (nodeInfoKey === nodeInfoNone) { return 0; }
+     // else {return rectY(d.nodeInfos[nodeInfoKey + "_dy"]); }
+      else {return rectY(d.nodeInfos[nodeInfoKey]); }
+    });
+    */
+
 }
 
 export function transitionXaxisBack(nameX){

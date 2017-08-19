@@ -15,12 +15,17 @@ export default function(_myData) {
   var nodeInfoKeys; // the key names of the additional node infos
   var nodeInfoNone = "(none)"; // displayed string for no info key
   var nodeInfoKey = nodeInfoNone; // the selected key
+  var nodeInfos = {}; // Object containing the three variables above as properties 
   var valueName; // the column name of the frequency value
   var scaleGlobal = true; // scale the node height for multiples over all sankeys 
   var showNodeLabels = true; // show node labels
   var tooltipFormat = []; // format of the tooltip text
   var allGraphs; // data structure containing columns of rows of sankey input data;
   var tooltip;
+  const SINGLE = 1; // single sankey diagram
+  const MULTIPLES = 2; // small multiples diagramm
+  const ZOOM = 3; // transitioned to a zoomed display of fractions
+  let visMode = MULTIPLES;
   
   ///////////////////////////////////////////////////
   // 1.0 add visualization specific variables here //
@@ -170,14 +175,16 @@ export default function(_myData) {
     return chartAPI;
   };
 
-  chartAPI.transitionX = function(_) { // returns function that return an array of categories
+  chartAPI.transitionX = function(_) { // returns a function that returns an array of categories
     if (!arguments.length) return transitionX();
-    else if (_ === true) {
-      transitionX = chartAPI.categoryOrder;
-    } else {
-      transitionX = function() {return _;};
+    else {
+      if (_ === true) {
+        transitionX = chartAPI.categoryOrder;
+      } else {
+        transitionX = function() {return _;};
+      }
+      return chartAPI;
     }
-    return chartAPI;
   };
 
   chartAPI.transitionY = function(_) {
@@ -261,6 +268,7 @@ export default function(_myData) {
       .attr("checked", function(d, i) { if (i === 0) { return "checked"; } })
       .on("change", function change() {
         nodeInfoKey = this.value;
+        nodeInfos.nodeInfoKey = nodeInfoKey;
         console.log("nodeInfokey: "+ nodeInfoKey);
         updateNodeInfo();
       }); 
@@ -333,10 +341,11 @@ export default function(_myData) {
            }
          });
            return (typeof d.nodeInfos !== "undefined"); })
-         
+         /*
         .attr("height", function() { 
           return d3.select(this).attr("height");
         })
+        */
         
         .transition(trans)   
         .attr("y", function(d) {
@@ -376,20 +385,37 @@ export default function(_myData) {
     d3.selectAll("rect.sankeyNodeInfo")
     .style("display", "inline")  // reset style to inline if switch from none to other
     .transition(trans)
+    .attr("y", (d) => (visMode === ZOOM) ? 
+      d.nodeInfos[nodeInfoKey + "_transY"] : d.dy - d.nodeInfos[nodeInfoKey + "_dy"])
+    .attr("height", (d) => (visMode === ZOOM) ? 
+      d.nodeInfos[nodeInfoKey + "_transHeight"] : d.nodeInfos[nodeInfoKey + "_dy"])
+    /*
     .attr("y", function(d) { 
+      if (visMode === ZOOM) {
+        return d.nodeInfos[nodeInfoKey + "_transY"];
+      } else {
+        return d.dy - d.nodeInfos[nodeInfoKey + "_dy"]; 
+      }
+      /*
       if (nodeInfoKey === nodeInfoNone) { return d.dy; }
       else {
         if (debugOn) {
-          console.log("value: " + +d.nodeInfos[nodeInfoKey]);
+          console.log("value: " + d.nodeInfos[nodeInfoKey]);
           console.log("newHeight: " + d.nodeInfos[nodeInfoKey + "_dy"]);
         } 
         return d.dy - d.nodeInfos[nodeInfoKey + "_dy"];
-      }
+      }*/
+    /*
     })
     .attr("height", function(d) { 
+      if (visMode === ZOOM) {
+        return d.nodeInfos[nodeInfoKey + "_transHeight"];
+      }
+
       if (nodeInfoKey === nodeInfoNone) { return 0; }
       else {return d.nodeInfos[nodeInfoKey + "_dy"]; }
     })
+    */
     .transition()
     .delay(10)
     .duration(10)
@@ -414,10 +440,6 @@ export default function(_myData) {
     var props; // properties calculated in initialization function
     var transformString; // object that transform strings for transitioning between small multiples and single
     var svg; 
-    const SINGLE = 1; // single sankey diagram
-    const MULTIPLES = 2; // small multiples diagramm
-    const ZOOM = 3; // transitioned to a zoomed display of fractions
-    let visMode = MULTIPLES;
     
     selection.each(function () {
         // 4.1 insert code here  
@@ -660,12 +682,9 @@ export default function(_myData) {
             } 
             // var transNode = getTranslation(d3.select(this.parentNode).attr("transform"))[1];
             var pyHeight = parseInt(d3.select(this).style("font-size"));    
-            d3.select(this).attr("y", function(d) { return d.dy < pyHeight ? d.dy - pyHeight / 2 - 2 : 
-              Math.min(d.dy / 2, d.dy - pyHeight / 2 - 2);});
-           /*          
-            if (transNode + pyHeight > yOfBottomAxis) {
-              d3.select(this).attr("y", function(d) { return d.dy - pyHeight / 2 - 2; });
-            } */
+            d3.select(this).attr("y", function(d) { 
+              return d.dy < pyHeight ? d.dy - pyHeight / 2 - 2 : Math.min(d.dy / 2, d.dy - pyHeight / 2 - 2);
+            });
           })  
           .filter(function(d) { return d.x > width * .9; })
             .attr("x", -3)
@@ -679,9 +698,7 @@ export default function(_myData) {
             .attr("y", function(d) { return d.dy;})
             .attr("height", function(d) { 
               nodeInfoKeys.forEach( function(key) {
-                if (key !== nodeInfoNone) {// skip case for no nodeInfo selection
-                  d.nodeInfos[key + "_dy"] = sankey.getNodeHeight(+d.nodeInfos[key]);
-                }
+                d.nodeInfos[key + "_dy"] = sankey.getNodeHeight(+d.nodeInfos[key]);
               });
               return 0; })
             .attr("width", sankey.nodeWidth())
@@ -710,7 +727,7 @@ export default function(_myData) {
             d3.selectAll("g.axis.bottom > g.tick").on("click", function(){
               if (visMode === SINGLE) {
                 let nameX = d3.select(this).classed("zoomed", true).datum();
-                transitionXaxis(transitionX, nameX);
+                transitionXaxis(transitionX, nameX, nodeInfos);
                 d3.event.stopPropagation();
                 visMode = ZOOM;
               } 
@@ -931,6 +948,7 @@ export default function(_myData) {
             Object.keys(nInfos).forEach(function(key) {
               nInfos[key + "_dy"] = 0;
             });
+            nInfos[nodeInfoNone] = 0; // add this for later processing convenience
             graph.nodes[i].nodeInfos = nInfos;        
           }
         });
@@ -975,6 +993,11 @@ export default function(_myData) {
         allGraphs[col].push(container);
       }); 
     });
+
+    // assemble nodeInfos object for transitions
+    nodeInfos.nodeInfoKeys = nodeInfoKeys;
+    nodeInfos.nodeInfoNone = nodeInfoNone;
+    nodeInfos.nodeInfoKey = nodeInfoKey;
 
     // get array of sequence and categories from sets
     let d_sequence = sequenceSet.values().sort(d3.ascending); 

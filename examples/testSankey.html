@@ -3,8 +3,8 @@
   <head>
     <link rel="stylesheet" type="text/css" href="../lib/sankeySeqExplorer_10.css">
   
-    <!--script src="../../../lib/d3_v4_2_1/d3.js"></script-->
-    <script src="https://d3js.org/d3.v4.js"></script> 
+    <script src="../../lib/d3_v4_2_1/d3.js"></script>
+    <!--script src="https://d3js.org/d3.v4.js"></script--> 
     <script src="../build/sequence-explorer.js"></script>
     <style>            
       rect.nyresponded_but_did_not_show_up {
@@ -29,7 +29,7 @@
     var myChart = sequenceExplorer.chart("../data/sankey_1234f.csv")
       //.debugOn(true)
       .showNodeLabels(false)
-      .size([900,700])
+      .size([900,600])
       .sequenceName("meetup")
       .categoryName("action")
       .categoryOrder(["joined meetup group","responded but did not show up","did not respond","responded No","responded and showed up"])
@@ -38,8 +38,9 @@
       .colOrder(["normal responders", "very late responders", "early responders", "all responders"])
      // .rowOrder(["B","C","A","D"])
       .tooltipFormat(["%event", "%category", "%firstCategory","%prevCategory"])
-      // .transitionX(["joined meetup group","responded and showed up"])
-      .transitionX(true)
+      //.transitionX(["joined meetup group","responded and showed up"])
+	  // .transitionX(["responded and showed up"])
+       .transitionX(true)
       .valueName("members"); 
       
     d3.select("body")
