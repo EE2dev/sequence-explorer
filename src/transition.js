@@ -243,10 +243,12 @@ export function transitionXaxis(transitionX, nameX, nodeInfos){
 
   // transition node infos
   let updateNodeInfos = updateNodes.select("rect.sankeyNodeInfo");
-  updateNodeInfos.each(function(d) {
-    nodeInfos.nodeInfoKeys.forEach( function(key) {
-      d.nodeInfos[key + "_transY"] = rectY(d.value - +d.nodeInfos[key]);
-      d.nodeInfos[key + "_transHeight"] = rectY(+d.nodeInfos[key]);
+  updateNodeInfos
+    .classed("zoomed", true)
+    .each(function(d) {
+      nodeInfos.nodeInfoKeys.forEach( function(key) {
+        d.nodeInfos[key + "_transY"] = rectY(d.value - +d.nodeInfos[key]);
+        d.nodeInfos[key + "_transHeight"] = rectY(+d.nodeInfos[key]);
       /*
       d.nodeInfos[key + "_transY"] = (key === nodeInfos.nodeInfoNone) 
         ? rectY(d.value) : rectY(d.value - +d.nodeInfos[key]);
@@ -254,8 +256,8 @@ export function transitionXaxis(transitionX, nameX, nodeInfos){
       d.nodeInfos[key + "_transHeight"] = (key === nodeInfos.nodeInfoNone) 
         ? 0 : rectY(+d.nodeInfos[key]);
       */
+      });
     });
-  });
 
   updateNodeInfos
     .transition(trans)

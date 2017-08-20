@@ -381,10 +381,22 @@ export default function(_myData) {
     d3.selectAll("rect.sankeyNodeInfo")
       .style("display", "inline")  // reset style to inline if switch from none to other
       .transition(trans)
-      .attr("y", (d) => (visMode === ZOOM) ? 
+      /*
+      .attr("y", d => (d3.select(this).classed("zoomed")) ? 
         d.nodeInfos[nodeInfoKey + "_transY"] : d.dy - d.nodeInfos[nodeInfoKey + "_dy"])
-      .attr("height", (d) => (visMode === ZOOM) ? 
+      */
+      .attr("y", function (d) {
+        return d3.select(this).classed("zoomed") ? 
+          d.nodeInfos[nodeInfoKey + "_transY"] : d.dy - d.nodeInfos[nodeInfoKey + "_dy"];
+      })
+      .attr("height", function (d) {
+        return d3.select(this).classed("zoomed") ? d.nodeInfos[nodeInfoKey + "_transHeight"] : d.nodeInfos[nodeInfoKey + "_dy"];
+      })
+     // .attr("height", d => (visMode === ZOOM) ? 
+      /*
+      .attr("height", d => (d3.select(this).classed("zoomed")) ? 
         d.nodeInfos[nodeInfoKey + "_transHeight"] : d.nodeInfos[nodeInfoKey + "_dy"])
+      */
       .transition()
       .delay(10)
       .duration(10)
