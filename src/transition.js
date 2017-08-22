@@ -186,17 +186,6 @@ export function transitionXaxis(transitionX, nameX, nodeInfos){
     arrOfValues.push({name: element, value: 0});
   });
 
-/*
-  const sumOfValues = updateNodes.filter(function(d, i) {
-    arrOfValues.forEach(function(element) {
-      if (element.name === d.nameY) {
-        element.value = d.value;
-      }
-    });
-    return i === 0;
-  }).datum().valueX;
-  */
-
   // add individual values to categories in arrOfValues
   let sumOfValues = 0;
   updateNodes.each(function(d) {
@@ -227,12 +216,6 @@ export function transitionXaxis(transitionX, nameX, nodeInfos){
           transY = frameY - rectY(element.value + d.value);
         }
       });
-      /*
-      console.log("name: " + d.name);
-      console.log("transX: " + transX);
-      console.log("transY: " + transY);
-      console.log(" ");
-      */
       return "translate (" + transX + "," + transY + ")";
     });
 
@@ -249,39 +232,16 @@ export function transitionXaxis(transitionX, nameX, nodeInfos){
       nodeInfos.nodeInfoKeys.forEach( function(key) {
         d.nodeInfos[key + "_transY"] = rectY(d.value - +d.nodeInfos[key]);
         d.nodeInfos[key + "_transHeight"] = rectY(+d.nodeInfos[key]);
-      /*
-      d.nodeInfos[key + "_transY"] = (key === nodeInfos.nodeInfoNone) 
-        ? rectY(d.value) : rectY(d.value - +d.nodeInfos[key]);
-
-      d.nodeInfos[key + "_transHeight"] = (key === nodeInfos.nodeInfoNone) 
-        ? 0 : rectY(+d.nodeInfos[key]);
-      */
       });
     });
 
   updateNodeInfos
     .transition(trans)
-    // .attr("height", (d) => rectY(d.value))
     .attr("y", d => d.nodeInfos[nodeInfos.nodeInfoKey + "_transY"])
     .attr("height", d => d.nodeInfos[nodeInfos.nodeInfoKey + "_transHeight"]);
-/*
-    .attr("y", function(d) {
-      if (nodeInfoKey === nodeInfoNone) { return rectY(d.value); }
-      else {
-       // return rectY(d.dy - d.nodeInfos[nodeInfoKey + "_dy"]);
-        return rectY(d.value - d.nodeInfos[nodeInfoKey]);
-      }
-    })
-    .attr("height", function(d) { 
-      if (nodeInfoKey === nodeInfoNone) { return 0; }
-     // else {return rectY(d.nodeInfos[nodeInfoKey + "_dy"]); }
-      else {return rectY(d.nodeInfos[nodeInfoKey]); }
-    });
-    */
-
 }
 
-export function transitionXaxisBack(nameX){
+export function transitionXaxisBack(nameX, nodeInfos){
   const myFrame = d3.select("g.sankeyFrame.single");
   const trans = d3.transition().duration(1000);
 
@@ -294,8 +254,8 @@ export function transitionXaxisBack(nameX){
   // show not selected nodes
   let hideNodes = myFrame.selectAll("g.node").filter((d) => d.nameX !== nameX);
   hideNodes.classed("hide", false)
-        .transition(trans)
-        .style("opacity", 1);
+    .transition(trans)
+    .style("opacity", 1);
 
   // show y axis
   d3.select("g.axis.left")
@@ -303,8 +263,12 @@ export function transitionXaxisBack(nameX){
     .transition(trans)
     .style("opacity", 1);
 
-  // translate nodes to original position
-  let updateNodes = myFrame.selectAll("g.node").filter((d) => d.nameX === nameX);
+  // translate zoom transitioned nodes to original position
+  let updateNodes = myFrame.selectAll("g.node")
+    .filter(function(){
+      return !d3.select(this).classed("hide");
+    });
+
   updateNodes.transition(trans)
     .attr("transform", function(d){
       return "translate (" + d.x + "," + d.y + ")";
@@ -313,5 +277,22 @@ export function transitionXaxisBack(nameX){
   // rescale height nodes
   updateNodes.select("rect")
     .transition(trans)
-    .attr("height", (d) => d.dy);
+    .attr("height", d => d.dy);
+
+  // potential subset of nodes which have been excluded for zoom transition
+  let updateHiddenNodes = myFrame.selectAll("g.node").filter(function(){
+    return d3.select(this).classed("hide");
+  });
+
+  updateHiddenNodes.classed("hide", false)
+    .transition(trans)
+    .style("opacity", 1);   
+
+  // rescale node infos
+  myFrame.select("rect.sankeyNodeInfo")
+    .classed("zoomed", false)
+    .filter(() => nodeInfos.nodeInfoKey !== nodeInfos.nodeInfoNone)
+    .transition(trans)
+    .attr("y", d => d.dy - d.nodeInfos[nodeInfos.nodeInfoKey + "_dy"])
+    .attr("height", d => d.nodeInfos[nodeInfos.nodeInfoKey + "_dy"]);
 }
