@@ -406,7 +406,7 @@ export default function(_myData) {
       */
       .attr("y", function (d, i) {
         console.log(i + ":");
-        console.log(d3.select(this).node().__data__);
+        // console.log(d3.select(this).node().__data__);
         /*
         console.log(d);
         if (typeof d.single !== undefined)

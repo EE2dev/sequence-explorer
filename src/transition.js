@@ -289,7 +289,7 @@ export function transitionXaxisBack(nameX, nodeInfos){
     .style("opacity", 1);   
 
   // rescale node infos
-  myFrame.select("rect.sankeyNodeInfo")
+  myFrame.selectAll("rect.sankeyNodeInfo")
     .classed("zoomed", false)
     .filter(() => nodeInfos.nodeInfoKey !== nodeInfos.nodeInfoNone)
     .transition(trans)
