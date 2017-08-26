@@ -377,53 +377,14 @@ export default function(_myData) {
       .style("border-color", function() { return (nodeInfoKey === nodeInfoNone) ? "rgba(0,0,0,0.1)" : borderCol;})
       .style("background-color", function() { 
         return (nodeInfoKey === nodeInfoNone) ? "rgba(0,0,0,0.1)" : backgroundCol.toString();}); 
-     
-        /*
-    //test
-    d3.selectAll("g.sankeyFrame.single")
-        .each(function (){
-          let that = this;
-          d3.select(that).selectAll("g.node")
-            .each(function (){
-              console.log("class of node: ");
-              let c1 = d3.select(this).select("rect.sankeyNode").attr("class");
-              console.log(c1);
-              console.log("data of node: ");
-              // d3.select(this).select("rect.sankeyNodeInfo").attr("classed", c1);
-              console.log(d3.select(this).select("rect.sankeyNodeInfo").node().__data__);
-              console.log("------------------------");
-            });
-        });
-    // end test
 
-    */
     d3.selectAll("rect.sankeyNodeInfo")
       .style("display", "inline")  // reset style to inline if switch from none to other
       .transition(trans)
-      /*
-      .attr("y", d => (d3.select(this).classed("zoomed")) ? 
-        d.nodeInfos[nodeInfoKey + "_transY"] : d.dy - d.nodeInfos[nodeInfoKey + "_dy"])
-      */
-      .attr("y", function (d, i) {
-        console.log(i + ":");
-        // console.log(d3.select(this).node().__data__);
-        /*
-        console.log(d);
-        if (typeof d.single !== undefined)
-          console.log(d3.select(this).attr("class"));
-        */
-        return d3.select(this).classed("zoomed") ? 
-          d.nodeInfos[nodeInfoKey + "_transY"] : d.dy - d.nodeInfos[nodeInfoKey + "_dy"];
-      })
-      .attr("height", function (d) {
-        return d3.select(this).classed("zoomed") ? 
-          d.nodeInfos[nodeInfoKey + "_transHeight"] : d.nodeInfos[nodeInfoKey + "_dy"];
-      })
-     // .attr("height", d => (visMode === ZOOM) ? 
-      /*
-      .attr("height", d => (d3.select(this).classed("zoomed")) ? 
-        d.nodeInfos[nodeInfoKey + "_transHeight"] : d.nodeInfos[nodeInfoKey + "_dy"])
-      */
+      .attr("y", function(d) { return d3.select(this).classed("zoomed") ? 
+          d.nodeInfos[nodeInfoKey + "_transY"] : d.dy - d.nodeInfos[nodeInfoKey + "_dy"];})
+      .attr("height", function(d) { return d3.select(this).classed("zoomed") ? 
+          d.nodeInfos[nodeInfoKey + "_transHeight"] : d.nodeInfos[nodeInfoKey + "_dy"];})
       .transition()
       .delay(10)
       .duration(10)

@@ -144,34 +144,14 @@ export function transitionXaxis(transitionX, nameX, nodeInfos){
   const myFrame = d3.select("g.sankeyFrame.single");
   const frameY = myFrame.select(".coverSankeySeq").node().getBBox().height;
 
-  // hide links
-  myFrame.selectAll("g.links")
-    .transition(trans)
-    .style("opacity", 0)
-    .on("end",  function(){ d3.select(this).classed("hide", true); return;});
-
-  // hide not selected nodes
-  let hideNodes = myFrame.selectAll("g.node").filter((d) => d.nameX !== nameX);
-  hideNodes.transition(trans)
-        .style("opacity", 0)
-        .on("end",  function(){ d3.select(this).classed("hide", true); return;});
-
-  // in case some categories are excluded for transition
-  let hideNodes2 = myFrame.selectAll("g.node")
-    .filter((d) => d.nameX === nameX)
-    .filter((d) => transitionX().indexOf(d.nameY) === -1);
-  hideNodes2.transition(trans)
-        .style("opacity", 0)
-        .on("end",  function(){ d3.select(this).classed("hide", true); return;});      
-
-  // hide y axis
-  d3.select("g.axis.left")
-    .transition(trans)
-    .style("opacity", 0)
-    .on("end",  function(){ 
-      d3.select(this).classed("hide", true); 
-      return;
-    });
+  hideSelection(myFrame.selectAll("g.links"), trans); // hide links  
+  hideSelection(myFrame.selectAll("g.node").filter((d) => d.nameX !== nameX)
+    ,trans); // hide not selected nodes
+  hideSelection(myFrame.selectAll("g.node")
+      .filter((d) => d.nameX === nameX)
+      .filter((d) => transitionX().indexOf(d.nameY) === -1)
+    ,trans); // in case some categories are excluded for transition
+  hideSelection(d3.select("g.axis.left"), trans);   // hide y axis
 
   // calculate position for nodes
   let updateNodes = myFrame.selectAll("g.node")
@@ -290,8 +270,13 @@ export function transitionXaxisBack(nameX, nodeInfos){
   // rescale node infos
   myFrame.selectAll("rect.sankeyNodeInfo")
     .classed("zoomed", false)
-   // .filter(() => nodeInfos.nodeInfoKey !== nodeInfos.nodeInfoNone)
     .transition(trans)
     .attr("y", d => d.dy - d.nodeInfos[nodeInfos.nodeInfoKey + "_dy"])
     .attr("height", d => d.nodeInfos[nodeInfos.nodeInfoKey + "_dy"]);
+}
+
+function hideSelection(sel, trans) {
+  sel.transition(trans)
+    .style("opacity", 0)
+    .on("end",  function(){ d3.select(this).classed("hide", true); return;});
 }
