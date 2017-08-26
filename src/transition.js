@@ -140,13 +140,12 @@ export function transitionToMultiples(clickedElement) {
 }
 
 export function transitionXaxis(transitionX, nameX, nodeInfos){
-  console.log("clicked on axis" + transitionX);
   const trans = d3.transition().duration(1000);
   const myFrame = d3.select("g.sankeyFrame.single");
   const frameY = myFrame.select(".coverSankeySeq").node().getBBox().height;
 
   // hide links
-  myFrame.select("g.links")
+  myFrame.selectAll("g.links")
     .transition(trans)
     .style("opacity", 0)
     .on("end",  function(){ d3.select(this).classed("hide", true); return;});
@@ -220,12 +219,12 @@ export function transitionXaxis(transitionX, nameX, nodeInfos){
     });
 
   // transition regular nodes
-  updateNodes.select("rect.sankeyNode")
+  updateNodes.selectAll("rect.sankeyNode")
     .transition(trans)
     .attr("height", (d) => rectY(d.value));
 
   // transition node infos
-  let updateNodeInfos = updateNodes.select("rect.sankeyNodeInfo");
+  let updateNodeInfos = updateNodes.selectAll("rect.sankeyNodeInfo");
   updateNodeInfos
     .classed("zoomed", true)
     .each(function(d) {
@@ -246,7 +245,7 @@ export function transitionXaxisBack(nameX, nodeInfos){
   const trans = d3.transition().duration(1000);
 
   // show links
-  myFrame.select("g.links")
+  myFrame.selectAll("g.links")
     .classed("hide", false)
     .transition(trans)
     .style("opacity", 1);
@@ -275,7 +274,7 @@ export function transitionXaxisBack(nameX, nodeInfos){
     });
 
   // rescale height nodes
-  updateNodes.select("rect")
+  updateNodes.selectAll("rect.sankeyNode")
     .transition(trans)
     .attr("height", d => d.dy);
 
@@ -291,7 +290,7 @@ export function transitionXaxisBack(nameX, nodeInfos){
   // rescale node infos
   myFrame.selectAll("rect.sankeyNodeInfo")
     .classed("zoomed", false)
-    .filter(() => nodeInfos.nodeInfoKey !== nodeInfos.nodeInfoNone)
+   // .filter(() => nodeInfos.nodeInfoKey !== nodeInfos.nodeInfoNone)
     .transition(trans)
     .attr("y", d => d.dy - d.nodeInfos[nodeInfos.nodeInfoKey + "_dy"])
     .attr("height", d => d.nodeInfos[nodeInfos.nodeInfoKey + "_dy"]);
