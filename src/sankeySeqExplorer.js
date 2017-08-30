@@ -2,7 +2,8 @@ import * as d3 from "d3";
 import { default as sankeySeq } from "./sankeySeq";
 import { positionTooltipNode, getTranslation, formatNumber, orderDimension } from "./helper";
 import { initialize_whp_and_axes, initializeFrame } from "./initialize";
-import { transitionToSingle, transitionToMultiples, transitionXaxis, transitionXaxisBack } from "./transition";
+import { transitionToSingle, transitionToMultiples, 
+  transitionXaxis, transitionXaxisBack, transitionYaxis, transitionYaxisBack } from "./transition";
 
 // var sequenceExplorerChart = function(_myData) {
 // export function chart(_myData) {
@@ -24,7 +25,8 @@ export default function(_myData) {
   var tooltip;
   const SINGLE = 1; // single sankey diagram
   const MULTIPLES = 2; // small multiples diagramm
-  const ZOOM = 3; // transitioned to a zoomed display of fractions
+  const ZOOMX = 3; // transitioned to a zoomed display of fractions on x axis
+  const ZOOMY = 4; // transitioned to a zoomed display of fractions on y axis
   let visMode = MULTIPLES;
   
   ///////////////////////////////////////////////////
@@ -187,10 +189,16 @@ export default function(_myData) {
     }
   };
 
-  chartAPI.transitionY = function(_) {
-    if (!arguments.length) return transitionY;
-    transitionY = _;
-    return chartAPI;
+  chartAPI.transitionY = function(_) { // returns a function that returns an array of categories for the y transition
+    if (!arguments.length) return transitionY();
+    else {
+      if (_ === true) {
+        transitionY = chartAPI.categoryOrder;
+      } else {
+        transitionY = function() {return _;};
+      }
+      return chartAPI;
+    }
   };
 
   ////////////////////////////////////
@@ -462,11 +470,17 @@ export default function(_myData) {
 
           d3.select("div.sankeyChart > svg")
           .on("click", function () { // after click anywhere in svg, return to single mode
-            if (visMode === ZOOM) { 
+            if (visMode === ZOOMX) { 
               d3.select(".nodeScaling").node().disabled = false;
               d3.select(".labelOnOff").node().disabled = false;
               let nameX = d3.select("g.zoomed").classed("zoomed", false).datum();
               transitionXaxisBack(nameX, nodeInfos); 
+              visMode = SINGLE;
+            } else if (visMode === ZOOMY) { 
+              d3.select(".nodeScaling").node().disabled = false;
+              d3.select(".labelOnOff").node().disabled = false;
+              d3.select("g.zoomed").classed("zoomed", false);
+              transitionYaxisBack(); 
               visMode = SINGLE;
             }
           });
@@ -704,10 +718,27 @@ export default function(_myData) {
                 let nameX = d3.select(this).classed("zoomed", true).datum();
                 transitionXaxis(transitionX, nameX, nodeInfos);
                 d3.event.stopPropagation();
-                visMode = ZOOM;
+                visMode = ZOOMX;
               } 
-            });            
+            });                       
           }
+
+          if (typeof transitionY !== "undefined") {
+            d3.selectAll("g.axis.left > g.tick").on("click", function(){
+              if (visMode === SINGLE) {
+                let nameY = d3.select(this).classed("zoomed", true).datum();
+                if (transitionY().indexOf(nameY) === -1) {return;}
+                d3.select(".nodeScaling").node().disabled = true;
+                d3.select(".labelOnOff").node().checked = false;
+                updateNodeLabels();
+                d3.select(".labelOnOff").node().disabled = true;
+                transitionYaxis(transitionY, nameY, sequence, thousandsSeparator);
+                d3.event.stopPropagation();
+                visMode = ZOOMY;
+              } 
+            });                       
+          }
+
         });
       });  
     });

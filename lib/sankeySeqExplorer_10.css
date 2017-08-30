@@ -118,6 +118,12 @@
   .show {
     display: inline;
   }
+
+  /* text labels for transitionY */
+  text.percentageLabel {
+    opacity: 0;
+    text-anchor: middle;
+  }
   
   /* colors for the nodes */
   

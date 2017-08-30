@@ -1,5 +1,5 @@
 import * as d3 from "d3";
-import {getTranslation} from "./helper";
+import {getTranslation, formatNumber} from "./helper";
 
 export function transitionToSingle(clickedElement, _trans) {
   var trans = (typeof _trans !== "undefined") ? _trans : d3.transition().duration(1000);
@@ -223,24 +223,10 @@ export function transitionXaxis(transitionX, nameX, nodeInfos){
 export function transitionXaxisBack(nameX, nodeInfos){
   const myFrame = d3.select("g.sankeyFrame.single");
   const trans = d3.transition().duration(1000);
-
-  // show links
-  myFrame.selectAll("g.links")
-    .classed("hide", false)
-    .transition(trans)
-    .style("opacity", 1);
-
-  // show not selected nodes
-  let hideNodes = myFrame.selectAll("g.node").filter((d) => d.nameX !== nameX);
-  hideNodes.classed("hide", false)
-    .transition(trans)
-    .style("opacity", 1);
-
-  // show y axis
-  d3.select("g.axis.left")
-    .classed("hide", false)
-    .transition(trans)
-    .style("opacity", 1);
+    
+  showSelection(myFrame.selectAll("g.links"), trans); // show links  
+  showSelection(myFrame.selectAll("g.node") ,trans); // show all nodes
+  showSelection(d3.select("g.axis.left"), trans);   // show y axis
 
   // translate zoom transitioned nodes to original position
   let updateNodes = myFrame.selectAll("g.node")
@@ -258,15 +244,6 @@ export function transitionXaxisBack(nameX, nodeInfos){
     .transition(trans)
     .attr("height", d => d.dy);
 
-  // potential subset of nodes which have been excluded for zoom transition
-  let updateHiddenNodes = myFrame.selectAll("g.node").filter(function(){
-    return d3.select(this).classed("hide");
-  });
-
-  updateHiddenNodes.classed("hide", false)
-    .transition(trans)
-    .style("opacity", 1);   
-
   // rescale node infos
   myFrame.selectAll("rect.sankeyNodeInfo")
     .classed("zoomed", false)
@@ -279,4 +256,46 @@ function hideSelection(sel, trans) {
   sel.transition(trans)
     .style("opacity", 0)
     .on("end",  function(){ d3.select(this).classed("hide", true); return;});
+}
+
+function showSelection(sel, trans) {
+  sel.classed("hide", false)
+    .transition(trans)
+    .style("opacity", 1);
+}
+
+export function transitionYaxis(transitionY, nameY, sequence, thousandsSeparator){
+  const trans = d3.transition().duration(1000);
+  const myFrame = d3.select("g.sankeyFrame.single");
+  const dx = d3.select("g.sankeyFrame.single rect.sankeyNode").attr("width") / 2; // position adjustment for text label
+  const dy = -5; // height adjustment for text label
+
+  hideSelection(myFrame.selectAll("g.links"), trans); // hide links  
+  hideSelection(myFrame.selectAll("g.node").filter((d) => d.nameY !== nameY)
+    ,trans); // hide not selected nodes
+
+  let denominator = {};
+  sequence.forEach(seqEvent => {denominator[seqEvent] = 0;});
+  myFrame.selectAll("g.node")
+    .filter(d => transitionY().indexOf(d.nameY) !== -1)
+    .each(d => denominator[d.nameX] += d.value);
+  
+  myFrame.selectAll("g.node")
+    .filter(d => d.nameY === nameY)
+    .append("text")
+    .attr("class", "percentageLabel")
+    .attr("x" , dx+ "px")
+    .attr("y", dy + "px")
+    .text( d => formatNumber("" + (d.value / denominator[d.nameX]), thousandsSeparator, ",.1%"))
+    .transition(trans)
+    .style("opacity", 1);
+}
+
+export function transitionYaxisBack(){
+  const myFrame = d3.select("g.sankeyFrame.single");
+  const trans = d3.transition().duration(1000);
+    
+  showSelection(myFrame.selectAll("g.links"), trans); // show links  
+  showSelection(myFrame.selectAll("g.node") ,trans); // show all nodes
+  hideSelection(d3.selectAll("text.percentageLabel"), trans); // hide labels
 }

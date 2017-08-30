@@ -172,7 +172,6 @@ export default function() {
       node.valueYFirst = newValues.get("first" + sequence[0] + node.nameY); // value of category at first event
       // node.allValues = newValues;
     });
-
   };
 
   // end of API functions
