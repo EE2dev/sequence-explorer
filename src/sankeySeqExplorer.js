@@ -45,6 +45,7 @@ export default function(_myData) {
     rowOrder,
     transitionX, // a function returning an array of categories (-> transition after clicking on the x axis)
     transitionY, // a function returning an array of categories (-> transition after clicking on the y axis)
+    corrCategories = function(){return categories;}, // subset of categories for calculating percentages (tooltip, transitions) 
     sequenceName = "sequence",
     categoryName = "category",
     thousandsSeparator = ",";
@@ -199,6 +200,14 @@ export default function(_myData) {
       }
       return chartAPI;
     }
+  };
+
+  // returns a function that returns an array of categories 
+  // for the transitions and tooltip  
+  chartAPI.correspondingCategories = function(_) { 
+    if (!arguments.length) return corrCategories();
+    corrCategories = function() {return _;};
+    return chartAPI;
   };
 
   ////////////////////////////////////
@@ -460,6 +469,8 @@ export default function(_myData) {
             .nodePadding(nodePadding)
             .nodes(graph.nodes)
             .links(graph.links)
+            .correspondingCategories(chartAPI.correspondingCategories())
+            //.correspondingCategories(corrCategories)
             .debugOn(debugOn);
           
           if (scaleGlobal) {sankey.maxValue(allGraphs.maxValue);}

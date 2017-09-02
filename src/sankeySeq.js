@@ -13,6 +13,7 @@ export default function() {
     size = [700, 500],
     sequence = [],
     categories = [],
+    corrCategories, // possible subset of categories for calculating percentages
     ky, // scaling factor for height of node
     maxValue, // the max of all node values
     maxValueSpecified = false, // true if maxValue is specified through API
@@ -60,6 +61,24 @@ export default function() {
   sankey.categories = function(_) {
     if (!arguments.length) return categories;
     categories = _;
+    return sankey;
+  };
+ 
+  // returns a function that returns an array of categories 
+  // for the transitions and tooltip  
+  /*
+  sankey.correspondingCategories = function(_) { 
+    if (!arguments.length) return corrCategories();
+    corrCategories = _;
+    // corrCategories = function() {return _;};
+    return sankey;
+  };
+  */
+
+  sankey.correspondingCategories = function(_) {  
+    if (!arguments.length) return corrCategories();
+    else { corrCategories = function() {return _;};
+    }
     return sankey;
   };
  
@@ -134,7 +153,7 @@ export default function() {
     return sankey;
   };
 
-  // adds value properties to nodes which can be used by the tooltip text.
+  // adds value properties to nodes which can be used by the tooltip text and transitions
   // Has to be called after layout function 
   sankey.addValues = function() {
     let newValues = map();
@@ -146,9 +165,20 @@ export default function() {
       newValues.set(cat, 0);
     });
 
+    let key;
     nodes.forEach(function(node) {
       newValues.set(node.nameX, newValues.get(node.nameX) + node.value);
       newValues.set(node.nameY, newValues.get(node.nameY) + node.value);
+      
+      if (corrCategories().indexOf(node.nameY) !== -1){
+        corrCategories().forEach(function (cat){
+          key = "corr" + node.nameX + cat;
+          if (typeof newValues.get(key) === "undefined") {
+            newValues.set(key, 0);
+          } 
+          newValues.set(key, newValues.get(key) + node.value);
+        });  
+      }
       
       rIndex = -1;
       sequence.forEach(function(seq, i) {
@@ -168,6 +198,7 @@ export default function() {
     nodes.forEach(function(node) {
       node.valueX = newValues.get(node.nameX); // sum of category values
       node.valueY = newValues.get(node.nameY); // sum of event values
+      node.valueXCorr = newValues.get("corr" + node.nameX + node.nameY); // sum of corresponding event values
       node.valueYPrev = newValues.get("prev" + node.nameX + node.nameY); // value of category at previous event
       node.valueYFirst = newValues.get("first" + sequence[0] + node.nameY); // value of category at first event
       // node.allValues = newValues;
