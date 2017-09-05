@@ -43,7 +43,6 @@ export default function(_myData) {
     categories,
     colOrder,
     rowOrder,
-    transitionY, // a function returning an array of categories (-> transition after clicking on the y axis)
     corrCategories = function(){return categories;}, // subset of categories for calculating percentages (tooltip, transitions) 
     sequenceName = "sequence",
     categoryName = "category",
@@ -175,18 +174,6 @@ export default function(_myData) {
     if (!arguments.length) return colOrder;
     colOrder = _;
     return chartAPI;
-  };
-
-  chartAPI.transitionY = function(_) { // returns a function that returns an array of categories for the y transition
-    if (!arguments.length) return transitionY();
-    else {
-      if (_ === true) {
-        transitionY = chartAPI.categoryOrder;
-      } else {
-        transitionY = function() {return _;};
-      }
-      return chartAPI;
-    }
   };
 
   // returns a function that returns an array of categories 
@@ -723,23 +710,19 @@ export default function(_myData) {
             } 
           });                       
 
-          if (typeof transitionY !== "undefined") {
-            d3.selectAll("g.axis.left > g.tick").on("click", function(){
-              if (visMode === SINGLE) {
-                let nameY = d3.select(this).classed("zoomed", true).datum();
-                // if (transitionY().indexOf(nameY) === -1) {return;}
-                if (percentages[0] === "%event" && corrCategories().indexOf(nameY) === -1){ return;}
-                d3.select(".nodeScaling").node().disabled = true;
-                d3.select(".labelOnOff").node().checked = false;
-                updateNodeLabels();
-                d3.select(".labelOnOff").node().disabled = true;
-                transitionYaxis(transitionY, nameY, sequence, thousandsSeparator, percentages[0]);
-                d3.event.stopPropagation();
-                visMode = ZOOMY;
-              } 
-            });                       
-          }
-
+          d3.selectAll("g.axis.left > g.tick").on("click", function(){
+            if (visMode === SINGLE) {
+              let nameY = d3.select(this).classed("zoomed", true).datum();
+              if (percentages[0] === "%event" && corrCategories().indexOf(nameY) === -1){ return;}
+              d3.select(".nodeScaling").node().disabled = true;
+              d3.select(".labelOnOff").node().checked = false;
+              updateNodeLabels();
+              d3.select(".labelOnOff").node().disabled = true;
+              transitionYaxis(nameY, thousandsSeparator, percentages[0]);
+              d3.event.stopPropagation();
+              visMode = ZOOMY;
+            } 
+          });                       
         });
       });  
     });

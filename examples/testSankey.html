@@ -33,16 +33,11 @@
       .sequenceName("meetup")
       .categoryName("action")
       .categoryOrder(["joined meetup group","responded but did not show up","did not respond","responded No","responded and showed up"])
-      //.sequence(["before meetup1","meetup1","meetup2","meetup3", "meetup4"])
-      // .categories(["3+","1","2","3","0"])
+      //.sequenceOrder(["before meetup1","meetup1","meetup2","meetup3", "meetup4"])
       .colOrder(["normal responders", "very late responders", "early responders", "all responders"])
      // .rowOrder(["B","C","A","D"])
-     // .tooltipFormat(["%event", "%category", "%firstCategory","%prevCategory"])
-	  //.transitionY(true)
-	  .transitionY(["responded but did not show up","responded and showed up"])
-	  // .transitionX(["responded and showed up"])
-      // .transitionX(true)
 	  .correspondingCategories(["responded but did not show up","responded and showed up"])
+	  .percentages(["%prevCategory"])
       .valueName("members"); 
       
     d3.select("body")

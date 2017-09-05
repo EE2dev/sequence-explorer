@@ -7,8 +7,6 @@ export function transitionToSingle(clickedElement, _trans) {
   d3.selectAll("g.sankeyFrame")
     .each(function() {
       if (this === clickedElement) {
-        console.log("clicked");
-
         d3.select(this) // set class
             .classed("multiples", false)
             .classed("single", true);
@@ -54,8 +52,6 @@ export function transitionToSingle(clickedElement, _trans) {
             .style("opacity", 0);                         
 
       } else {
-        console.log("not clicked");
-
         d3.select(this) // set class
             .classed("multiples", false);
 
@@ -80,8 +76,6 @@ export function transitionToMultiples(clickedElement) {
     .classed("multiples", true)
     .each(function() {
       if (this === clickedElement) {
-        console.log("clicked");
-
         d3.select(this) // set class
             .classed("single", false);
 
@@ -264,7 +258,7 @@ function showSelection(sel, trans) {
     .style("opacity", 1);
 }
 
-export function transitionYaxis(transitionY, nameY, sequence, thousandsSeparator, percentage){
+export function transitionYaxis(nameY, thousandsSeparator, percentage){
   const trans = d3.transition().duration(1000);
   const myFrame = d3.select("g.sankeyFrame.single");
   const dx = d3.select("g.sankeyFrame.single rect.sankeyNode").attr("width") / 2; // position adjustment for text label
@@ -273,28 +267,16 @@ export function transitionYaxis(transitionY, nameY, sequence, thousandsSeparator
   hideSelection(myFrame.selectAll("g.links"), trans); // hide links  
   hideSelection(myFrame.selectAll("g.node").filter((d) => d.nameY !== nameY)
     ,trans); // hide not selected nodes
-
-  let denominator = {};
-  sequence.forEach(seqEvent => {denominator[seqEvent] = 0;});
-  myFrame.selectAll("g.node")
-    .filter(d => transitionY().indexOf(d.nameY) !== -1)
-    .each(d => denominator[d.nameX] += d.value);
-  
-  let line = percentage;
-  let ccTest = true;
+ 
   function getPercentage(d){
     let label;
-    if (line === "%event") {
-      if (ccTest) {
-        label = formatNumber("" + (d.value/d.valueX), thousandsSeparator, ",.1%");
-      } else {
-        label = formatNumber("" + (d.value/d.valueXCorr), thousandsSeparator, ",.1%");
-      }
-    } else if (line === "%category") {
+    if (percentage === "%event") {
+      label = formatNumber("" + (d.value/d.valueXCorr), thousandsSeparator, ",.1%");
+    } else if (percentage === "%category") {
       label = formatNumber("" + (d.value/d.valueY), thousandsSeparator, ",.1%");
-    } else if (line === "%prevCategory") {
+    } else if (percentage === "%prevCategory") {
       label = formatNumber("" + (d.value/d.valueYPrev), thousandsSeparator, ",.1%");
-    } else if (line === "%firstCategory") {
+    } else if (percentage === "%firstCategory") {
       label = formatNumber("" + (d.value/d.valueYFirst), thousandsSeparator, ",.1%");
     }
     return label;
@@ -306,7 +288,6 @@ export function transitionYaxis(transitionY, nameY, sequence, thousandsSeparator
     .attr("class", "percentageLabel")
     .attr("x" , dx+ "px")
     .attr("y", dy + "px")
-    // .text( d => formatNumber("" + (d.value / denominator[d.nameX]), thousandsSeparator, ",.1%"))
     .text(getPercentage)
     .transition(trans)
     .style("opacity", 1);
@@ -320,4 +301,3 @@ export function transitionYaxisBack(){
   showSelection(myFrame.selectAll("g.node") ,trans); // show all nodes
   hideSelection(d3.selectAll("text.percentageLabel"), trans); // hide labels
 }
-
