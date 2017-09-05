@@ -126,10 +126,12 @@ function | parameter | explanation
 `categoryName()` | *string* | e.g. `sequenceExplorer.chart().categoryName("state")` sets the name of the y axis. The default name is "category".
 `categoryOrder()` | *array* | e.g. `sequenceExplorer.chart().categoryOrder(["A", "B", "C"])` sets the order of the categories based on an array. The default order is ascending.
 `colOrder()` | *array* | e.g. `sequenceExplorer.chart().colOrder(["20-40", "41-60", "61-80"])` sets the order of the columns (second additional dimension) based on an array. The default order is ascending.
+`correspondingCategories()` | *array* | e.g. `sequenceExplorer.chart().correspondingCategories(["home","contact"])` specifies a subset of categories which form a unit. An array with a subset of categories reduces the percentages shown for an event. The default is an array with all categories. 
 `debugOn()` | *boolean* | e.g. `sequenceExplorer.chart().debug(true)` turns on/off the console.log debugging. The default setting is false.
 `margin()` | *integer* | e.g. `sequenceExplorer.chart().margin(10)` sets the margin in pixels for top, right, bottom, left. The default margin is 5 px.
 `nodePadding()` | *integer* | e.g. `sequenceExplorer.chart().nodePadding(10)` sets the y-padding between the categories in pixels. The default padding is 8.
 `nodeWidth()` | *integer* | e.g. `sequenceExplorer.chart().nodeWidth(20)` sets the width of a node in pixels. The default width is 15.
+`percentages()` | *array* | e.g. `sequenceExplorer.chart().percentages(["%event","%category"])` sets the output of the tooltip text to add a line with % of all categories at the same event. The first percentage element is used for labeling when transitioning on category. The default is ["%event"]. 
 `rowOrder()` | *array* | e.g. `sequenceExplorer.chart().rowOrder(["USA", "Canada", "Africa"])` sets the order of the rows (first additional dimension) based on an array. The default order is ascending.
 `scaleGlobal()` | *boolean* | e.g. `sequenceExplorer.chart().scaleGlobal(false)` turns on/off the global scaling mode. The default setting is true.
 `sequenceName()` | *string* | e.g. `sequenceExplorer.chart().sequenceName("year")` sets the name of the x axis. The default name is "sequence".
@@ -137,8 +139,6 @@ function | parameter | explanation
 `showNodeLabels()` | *boolean* | e.g. `sequenceExplorer.chart().showNodeLabels(false)` turns on/off the node labels. The default setting is true.
 `size()` | *2-dim array* |, e.g. `sequenceExplorer.chart().size([600, 400])` sets the size of the SVG based on an array [width, height]. The default size is [700, 500].
 `thousandsSeparator()` | *char* | e.g. `sequenceExplorer.chart().thousandsSeparator(".")` sets the thousands separator. The default separator is ",".
-`tooltipFormat()` | *array* | e.g. `sequenceExplorer.chart().tooltipFormat(["%event"])` sets the output of the tooltip text to add a line with % of all categories at the same event. 
-`transitionX()` | *boolean* or *array* | e.g. `sequenceExplorer.chart().transitionX(true)` turns on the transition of the sankey upon click on a label on the x axis. In this case, all percentages at this state are shown. An array with a subset of categories reduces the percentages shown. The default is *false*. 
 `valueName()` | *string* | e.g. `sequenceExplorer.chart().valueName("frequency")` sets the name of the value. The default name is "value".
 
 
@@ -188,7 +188,7 @@ Then the css selectors would be:
   }  
 ```
 ### 7. Format of the tooltip text
-sequenceExplorer.chart().tooltipFormat([...])
+sequenceExplorer.chart().percentages([...])
 * default : event, category, count
 * `"%event"` : event, category, count, % of all categories at the same event
 * `"%category"` : event, category, count, % of same category at all events

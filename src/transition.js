@@ -264,7 +264,7 @@ function showSelection(sel, trans) {
     .style("opacity", 1);
 }
 
-export function transitionYaxis(transitionY, nameY, sequence, thousandsSeparator){
+export function transitionYaxis(transitionY, nameY, sequence, thousandsSeparator, percentage){
   const trans = d3.transition().duration(1000);
   const myFrame = d3.select("g.sankeyFrame.single");
   const dx = d3.select("g.sankeyFrame.single rect.sankeyNode").attr("width") / 2; // position adjustment for text label
@@ -280,13 +280,34 @@ export function transitionYaxis(transitionY, nameY, sequence, thousandsSeparator
     .filter(d => transitionY().indexOf(d.nameY) !== -1)
     .each(d => denominator[d.nameX] += d.value);
   
+  let line = percentage;
+  let ccTest = true;
+  function getPercentage(d){
+    let label;
+    if (line === "%event") {
+      if (ccTest) {
+        label = formatNumber("" + (d.value/d.valueX), thousandsSeparator, ",.1%");
+      } else {
+        label = formatNumber("" + (d.value/d.valueXCorr), thousandsSeparator, ",.1%");
+      }
+    } else if (line === "%category") {
+      label = formatNumber("" + (d.value/d.valueY), thousandsSeparator, ",.1%");
+    } else if (line === "%prevCategory") {
+      label = formatNumber("" + (d.value/d.valueYPrev), thousandsSeparator, ",.1%");
+    } else if (line === "%firstCategory") {
+      label = formatNumber("" + (d.value/d.valueYFirst), thousandsSeparator, ",.1%");
+    }
+    return label;
+  }
+
   myFrame.selectAll("g.node")
     .filter(d => d.nameY === nameY)
     .append("text")
     .attr("class", "percentageLabel")
     .attr("x" , dx+ "px")
     .attr("y", dy + "px")
-    .text( d => formatNumber("" + (d.value / denominator[d.nameX]), thousandsSeparator, ",.1%"))
+    // .text( d => formatNumber("" + (d.value / denominator[d.nameX]), thousandsSeparator, ",.1%"))
+    .text(getPercentage)
     .transition(trans)
     .style("opacity", 1);
 }
@@ -299,3 +320,4 @@ export function transitionYaxisBack(){
   showSelection(myFrame.selectAll("g.node") ,trans); // show all nodes
   hideSelection(d3.selectAll("text.percentageLabel"), trans); // hide labels
 }
+

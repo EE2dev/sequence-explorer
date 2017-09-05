@@ -20,7 +20,7 @@ export default function(_myData) {
   var valueName; // the column name of the frequency value
   var scaleGlobal = true; // scale the node height for multiples over all sankeys 
   var showNodeLabels = true; // show node labels
-  var tooltipFormat = []; // format of the tooltip text
+  var percentages = ["%event"]; // format of the tooltip text
   var allGraphs; // data structure containing columns of rows of sankey input data;
   var tooltip;
   const SINGLE = 1; // single sankey diagram
@@ -43,7 +43,6 @@ export default function(_myData) {
     categories,
     colOrder,
     rowOrder,
-    transitionX, // a function returning an array of categories (-> transition after clicking on the x axis)
     transitionY, // a function returning an array of categories (-> transition after clicking on the y axis)
     corrCategories = function(){return categories;}, // subset of categories for calculating percentages (tooltip, transitions) 
     sequenceName = "sequence",
@@ -160,9 +159,9 @@ export default function(_myData) {
     return chartAPI;
   };
 
-  chartAPI.tooltipFormat = function(_) {
-    if (!arguments.length) return tooltipFormat;
-    tooltipFormat = _;
+  chartAPI.percentages = function(_) {
+    if (!arguments.length) return percentages;
+    percentages = _;
     return chartAPI;
   };
 
@@ -176,18 +175,6 @@ export default function(_myData) {
     if (!arguments.length) return colOrder;
     colOrder = _;
     return chartAPI;
-  };
-
-  chartAPI.transitionX = function(_) { // returns a function that returns an array of categories
-    if (!arguments.length) return transitionX();
-    else {
-      if (_ === true) {
-        transitionX = chartAPI.categoryOrder;
-      } else {
-        transitionX = function() {return _;};
-      }
-      return chartAPI;
-    }
   };
 
   chartAPI.transitionY = function(_) { // returns a function that returns an array of categories for the y transition
@@ -640,9 +627,13 @@ export default function(_myData) {
               var info = sequenceName + ": " + d.nameX;
               info += "<br>" + categoryName + ": " + d.nameY;
               info += "<br>" + valueName + ": " + formatNumber(d.value, thousandsSeparator, ",.0f");
-              tooltipFormat.forEach(function(line){
+              percentages.forEach(function(line){
                 if (line === "%event") {
-                  info += "<br>% of '" + d.nameX + "': " + formatNumber("" + (d.value/d.valueX), thousandsSeparator, ",.1%");
+                  if (corrCategories().length === categories.length) {
+                    info += "<br>% of '" + d.nameX + "': " + formatNumber("" + (d.value/d.valueX), thousandsSeparator, ",.1%");
+                  } else {
+                    info += "<br>% of '" + d.nameX + "'(CC): " + formatNumber("" + (d.value/d.valueXCorr), thousandsSeparator, ",.1%");
+                  }
                 } else if (line === "%category") {
                   info += "<br>% of '" + d.nameY + "': " + formatNumber("" + (d.value/d.valueY), thousandsSeparator, ",.1%");
                 } else if (line === "%prevCategory") {
@@ -719,31 +710,30 @@ export default function(_myData) {
             transitionToSingle(sankeyF.node(), d3.transition().duration(0));
           }
 
-          if (typeof transitionX !== "undefined") {
-            d3.selectAll("g.axis.bottom > g.tick").on("click", function(){
-              if (visMode === SINGLE) {
-                d3.select(".nodeScaling").node().disabled = true;
-                d3.select(".labelOnOff").node().checked = false;
-                updateNodeLabels();
-                d3.select(".labelOnOff").node().disabled = true;
-                let nameX = d3.select(this).classed("zoomed", true).datum();
-                transitionXaxis(transitionX, nameX, nodeInfos);
-                d3.event.stopPropagation();
-                visMode = ZOOMX;
-              } 
-            });                       
-          }
+          d3.selectAll("g.axis.bottom > g.tick").on("click", function(){
+            if (visMode === SINGLE) {
+              d3.select(".nodeScaling").node().disabled = true;
+              d3.select(".labelOnOff").node().checked = false;
+              updateNodeLabels();
+              d3.select(".labelOnOff").node().disabled = true;
+              let nameX = d3.select(this).classed("zoomed", true).datum();
+              transitionXaxis(corrCategories, nameX, nodeInfos);
+              d3.event.stopPropagation();
+              visMode = ZOOMX;
+            } 
+          });                       
 
           if (typeof transitionY !== "undefined") {
             d3.selectAll("g.axis.left > g.tick").on("click", function(){
               if (visMode === SINGLE) {
                 let nameY = d3.select(this).classed("zoomed", true).datum();
-                if (transitionY().indexOf(nameY) === -1) {return;}
+                // if (transitionY().indexOf(nameY) === -1) {return;}
+                if (percentages[0] === "%event" && corrCategories().indexOf(nameY) === -1){ return;}
                 d3.select(".nodeScaling").node().disabled = true;
                 d3.select(".labelOnOff").node().checked = false;
                 updateNodeLabels();
                 d3.select(".labelOnOff").node().disabled = true;
-                transitionYaxis(transitionY, nameY, sequence, thousandsSeparator);
+                transitionYaxis(transitionY, nameY, sequence, thousandsSeparator, percentages[0]);
                 d3.event.stopPropagation();
                 visMode = ZOOMY;
               } 
