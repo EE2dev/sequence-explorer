@@ -145,7 +145,7 @@ export function transitionXaxis(transitionX, nameX, nodeInfos){
       .filter((d) => d.nameX === nameX)
       .filter((d) => transitionX().indexOf(d.nameY) === -1)
     ,trans); // in case some categories are excluded for transition
-  hideSelection(d3.select("g.axis.left"), trans);   // hide y axis
+  // hideSelection(d3.select("g.axis.left"), trans);   // hide y axis
 
   // calculate position for nodes
   let updateNodes = myFrame.selectAll("g.node")
@@ -212,6 +212,29 @@ export function transitionXaxis(transitionX, nameX, nodeInfos){
     .transition(trans)
     .attr("y", d => d.nodeInfos[nodeInfos.nodeInfoKey + "_transY"])
     .attr("height", d => d.nodeInfos[nodeInfos.nodeInfoKey + "_transHeight"]);
+
+  let ticks = d3.selectAll("g.axis.left g.tick")
+    .data(transitionX(), d => d);
+
+  hideSelection(ticks.exit(), trans);
+  
+  const transX = 400;
+  const transY = -100;
+
+  ticks.selectAll("text").transition(trans)
+    .style("font-size", "16px")
+    .attr("transform", "translate(" + transX + ", " + transY + ")");
+  // ticks.exit().transition(trans).style("opacity",0);
+    /*
+  // calculate for translation of ticks
+  let translate[];
+  updateNodes.selectAll("rect.sankeyNode")
+    .each(function(d) {
+      let name = d.nameY;
+      translate.push({name })
+    });
+    mytext.getBoundingClientRect()
+*/
 }
 
 export function transitionXaxisBack(nameX, nodeInfos){
@@ -220,7 +243,8 @@ export function transitionXaxisBack(nameX, nodeInfos){
     
   showSelection(myFrame.selectAll("g.links"), trans); // show links  
   showSelection(myFrame.selectAll("g.node") ,trans); // show all nodes
-  showSelection(d3.select("g.axis.left"), trans);   // show y axis
+  // showSelection(d3.select("g.axis.left"), trans);   // show y axis
+  showSelection(d3.selectAll("g.axis.left g.tick.hide"), trans); 
 
   // translate zoom transitioned nodes to original position
   let updateNodes = myFrame.selectAll("g.node")
@@ -286,7 +310,7 @@ export function transitionYaxis(nameY, thousandsSeparator, percentage){
     .filter(d => d.nameY === nameY)
     .append("text")
     .attr("class", "percentageLabel")
-    .attr("x" , dx+ "px")
+    .attr("x" , dx + "px")
     .attr("y", dy + "px")
     .text(getPercentage)
     .transition(trans)

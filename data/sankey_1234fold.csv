@@ -6,7 +6,7 @@ value,sourceX,sourceY,targetX,targetY,member group,responder type
 1,meetup2,responded No,meetup3,responded but did not show up,all members,early responders
 2,meetup3,responded No,meetup4,responded No,all members,normal responders
 2,meetup2,responded and showed up,meetup3,responded but did not show up,before meetup 2,all responders
-699,meetup3,did not respond,meetup4,did not respond,all members,all responders
+3699,meetup3,did not respond,meetup4,did not respond,all members,all responders
 3,meetup3,did not respond,meetup4,responded and showed up,before meetup 2,all responders
 14,meetup3,joined meetup group,meetup4,responded No,before meetup 4,all responders
 2,meetup1,responded and showed up,meetup2,responded No,all members,early responders
