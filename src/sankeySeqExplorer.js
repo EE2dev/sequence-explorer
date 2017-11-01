@@ -459,7 +459,7 @@ export default function(_myData) {
               d3.select(".nodeScaling").node().disabled = false;
               d3.select(".labelOnOff").node().disabled = false;
               let nameX = d3.select("g.zoomed").classed("zoomed", false).datum();
-              transitionXaxisBack(nameX, nodeInfos); 
+              transitionXaxisBack(corrCategories, nameX, nodeInfos); 
               visMode = SINGLE;
             } else if (visMode === ZOOMY) { 
               d3.select(".nodeScaling").node().disabled = false;
@@ -699,12 +699,13 @@ export default function(_myData) {
 
           d3.selectAll("g.axis.bottom > g.tick").on("click", function(){
             if (visMode === SINGLE) {
+              // TO DO: check first if there are rects at this x position to scale
               d3.select(".nodeScaling").node().disabled = true;
               d3.select(".labelOnOff").node().checked = false;
               updateNodeLabels();
               d3.select(".labelOnOff").node().disabled = true;
               let nameX = d3.select(this).classed("zoomed", true).datum();
-              transitionXaxis(corrCategories, nameX, nodeInfos);
+              transitionXaxis(corrCategories, nameX, nodeInfos, thousandsSeparator);
               d3.event.stopPropagation();
               visMode = ZOOMX;
             } 
