@@ -2,8 +2,8 @@ import * as d3 from "d3";
 import { default as sankeySeq } from "./sankeySeq";
 import { positionTooltipNode, getTranslation, formatNumber, orderDimension } from "./helper";
 import { initialize_whp_and_axes, initializeFrame } from "./initialize";
-import { transitionToSingle, transitionToMultiples, 
-  transitionXaxis, transitionXaxisBack, transitionYaxis, transitionYaxisBack } from "./transition";
+import { transitionToSingle, transitionToMultiples}  from "./transition";
+import {transitionXaxis, transitionXaxisBack, transitionYaxis, transitionYaxisBack } from "./transitionAxes";
 
 // var sequenceExplorerChart = function(_myData) {
 // export function chart(_myData) {
