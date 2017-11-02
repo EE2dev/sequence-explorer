@@ -20,7 +20,7 @@ export default function(_myData) {
   var valueName; // the column name of the frequency value
   var scaleGlobal = true; // scale the node height for multiples over all sankeys 
   var showNodeLabels = true; // show node labels
-  var percentages = ["%sameTime"]; // format of the tooltip text
+  var percentages = ["%sameTime"]; // (default) format of the tooltip text
   var allGraphs; // data structure containing columns of rows of sankey input data;
   var tooltip;
   const SINGLE = 1; // single sankey diagram
