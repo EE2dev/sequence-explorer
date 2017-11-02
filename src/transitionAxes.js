@@ -187,13 +187,13 @@ export function transitionYaxis(nameY, thousandsSeparator, percentage){
    
   function getPercentage(d){
     let label;
-    if (percentage === "%event") {
+    if (percentage === "%sameTime") {
       label = formatNumber("" + (d.value/d.valueXCorr), thousandsSeparator, ",.1%");
-    } else if (percentage === "%category") {
+    } else if (percentage === "%sameEvent") {
       label = formatNumber("" + (d.value/d.valueY), thousandsSeparator, ",.1%");
-    } else if (percentage === "%prevCategory") {
+    } else if (percentage === "%prevEvent") {
       label = formatNumber("" + (d.value/d.valueYPrev), thousandsSeparator, ",.1%");
-    } else if (percentage === "%firstCategory") {
+    } else if (percentage === "%firstEvent") {
       label = formatNumber("" + (d.value/d.valueYFirst), thousandsSeparator, ",.1%");
     }
     return label;

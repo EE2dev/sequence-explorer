@@ -1,13 +1,13 @@
 # Sequence explorer
 ![Image of css styled sankey chart](https://github.com/EE2dev/sequence-explorer/blob/master/sankeySeq.png)
 ### 1. Overview
-Adapting the [sankey diagram](https://bost.ocks.org/mike/sankey/) for sequential data. Click stream analysis or customer journey analysis are just two of many applications for exploring the development of categories over some sequence (e.g. time points such as days, months or years).
+Adapting the [sankey diagram](https://bost.ocks.org/mike/sankey/) for sequential data. Click stream analysis or customer journey analysis are just two of many applications for exploring the development of events over some sequence (e.g. points in time such as days, months or years).
 Sequence explorer implements the following [d3.js reusable charts pattern](https://github.com/EE2dev/d3-template) to let you customize the chart. The core library [d3-sankeySeq.js](https://github.com/EE2dev/d3-sankeySeq) can also be used separately.
 
-d3-sankeySeq.js adapts the sankey layout for sequential data. sequence-explorer.js is a wrapper on top of sankeySeq with the following features:
+d3-sankeySeq.js adapts the sankey layout for sequential data, sequence-explorer.js is a wrapper on top of sankeySeq with the following features:
 * data is read from a csv file. Since the visualization is motivated by the [Markov assumption](https://en.wikipedia.org/wiki/Markov_property), the data can be provided in an efficient format just referencing the successors in a sequence and their connection value. See section about [data formatting](#3-data-formatting).
 * can be used with just a browser and no web server. In that case, data has to be embedded in the html file. 
-* sankeySeq places the nodes on a fixed grid. The state of the sequence (e.g. point in time) has a fixed x position. And a certain category has a fixed y position.
+* sankeySeq places the nodes on a fixed grid. Each state of the sequence (e.g. point in time) has a fixed x position. And each event has a fixed y position.
 * supports small multiples
 * additional quantitative features can be visualized within the nodes
 * links and nodes can be css styled individually for presentations
@@ -26,16 +26,16 @@ Complete list of examples:
 
 ### 3. Data formatting
 
-The file must contain each pair of sequential categories with the corresponding quantity.
+The file must contain each pair of sequential events with the corresponding quantity.
 The file must be a comma separated file with the first row containing the attribute names.
-The categories and sequence states must not contain an `_`(*underscore*).
+The events and points in time must not contain an `_`(*underscore*).
 
 The order of the columns must be:
 * first column: the quantity to be displayed 
-* second column: the state of the sequence corresponding to the first category 
-* third column: the first category
-* fourth column: the state of the sequence corresponding to the second category 
-* fifth column: the second category (according to the sequence)
+* second column: the point in time corresponding to the first event 
+* third column: the first event
+* fourth column: the point in time corresponding to the second event 
+* fifth column: the second event (according to the sequence)
 
 Example of valid csv files:
 ```
@@ -83,9 +83,9 @@ You might add additional node quantities which have to be stored in a separate f
 This additional file has to be in the same directory as the main csv file and has to be named as the main file with "_nodes" added to the file name.
 E.g. original file: `my_sankey_file.csv`--> `my_sankey_file_nodes.csv`
 
-This csv file containing additional node infos has to start off with the first column denoting the sequence state and the second column referring to 
-the category on the y axis. In the first line, the column names for these two columns have to be ```sourceX``` and `sourceY`. 
-If there are one or two more categories determined for the small multiples, they would follow after that.
+This csv file containing additional node infos has to start off with the first column denoting the point in time and the second column referring to 
+the event on the y axis. In the first line, the column names for these two columns have to be ```sourceX``` and `sourceY`. 
+If there are one or two more dimensions determined for the small multiples, they would follow after that.
 Then there is an arbitrary number of node info columns. For each column the corresponding quantity is set.
  
 Example of a valid csv file:
@@ -105,14 +105,13 @@ If a csv file with data in the correct format exists, the typical call of item e
 ```
     ...
     // include the following files:
-    <link rel="stylesheet" type="text/css" href="http://www.ankerst.de/lib/sankeySeqExplorer_10.css">
-    <script src="https://d3js.org/d3.v4.js"></script>
-    <script src="http://www.ankerst.de/lib/sequence-explorer.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://ee2dev.github.io/libs/sankeySeqExplorer.v20.css">
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://ee2dev.github.io/libs/sequence-explorer.v20.min.js"></script>
     ...
     // setup a chart with a csv file and add the visualization to a DOM element
-    // no parameter when data is embedded in <pre id="data"> tag, otherwise sequenceExplorer.chart(file);
-    // var myChart = sequenceExplorer.chart();
-    var myChart = sequenceExplorer.chart("myData.csv");
+    // var myChart = sequenceExplorer.chart(); // no parameter when data is embedded in <pre id="data"> tag
+    var myChart = sequenceExplorer.chart("myData.csv"); // load data from a csv file
     
     d3.select("body")
       .append("div")
@@ -123,15 +122,15 @@ If a csv file with data in the correct format exists, the typical call of item e
 ### 5. API for sequence explorer 
 function | parameter | explanation
 ------------ | -------|------
-`categoryName()` | *string* | e.g. `sequenceExplorer.chart().categoryName("state")` sets the name of the y axis. The default name is "category".
-`categoryOrder()` | *array* | e.g. `sequenceExplorer.chart().categoryOrder(["A", "B", "C"])` sets the order of the categories based on an array. The default order is ascending.
 `colOrder()` | *array* | e.g. `sequenceExplorer.chart().colOrder(["20-40", "41-60", "61-80"])` sets the order of the columns (second additional dimension) based on an array. The default order is ascending.
-`correspondingCategories()` | *array* | e.g. `sequenceExplorer.chart().correspondingCategories(["home","contact"])` specifies a subset of categories which form a unit. An array with a subset of categories reduces the percentages shown for an event. The default is an array with all categories. 
+`correspondingEvents()` | *array* | e.g. `sequenceExplorer.chart().correspondingEvents(["home","contact"])` specifies a subset of events which form a unit. An array with a subset of events reduces the percentages shown for a point in time. The default is an array with all events. 
 `debugOn()` | *boolean* | e.g. `sequenceExplorer.chart().debug(true)` turns on/off the console.log debugging. The default setting is false.
+`eventName()` | *string* | e.g. `sequenceExplorer.chart().eventName("state")` sets the name of the y axis. The default name is "event".
+`eventOrder()` | *array* | e.g. `sequenceExplorer.chart().eventOrder(["A", "B", "C"])` sets the order of the events based on an array. The default order is ascending.
 `margin()` | *integer* | e.g. `sequenceExplorer.chart().margin(10)` sets the margin in pixels for top, right, bottom, left. The default margin is 5 px.
-`nodePadding()` | *integer* | e.g. `sequenceExplorer.chart().nodePadding(10)` sets the y-padding between the categories in pixels. The default padding is 8.
+`nodePadding()` | *integer* | e.g. `sequenceExplorer.chart().nodePadding(10)` sets the y-padding between the events in pixels. The default padding is 8.
 `nodeWidth()` | *integer* | e.g. `sequenceExplorer.chart().nodeWidth(20)` sets the width of a node in pixels. The default width is 15.
-`percentages()` | *array* | e.g. `sequenceExplorer.chart().percentages(["%event","%category"])` sets the output of the tooltip text to add a %-line for each element. For valid elements, see [Valid percentages for the tooltip text](#7-valid-percentages-for-the-tooltip-text).The first percentage element is used for labeling when transitioning on category. The default is ["%event"]. 
+`percentages()` | *array* | e.g. `sequenceExplorer.chart().percentages(["%sameTime","%sameEvent"])` sets the output of the tooltip text to add a %-line for each element. For valid elements, see [Valid percentages for the tooltip text](#7-valid-percentages-for-the-tooltip-text).The first percentage element is used for labeling when transitioning on event. The default is ["%event"]. 
 `rowOrder()` | *array* | e.g. `sequenceExplorer.chart().rowOrder(["USA", "Canada", "Africa"])` sets the order of the rows (first additional dimension) based on an array. The default order is ascending.
 `scaleGlobal()` | *boolean* | e.g. `sequenceExplorer.chart().scaleGlobal(false)` turns on/off the global scaling mode. The default setting is true.
 `sequenceName()` | *string* | e.g. `sequenceExplorer.chart().sequenceName("year")` sets the name of the x axis. The default name is "sequence".
@@ -189,11 +188,11 @@ Then the css selectors would be:
 ```
 ### 7. Valid percentages for the tooltip text
 sequenceExplorer.chart().percentages([...])
-* default : event, category, count
-* `"%event"` : event, category, count, % of all categories at the same event
-* `"%category"` : event, category, count, % of same category at all events
-* `"%firstCategory"` : event, category, count, % of same category at the first event
-* `"%prevCategory"` : event, category, count, % of the same category at the previous event
+* default : point in time, event, count
+* `"%sameTime"` : point in time, event, count, % of all events at the same point in time
+* `"%sameEvent"` : point in time, event, count, % of same event at the whole sequence
+* `"%firstEvent"` : point in time, event, count, % of same event at the first point in time
+* `"%prevEvent"` : point in time, event, count, % of the same event at the previous point in time
 
 ### 8. License
 This code is released under the [BSD license](https://github.com/EE2dev/sequence-explorer//blob/master/LICENSE).

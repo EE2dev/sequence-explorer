@@ -20,7 +20,7 @@ export default function(_myData) {
   var valueName; // the column name of the frequency value
   var scaleGlobal = true; // scale the node height for multiples over all sankeys 
   var showNodeLabels = true; // show node labels
-  var percentages = ["%event"]; // format of the tooltip text
+  var percentages = ["%sameTime"]; // format of the tooltip text
   var allGraphs; // data structure containing columns of rows of sankey input data;
   var tooltip;
   const SINGLE = 1; // single sankey diagram
@@ -76,6 +76,7 @@ export default function(_myData) {
   
   // API - example for getter-setter method
   // 2.1 add getter-setter  methods here
+  // categories have been renamed to be events to the outside caller
  
   chartAPI.debugOn = function(_) {
     if (!arguments.length) return debugOn;
@@ -116,7 +117,7 @@ export default function(_myData) {
     return chartAPI;
   };
   
-  chartAPI.categoryOrder = function(_) {
+  chartAPI.eventOrder = function(_) {
     if (!arguments.length) return categories;
     categories = _;
     return chartAPI;
@@ -128,7 +129,7 @@ export default function(_myData) {
     return chartAPI;
   };
   
-  chartAPI.categoryName = function(_) {
+  chartAPI.eventName = function(_) {
     if (!arguments.length) return categoryName;
     categoryName = _;
     return chartAPI;
@@ -178,7 +179,7 @@ export default function(_myData) {
 
   // returns a function that returns an array of categories 
   // for the transitions and tooltip  
-  chartAPI.correspondingCategories = function(_) { 
+  chartAPI.correspondingEvents = function(_) { 
     if (!arguments.length) return corrCategories();
     corrCategories = function() {return _;};
     return chartAPI;
@@ -443,8 +444,7 @@ export default function(_myData) {
             .nodePadding(nodePadding)
             .nodes(graph.nodes)
             .links(graph.links)
-            .correspondingCategories(chartAPI.correspondingCategories())
-            //.correspondingCategories(corrCategories)
+            .correspondingCategories(chartAPI.correspondingEvents())
             .debugOn(debugOn);
           
           if (scaleGlobal) {sankey.maxValue(allGraphs.maxValue);}
@@ -615,17 +615,17 @@ export default function(_myData) {
               info += "<br>" + categoryName + ": " + d.nameY;
               info += "<br>" + valueName + ": " + formatNumber(d.value, thousandsSeparator, ",.0f");
               percentages.forEach(function(line){
-                if (line === "%event") {
+                if (line === "%sameTime") {
                   if (corrCategories().length === categories.length) {
                     info += "<br>% of '" + d.nameX + "': " + formatNumber("" + (d.value/d.valueX), thousandsSeparator, ",.1%");
                   } else {
-                    info += "<br>% of '" + d.nameX + "'(CC): " + formatNumber("" + (d.value/d.valueXCorr), thousandsSeparator, ",.1%");
+                    info += "<br>% of '" + d.nameX + "'(CE): " + formatNumber("" + (d.value/d.valueXCorr), thousandsSeparator, ",.1%");
                   }
-                } else if (line === "%category") {
+                } else if (line === "%sameEvent") {
                   info += "<br>% of '" + d.nameY + "': " + formatNumber("" + (d.value/d.valueY), thousandsSeparator, ",.1%");
-                } else if (line === "%prevCategory") {
+                } else if (line === "%prevEvent") {
                   info += "<br>% of previous '" + d.nameY + "': " + formatNumber("" + (d.value/d.valueYPrev), thousandsSeparator, ",.1%");
-                } else if (line === "%firstCategory") {
+                } else if (line === "%firstEvent") {
                   info += "<br>% of first '" + d.nameY + "': " + formatNumber("" + (d.value/d.valueYFirst), thousandsSeparator, ",.1%");
                 }
               });
@@ -714,7 +714,7 @@ export default function(_myData) {
           d3.selectAll("g.axis.left > g.tick").on("click", function(){
             if (visMode === SINGLE) {
               let nameY = d3.select(this).classed("zoomed", true).datum();
-              if (percentages[0] === "%event" && corrCategories().indexOf(nameY) === -1){ return;}
+              if (percentages[0] === "%sameTime" && corrCategories().indexOf(nameY) === -1){ return;}
               d3.select(".nodeScaling").node().disabled = true;
               d3.select(".labelOnOff").node().checked = false;
               updateNodeLabels();

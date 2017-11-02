@@ -16,15 +16,16 @@
     "url": "https://github.com/ee2dev/sequence-explorer.git"
   },
   "scripts": {
-    "old_pretest": "rm -rf build && mkdir build && rollup -f umd -n d3 -o build/sequence-explorer.js -- index.js",
+    "old_pretest": "rm -rf build && mkdir build && rollup -f umd -n d3 -o build/sequence-explorer.v20.js -- index.js",
     "old_test": "tape 'test/**/*-test.js'",
-    "old_postpublish": "zip -j build/sequence-explorer.zip -- LICENSE README.md build/sequence-explorer.js build/sequence-explorer.min.js",
+    "old_postpublish": "zip -j build/sequence-explorer.zip -- LICENSE README.md build/sequence-explorer.v20.js build/sequence-explorer.v20.min.js",
     "pretest": "rm -rf build && mkdir build && rollup -c",
     "test": "node test/sankeySeqExplorer-test.js | tap-spec && eslint index.js src",
     "prepublish": "npm run test && uglifyjs build/sequence-explorer.js -c -m -o build/sequence-explorer.min.js"
   },
   "devDependencies": {
     "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-env": "^1.6.1",
     "babel-preset-es2015": "^6.24.1",
     "eslint": "^3.19.0",
     "rollup": "0.27",
