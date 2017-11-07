@@ -456,13 +456,17 @@ export default function(_myData) {
           d3.select("div.sankeyChart > svg")
           .on("click", function () { // after click anywhere in svg, return to single mode
             if (visMode === ZOOMX) { 
-              d3.select(".nodeScaling").node().disabled = false;
+              if (d3.select(".nodeScaling").size > 0) {
+                d3.select(".nodeScaling").node().disabled = false;
+              }
               d3.select(".labelOnOff").node().disabled = false;
               let nameX = d3.select("g.zoomed").classed("zoomed", false).datum();
               transitionXaxisBack(corrCategories, nameX, nodeInfos); 
               visMode = SINGLE;
             } else if (visMode === ZOOMY) { 
-              d3.select(".nodeScaling").node().disabled = false;
+              if (d3.select(".nodeScaling").size > 0) {
+                d3.select(".nodeScaling").node().disabled = false;
+              }
               d3.select(".labelOnOff").node().disabled = false;
               d3.select("g.zoomed").classed("zoomed", false);
               transitionYaxisBack(); 
@@ -699,10 +703,11 @@ export default function(_myData) {
 
           d3.selectAll("g.axis.bottom > g.tick").on("click", function(d){
             if (visMode === SINGLE) {
-              // TO DO: check first if there are rects at this x position to scale
               if (skipX(d)) { return; }
 
-              d3.select(".nodeScaling").node().disabled = true;
+              if (d3.select(".nodeScaling").size > 0) {
+                d3.select(".nodeScaling").node().disabled = true;
+              }
               d3.select(".labelOnOff").node().checked = false;
               updateNodeLabels();
               d3.select(".labelOnOff").node().disabled = true;
@@ -712,7 +717,31 @@ export default function(_myData) {
               d3.event.stopPropagation();
               visMode = ZOOMX;
             } 
-          });           
+          });    
+
+          d3.selectAll("g.axis.bottom > g.tick").on("mouseover", function(dFirst){   
+            if (skipX(dFirst)) {
+              d3.select(this).style("cursor", "default"); 
+              return;
+            }
+
+            d3.select(this).style("cursor", "pointer");
+            let bbox = d3.select(this).selectAll("text").node().getBBox();
+            let w = bbox.width/2 + 2;
+            let of = 0.5; // offset
+            let h = bbox.height;
+            let pd = "M" + of + " 0 L" + -(of + w + 3) + " 8 L" + -(of + w) + " 8 L" + -(of + w) + " " + (h + 11);
+            pd += " L" + (of + w) + " " + (h + 11) + " L" + (of + w) + " 8 L" + (of + w + 3) + " 8 Z";
+
+            d3.select(this).selectAll("path")
+              .data([dFirst], function(d){ return d;})
+              .enter()
+              .append("path")
+              .attr("d", pd);
+          }).on("mouseleave", function(){ 
+            d3.select(this).selectAll("path").remove(); 
+            d3.select(this).style("cursor", "default"); 
+          });         
           
           // helper to skip mouse event handling
           function skipX(da) {
@@ -743,7 +772,9 @@ export default function(_myData) {
               if (skipY(d)) { return; }
 
               d3.select(this).classed("zoomed", true);
-              d3.select(".nodeScaling").node().disabled = true;
+              if (d3.select(".nodeScaling").size > 0) {
+                d3.select(".nodeScaling").node().disabled = true;
+              }
               d3.select(".labelOnOff").node().checked = false;
               updateNodeLabels();
               d3.select(".labelOnOff").node().disabled = true;
@@ -772,9 +803,9 @@ export default function(_myData) {
               .enter()
               .append("path")
               .attr("d", pd);
-          }).on("mouseleave", function(){
-            d3.select(this).selectAll("path").interrupt().remove();
-            d3.select(this).selectAll("line").interrupt().style("opacity", 1);
+          }).on("mouseleave", function(){ 
+            d3.select(this).selectAll("path").remove(); 
+            d3.select(this).style("cursor", "default"); 
           });  
 
           // helper to skip mouse event handling

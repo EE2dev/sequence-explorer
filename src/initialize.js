@@ -27,7 +27,7 @@ export function initialize_whp_and_axes(svg, size, margin, categories, sequence,
   var extendBAxis = lengthOfLastEvent.node().getBBox().width/2;
 
     // update width and height for sankeyG
-  width = width - paddingSingle.left - extendBAxis;
+  width = width - paddingSingle.left - extendBAxis - 5; // subtracting 5px for centered percentage text on top of nodes
   height = height - paddingSingle.bottom - paddingMultiples.top;
         
   d3.selectAll("g.dummy").remove();  

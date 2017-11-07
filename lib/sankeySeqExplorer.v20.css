@@ -52,9 +52,7 @@
 
   g.tick path {
     stroke: black;
-    fill: lightgrey;
-    stroke-width: 2px;
-    fill-opacity: 0.5;
+    stroke-width: 3px;
   }
   
   .sankeyNode {
