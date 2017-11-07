@@ -15,7 +15,6 @@ export function transitionXaxis(transitionX, nameX, nodeInfos, _thousandsSeparat
         .filter((d) => d.nameX === nameX)
         .filter((d) => transitionX().indexOf(d.nameY) === -1)
       ,trans); // in case some categories are excluded for transition
-    // hideSelection(d3.select("g.axis.left"), trans);   // hide y axis
   
     // calculate position for nodes
   let updateNodes = myFrame.selectAll("g.node")
@@ -175,7 +174,7 @@ function showSelection(sel, trans) {
       .style("opacity", 1);
 }
   
-export function transitionYaxis(nameY, thousandsSeparator, percentage){
+export function transitionYaxis(nameY, thousandsSeparator, percentage, firstSequenceEle){
   const trans = d3.transition().duration(1000);
   const myFrame = d3.select("g.sankeyFrame.single");
   const dx = d3.select("g.sankeyFrame.single rect.sankeyNode").attr("width") / 2; // position adjustment for text label
@@ -203,9 +202,11 @@ export function transitionYaxis(nameY, thousandsSeparator, percentage){
       .filter(d => d.nameY === nameY)
       .append("text")
       .attr("class", "percentageLabel")
-      .attr("x" , dx + "px")
+      .attr("x", function(d) { let x = (firstSequenceEle === d.nameX) ? 2 : dx;
+        return x + "px";})
       .attr("y", dy + "px")
       .text(getPercentage)
+      .style("text-anchor", function(d) { return firstSequenceEle === d.nameX ? "left" : "middle";})
       .transition(trans)
       .style("opacity", 1);
 }

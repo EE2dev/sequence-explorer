@@ -697,33 +697,100 @@ export default function(_myData) {
             transitionToSingle(sankeyF.node(), d3.transition().duration(0));
           }
 
-          d3.selectAll("g.axis.bottom > g.tick").on("click", function(){
+          d3.selectAll("g.axis.bottom > g.tick").on("click", function(d){
             if (visMode === SINGLE) {
               // TO DO: check first if there are rects at this x position to scale
+              if (skipX(d)) { return; }
+
               d3.select(".nodeScaling").node().disabled = true;
               d3.select(".labelOnOff").node().checked = false;
               updateNodeLabels();
               d3.select(".labelOnOff").node().disabled = true;
-              let nameX = d3.select(this).classed("zoomed", true).datum();
-              transitionXaxis(corrCategories, nameX, nodeInfos, thousandsSeparator);
+              d3.select(this).classed("zoomed", true);
+              resort(corrCategories);
+              transitionXaxis(corrCategories, d, nodeInfos, thousandsSeparator);
               d3.event.stopPropagation();
               visMode = ZOOMX;
             } 
-          });                       
+          });           
+          
+          // helper to skip mouse event handling
+          function skipX(da) {
+            let skipYes = false;
+            let cond1 = ((visMode === ZOOMY) || (visMode === ZOOMX));
+            let numberNodes = d3.select("g.sankeyFrame.single")
+                .selectAll("g.node")
+                .filter( d => d.nameX === da);
+            let cond2 = (numberNodes.size() === 0);
+            let numberNodes2 = numberNodes
+                .filter( d => corrCategories().indexOf(d.nameY) !== -1)
+                .size();
+            let cond3 = (numberNodes2 === 0);
 
-          d3.selectAll("g.axis.left > g.tick").on("click", function(){
+            skipYes = cond1 || cond2 || cond3;
+            return skipYes;
+          }    
+
+          // in case the specified order of correspondingEvents() does not match eventOrder()
+          function resort(_corrCategories) {
+            let ar1 = _corrCategories();
+            let ar2 = ar1.sort(function(a, b){ return categories.indexOf(a) - categories.indexOf(b);});
+            _corrCategories = function(){return ar2;};
+          }            
+
+          d3.selectAll("g.axis.left > g.tick").on("click", function(d){
             if (visMode === SINGLE) {
-              let nameY = d3.select(this).classed("zoomed", true).datum();
-              if (percentages[0] === "%sameTime" && corrCategories().indexOf(nameY) === -1){ return;}
+              if (skipY(d)) { return; }
+
+              d3.select(this).classed("zoomed", true);
               d3.select(".nodeScaling").node().disabled = true;
               d3.select(".labelOnOff").node().checked = false;
               updateNodeLabels();
               d3.select(".labelOnOff").node().disabled = true;
-              transitionYaxis(nameY, thousandsSeparator, percentages[0]);
+              transitionYaxis(d, thousandsSeparator, percentages[0], sequence[0]);
               d3.event.stopPropagation();
               visMode = ZOOMY;
             } 
-          });                       
+          });  
+
+          d3.selectAll("g.axis.left > g.tick").on("mouseover", function(dFirst){   
+            if (skipY(dFirst)) {
+              d3.select(this).style("cursor", "default"); 
+              return;
+            }
+
+            d3.select(this).style("cursor", "pointer");
+            let bbox = d3.select(this).selectAll("text").node().getBBox();
+            let w = bbox.width;
+            let of = bbox.y + bbox.height/2; // offset
+            let h = bbox.height/2 + 2;
+            let pd = "M0 " + of + " L-10 " + (of + h + 3) + " L-10 " + (of + h) + " L" + -(w + 12) + " " + (of + h);
+            pd += " L" + -(w + 12) + " " + (of-h) + " L-10 " + (of - h) + " L-10 " + (of - h - 3) + " Z";
+
+            d3.select(this).selectAll("path")
+              .data([dFirst], function(d){ return d;})
+              .enter()
+              .append("path")
+              .attr("d", pd);
+          }).on("mouseleave", function(){
+            d3.select(this).selectAll("path").interrupt().remove();
+            d3.select(this).selectAll("line").interrupt().style("opacity", 1);
+          });  
+
+          // helper to skip mouse event handling
+          function skipY(da) {
+            let skipYes = false;
+            let cond1 = ((visMode === ZOOMY) || (visMode === ZOOMX));
+            let numberNodes = d3.select("g.sankeyFrame.single")
+                .selectAll("g.node")
+                .filter( d => d.nameY === da)
+                .size();
+            let cond2 = (numberNodes === 0);
+            let cond3 = (percentages[0] === "%sameTime" && corrCategories().indexOf(da) === -1);
+
+            skipYes = cond1 || cond2 || cond3;
+            return skipYes;
+          }                
         });
       });  
     });

@@ -49,6 +49,13 @@
   div.sankeyChart {
     display: table-cell;
   }
+
+  g.tick path {
+    stroke: black;
+    fill: lightgrey;
+    stroke-width: 2px;
+    fill-opacity: 0.5;
+  }
   
   .sankeyNode {
     fill: #023858; 
@@ -122,7 +129,6 @@
   /* text labels for transitionY */
   text.percentageLabel {
     opacity: 0;
-    text-anchor: middle;
   }
   
   /* colors for the nodes */

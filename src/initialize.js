@@ -68,6 +68,8 @@ export function initialize_whp_and_axes(svg, size, margin, categories, sequence,
   result.paddingMultiples = paddingMultiples;
   result.width = width;
   result.height = height;
+
+  d3.selectAll("text").classed("unselect", true);
     
   return result;
 }
