@@ -25,6 +25,8 @@ export function initializeParticles(_graph) {
   // myPath.push("firstPath");
   myPath.push({sx: "0", sy: "home", tx: "1", ty: "search"});
   myPath.push({sx: "1", sy: "search", tx: "2", ty: "product"});
+  myPath.push({sx: "2", sy: "product", tx: "3", ty: "other"});
+  myPath.push({sx: "2", sy: "product", tx: "3", ty: "home"});
 
   var sp;
   _graph.links.forEach(function (link) {
