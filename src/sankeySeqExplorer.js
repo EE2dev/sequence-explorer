@@ -4,6 +4,7 @@ import { positionTooltipNode, getTranslation, formatNumber, orderDimension } fro
 import { initialize_whp_and_axes, initializeFrame } from "./initialize";
 import { transitionToSingle, transitionToMultiples}  from "./transition";
 import { transitionXaxis, transitionXaxisBack, transitionYaxis, transitionYaxisBack } from "./transitionAxes";
+import { initializeParticles, drawParticles} from "./particles";
 
 // var sequenceExplorerChart = function(_myData) {
 // export function chart(_myData) {
@@ -487,6 +488,20 @@ export default function(_myData) {
               if (visMode === MULTIPLES) {
                 transitionToSingle(this);
                 visMode = SINGLE;
+                // start
+                d3.select("div.sankeyChart").append("canvas").attr("width", 1000).attr("height", 1000);
+                var linkExtent = d3.extent(graph.links, function (d) {return d.value;});
+                var frequencyScale = d3.scaleLinear().domain(linkExtent).range([1,100]);
+                var particleSize = d3.scaleLinear().domain(linkExtent).range([1,5]);  
+
+                graph.links.forEach(function (link) {
+                  link.freq = frequencyScale(link.value);
+                  link.particleSize = particleSize(link.value);
+                  //1 link.particleColor = d3.scale.linear().domain([1,1000]).range([link.source.color, link.target.color]);
+                  link.particleColor = "black";
+                });
+                drawParticles();
+                // end
               } else if (visMode === SINGLE) {
                 transitionToMultiples(this); 
                 visMode = MULTIPLES;
@@ -700,6 +715,9 @@ export default function(_myData) {
           if (container.transform === "single") { 
             transitionToSingle(sankeyF.node(), d3.transition().duration(0));
           }
+
+          initializeParticles(graph);
+          drawParticles();
 
           d3.selectAll("g.axis.bottom > g.tick").on("click", function(d){
             if (visMode === SINGLE) {

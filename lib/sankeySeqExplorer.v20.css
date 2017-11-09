@@ -15,7 +15,11 @@
     margin: 0 auto;   
     display: table;
   }
-        
+  
+  canvas {
+    position: absolute;
+  }
+
   div.sankeyMenu {
     font-family: sans-serif; 
     font-size: 75%;
