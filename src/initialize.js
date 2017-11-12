@@ -62,12 +62,16 @@ export function initialize_whp_and_axes(svg, size, margin, categories, sequence,
 
     // move text of axisBottom:
     // d3.select("g.axis.bottom").selectAll("text").attr("text-anchor", "start");
-    
+
   var result = {};
   result.paddingSingle = paddingSingle;
   result.paddingMultiples = paddingMultiples;
   result.width = width;
   result.height = height;
+  var particleStart = {};
+  particleStart.x = margin.left + paddingSingle.left;
+  particleStart.y = margin.top + paddingSingle.top;
+  result.particleStart = particleStart;
 
   d3.selectAll("text").classed("unselect", true);
     

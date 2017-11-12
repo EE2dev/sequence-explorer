@@ -22,6 +22,8 @@
     // var myChart = sequenceExplorer.chart(); // no parameter when data is embedded in <pre id="data"> tag
     var myChart = sequenceExplorer.chart("../data/sequence1.csv") // load data from a csv file
       .eventOrder(["home", "product", "search", "account", "other"]) // changing the order of the events on the y axis
+      .size([900,900])
+      .margin(20)
       .sequenceName("visit");
       
     d3.select("body")

@@ -29,7 +29,9 @@ export default function(_myData) {
   const ZOOMX = 3; // transitioned to a zoomed display of fractions on x axis
   const ZOOMY = 4; // transitioned to a zoomed display of fractions on y axis
   let visMode = MULTIPLES;
-  
+  let classGraph = d3.map(); // maps the class (e.g."f col-row") of g.sankeyFrame to its container. for particles
+  var props; // properties calculated in initialization function
+
   ///////////////////////////////////////////////////
   // 1.0 add visualization specific variables here //
   ///////////////////////////////////////////////////
@@ -357,7 +359,26 @@ export default function(_myData) {
   
   function updateNodeLabels() {
     d3.selectAll("text.nodeLabel").style("display", function() { 
-      return d3.select(".labelOnOff").node().checked ? "block" : "none";});
+      return d3.select(".labelOnOff").node().checked ? "block" : "none";
+    });
+    
+    if (d3.select("g.sankeyFrame.single").size() === 0) { return;}
+    var classes = d3.select("g.sankeyFrame.single").attr("class"); 
+    var key = classes.split(" ")[1];
+
+    var myPath = [];
+    var sequenceStart = sequence[0];
+    // myPath.push("firstPath");
+    /*
+    myPath.push({sx: "0", sy: "home", tx: "1", ty: "search"});
+    myPath.push({sx: "1", sy: "search", tx: "2", ty: "product"});
+    myPath.push({sx: "2", sy: "product", tx: "3", ty: "other"});
+    myPath.push({sx: "2", sy: "product", tx: "3", ty: "home"});
+    */
+    myPath.push({sx: "before meetup1", sy: "joined meetup group", tx: "meetup1", ty: "responded and showed up"});
+    myPath.push({sx: "meetup1", sy: "responded and showed up", tx: "meetup2", ty: "responded but did not show up"});
+    initializeParticles(classGraph.get(key), props.particleStart);
+    drawParticles(classGraph.get(key), myPath, sequenceStart);        
   }
   
   function updateNodeInfo() {
@@ -399,7 +420,6 @@ export default function(_myData) {
     var sankeyF; // group element containing the sankeyFrame = sankeySeq graph + axes/titles
     var node; // selection with nodes
     var graph; // graph for each sankeySeq
-    var props; // properties calculated in initialization function
     var transformString; // object that transform strings for transitioning between small multiples and single
     var svg; 
     
@@ -452,6 +472,7 @@ export default function(_myData) {
           sankey.layout().addValues();   
           container.sankey = sankey;
           
+          classGraph.set("f" + colIndex + "-" + rowIndex, graph);
           transformString = initializeFrame(svg, props, allGraphs, colIndex, rowIndex);
 
           d3.select("div.sankeyChart > svg")
@@ -702,8 +723,10 @@ export default function(_myData) {
             transitionToSingle(sankeyF.node(), d3.transition().duration(0));
           }
 
-          initializeParticles(graph);
+          /*
+          initializeParticles(graph, props.particleStart);
           drawParticles();
+          */
           
           d3.selectAll("g.axis.bottom > g.tick").on("click", function(d){
             if (visMode === SINGLE) {
