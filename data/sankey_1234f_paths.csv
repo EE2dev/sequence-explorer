@@ -1,0 +1,3 @@
+value,sourceX,sourceY,targetX,targetY,member group,responder type,name
+5,before meetup1,joined meetup group,meetup1,responded and showed up,all members,all responders,firstPath
+5,meetup1,responded and showed up,meetup2,responded but did not show up,all members,all responders,firstPath

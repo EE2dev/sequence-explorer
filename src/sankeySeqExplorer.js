@@ -14,6 +14,7 @@ export default function(_myData) {
   // 0.1 All options not accessible to caller 
   var file; // reference to data (embedded or in file)
   var nodeFile; // optional file with additional node infos
+  var pathFile; // optional file with paths
   var nodeInfoKeys; // the key names of the additional node infos
   var nodeInfoNone = "(none)"; // displayed string for no info key
   var nodeInfoKey = nodeInfoNone; // the selected key
@@ -362,12 +363,20 @@ export default function(_myData) {
       return d3.select(".labelOnOff").node().checked ? "block" : "none";
     });
     
-    if (d3.select("g.sankeyFrame.single").size() === 0) { return;}
+    if (d3.select("g.sankeyFrame.single").size() === 0) { return; }
     var classes = d3.select("g.sankeyFrame.single").attr("class"); 
     var key = classes.split(" ")[1];
+    var keyCol = +key.slice(1, key.length-1).split("-")[0];
+    var keyRow = +key.slice(1, key.length-1).split("-")[1];
 
     var myPath = [];
     var sequenceStart = sequence[0];
+    var myPathValue;
+
+    var mySankey = allGraphs[keyCol][keyRow].sankey;  
+    if (scaleGlobal) {mySankey.maxValue(allGraphs.maxValue);}
+    else {mySankey.maxValue(-1);}
+
     // myPath.push("firstPath");
     /*
     myPath.push({sx: "0", sy: "home", tx: "1", ty: "search"});
@@ -375,10 +384,17 @@ export default function(_myData) {
     myPath.push({sx: "2", sy: "product", tx: "3", ty: "other"});
     myPath.push({sx: "2", sy: "product", tx: "3", ty: "home"});
     */
-    myPath.push({sx: "before meetup1", sy: "joined meetup group", tx: "meetup1", ty: "responded and showed up"});
-    myPath.push({sx: "meetup1", sy: "responded and showed up", tx: "meetup2", ty: "responded but did not show up"});
+
+    pathFile.forEach( function(ele){
+      myPath.push({sx: ele.sourceX, sy: ele.sourceY, tx: ele.targetX, ty: ele.targetY});
+    });
+    myPathValue = +pathFile[0].value;
+
+    console.log(myPath);
+    console.log(myPathValue);
+
     initializeParticles(classGraph.get(key), props.particleStart);
-    drawParticles(classGraph.get(key), myPath, sequenceStart);        
+    drawParticles(classGraph.get(key), myPath, sequenceStart, mySankey.maxValue(), myPathValue);        
   }
   
   function updateNodeInfo() {
@@ -722,11 +738,6 @@ export default function(_myData) {
           if (container.transform === "single") { 
             transitionToSingle(sankeyF.node(), d3.transition().duration(0));
           }
-
-          /*
-          initializeParticles(graph, props.particleStart);
-          drawParticles();
-          */
           
           d3.selectAll("g.axis.bottom > g.tick").on("click", function(d){
             if (visMode === SINGLE) {
@@ -884,14 +895,26 @@ export default function(_myData) {
             console.log("nodeFile: ");
             console.log(nodeFile);
           }
-          allGraphs = constructSankeyFromCSV(file); // main data structure build from csv file           
-          createChart(selection);
+          var pathFileName = csvFile.slice(0, csvFile.lastIndexOf(".")) + "_paths" + csvFile.slice(csvFile.lastIndexOf("."));
+          d3.csv(pathFileName, function(error3, pf) { // load paths from optional show path file
+            pathFile = pf;
+            if (debugOn) {
+              console.log("pathfile error:");
+              console.log(error3);
+              console.log("pathfile:");
+              console.log(pathFile);
+              console.log("end");
+            } 
+            allGraphs = constructSankeyFromCSV(file); // main data structure build from csv file           
+            createChart(selection);
+          });
         });       
       });
     } 
     else {
       file = d3.csvParse(d3.select("pre#data").text());
       nodeFile = d3.csvParse(d3.select("pre#dataNodes").text());
+      pathFile = d3.csvParse(d3.select("pre#paths").text());
       if (nodeFile.length === 0) {
         var a;
         nodeFile = a; // set to undefined
@@ -902,6 +925,16 @@ export default function(_myData) {
         console.log("nodeFile: ");
         console.log(nodeFile);        
       }
+      if (pathFile.length === 0) {
+        var b;
+        pathFile = b; // set to undefined
+      }
+      if (debugOn) {
+        console.log("file: ");
+        console.log(file);
+        console.log("pathFile: ");
+        console.log(pathFile);        
+      }      
       allGraphs = constructSankeyFromCSV(file); // main data structure build from csv file
       createChart(selection);
     }
