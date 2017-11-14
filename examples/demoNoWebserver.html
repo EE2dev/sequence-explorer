@@ -1,15 +1,19 @@
 <!DOCTYPE html>
   <meta charset="utf-8"> <!-- also save this file as unicode-8 ! -->
   <head>
-    <link rel="stylesheet" type="text/css" href="https://ee2dev.github.io/libs/sankeySeqExplorer.v20.css">
+    <!--link rel="stylesheet" type="text/css" href="https://ee2dev.github.io/libs/sankeySeqExplorer.v20.css">
     <script src="https://d3js.org/d3.v4.min.js"></script>
-    <script src="https://ee2dev.github.io/libs/sequence-explorer.v20.min.js"></script>
+    <script src="https://ee2dev.github.io/libs/sequence-explorer.v20.min.js"></script-->
+    <link rel="stylesheet" type="text/css" href="../lib/sankeySeqExplorer.v20.css">
+    <!--script src="https://d3js.org/d3.v4.js"></script-->
+    <script src="../../../lib/d3_v4_2_1/d3.js"></script>
+    <script src="../build/sequence-explorer.js"></script>
   </head>
   
   <body>
     <!-- A: paste data in pre#data tag -->
   <pre id="data">
-value,sourceX,sourceY,targetX,targetY,region,age
+frequency,sourceX,sourceY,targetX,targetY,region,age
 100,1st,weather,2nd,sports,United States,18-30
 100,1st,weather,2nd,weather,United States,18-30
 10,1st,weather,2nd,health,United States,18-30
@@ -171,7 +175,7 @@ sourceX,sourceY,region,age,browser:Chrome,os:Windows,client:desktop
     // var myChart = sequenceExplorer.chart("../data/cs_new_n1.csv") // load data from a csv file
       .sequenceName("click in stream")
       .eventName("web site directory")
-      .valueName("number of sessions"); 
+     // .valueName("number of sessions"); 
       
     d3.select("body")
       .append("div")

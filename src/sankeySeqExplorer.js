@@ -390,8 +390,10 @@ export default function(_myData) {
     });
     myPathValue = +pathFile[0].value;
 
-    console.log(myPath);
-    console.log(myPathValue);
+    if (debugOn) {
+      console.log(myPath);
+      console.log(myPathValue);
+    }
 
     initializeParticles(classGraph.get(key), props.particleStart);
     drawParticles(classGraph.get(key), myPath, sequenceStart, mySankey.maxValue(), myPathValue);        
@@ -912,23 +914,19 @@ export default function(_myData) {
       });
     } 
     else {
-      file = d3.csvParse(d3.select("pre#data").text());
-      nodeFile = d3.csvParse(d3.select("pre#dataNodes").text());
-      pathFile = d3.csvParse(d3.select("pre#paths").text());
-      if (nodeFile.length === 0) {
-        var a;
-        nodeFile = a; // set to undefined
-      }
+      
+      if (d3.select("pre#data").size() !== 0) { file = d3.csvParse(d3.select("pre#data").text()); 
+      } else { console.log("no data found in pre#data!");}
+      if (d3.select("pre#dataNodes").size() !== 0) { nodeFile = d3.csvParse(d3.select("pre#dataNodes").text()); }
+      if (d3.select("pre#paths").size() !== 0) { pathFile = d3.csvParse(d3.select("pre#paths").text()); }
+      
       if (debugOn) {
         console.log("file: ");
         console.log(file);
         console.log("nodeFile: ");
         console.log(nodeFile);        
       }
-      if (pathFile.length === 0) {
-        var b;
-        pathFile = b; // set to undefined
-      }
+
       if (debugOn) {
         console.log("file: ");
         console.log(file);

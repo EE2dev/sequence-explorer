@@ -95,7 +95,24 @@ sourceX,sourceY,info1,info2
 ...
 ```
 
-### 3.3 Data references with no web server
+### 3.3 Adding paths to highlight
+You might add paths which can be highlighted with flying particles.
+The file structure is the same as the data file plus one extra column called `name`.
+This additional file has to be in the same directory as the main csv file and has to be named as the main file with "_paths" added to the file name.
+E.g. original file: `my_sankey_file.csv`--> `my_sankey_file_paths.csv`
+
+
+Example of a valid csv file:
+```
+quantity,year1,grade_previous,year2,grade_next,gender,region,name
+14,2010,A,2011,A,boys,city,myPath
+14,2010,A,2011,B,girls,city,myPath
+14,2011,A,2012,A,boys,country,myPath
+14,2011,B,2012,B,girls,country,myPath
+...
+```
+
+### 3.4 Data references with no web server
 If you are running sequence explorer without a web server, you can put the data (csv format) into the `<pre id="data"></pre>` tag. 
 The optional node infos can be put into the `<pre id="dataNodes"></pre>` tag. 
 
