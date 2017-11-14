@@ -95,16 +95,16 @@ sourceX,sourceY,info1,info2
 ...
 ```
 
-### 3.3 Adding paths to highlight
+### 3.3 Adding paths to be highlighted 
 You might add paths which can be highlighted with flying particles.
-The file structure is the same as the data file plus one extra column called `name`.
+The file structure is similar to the data file plus one extra column called `name`. The only difference is that the four columns refering to the path have to be named ```sourceX,sourceY,targetX,targetY```.
 This additional file has to be in the same directory as the main csv file and has to be named as the main file with "_paths" added to the file name.
 E.g. original file: `my_sankey_file.csv`--> `my_sankey_file_paths.csv`
 
 
 Example of a valid csv file:
 ```
-quantity,year1,grade_previous,year2,grade_next,gender,region,name
+quantity,sourceX,sourceY,targetX,targetY,gender,region,name
 14,2010,A,2011,A,boys,city,myPath
 14,2010,A,2011,B,girls,city,myPath
 14,2011,A,2012,A,boys,country,myPath
@@ -114,7 +114,7 @@ quantity,year1,grade_previous,year2,grade_next,gender,region,name
 
 ### 3.4 Data references with no web server
 If you are running sequence explorer without a web server, you can put the data (csv format) into the `<pre id="data"></pre>` tag. 
-The optional node infos can be put into the `<pre id="dataNodes"></pre>` tag. 
+The optional node infos have to be put into the `<pre id="dataNodes"></pre>` tag and the optional path info have to reside within the `<pre id="paths"></pre>` tag.
 
 ### 4. Using sequence explorer
 If a csv file with data in the correct format exists, the typical call of item explorer from your html file looks as follows:

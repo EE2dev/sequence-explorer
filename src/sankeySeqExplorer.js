@@ -275,6 +275,75 @@ export default function(_myData) {
     divNim.append("br");        
   }
 
+  function displayPathsMenu(){
+    // paths info menu  
+    if (typeof pathFile === "undefined") { return;}
+
+    let currentRow;
+    let currentCol;
+    let pathInfoMap;
+    let pathNames;
+    
+    // console.log(allGraphs);
+
+    d3.select("g.sankeyFrame.single").each(function(d) {currentRow = d.nameX; currentCol = d.nameY;});
+    let coord = d3.select("g.sankeyFrame.single").attr("class").split(" ")[1]; // e.g. f0-0
+    let coord2 = coord.substring(1, coord.length).split("-"); // e.g. ["0","0"]
+    currentCol = allGraphs[+coord2[0]][+coord2[1]].dimCol;
+    currentRow = allGraphs[+coord2[0]][+coord2[1]].dimRow;
+    
+
+    if (Object.keys(pathFile[0]).length === 8) { // cols and rows
+      let row = Object.keys(pathFile[0])[5]; 
+      let col = Object.keys(pathFile[0])[6]; 
+      pathInfoMap = d3.nest()
+        .key(function(d) { return d[row]; })
+        .key(function(d) { return d[col]; })
+        .key(function(d) { return d.name; })
+        .object(pathFile);
+    }
+
+    if (typeof pathInfoMap[currentRow][currentCol] === "undefined") { return; }
+    
+    pathNames = Object.keys(pathInfoMap[currentRow][currentCol]);
+    
+    
+    if (debugOn) {
+      console.log("pathFile: ");
+      console.log(pathFile);
+    }
+    var divPm = d3.select("div.sankeyMenu")
+        .append("div")
+        .attr("class", "PathsMenu");
+   
+    divPm.append("div")
+        .attr("class", "titleMenu")
+        .append("label")
+        .text("show path");
+          
+    var div4 = divPm.selectAll("span")
+      .data(pathNames) 
+      .enter()
+      .append("span");
+
+    div4.append("input")
+      .attr("class", "pathInfo")
+      .attr("type", "checkbox")
+      .attr("value", function(d) { return d; })
+    //  .attr("checked", function(d, i) { if (i === 0) { return "checked"; } })
+      .on("change", showParticles);
+    
+    div4.append("label")
+      .text(function(d) { return d; });
+    
+    div4.append("br");      
+  }
+
+  function showParticles(_path) {
+    console.log(_path);
+    return;
+  }
+
   // method called when menu: options-> global scaling is changed  
   function updateScaling() {
     var mySankey;
@@ -526,6 +595,7 @@ export default function(_myData) {
             if (!(allGraphs.cols === 1 && allGraphs.rows === 1)) {
               if (visMode === MULTIPLES) {
                 transitionToSingle(this);
+                displayPathsMenu();
                 visMode = SINGLE;
               } else if (visMode === SINGLE) {
                 transitionToMultiples(this); 
