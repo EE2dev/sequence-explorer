@@ -72,3 +72,11 @@ export function orderDimension (dim) {
     return function(a, b) { return dim.indexOf(a) - dim.indexOf(b);};
   }
 }
+
+// helper function to get the column und row number of single sankeyFrame within small multiples
+export function getColRowOfSingle() {
+  let coord = d3.select("g.sankeyFrame.single").attr("class").split(" ")[1]; // e.g. f0-0
+  let coord2 = coord.substring(1, coord.length).split("-"); // e.g. ["0","0"]
+
+  return {col: +coord2[0], row: +coord2[1]};
+}

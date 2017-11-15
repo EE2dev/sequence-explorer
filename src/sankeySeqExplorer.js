@@ -1,6 +1,6 @@
 import * as d3 from "d3";
 import { default as sankeySeq } from "./sankeySeq";
-import { positionTooltipNode, getTranslation, formatNumber, orderDimension } from "./helper";
+import { positionTooltipNode, getTranslation, formatNumber, orderDimension, getColRowOfSingle } from "./helper";
 import { initialize_whp_and_axes, initializeFrame } from "./initialize";
 import { transitionToSingle, transitionToMultiples}  from "./transition";
 import { transitionXaxis, transitionXaxisBack, transitionYaxis, transitionYaxisBack } from "./transitionAxes";
@@ -286,11 +286,16 @@ export default function(_myData) {
     
     // console.log(allGraphs);
 
-    d3.select("g.sankeyFrame.single").each(function(d) {currentRow = d.nameX; currentCol = d.nameY;});
+    /*
     let coord = d3.select("g.sankeyFrame.single").attr("class").split(" ")[1]; // e.g. f0-0
     let coord2 = coord.substring(1, coord.length).split("-"); // e.g. ["0","0"]
     currentCol = allGraphs[+coord2[0]][+coord2[1]].dimCol;
     currentRow = allGraphs[+coord2[0]][+coord2[1]].dimRow;
+    */
+
+    let colRow = getColRowOfSingle();
+    currentCol = allGraphs[colRow.col][colRow.col].dimCol;
+    currentRow = allGraphs[colRow.col][colRow.row].dimRow;
     
 
     if (Object.keys(pathFile[0]).length === 8) { // cols and rows
@@ -303,10 +308,10 @@ export default function(_myData) {
         .object(pathFile);
     }
 
-    if (typeof pathInfoMap[currentRow][currentCol] === "undefined") { return; }
+    if (typeof pathInfoMap[currentRow] === "undefined") { return; 
+    } else if (typeof pathInfoMap[currentRow][currentCol] === "undefined") { return; }
     
     pathNames = Object.keys(pathInfoMap[currentRow][currentCol]);
-    
     
     if (debugOn) {
       console.log("pathFile: ");
@@ -314,7 +319,8 @@ export default function(_myData) {
     }
     var divPm = d3.select("div.sankeyMenu")
         .append("div")
-        .attr("class", "PathsMenu");
+        .attr("class", "PathsMenu")
+        .style("opacity", 0);
    
     divPm.append("div")
         .attr("class", "titleMenu")
@@ -336,7 +342,15 @@ export default function(_myData) {
     div4.append("label")
       .text(function(d) { return d; });
     
-    div4.append("br");      
+    div4.append("br");  
+
+    let trans = d3.transition().duration(1000);
+    d3.select("div.PathsMenu").transition(trans).style("opacity", 1);    
+  }
+
+  function removePathsMenu() {
+    let trans = d3.transition().duration(1000);
+    d3.select("div.PathsMenu").transition(trans).style("opacity", 0).remove();
   }
 
   function showParticles(_path) {
@@ -433,10 +447,18 @@ export default function(_myData) {
     });
     
     if (d3.select("g.sankeyFrame.single").size() === 0) { return; }
+    
+    /*
     var classes = d3.select("g.sankeyFrame.single").attr("class"); 
     var key = classes.split(" ")[1];
     var keyCol = +key.slice(1, key.length-1).split("-")[0];
     var keyRow = +key.slice(1, key.length-1).split("-")[1];
+    */
+
+    let colRow = getColRowOfSingle();
+    var keyCol = colRow.col;
+    var keyRow = colRow.row; 
+    var key = d3.select("g.sankeyFrame.single").attr("class").split(" ")[1];
 
     var myPath = [];
     var sequenceStart = sequence[0];
@@ -599,6 +621,7 @@ export default function(_myData) {
                 visMode = SINGLE;
               } else if (visMode === SINGLE) {
                 transitionToMultiples(this); 
+                removePathsMenu();
                 visMode = MULTIPLES;
               }
             }         

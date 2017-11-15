@@ -1,5 +1,7 @@
 value,sourceX,sourceY,targetX,targetY,member group,responder type,name
 5,before meetup1,joined meetup group,meetup1,responded and showed up,all members,all responders,firstPath
 5,meetup1,responded and showed up,meetup2,responded but did not show up,all members,all responders,firstPath
+1000,before meetup1,joined meetup group,meetup1,responded and showed up,all members,all responders,fourthPath
+1000,meetup1,responded and showed up,meetup2,did not respond,all members,all responders,fourthPath
 10,before meetup1,joined meetup group,meetup1,responded and showed up,before meetup 2,early responders,secondPath
 10,meetup1,responded and showed up,meetup2,responded but did not show up,before meetup 1,all responders,thirdPath
