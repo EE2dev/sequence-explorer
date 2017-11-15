@@ -12,14 +12,19 @@ import * as d3 from "d3";
           // opacity of red ?
           // OK interrupt on click on none
           // svg on top of canvas to allow tooltip
-          // particles not on independent paths but the same onee flow through 
+          // particles not on independent paths but the same one flow through 
           // allow paths with multiple links?
+          // move all to one canvas
+          // bug: checking second path leads to updated particle value (freq) on all paths
+          // reduce domain of frequencyScale from 1 to 0.5
+          // add particle call not just for 2 add dimension but for 1 + 0 dims
 
-export function initializeParticles(_graph, _particleStart) {  
+export function initializeParticles(_graph, _particleStart, _pathName) {  
   let cw = d3.select("div.sankeyChart svg").attr("width");
   let ch = d3.select("div.sankeyChart svg").attr("height");
 
-  d3.select("div.sankeyChart").insert("canvas", ":first-child").attr("width", cw).attr("height", ch);
+  d3.select("div.sankeyChart").insert("canvas", ":first-child")
+    .attr("width", cw).attr("height", ch).classed("particles " + _pathName, true);
   
   let context = d3.select("canvas").node().getContext("2d");
   context.clearRect(0,0,cw,ch);
@@ -31,7 +36,7 @@ export function initializeParticles(_graph, _particleStart) {
   });  
 }
 
-export function drawParticles(_graph, myPath, _sequenceStart, _linkMax, _linkValue){
+export function drawParticles(_graph, _pathName, myPath, _sequenceStart, _linkMax, _linkValue){
   var startParticles = [_sequenceStart];
   var particles = [];
   let cw = d3.select("div.sankeyChart svg").attr("width");
@@ -42,6 +47,7 @@ export function drawParticles(_graph, myPath, _sequenceStart, _linkMax, _linkVal
   // var frequencyScale = d3.scaleLinear().domain(linkExtent).range([0.05,1]);
   var frequencyScale = d3.scaleLinear().domain([1, _linkMax]).range([0.05,1]);
 
+  // console.log("links:");
   _graph.links.forEach(function (link) {
     // link.freq = frequencyScale(link.value);
     link.freq = (_linkValue === undefined) ? frequencyScale(link.value) : frequencyScale(_linkValue);
@@ -58,10 +64,13 @@ export function drawParticles(_graph, myPath, _sequenceStart, _linkMax, _linkVal
         && ele.ty === link.target.nameY) {sp = true; } 
       else { sp = sp || false; }
     });
-    link.showParticles = sp;       
+    link["showParticles_"+_pathName] = sp; 
+    // console.log(sp);
+    // console.log(link);      
   });
 
   var myTimer = d3.timer(tick); 
+  return myTimer;
 
   function tick(elapsed) {
     particles = particles.filter(function (d) {
@@ -72,7 +81,8 @@ export function drawParticles(_graph, myPath, _sequenceStart, _linkMax, _linkVal
     });
 
     d3.select("g.sankeyFrame.single").selectAll("path.link")
-     .filter(d => d.showParticles && startParticles.indexOf(d.source.nameX) !== -1)
+     // .filter(d => d.showParticles && startParticles.indexOf(d.source.nameX) !== -1)
+     .filter(d => d["showParticles_"+_pathName] && startParticles.indexOf(d.source.nameX) !== -1)
       .each(
         function (d) {
           var offset = (Math.random() - .5) * d.dy;
@@ -84,13 +94,14 @@ export function drawParticles(_graph, myPath, _sequenceStart, _linkMax, _linkVal
 
     particleEdgeCanvasPath(elapsed);
     if (elapsed > 20000) {
-      myTimer.stop();
-      console.log("hier");
+     // myTimer.stop();
+      console.log("> 20000");
     }
+    console.log("d3.timer runs!");
   }
   
   function particleEdgeCanvasPath(elapsed) {
-    var context = d3.select("canvas").node().getContext("2d");
+    var context = d3.select("canvas.particles."+_pathName).node().getContext("2d");
 
     context.clearRect(0,0,cw,ch);
     context.fillStyle = "gray";
@@ -109,5 +120,4 @@ export function drawParticles(_graph, myPath, _sequenceStart, _linkMax, _linkVal
       context.fill();
     }
   }
-  // end particle 2
 }

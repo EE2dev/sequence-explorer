@@ -32,6 +32,7 @@ export default function(_myData) {
   let visMode = MULTIPLES;
   let classGraph = d3.map(); // maps the class (e.g."f col-row") of g.sankeyFrame to its container. for particles
   var props; // properties calculated in initialization function
+  let timers = {}; // timers from particles are stored here to be stopped when canvas is removed
 
   ///////////////////////////////////////////////////
   // 1.0 add visualization specific variables here //
@@ -283,15 +284,6 @@ export default function(_myData) {
     let currentCol;
     let pathInfoMap;
     let pathNames;
-    
-    // console.log(allGraphs);
-
-    /*
-    let coord = d3.select("g.sankeyFrame.single").attr("class").split(" ")[1]; // e.g. f0-0
-    let coord2 = coord.substring(1, coord.length).split("-"); // e.g. ["0","0"]
-    currentCol = allGraphs[+coord2[0]][+coord2[1]].dimCol;
-    currentRow = allGraphs[+coord2[0]][+coord2[1]].dimRow;
-    */
 
     let colRow = getColRowOfSingle();
     currentCol = allGraphs[colRow.col][colRow.col].dimCol;
@@ -337,7 +329,7 @@ export default function(_myData) {
       .attr("type", "checkbox")
       .attr("value", function(d) { return d; })
     //  .attr("checked", function(d, i) { if (i === 0) { return "checked"; } })
-      .on("change", showParticles);
+      .on("change", showRemoveParticles);
     
     div4.append("label")
       .text(function(d) { return d; });
@@ -351,11 +343,65 @@ export default function(_myData) {
   function removePathsMenu() {
     let trans = d3.transition().duration(1000);
     d3.select("div.PathsMenu").transition(trans).style("opacity", 0).remove();
+    d3.selectAll("canvas.particles").remove();
   }
 
-  function showParticles(_path) {
-    console.log(_path);
+  function showRemoveParticles(_pathName) {
+    if (!d3.select(this).node().checked) {
+      removeParticles(_pathName);
+      timers[_pathName].stop();
+      delete timers[_pathName];
+      console.log("stopped!");
+    }
+    else {
+      if (d3.select("g.sankeyFrame.single").size() === 0) { return; }
+
+      let colRow = getColRowOfSingle();
+      var keyCol = colRow.col;
+      var keyRow = colRow.row; 
+      var key = d3.select("g.sankeyFrame.single").attr("class").split(" ")[1];
+
+      var myPath = [];
+      var sequenceStart; // old: = sequence[sequence.length-1];
+      var sequenceStartIndex = sequence.length-1;
+      var myPathValue;
+
+      var mySankey = allGraphs[keyCol][keyRow].sankey;  
+      if (scaleGlobal) {mySankey.maxValue(allGraphs.maxValue);}
+      else {mySankey.maxValue(-1);}
+
+    // myPath.push("firstPath");
+    /*
+    myPath.push({sx: "0", sy: "home", tx: "1", ty: "search"});
+    myPath.push({sx: "1", sy: "search", tx: "2", ty: "product"});
+    myPath.push({sx: "2", sy: "product", tx: "3", ty: "other"});
+    myPath.push({sx: "2", sy: "product", tx: "3", ty: "home"});
+    */
+
+      pathFile.forEach( function(ele){
+        if (ele.name === _pathName) {
+          myPath.push({sx: ele.sourceX, sy: ele.sourceY, tx: ele.targetX, ty: ele.targetY});
+          if (!myPathValue) {myPathValue = +ele.value;}
+          if (sequence.indexOf(ele.sourceX) < sequenceStartIndex) {
+            sequenceStartIndex = sequence.indexOf(ele.sourceX);
+          }
+        }
+      });
+      sequenceStart = sequence[sequenceStartIndex];
+
+      if (debugOn) {
+        console.log(myPath);
+        console.log(myPathValue);
+      }
+      initializeParticles(classGraph.get(key), props.particleStart, _pathName);
+      timers[_pathName] = drawParticles(classGraph.get(key), _pathName, myPath, sequenceStart, mySankey.maxValue(), myPathValue);        
+      console.log(timers);  
+    }
     return;
+  }
+
+  function removeParticles(_pathName) {
+    d3.select("canvas.particles."+ _pathName).remove();
   }
 
   // method called when menu: options-> global scaling is changed  
@@ -394,7 +440,6 @@ export default function(_myData) {
          .transition(trans)
          .attr("height", function(d) { return d.dy; });
    
-        // var yOfBottomAxis = parseInt(d3.select("rect.coverSankeySeq").attr("height"));
         d3.select(parentSelector).selectAll("text.nodeLabel")
          .transition(trans)        
          .attr("y", function(d) {  // adjustment if text would cross x axis    
@@ -445,49 +490,6 @@ export default function(_myData) {
     d3.selectAll("text.nodeLabel").style("display", function() { 
       return d3.select(".labelOnOff").node().checked ? "block" : "none";
     });
-    
-    if (d3.select("g.sankeyFrame.single").size() === 0) { return; }
-    
-    /*
-    var classes = d3.select("g.sankeyFrame.single").attr("class"); 
-    var key = classes.split(" ")[1];
-    var keyCol = +key.slice(1, key.length-1).split("-")[0];
-    var keyRow = +key.slice(1, key.length-1).split("-")[1];
-    */
-
-    let colRow = getColRowOfSingle();
-    var keyCol = colRow.col;
-    var keyRow = colRow.row; 
-    var key = d3.select("g.sankeyFrame.single").attr("class").split(" ")[1];
-
-    var myPath = [];
-    var sequenceStart = sequence[0];
-    var myPathValue;
-
-    var mySankey = allGraphs[keyCol][keyRow].sankey;  
-    if (scaleGlobal) {mySankey.maxValue(allGraphs.maxValue);}
-    else {mySankey.maxValue(-1);}
-
-    // myPath.push("firstPath");
-    /*
-    myPath.push({sx: "0", sy: "home", tx: "1", ty: "search"});
-    myPath.push({sx: "1", sy: "search", tx: "2", ty: "product"});
-    myPath.push({sx: "2", sy: "product", tx: "3", ty: "other"});
-    myPath.push({sx: "2", sy: "product", tx: "3", ty: "home"});
-    */
-
-    pathFile.forEach( function(ele){
-      myPath.push({sx: ele.sourceX, sy: ele.sourceY, tx: ele.targetX, ty: ele.targetY});
-    });
-    myPathValue = +pathFile[0].value;
-
-    if (debugOn) {
-      console.log(myPath);
-      console.log(myPathValue);
-    }
-
-    initializeParticles(classGraph.get(key), props.particleStart);
-    drawParticles(classGraph.get(key), myPath, sequenceStart, mySankey.maxValue(), myPathValue);        
   }
   
   function updateNodeInfo() {
@@ -593,6 +595,7 @@ export default function(_myData) {
               d3.select(".labelOnOff").node().disabled = false;
               let nameX = d3.select("g.zoomed").classed("zoomed", false).datum();
               transitionXaxisBack(corrCategories, nameX, nodeInfos); 
+              displayPathsMenu();
               visMode = SINGLE;
             } else if (visMode === ZOOMY) { 
               if (d3.select(".nodeScaling").size > 0) {
@@ -601,6 +604,7 @@ export default function(_myData) {
               d3.select(".labelOnOff").node().disabled = false;
               d3.select("g.zoomed").classed("zoomed", false);
               transitionYaxisBack(); 
+              displayPathsMenu();
               visMode = SINGLE;
             }
           });
@@ -846,6 +850,7 @@ export default function(_myData) {
               d3.select(".labelOnOff").node().disabled = true;
               d3.select(this).classed("zoomed", true);
               resort(corrCategories);
+              removePathsMenu();
               transitionXaxis(corrCategories, d, nodeInfos, thousandsSeparator);
               d3.event.stopPropagation();
               visMode = ZOOMX;
@@ -911,6 +916,7 @@ export default function(_myData) {
               d3.select(".labelOnOff").node().checked = false;
               updateNodeLabels();
               d3.select(".labelOnOff").node().disabled = true;
+              removePathsMenu();
               transitionYaxis(d, thousandsSeparator, percentages[0], sequence[0]);
               d3.event.stopPropagation();
               visMode = ZOOMY;
