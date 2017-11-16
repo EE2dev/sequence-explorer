@@ -13,11 +13,12 @@ import * as d3 from "d3";
           // OK interrupt on click on none
           // svg on top of canvas to allow tooltip
           // particles not on independent paths but the same one flow through 
-          // allow paths with multiple links?
+          // OK allow paths with multiple links?
           // move all to one canvas
           // bug: checking second path leads to updated particle value (freq) on all paths
           // reduce domain of frequencyScale from 1 to 0.5
-          // add particle call not just for 2 add dimension but for 1 + 0 dims
+          // OK add particle call not just for 2 add dimension but for 1 + 0 dims
+          // test without web server
 
 export function initializeParticles(_graph, _particleStart, _pathName) {  
   let cw = d3.select("div.sankeyChart svg").attr("width");
@@ -36,16 +37,15 @@ export function initializeParticles(_graph, _particleStart, _pathName) {
   });  
 }
 
-export function drawParticles(_graph, _pathName, myPath, _sequenceStart, _linkMax, _linkValue){
+export function drawParticles(_graph, _pathName, myPath, _sequenceStart, _linkMax, _linkValue, 
+  _particlesMin, _particlesMax, _particlesSpeed){
   var startParticles = [_sequenceStart];
   var particles = [];
   let cw = d3.select("div.sankeyChart svg").attr("width");
   let ch = d3.select("div.sankeyChart svg").attr("height");
   var sp;
-
-  // var linkExtent = d3.extent(_graph.links, function (d) {return d.value;});
-  // var frequencyScale = d3.scaleLinear().domain(linkExtent).range([0.05,1]);
-  var frequencyScale = d3.scaleLinear().domain([1, _linkMax]).range([0.05,1]);
+  var frequencyScale = d3.scaleLinear().domain([1, _linkMax]).range([_particlesMin, _particlesMax]);
+  // let myLinks = [];
 
   // console.log("links:");
   _graph.links.forEach(function (link) {
@@ -65,6 +65,7 @@ export function drawParticles(_graph, _pathName, myPath, _sequenceStart, _linkMa
       else { sp = sp || false; }
     });
     link["showParticles_"+_pathName] = sp; 
+    // myLinks.push(link);
     // console.log(sp);
     // console.log(link);      
   });
@@ -109,7 +110,7 @@ export function drawParticles(_graph, _pathName, myPath, _sequenceStart, _linkMa
 
     for (var x in particles) {
       var currentTime = elapsed - particles[x].time;
-      particles[x].current = currentTime * 0.10;
+      particles[x].current = currentTime * _particlesSpeed;
       var currentPos = particles[x].path.getPointAtLength(particles[x].current);
       var relativePos = particles[x].current/particles[x].path.getTotalLength();
 

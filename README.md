@@ -147,6 +147,9 @@ function | parameter | explanation
 `margin()` | *integer* | e.g. `sequenceExplorer.chart().margin(10)` sets the margin in pixels for top, right, bottom, left. The default margin is 5 px.
 `nodePadding()` | *integer* | e.g. `sequenceExplorer.chart().nodePadding(10)` sets the y-padding between the events in pixels. The default padding is 8.
 `nodeWidth()` | *integer* | e.g. `sequenceExplorer.chart().nodeWidth(20)` sets the width of a node in pixels. The default width is 15.
+`particlesMin()` | *float* | e.g. `sequenceExplorer.chart().particlesMin(0.2)` sets the minimum value for the particle scale which determines the minimum number of particles. The default value is 0.05.
+`particlesMax()` | *float* | e.g. `sequenceExplorer.chart().particlesMax(1)` sets the maximum value for the particle scale which determines the maximum number of particles. The default value is 1.
+`particlesSpeed()` | *float* | e.g. `sequenceExplorer.chart().particlesSpeed(0.4)` sets the speed of particles. The default speed is 0.1.
 `percentages()` | *array* | e.g. `sequenceExplorer.chart().percentages(["%sameTime","%sameEvent"])` sets the output of the tooltip text to add a %-line for each element. For valid elements, see [Valid percentages for the tooltip text](#7-valid-percentages-for-the-tooltip-text).The first percentage element is used for labeling when transitioning on event. The default is ["%sameTime"]. 
 `rowOrder()` | *array* | e.g. `sequenceExplorer.chart().rowOrder(["USA", "Canada", "Africa"])` sets the order of the rows (first additional dimension) based on an array. The default order is ascending.
 `scaleGlobal()` | *boolean* | e.g. `sequenceExplorer.chart().scaleGlobal(false)` turns on/off the global scaling mode. The default setting is true.

@@ -51,7 +51,10 @@ export default function(_myData) {
     corrCategories = function(){return categories;}, // subset of categories for calculating percentages (tooltip, transitions) 
     sequenceName = "sequence",
     categoryName = "category",
-    thousandsSeparator = ",";
+    thousandsSeparator = ",",
+    particlesMin = 0.05,
+    particlesMax = 1,
+    particlesSpeed = 0.1;
 
   // 1.2 all updatable functions to be called by getter-setter methods  
   // var updateNodeInfo;
@@ -182,6 +185,24 @@ export default function(_myData) {
     return chartAPI;
   };
 
+  chartAPI.particlesMin = function(_) {
+    if (!arguments.length) return particlesMin;
+    particlesMin = _;
+    return chartAPI;
+  };
+
+  chartAPI.particlesMax = function(_) {
+    if (!arguments.length) return particlesMax;
+    particlesMax = _;
+    return chartAPI;
+  }; 
+
+  chartAPI.particlesSpeed = function(_) {
+    if (!arguments.length) return particlesSpeed;
+    particlesSpeed = _;
+    return chartAPI;
+  };   
+
   // returns a function that returns an array of categories 
   // for the transitions and tooltip  
   chartAPI.correspondingEvents = function(_) { 
@@ -286,10 +307,12 @@ export default function(_myData) {
     let pathNames;
 
     let colRow = getColRowOfSingle();
-    currentCol = allGraphs[colRow.col][colRow.col].dimCol;
+    currentCol = allGraphs[colRow.col][colRow.row].dimCol;
     currentRow = allGraphs[colRow.col][colRow.row].dimRow;
-    
 
+    if (currentCol === "") {currentCol = 0;}
+    if (currentRow === "") {currentRow = 0;}
+    
     if (Object.keys(pathFile[0]).length === 8) { // cols and rows
       let row = Object.keys(pathFile[0])[5]; 
       let col = Object.keys(pathFile[0])[6]; 
@@ -298,7 +321,20 @@ export default function(_myData) {
         .key(function(d) { return d[col]; })
         .key(function(d) { return d.name; })
         .object(pathFile);
-    }
+    } else if (Object.keys(pathFile[0]).length === 7) { // rows
+      let row = Object.keys(pathFile[0])[5];  
+      pathInfoMap = d3.nest()
+        .key(function(d) { return d[row]; })
+        .key(function() { return 0; })
+        .key(function(d) { return d.name; })
+        .object(pathFile);
+    } else if (Object.keys(pathFile[0]).length === 6) { // no rows or columns
+      pathInfoMap = d3.nest()
+        .key(function() { return 0; })
+        .key(function() { return 0; })
+        .key(function(d) { return d.name; })
+        .object(pathFile);
+    } else console.log("Error with number of attributes in paths file!");
 
     if (typeof pathInfoMap[currentRow] === "undefined") { return; 
     } else if (typeof pathInfoMap[currentRow][currentCol] === "undefined") { return; }
@@ -394,7 +430,8 @@ export default function(_myData) {
         console.log(myPathValue);
       }
       initializeParticles(classGraph.get(key), props.particleStart, _pathName);
-      timers[_pathName] = drawParticles(classGraph.get(key), _pathName, myPath, sequenceStart, mySankey.maxValue(), myPathValue);        
+      timers[_pathName] = drawParticles(classGraph.get(key), _pathName, myPath, sequenceStart, 
+        mySankey.maxValue(), myPathValue, particlesMin, particlesMax, particlesSpeed);        
       console.log(timers);  
     }
     return;
@@ -548,9 +585,10 @@ export default function(_myData) {
         
       // drawing axes
       props = initialize_whp_and_axes(svg, size, margin, categories, sequence, nodeWidth);
-      if (allGraphs.cols === 1 && allGraphs.rows === 1) { 
+      if (allGraphs.cols === 1 && allGraphs.rows === 1) {
         d3.selectAll(".axis").style("opacity", 1);
         d3.selectAll(".sankeyNode,.sankeyNodeInfo").style("stroke-width", "1px");
+        d3.select("g.sankeyFrame").classed("single", true);
         visMode = SINGLE; 
       }
       width = props.width;
@@ -837,6 +875,8 @@ export default function(_myData) {
           if (container.transform === "single") { 
             transitionToSingle(sankeyF.node(), d3.transition().duration(0));
           }
+
+          if (allGraphs.cols === 1 && allGraphs.rows === 1) {displayPathsMenu();}
           
           d3.selectAll("g.axis.bottom > g.tick").on("click", function(d){
             if (visMode === SINGLE) {
