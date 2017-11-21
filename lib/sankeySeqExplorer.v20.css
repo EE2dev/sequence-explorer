@@ -55,7 +55,7 @@
   }
 
   g.tick path {
-    stroke: black;
+    stroke: grey;
     stroke-width: 3px;
   }
   

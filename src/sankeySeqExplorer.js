@@ -4,10 +4,8 @@ import { positionTooltipNode, getTranslation, formatNumber, orderDimension, getC
 import { initialize_whp_and_axes, initializeFrame } from "./initialize";
 import { transitionToSingle, transitionToMultiples}  from "./transition";
 import { transitionXaxis, transitionXaxisBack, transitionYaxis, transitionYaxisBack } from "./transitionAxes";
-import { initializeParticles, drawParticles} from "./particles";
+import { particles} from "./particles";
 
-// var sequenceExplorerChart = function(_myData) {
-// export function chart(_myData) {
 export default function(_myData) {
   "use strict";
   
@@ -30,9 +28,10 @@ export default function(_myData) {
   const ZOOMX = 3; // transitioned to a zoomed display of fractions on x axis
   const ZOOMY = 4; // transitioned to a zoomed display of fractions on y axis
   let visMode = MULTIPLES;
-  let classGraph = d3.map(); // maps the class (e.g."f col-row") of g.sankeyFrame to its container. for particles
+  let classPaths = d3.map(); // maps the class (e.g."f col-row") of g.sankeyFrame to its paths. for particles
+  let pathsArray; // arry of paths for classPaths;
   var props; // properties calculated in initialization function
-  let timers = {}; // timers from particles are stored here to be stopped when canvas is removed
+  let myParticles = particles();
 
   ///////////////////////////////////////////////////
   // 1.0 add visualization specific variables here //
@@ -383,10 +382,8 @@ export default function(_myData) {
   }
 
   function showRemoveParticles(_pathName) {
-    if (!d3.select(this).node().checked) {
-      removeParticles(_pathName);
-      timers[_pathName].stop();
-      delete timers[_pathName];
+    if (!d3.select(this).node().checked) { 
+      myParticles.stop(_pathName, true);
       console.log("stopped!");
     }
     else {
@@ -398,21 +395,13 @@ export default function(_myData) {
       var key = d3.select("g.sankeyFrame.single").attr("class").split(" ")[1];
 
       var myPath = [];
-      var sequenceStart; // old: = sequence[sequence.length-1];
+      var sequenceStart; 
       var sequenceStartIndex = sequence.length-1;
       var myPathValue;
 
       var mySankey = allGraphs[keyCol][keyRow].sankey;  
       if (scaleGlobal) {mySankey.maxValue(allGraphs.maxValue);}
       else {mySankey.maxValue(-1);}
-
-    // myPath.push("firstPath");
-    /*
-    myPath.push({sx: "0", sy: "home", tx: "1", ty: "search"});
-    myPath.push({sx: "1", sy: "search", tx: "2", ty: "product"});
-    myPath.push({sx: "2", sy: "product", tx: "3", ty: "other"});
-    myPath.push({sx: "2", sy: "product", tx: "3", ty: "home"});
-    */
 
       pathFile.forEach( function(ele){
         if (ele.name === _pathName) {
@@ -429,16 +418,12 @@ export default function(_myData) {
         console.log(myPath);
         console.log(myPathValue);
       }
-      initializeParticles(classGraph.get(key), props.particleStart, _pathName);
-      timers[_pathName] = drawParticles(classGraph.get(key), _pathName, myPath, sequenceStart, 
-        mySankey.maxValue(), myPathValue, particlesMin, particlesMax, particlesSpeed);        
-      console.log(timers);  
+      myParticles = myParticles.init(classPaths.get(key), props.particleStart, _pathName, 
+        myPath, sequenceStart, mySankey.maxValue(), myPathValue, 
+        particlesMin, particlesMax, particlesSpeed)
+        .start();
     }
     return;
-  }
-
-  function removeParticles(_pathName) {
-    d3.select("canvas.particles."+ _pathName).remove();
   }
 
   // method called when menu: options-> global scaling is changed  
@@ -620,8 +605,6 @@ export default function(_myData) {
           if (scaleGlobal) {sankey.maxValue(allGraphs.maxValue);}
           sankey.layout().addValues();   
           container.sankey = sankey;
-          
-          classGraph.set("f" + colIndex + "-" + rowIndex, graph);
           transformString = initializeFrame(svg, props, allGraphs, colIndex, rowIndex);
 
           d3.select("div.sankeyChart > svg")
@@ -740,6 +723,11 @@ export default function(_myData) {
             .attr("d", sankey.link())
             .style("stroke-width", function(d) { return Math.max(1, d.dy) + "px"; })
             .sort(function(a, b) { return b.dy - a.dy; })
+            .each(function(d,i, nodes){
+              if (i === 0) {pathsArray = [];}
+              pathsArray.push(this);
+              if (i === nodes.length -1) {classPaths.set("f" + colIndex + "-" + rowIndex, pathsArray);}
+            })
             .on("mouseover", function(d) {
               var info = sequenceName + ": " + d.source.nameX + " \u21FE " + d.target.nameX;
               info += "<br>" + categoryName + ": " + d.source.nameY + " \u21FE " + d.target.nameY;
