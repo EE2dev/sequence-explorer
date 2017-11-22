@@ -52,7 +52,7 @@ export default function(_myData) {
     categoryName = "category",
     thousandsSeparator = ",",
     particlesMin = 0.05,
-    particlesMax = 1,
+    particlesMax = 0.5,
     particlesSpeed = 0.1;
 
   // 1.2 all updatable functions to be called by getter-setter methods  
@@ -383,7 +383,7 @@ export default function(_myData) {
 
   function showRemoveParticles(_pathName) {
     if (!d3.select(this).node().checked) { 
-      myParticles.stop(_pathName, true);
+      myParticles = myParticles.stop(_pathName);
       console.log("stopped!");
     }
     else {

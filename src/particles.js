@@ -3,14 +3,9 @@ import * as d3 from "d3";
 // start Particles - idea from https://bl.ocks.org/emeeks/21f99959d48dd0d0c746
           // display paths div
           // tooltip disappeared
-          // create copy of links which are path --> links are not permanently changed to show
           // opacity of red ?
-          // OK interrupt on click on none
           // svg on top of canvas to allow tooltip
           // particles not on independent paths but the same one flow through 
-          // move all to one canvas
-          // bug: checking second path leads to updated particle value (freq) on all paths
-          // reduce domain of frequencyScale from 1 to 0.5
           // test without web server
 
 export function particles() {
@@ -19,7 +14,7 @@ export function particles() {
   let cw; // canvas width
   let ch; // canvas height
   let frequencyScale;
-  let myTimer; // = {};
+  let myTimer = {};
   let particlesSpeed;
   let pathName;
   let svgPaths;
@@ -40,13 +35,12 @@ export function particles() {
   */ 
   publicAPI.init = function (_svgPaths, _canvasTL, _pathName, _myPath, _sequenceStart, _linkMax,
     _linkValue, _particlesMin, _particlesMax, _particlesSpeed){
-
-    let pathExists = false;
     
     if (d3.select("div.sankeyChart").selectAll("canvas").size() === 0) {
       initializeCanvas(_canvasTL, _linkMax, _particlesMin, _particlesMax, _particlesSpeed);
     } 
-    
+
+    let pathExists = false;
     allPaths.forEach(function(d){
       if (d.pathName === _pathName) {pathExists = true;}
     });
@@ -56,36 +50,39 @@ export function particles() {
   };
 
   publicAPI.start = function (){
-    if (typeof myTimer === "undefined") {myTimer = {}; myTimer[pathName] = d3.timer(tick);}
-    // myTimer[pathName] = d3.timer(tick);
-    // to do
-    console.log("to do - start");
-    console.log(myTimer);
-
+    if (Object.keys(myTimer).length === 0) {myTimer = d3.timer(tick);}
     return publicAPI;
   };
   
-  publicAPI.stop = function (_pathName, _bDelete){
-    if (typeof _pathName !== "undefined") {
-      myTimer[_pathName].stop();
-      if (_bDelete) { delete myTimer[_pathName]; }
-    } else {
-      for (var property in myTimer) {
-        if (myTimer.hasOwnProperty(property)) {
-          myTimer[property].stop();
-          if (_bDelete) { delete myTimer[property]; }
-        }
+  publicAPI.stop = function (_pathName){
+    if (typeof _pathName === "undefined") { stopParticles();}
+    
+    let pathExists = false;
+    let index = -1;
+
+    allPaths.forEach(function(d, i){
+      if (d.pathName === _pathName) {pathExists = true; index = i;}
+    });
+
+    if (pathExists) {
+      if (allPaths.length === 1) { stopParticles();} // last path
+      else {
+        allPaths.remove = index;
       }
     }
-    if (Object.keys(myTimer).length === 0) {d3.select("div.sankeyChart canvas").remove();}
-    
-    // to do
-    console.log("to do - start");
     return publicAPI;
   };
 
+  function stopParticles() {
+    myTimer.stop(); 
+    myTimer = {};
+    allPaths = [];
+    d3.select("div.sankeyChart canvas").remove();
+  }
+
   function initializeCanvas(_canvasTranslate, _linkMax, _particlesMin, _particlesMax, _particlesSpeed) { 
     particlesSpeed = _particlesSpeed;
+    allPaths.remove = -1;
     frequencyScale = d3.scaleLinear().domain([1, _linkMax]).range([_particlesMin, _particlesMax]);
     cw = d3.select("div.sankeyChart svg").attr("width");
     ch = d3.select("div.sankeyChart svg").attr("height");
@@ -140,6 +137,10 @@ export function particles() {
   }
 
   function tick(elapsed) {
+    if (allPaths.remove !== -1) {
+      allPaths.splice(allPaths.remove,1); 
+      allPaths.remove = -1;
+    }
 
     allPaths.forEach(function(_path){
       _path["particles"] = _path["particles"].filter(function (d) {
@@ -155,24 +156,18 @@ export function particles() {
       .forEach(function (d) {
         var offset = (Math.random() - .5) * d.dy;
         if (Math.random() < d.freq) {
-          var length = d.svgPath.getTotalLength();
-          _path["particles"].push({link: d, time: elapsed, offset: offset, path: d.svgPath, length: length, animateTime: length});
+          _path["particles"].push({link: d, time: elapsed, offset: offset, path: d.svgPath});
         }
       });
     });
 
     particleEdgeCanvasPath(elapsed);
-    
-    if (elapsed > 20000) {
-     // myTimer.stop();
-      console.log("> 20000");
-    }
   }
 
   function particleEdgeCanvasPath(elapsed) {
 
     context.clearRect(0,0,cw,ch);
-    context.fillStyle = "gray";
+    // context.fillStyle = "gray";
     context.lineWidth = "1px";
 
     allPaths.forEach(function(_path){

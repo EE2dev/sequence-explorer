@@ -7,7 +7,7 @@
     user-select: none;
   }
 
-  pre#data, pre#dataNodes {
+  pre#data, pre#dataNodes, pre#paths {
     display:none;
   }
 
