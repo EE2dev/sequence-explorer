@@ -1044,8 +1044,14 @@ export default function(_myData) {
       
       if (d3.select("pre#data").size() !== 0) { file = d3.csvParse(d3.select("pre#data").text()); 
       } else { console.log("no data found in pre#data!");}
-      if (d3.select("pre#dataNodes").size() !== 0) { nodeFile = d3.csvParse(d3.select("pre#dataNodes").text()); }
-      if (d3.select("pre#paths").size() !== 0) { pathFile = d3.csvParse(d3.select("pre#paths").text()); }
+      if (d3.select("pre#dataNodes").size() !== 0) { 
+        let content = d3.select("pre#dataNodes").text();
+        if (content === "") {nodeFile = d3.csvParse(content);} 
+      }
+      if (d3.select("pre#paths").size() !== 0) { 
+        let content = d3.select("pre#paths").text();
+        if (content === "") {pathFile = d3.csvParse(content);} 
+      }
       
       if (debugOn) {
         console.log("file: ");

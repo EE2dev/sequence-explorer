@@ -142,21 +142,31 @@ export function particles() {
       allPaths.remove = -1;
     }
 
+    
     allPaths.forEach(function(_path){
-      _path["particles"] = _path["particles"].filter(function (d) {
-        if (d.current >= d.path.getTotalLength() 
-          && _path["startParticles"].indexOf(d.path.__data__.target.nameX) === -1){
-          _path["startParticles"].push(d.path.__data__.target.nameX);
-        }
-        return d.current < d.path.getTotalLength();
+      _path["particles"].forEach(function (d) {
+        if (d.current >= d.path.getTotalLength() ){
+          _path["links"]
+            .filter(l => d.path.__data__.target.nameX === l.source.nameX)
+            .forEach(function (l) {
+              d.link = l;
+              d.time = elapsed;
+              d.offset = d.offsetFactor * l.dy;
+              d.path = l.svgPath;
+              d.current = 0;
+            });
+        } // end if       
       });
 
+      _path["particles"] = _path["particles"].filter(function(d){return d.current < d.path.getTotalLength();});
+
       _path["links"]
-      .filter(d => _path["startParticles"].indexOf(d.source.nameX) !== -1)
+      .filter(d => _path["startParticles"][0] === d.source.nameX) 
       .forEach(function (d) {
-        var offset = (Math.random() - .5) * d.dy;
+        let factor =  (Math.random() - .5);
+        var offset = factor * d.dy;
         if (Math.random() < d.freq) {
-          _path["particles"].push({link: d, time: elapsed, offset: offset, path: d.svgPath});
+          _path["particles"].push({link: d, time: elapsed, offset: offset, offsetFactor: factor, path: d.svgPath});
         }
       });
     });
@@ -167,7 +177,6 @@ export function particles() {
   function particleEdgeCanvasPath(elapsed) {
 
     context.clearRect(0,0,cw,ch);
-    // context.fillStyle = "gray";
     context.lineWidth = "1px";
 
     allPaths.forEach(function(_path){

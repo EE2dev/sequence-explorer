@@ -97,14 +97,14 @@ sourceX,sourceY,info1,info2
 
 ### 3.3 Adding paths to be highlighted 
 You might add paths which can be highlighted with flying particles.
-The file structure is similar to the data file plus one extra column called `name`. The only difference is that the four columns refering to the path have to be named ```sourceX,sourceY,targetX,targetY```.
+The file structure is similar to the data file plus one extra column called `name`. The only difference is that the first column must be named ```value```, the four columns refering to the path have to be named ```sourceX,sourceY,targetX,targetY```.
 This additional file has to be in the same directory as the main csv file and has to be named as the main file with "_paths" added to the file name.
 E.g. original file: `my_sankey_file.csv`--> `my_sankey_file_paths.csv`
 
 
 Example of a valid csv file:
 ```
-quantity,sourceX,sourceY,targetX,targetY,gender,region,name
+value,sourceX,sourceY,targetX,targetY,gender,region,name
 14,2010,A,2011,A,boys,city,myPath
 14,2010,A,2011,B,girls,city,myPath
 14,2011,A,2012,A,boys,country,myPath
@@ -170,7 +170,7 @@ Nodes and links can be styled individually with CSS by using the following selec
    * selector for node infos: `"rect.sankeyNodeInfo"`
    
 where `<sourceX>`, `<sourceY>`, `<targetX>`, `<targetY>` have to be replaced by their corresponding instances.
-These instances can just contain letters,numbers and spaces, where the spaces will be replaced by `"_"`. Note that nodes are `<rect>` and links are `<path>` elements.
+These instances can just contain letters, numbers and spaces, where the spaces will be replaced by `"_"`. Note that nodes are `<rect>` and links are `<path>` elements.
 E.g. if your data looks like this:
 ```
 value,sourceX,sourceY,targetX,targetY
