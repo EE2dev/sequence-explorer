@@ -9,6 +9,7 @@ d3-sankeySeq.js adapts the sankey layout for sequential data, sequence-explorer.
 * can be used with just a browser and no web server. In the latter case, data has to be embedded in the html file. 
 * sankeySeq places the nodes on a fixed grid. Each state of the sequence (e.g. point in time) has a fixed x position. And each event has a fixed y position.
 * supports small multiples
+* supports vertical paths
 * additional quantitative features can be visualized within the nodes
 * links and nodes can be css styled individually for presentations
 * supports transition to various proportions

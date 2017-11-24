@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+  <meta charset="utf-8"> <!-- also save this file as unicode-8 ! -->
+  <head>
+    <link rel="stylesheet" type="text/css" href="../lib/sankeySeqExplorer_10.css">
+  
+    <!--script src="../../../lib/d3_v4_2_1/d3.js"></script-->
+    <script src="https://d3js.org/d3.v4.js"></script> 
+    <script src="../build/sequence-explorer.js"></script>
+  </head>
+  
+  <body>
+    <!-- A: paste data in pre#data tag -->
+  <pre id="data">
+value,sourceX,sourceY,targetX,targetY,region,age
+100,1st,weather,2nd,sports,United States,18-30
+100,1st,weather,2nd,weather,United States,18-30
+10,1st,weather,2nd,health,United States,18-30
+40,2nd,weather,3rd,travel,United States,18-30
+10,1st,weather,2nd,travel,United States,18-30
+100,1st,health,2nd,health,United States,18-30
+120,1st,health,2nd,sports,United States,18-30
+100,2nd,weather,3rd,weather,United States,18-30
+10,3rd,weather,4th,health,United States,18-30
+90,3rd,weather,4th,weather,United States,18-30
+80,2nd,weather,3rd,sports,United States,18-30
+70,3rd,sports,4th,travel,United States,18-30
+200,2nd,sports,3rd,sports,United States,18-30
+150,3rd,sports,4th,health,United States,18-30
+100,1st,travel,2nd,travel,United States,18-30
+100,1st,weather,2nd,sports,United States,30-50
+100,1st,weather,2nd,weather,United States,30-50
+10,1st,weather,2nd,health,United States,30-50
+10,1st,weather,2nd,travel,United States,30-50
+100,1st,health,2nd,health,United States,30-50
+120,1st,health,2nd,sports,United States,30-50
+100,2nd,weather,3rd,weather,United States,30-50
+10,3rd,weather,4th,health,United States,30-50
+90,3rd,weather,4th,weather,United States,30-50
+200,2nd,sports,3rd,sports,United States,30-50
+150,3rd,sports,4th,health,United States,30-50
+100,1st,travel,2nd,travel,United States,30-50
+100,1st,weather,2nd,sports,United States,50+
+100,1st,weather,2nd,weather,United States,50+
+10,1st,weather,2nd,health,United States,50+
+10,1st,weather,2nd,travel,United States,50+
+100,1st,health,2nd,health,United States,50+
+120,1st,health,2nd,sports,United States,50+
+100,2nd,weather,3rd,weather,United States,50+
+10,3rd,weather,4th,health,United States,50+
+90,3rd,weather,4th,weather,United States,50+
+200,2nd,sports,3rd,sports,United States,50+
+150,3rd,sports,4th,health,United States,50+
+100,1st,travel,2nd,travel,United States,50+
+100,1st,weather,2nd,sports,India,18-30
+100,1st,weather,2nd,weather,India,18-30
+10,1st,weather,2nd,health,India,18-30
+10,1st,weather,2nd,travel,India,18-30
+100,1st,health,2nd,health,India,18-30
+120,1st,health,2nd,sports,India,18-30
+100,2nd,weather,3rd,weather,India,18-30
+10,3rd,weather,4th,health,India,18-30
+90,3rd,weather,4th,weather,India,18-30
+200,2nd,sports,3rd,sports,India,18-30
+150,3rd,sports,4th,health,India,18-30
+100,1st,travel,2nd,travel,India,18-30
+100,1st,weather,2nd,sports,India,30-50
+100,1st,weather,2nd,weather,India,30-50
+10,1st,weather,2nd,health,India,30-50
+10,1st,weather,2nd,travel,India,30-50
+100,1st,health,2nd,health,India,30-50
+120,1st,health,2nd,sports,India,30-50
+100,2nd,weather,3rd,weather,India,30-50
+10,3rd,weather,4th,health,India,30-50
+90,3rd,weather,4th,weather,India,30-50
+200,2nd,sports,3rd,sports,India,30-50
+150,3rd,sports,4th,health,India,30-50
+100,1st,travel,2nd,travel,India,30-50
+100,1st,weather,2nd,sports,India,50+
+100,1st,weather,2nd,weather,India,50+
+10,1st,weather,2nd,health,India,50+
+10,1st,weather,2nd,travel,India,50+
+100,1st,health,2nd,health,India,50+
+700,1st,health,2nd,sports,India,50+
+100,2nd,weather,3rd,weather,India,50+
+10,3rd,weather,4th,health,India,50+
+90,3rd,weather,4th,weather,India,50+
+100,1st,weather,2nd,sports,Germany,18-30
+100,1st,weather,2nd,weather,Germany,18-30
+10,1st,weather,2nd,health,Germany,18-30
+10,1st,weather,2nd,travel,Germany,18-30
+100,1st,health,2nd,health,Germany,18-30
+120,1st,health,2nd,sports,Germany,18-30
+100,2nd,weather,3rd,weather,Germany,18-30
+10,3rd,weather,4th,health,Germany,18-30
+90,3rd,weather,4th,weather,Germany,18-30
+100,1st,weather,2nd,sports,Germany,30-50
+100,1st,weather,2nd,weather,Germany,30-50
+10,1st,weather,2nd,health,Germany,30-50
+10,1st,weather,2nd,travel,Germany,30-50
+100,1st,health,2nd,health,Germany,30-50
+120,1st,health,2nd,sports,Germany,30-50
+100,2nd,weather,3rd,weather,Germany,30-50
+10,3rd,weather,4th,health,Germany,30-50
+90,3rd,weather,4th,weather,Germany,30-50
+200,2nd,sports,3rd,sports,Germany,30-50
+150,3rd,sports,4th,health,Germany,30-50
+100,1st,travel,2nd,travel,Germany,30-50
+100,1st,weather,2nd,sports,Germany,50+
+100,1st,weather,2nd,weather,Germany,50+
+10,1st,weather,2nd,health,Germany,50+
+10,1st,weather,2nd,travel,Germany,50+
+100,1st,health,2nd,health,Germany,50+
+120,1st,health,2nd,sports,Germany,50+
+100,2nd,weather,3rd,weather,Germany,50+
+10,3rd,weather,4th,health,Germany,50+
+90,3rd,weather,4th,weather,Germany,50+
+200,2nd,sports,3rd,sports,Germany,50+
+150,3rd,sports,4th,health,Germany,50+
+100,1st,travel,2nd,travel,Germany,50+
+100,1st,weather,2nd,sports,United Kingdom,18-30
+100,1st,weather,2nd,weather,United Kingdom,18-30
+10,1st,weather,2nd,health,United Kingdom,18-30
+10,1st,weather,2nd,travel,United Kingdom,18-30
+100,1st,health,2nd,health,United Kingdom,18-30
+120,1st,health,2nd,sports,United Kingdom,18-30
+100,2nd,weather,3rd,weather,United Kingdom,18-30
+10,3rd,weather,4th,health,United Kingdom,18-30
+90,3rd,weather,4th,weather,United Kingdom,18-30
+100,1st,weather,2nd,sports,United Kingdom,30-50
+120,2nd,weather,3rd,health,United Kingdom,30-50
+70,3rd,health,4th,sports,United Kingdom,30-50
+100,1st,weather,2nd,weather,United Kingdom,30-50
+10,1st,weather,2nd,health,United Kingdom,30-50
+10,1st,weather,2nd,travel,United Kingdom,30-50
+100,1st,health,2nd,health,United Kingdom,30-50
+120,1st,health,2nd,sports,United Kingdom,30-50
+100,2nd,weather,3rd,weather,United Kingdom,30-50
+10,3rd,weather,4th,health,United Kingdom,30-50
+90,3rd,weather,4th,weather,United Kingdom,30-50
+100,1st,weather,2nd,sports,United Kingdom,50+
+100,1st,weather,2nd,weather,United Kingdom,50+
+10,1st,weather,2nd,health,United Kingdom,50+
+10,1st,weather,2nd,travel,United Kingdom,50+
+100,1st,health,2nd,health,United Kingdom,50+
+120,1st,health,2nd,sports,United Kingdom,50+
+100,2nd,weather,3rd,weather,United Kingdom,50+
+10,3rd,weather,4th,health,United Kingdom,50+
+90,3rd,weather,4th,weather,United Kingdom,50+
+200,2nd,sports,3rd,sports,United Kingdom,50+
+150,3rd,sports,4th,health,United Kingdom,50+
+</pre> 
+
+<!-- B: paste node infos in pre#dataNodes tag -->
+<pre id="dataNodes">
+sourceX,sourceY,region,age,browser:Chrome,os:Windows,client:desktop
+1st,travel,United States,18-30,10,10,90
+3rd,sports,United States,18-30,30,70,50
+4th,weather,United States,18-30,10,10,80
+1st,health,United States,18-30,90,30,160
+1st,travel,India,18-30,10,10,90
+3rd,sports,India,18-30,30,70,50
+4th,weather,India,18-30,10,10,80
+1st,health,India,18-30,90,30,160
+1st,health,Germany,18-30,90,30,160
+4th,weather,Germany,18-30,10,10,80
+1st,health,Germany,18-30,90,30,160
+2nd,sports,India,50+,160,600,690
+1st,health,India,50+,400,50,700
+</pre>
+    <script>
+    // no parameter when data is embedded in <pre id="data"> tag, otherwise sequenceExplorer.chart(file);
+     var myChart = sequenceExplorer.chart()
+     // var myChart = sequenceExplorer.chart("../data/sankey_new_n1.csv")
+      .sequenceName("click in stream")
+      .categoryName("web site directory")
+      .valueName("number of sessions"); 
+      
+    d3.select("body")
+      .append("div")
+      .attr("class", "chart")
+      .call(myChart);
+      
+    </script>
+  </body>
+</html>  

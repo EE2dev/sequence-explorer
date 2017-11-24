@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+  <meta charset="utf-8"> <!-- also save this file as unicode-8 ! -->
+  <head>
+    <link rel="stylesheet" type="text/css" href="../lib/sankeySeqExplorer_10.css">
+  
+    <!--script src="../../../lib/d3_v4_2_1/d3.js"></script-->
+    <script src="https://d3js.org/d3.v4.js"></script> 
+    <script src="../build/sequence-explorer.js"></script>
+    <style>            
+      rect.nyresponded_but_did_not_show_up {
+         fill: red;
+      } 
+      
+      rect.sankeyNodeInfo {
+        fill: yellow;
+      }  
+      /*
+      rect.nxmeetup3 {
+        fill: orange;
+      }
+      */
+    </style>
+  </head>
+  
+  <body>
+    <script>
+    // no parameter when data is embedded in <pre id="data"> tag, otherwise sequenceExplorerChart(file);
+    // var myChart = sequenceExplorerChart();
+     // var myChart = sequenceExplorer.chart("../data/sankey_1234f.csv")
+     var myChart = sequenceExplorer.chart("../data/sankey_new.csv")
+      .debugOn(true)
+      .showNodeLabels(false)
+      .size([900,700])
+      .sequenceName("meetup")
+      .categoryName("action")
+      //.categories(["joined meetup group","responded but did not show up","did not respond","responded No","responded and showed up"])
+      // .sequence(["before meetup1","meetup1","meetup2","meetup3", "meetup4"])
+      // .categories(["3+","1","2","3","0"])
+      //.colOrder(["normal responders", "very late responders", "early responders", "all responders"])
+      //.rowOrder(["B","C","A","D"])
+      .tooltipFormat(["%event", "%firstCategory","%prevCategory"])
+      .valueName("members"); 
+      
+    d3.select("body")
+      .append("div")
+      .attr("class", "chart")
+      .call(myChart);
+      
+    </script>
+  </body>
+</html>  
