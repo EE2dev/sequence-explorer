@@ -6,11 +6,13 @@ Sequence explorer implements the following [d3.js reusable charts pattern](https
 
 d3-sankeySeq.js adapts the sankey layout for sequential data, sequence-explorer.js is a wrapper on top of sankeySeq with the following features:
 * data is read from a csv file. Since the visualization is motivated by the [Markov assumption](https://en.wikipedia.org/wiki/Markov_property), the data can be provided in an efficient format just referencing the successors in a sequence and their connection value. See section about [data formatting](#3-data-formatting).
-* can be used with just a browser and no web server. In that case, data has to be embedded in the html file. 
+* can be used with just a browser and no web server. In the latter case, data has to be embedded in the html file. 
 * sankeySeq places the nodes on a fixed grid. Each state of the sequence (e.g. point in time) has a fixed x position. And each event has a fixed y position.
 * supports small multiples
 * additional quantitative features can be visualized within the nodes
 * links and nodes can be css styled individually for presentations
+* supports transition to various proportions
+* flowing particles for selected paths 
 
 For additional features see section [API for sequence explorer](#5-api-for-sequence-explorer).
 
@@ -100,6 +102,7 @@ You might add paths which can be highlighted with flying particles.
 The file structure is similar to the data file plus one extra column called `name`. The only difference is that the first column must be named ```value```, the four columns refering to the path have to be named ```sourceX,sourceY,targetX,targetY```.
 This additional file has to be in the same directory as the main csv file and has to be named as the main file with "_paths" added to the file name.
 E.g. original file: `my_sankey_file.csv`--> `my_sankey_file_paths.csv`
+Please note that paths which are highlighted (meaning particles are flowing) prevents other mouse events from firing. To continue with interactive responses of sequence explorer all paths must be deselected.
 
 
 Example of a valid csv file:

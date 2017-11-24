@@ -178,6 +178,7 @@ value,sourceX,sourceY,targetX,targetY,region,age,name
     // setup a chart with a csv file and add the visualization to a DOM element
     var myChart = sequenceExplorer.chart() // no parameter when data is embedded in <pre id="data"> tag
     // var myChart = sequenceExplorer.chart("../data/cs_new_n1.csv") // load data from a csv file
+      .debugOn(true)
       .sequenceName("click in stream")
       .eventName("web site directory")
      // .valueName("number of sessions"); 

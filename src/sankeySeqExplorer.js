@@ -1046,11 +1046,11 @@ export default function(_myData) {
       } else { console.log("no data found in pre#data!");}
       if (d3.select("pre#dataNodes").size() !== 0) { 
         let content = d3.select("pre#dataNodes").text();
-        if (content === "") {nodeFile = d3.csvParse(content);} 
+        if (content !== "") {nodeFile = d3.csvParse(content);} 
       }
       if (d3.select("pre#paths").size() !== 0) { 
         let content = d3.select("pre#paths").text();
-        if (content === "") {pathFile = d3.csvParse(content);} 
+        if (content !== "") {pathFile = d3.csvParse(content);} 
       }
       
       if (debugOn) {

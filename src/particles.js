@@ -1,12 +1,6 @@
 import * as d3 from "d3";
 
 // start Particles - idea from https://bl.ocks.org/emeeks/21f99959d48dd0d0c746
-          // display paths div
-          // tooltip disappeared
-          // opacity of red ?
-          // svg on top of canvas to allow tooltip
-          // particles not on independent paths but the same one flow through 
-          // test without web server
 
 export function particles() {
   let publicAPI = function(){};
@@ -121,7 +115,8 @@ export function particles() {
           myLink.particleSize = 2.5;
           myLink.particleColor = d3.scaleLinear().domain([0,1]).range([link.source.color, link.target.color]);
           myLink.particleAlpha = d3.scaleLinear().domain([0,1]).range([link.source.alpha, link.target.alpha]);
-          myLink.source = {nameX: link.source.nameX};
+          myLink.sourceX = link.source.nameX;
+          myLink.sourceY = link.source.nameY;
           myLink.svgPath = svgPath;
           myLinks.push(myLink);
         } 
@@ -129,7 +124,7 @@ export function particles() {
     });
     let thisPath = {};
     thisPath["pathName"] = pathName;
-    thisPath["startParticles"] = [_sequenceStart];
+    thisPath["sequenceStart"] = _sequenceStart;
     thisPath["links"] = myLinks;
     thisPath["particles"] = [];
 
@@ -147,7 +142,7 @@ export function particles() {
       _path["particles"].forEach(function (d) {
         if (d.current >= d.path.getTotalLength() ){
           _path["links"]
-            .filter(l => d.path.__data__.target.nameX === l.source.nameX)
+            .filter(l => d.path.__data__.target.nameX === l.sourceX && d.path.__data__.target.nameY === l.sourceY)
             .forEach(function (l) {
               d.link = l;
               d.time = elapsed;
@@ -161,7 +156,7 @@ export function particles() {
       _path["particles"] = _path["particles"].filter(function(d){return d.current < d.path.getTotalLength();});
 
       _path["links"]
-      .filter(d => _path["startParticles"][0] === d.source.nameX) 
+      .filter(d => _path["sequenceStart"] === d.sourceX) 
       .forEach(function (d) {
         let factor =  (Math.random() - .5);
         var offset = factor * d.dy;
