@@ -24,7 +24,9 @@ Complete list of examples:
 
   * [single chart](http://bl.ocks.org/EE2dev/52b57438d4e017eefac1765e5727459a)
   * [hightlight a path](http://bl.ocks.org/ee2dev/325fdb28bfcba4369ff364c7e5224c35)
-  * [demo2](http://bl.ocks.org/EE2dev/0e709563a63ddfd5c7152e3441593093)
+  * [hightlight a vertical path](http://bl.ocks.org/EE2dev/b9a20ef36c2a3caf5d7b0374a2d677a7)
+  * [small multiples](http://bl.ocks.org/EE2dev/0e709563a63ddfd5c7152e3441593093)
+  * [main example](http://bl.ocks.org/EE2dev/91abcc611b66aaed6403bca1d48aedbf)
   * [demo without web server](http://bl.ocks.org/EE2dev/1a4a65727e2e55ac6ae93a9aaef2f312)
 
 ### 3. Data formatting

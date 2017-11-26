@@ -13,7 +13,8 @@
     var myChart = sequenceExplorer.chart("../data/cs_new_n2.csv") // load data from a csv file
       .sequenceName("click in stream")
       .eventName("web site directory")
-      .valueName("number of sessions"); 
+      .valueName("number of sessions")
+      .percentages(["%sameTime","%sameEvent", "%firstEvent", "%prevEvent"]); 
       
     d3.select("body")
       .append("div")
