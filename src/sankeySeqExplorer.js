@@ -51,9 +51,12 @@ export default function(_myData) {
     sequenceName = "sequence",
     categoryName = "category",
     thousandsSeparator = ",",
-    particlesMin = 0.05,
-    particlesMax = 0.5,
-    particlesSpeed = 0.1;
+    particleMin = 0.05,
+    particleMax = 0.5,
+    particleSpeed = 0.1,
+    particleSize = 1,
+    particleShape = "circle",
+    particleShapeArray = ["circle", "person"];
 
   // 1.2 all updatable functions to be called by getter-setter methods  
   // var updateNodeInfo;
@@ -184,23 +187,37 @@ export default function(_myData) {
     return chartAPI;
   };
 
-  chartAPI.particlesMin = function(_) {
-    if (!arguments.length) return particlesMin;
-    particlesMin = _;
+  chartAPI.particleMin = function(_) {
+    if (!arguments.length) return particleMin;
+    particleMin = _;
     return chartAPI;
   };
 
-  chartAPI.particlesMax = function(_) {
-    if (!arguments.length) return particlesMax;
-    particlesMax = _;
+  chartAPI.particleMax = function(_) {
+    if (!arguments.length) return particleMax;
+    particleMax = _;
     return chartAPI;
   }; 
 
-  chartAPI.particlesSpeed = function(_) {
-    if (!arguments.length) return particlesSpeed;
-    particlesSpeed = _;
+  chartAPI.particleSpeed = function(_) {
+    if (!arguments.length) return particleSpeed;
+    particleSpeed = _;
     return chartAPI;
-  };   
+  };  
+  
+  chartAPI.particleSize = function(_) {
+    if (!arguments.length) return particleSize;
+    particleSize = _;
+    return chartAPI;
+  };
+
+  chartAPI.particleShape = function(_) {
+    if (!arguments.length) return particleShape;
+    if (particleShapeArray.indexOf(_) !== -1) {
+      particleShape = _;
+    }
+    return chartAPI;
+  }; 
 
   // returns a function that returns an array of categories 
   // for the transitions and tooltip  
@@ -420,7 +437,7 @@ export default function(_myData) {
       }
       myParticles = myParticles.init(classPaths.get(key), props.particleStart, _pathName, 
         myPath, sequenceStart, mySankey.maxValue(), myPathValue, 
-        particlesMin, particlesMax, particlesSpeed)
+        particleMin, particleMax, particleSpeed, particleShape, particleSize, nodeWidth)
         .start();
     }
     return;
