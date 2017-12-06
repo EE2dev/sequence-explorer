@@ -5,15 +5,15 @@ Adapting the [sankey diagram](https://bost.ocks.org/mike/sankey/) for sequential
 Sequence explorer implements the following [d3.js reusable charts pattern](https://github.com/EE2dev/d3-template) to let you customize the chart. The core library [d3-sankeySeq.js](https://github.com/EE2dev/d3-sankeySeq) can also be used separately.
 
 d3-sankeySeq.js adapts the sankey layout for sequential data, sequence-explorer.js is a wrapper on top of sankeySeq with the following features:
-* data is read from a csv file. Since the visualization is motivated by the [Markov assumption](https://en.wikipedia.org/wiki/Markov_property), the data can be provided in an efficient format just referencing the successors in a sequence and their connection value. See section about [data formatting](#3-data-formatting).
-* can be used with just a browser and no web server. In the latter case, data has to be embedded in the html file. 
-* sankeySeq places the nodes on a fixed grid. Each state of the sequence (e.g. point in time) has a fixed x position. And each event has a fixed y position.
-* supports small multiples
-* supports vertical paths
-* additional quantitative features can be visualized within the nodes
-* links and nodes can be css styled individually for presentations
-* supports transition to various proportions
-* flowing particles for selected paths 
+- [x] data is read from a csv file. Since the visualization is motivated by the [Markov assumption](https://en.wikipedia.org/wiki/Markov_property), the data can be provided in an efficient format just referencing the successors in a sequence and their connection value. See section about [data formatting](#3-data-formatting).
+- [x] can be used with just a browser and no web server. In the latter case, data has to be embedded in the html file. 
+- [x] sankeySeq places the nodes on a fixed grid. Each state of the sequence (e.g. point in time) has a fixed x position. And each event has a fixed y position.
+- [x] supports small multiples
+- [x] supports vertical paths
+- [x] additional quantitative features can be visualized within the nodes
+- [x] links and nodes can be css styled individually for presentations
+- [x] supports transition to various proportions
+- [x] flowing particles for selected paths. This idea is based on [the following bl.ock](https://bl.ocks.org/emeeks/21f99959d48dd0d0c746) of [@emeeks](https://github.com/emeeks).
 
 For additional features see section [API for sequence explorer](#5-api-for-sequence-explorer).
 

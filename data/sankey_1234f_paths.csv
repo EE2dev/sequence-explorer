@@ -1,12 +1,12 @@
 value,sourceX,sourceY,targetX,targetY,member group,responder type,name
-5,before meetup1,joined meetup group,meetup1,responded and showed up,all members,all responders,regulars
-5,meetup1,responded and showed up,meetup2,responded and showed up,all members,all responders,regulars
-5,meetup2,responded and showed up,meetup3,responded and showed up,all members,all responders,regulars
-5,meetup3,responded and showed up,meetup4,responded and showed up,all members,all responders,regulars
-10,before meetup1,joined meetup group,meetup1,responded but did not show up,all members,all responders,improvers
-10,meetup1,responded but did not show up,meetup2,did not respond,all members,all responders,improvers
-10,meetup2,did not respond,meetup3,responded No,all members,all responders,improvers
-10,meetup3,responded No,meetup4,responded and showed up,all members,all responders,improvers
+5,before meetup1,joined meetup group,meetup1,responded and showed up,all members,all responders,attendees
+5,meetup1,responded and showed up,meetup2,responded and showed up,all members,all responders,attendees
+5,meetup2,responded and showed up,meetup3,responded and showed up,all members,all responders,attendees
+5,meetup3,responded and showed up,meetup4,responded and showed up,all members,all responders,attendees
+10,before meetup1,joined meetup group,meetup1,responded but did not show up,all members,all responders,converters
+10,meetup1,responded but did not show up,meetup2,did not respond,all members,all responders,converters
+10,meetup2,did not respond,meetup3,responded No,all members,all responders,converters
+10,meetup3,responded No,meetup4,responded and showed up,all members,all responders,converters
 100,before meetup1,joined meetup group,meetup1,did not respond,all members,all responders,absentees
 100,meetup1,did not respond,meetup2,did not respond,all members,all responders,absentees
 100,meetup2,did not respond,meetup3,did not respond,all members,all responders,absentees
