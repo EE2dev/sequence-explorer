@@ -125,10 +125,10 @@ If you are running sequence explorer without a web server, you can put the data 
 The optional node infos have to be put into the `<pre id="dataNodes"></pre>` tag and the optional path info have to reside within the `<pre id="paths"></pre>` tag.
 
 ### 4. Using sequence explorer
-If a csv file with data in the correct format exists, the typical call of sequence explorer from your html file looks as follows:
+If a csv file with data in the correct format exists, the typical call of sequence explorer from your html file is typically as simple as follows:
 
 ```
-  <!DOCTYPE html>
+<!DOCTYPE html>
   <meta charset="utf-8">
   <head>  
     <link rel="stylesheet" type="text/css" href="https://ee2dev.github.io/libs/sankeySeqExplorer.v20.css">
@@ -138,12 +138,12 @@ If a csv file with data in the correct format exists, the typical call of sequen
   
   <body>
     <script>
-     var myChart = sequenceExplorer.chart("myData.csv"); // load data from a csv file
+      var myChart = sequenceExplorer.chart("myData.csv"); // load data from a csv file
 
-     d3.select("body")
-       .append("div")
-       .attr("class", "chart")
-       .call(myChart); 
+      d3.select("body")
+        .append("div")
+        .attr("class", "chart")
+        .call(myChart); 
     </script>
   </body>
 </html>
