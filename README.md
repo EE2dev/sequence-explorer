@@ -17,6 +17,8 @@ d3-sankeySeq.js adapts the sankey layout for sequential data, sequence-explorer.
 
 For additional features see section [API for sequence explorer](#5-api-for-sequence-explorer).
 
+Here is a link to a video explaining how to use item explorer with your own data and [here](http://www.ankerst.de/Mihael/proj/mfc/) is a web site introducing item explorer.
+
 ### 2. Examples
 [The main example is here](http://bl.ocks.org/ee2dev/91abcc611b66aaed6403bca1d48aedbf).
 
