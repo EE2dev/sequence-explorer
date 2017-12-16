@@ -138,12 +138,12 @@ If a csv file with data in the correct format exists, the typical call of sequen
   
   <body>
     <script>
-    var myChart = sequenceExplorer.chart("myData.csv"); // load data from a csv file
-      
-    d3.select("body")
-      .append("div")
-      .attr("class", "chart")
-      .call(myChart); 
+     var myChart = sequenceExplorer.chart("myData.csv"); // load data from a csv file
+
+     d3.select("body")
+       .append("div")
+       .attr("class", "chart")
+       .call(myChart); 
     </script>
   </body>
 </html>
