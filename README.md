@@ -5,7 +5,7 @@ Adapting the [sankey diagram](https://bost.ocks.org/mike/sankey/) for sequential
 Sequence explorer implements the following [d3.js reusable charts pattern](https://github.com/EE2dev/d3-template) to let you customize the chart. The core library [d3-sankeySeq.js](https://github.com/EE2dev/d3-sankeySeq) can also be used separately.
 
 d3-sankeySeq.js adapts the sankey layout for sequential data, sequence-explorer.js is a wrapper on top of sankeySeq with the following features:
-- [x] data is read from a csv file. Since the visualization is motivated by the [Markov assumption](https://en.wikipedia.org/wiki/Markov_property), the data can be provided in an efficient format just referencing the successors in a sequence and their connection value. See section about [data formatting](#3-data-formatting).
+- [x] data is read from a csv or a JSON file. Since the visualization is motivated by the [Markov assumption](https://en.wikipedia.org/wiki/Markov_property), the data can be provided in an efficient format just referencing the successors in a sequence and their connection value. See section about [data formatting](#3-data-formatting).
 - [x] can be used with just a browser and no web server. In the latter case, data has to be embedded in the html file. 
 - [x] sankeySeq places the nodes on a fixed grid. Each state of the sequence (e.g. point in time) has a fixed x position. And each event has a fixed y position.
 - [x] supports small multiples
@@ -120,7 +120,44 @@ value,sourceX,sourceY,targetX,targetY,gender,region,name
 ...
 ```
 
-### 3.4 Data references with no web server
+### 3.4 Loading data from a JSON file 
+The data format described above similarly applies to a JSON file.
+The file must contain a `data` key refering to an array of data objects. In addition, but optional, the file can
+also contain a `dataNodes` key with the additional quantities and a `paths` key for the corresponding paths.
+
+Example of a valid JSON file:
+```
+{ "data": 
+  [
+    {
+      "value": 167538,
+      "sourceX": 1,
+      "sourceY": "home",
+      "targetX": 2,
+      "targetY": "other"
+    },
+    {
+      "value": 1250384,
+      "sourceX": 2,
+      "sourceY": "product",
+      "targetX": 3,
+      "targetY": "home"
+    },
+
+...
+  
+    {
+      "value": 734055,
+      "sourceX": 3,
+      "sourceY": "account",
+      "targetX": 4,
+      "targetY": "product"
+    }
+  ]
+}
+```
+
+### 3.5 Data references with no web server
 If you are running sequence explorer without a web server, you can put the data (csv format) into the `<pre id="data"></pre>` tag. 
 The optional node infos have to be put into the `<pre id="dataNodes"></pre>` tag and the optional path info have to reside within the `<pre id="paths"></pre>` tag.
 

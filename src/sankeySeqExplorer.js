@@ -1021,44 +1021,16 @@ export default function(_myData) {
   // XHR to load data   
   function readData(csvFile, selection) {
     if (csvFile !== "<pre>") {
-      d3.csv(csvFile, function(error1, f) {
-        var nodeFileName = csvFile.slice(0, csvFile.lastIndexOf(".")) + "_nodes" + csvFile.slice(csvFile.lastIndexOf("."));
-        d3.csv(nodeFileName, function(error2, nf) { // load infos from optional nodeInfo file
-          if (debugOn) {
-            console.log("start");
-            console.log(error2);
-            console.log(nf);
-            console.log("end");
-          } 
-          nodeFile = nf;
-          file = f;
-
-          if (debugOn) {
-            console.log("file: ");
-            console.log(file);
-            console.log("nodeFileName: ");
-            console.log(nodeFileName);
-            console.log("nodeFile: ");
-            console.log(nodeFile);
-          }
-          var pathFileName = csvFile.slice(0, csvFile.lastIndexOf(".")) + "_paths" + csvFile.slice(csvFile.lastIndexOf("."));
-          d3.csv(pathFileName, function(error3, pf) { // load paths from optional show path file
-            pathFile = pf;
-            if (debugOn) {
-              console.log("pathfile error:");
-              console.log(error3);
-              console.log("pathfile:");
-              console.log(pathFile);
-              console.log("end");
-            } 
-            allGraphs = constructSankeyFromCSV(file); // main data structure build from csv file           
-            createChart(selection);
-          });
-        });       
-      });
+      var suffix = csvFile.split(".")[csvFile.split(".").length-1];
+      if (suffix !== "csv" && suffix !== "json") { 
+        console.log("Wrong suffix (neither csv nor json): " + csvFile);
+      } else if (suffix === "json") {
+        readJson(csvFile, selection);
+      } else { 
+        readCsv(csvFile, selection);
+      }
     } 
-    else {
-      
+    else { // data embedded in html file
       if (d3.select("pre#data").size() !== 0) { file = d3.csvParse(d3.select("pre#data").text()); 
       } else { console.log("no data found in pre#data!");}
       if (d3.select("pre#dataNodes").size() !== 0) { 
@@ -1087,6 +1059,68 @@ export default function(_myData) {
       createChart(selection);
     }
   } 
+
+  // 5.2 reads data from a csv file
+  function readCsv (csvFile, selection) {
+    d3.csv(csvFile, function(error1, f) {
+      var nodeFileName = csvFile.slice(0, csvFile.lastIndexOf(".")) + "_nodes" + csvFile.slice(csvFile.lastIndexOf("."));
+      d3.csv(nodeFileName, function(error2, nf) { // load infos from optional nodeInfo file
+        if (debugOn) {
+          console.log("start");
+          console.log(error2);
+          console.log(nf);
+          console.log("end");
+        } 
+        nodeFile = nf;
+        file = f;
+
+        if (debugOn) {
+          console.log("file: ");
+          console.log(file);
+          console.log("nodeFileName: ");
+          console.log(nodeFileName);
+          console.log("nodeFile: ");
+          console.log(nodeFile);
+        }
+        var pathFileName = csvFile.slice(0, csvFile.lastIndexOf(".")) + "_paths" + csvFile.slice(csvFile.lastIndexOf("."));
+        d3.csv(pathFileName, function(error3, pf) { // load paths from optional show path file
+          pathFile = pf;
+          if (debugOn) {
+            console.log("pathfile error:");
+            console.log(error3);
+            console.log("pathfile:");
+            console.log(pathFile);
+            console.log("end");
+          } 
+          allGraphs = constructSankeyFromCSV(file); // main data structure build from csv file           
+          createChart(selection);
+        });
+      });       
+    });
+  }
+
+  // 5.3 reads data from a json file
+  function readJson (csvFile, selection) {
+    d3.json(csvFile, function(error1, f) {
+      if (debugOn) {
+        console.log("start");
+        console.log(error1);
+        console.log(f);
+        console.log("end");
+      } 
+      if (!f["data"]) {console.log (" --> No data key found in JSON file"); } 
+      else { file = f["data"]; file.columns = Object.keys(file[0]); }
+      
+      if (!f["dataNodes"]) {console.log (" --> No dataNodes key found in JSON file"); } 
+      else { nodeFile = f["dataNodes"]; nodeFile.columns = Object.keys(nodeFile[0]); }
+      
+      if (!f["paths"]) {console.log (" --> No paths key found in JSON file"); } 
+      else { pathFile = f["paths"]; pathFile.columns = Object.keys(pathFile[0]); }
+
+      allGraphs = constructSankeyFromCSV(file); // main data structure build from JSON file           
+      createChart(selection);
+    });      
+  }
 
   // 5.4 processes sankey from a csv file. Returns the necessary graph data structure. 
   // based on the approach from timelyportfolio, see http://bl.ocks.org/timelyportfolio/5052095
