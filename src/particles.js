@@ -37,7 +37,7 @@ export function particles() {
   publicAPI.init = function (_svgPaths, _canvasTL, _pathName, _myPath, _sequenceStart, _linkMax,
     _linkValue, _particleMin, _particleMax, _particleSpeed, _particleShape, _particleSize, _nodeWidth){
     
-    if (d3.select("svg.sankey").selectAll("canvas").size() === 0) {
+    if (d3.select("div.sankeyChart").selectAll("canvas").size() === 0) {
       initializeCanvas(_canvasTL, _linkMax, _particleMin, _particleMax, _particleSpeed, _particleShape, _particleSize, _nodeWidth);
     } 
 
@@ -90,10 +90,10 @@ export function particles() {
     nodeWidth = _nodeWidth;
     allPaths.remove = -1;
     frequencyScale = d3.scaleLinear().domain([1, _linkMax]).range([_particleMin, _particleMax]);
-    cw = d3.select("svg.sankey").attr("width");
-    ch = d3.select("svg.sankey").attr("height");
+    cw = d3.select("div.sankeyChart svg").attr("width");
+    ch = d3.select("div.sankeyChart svg").attr("height");
 
-    d3.select("svg.sankey").insert("canvas", ":first-child")
+    d3.select("div.sankeyChart").insert("canvas", ":first-child")
         .attr("width", cw)
         .attr("height", ch)
         .attr("class", "particles");
@@ -102,7 +102,7 @@ export function particles() {
     context.clearRect(0,0,cw,ch);
     context.translate(_canvasTranslate.x, _canvasTranslate.y);
 
-    d3.selectAll("rect").each(function(d){
+    d3.selectAll("g.sankeyFrame.single rect.sankeyNode").each(function(d){
       d.color = d3.select(this).style("fill");
       d.alpha = d3.select(this).style("fill-opacity");
     }); 

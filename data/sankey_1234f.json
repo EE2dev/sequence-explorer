@@ -1,0 +1,5944 @@
+{"data":
+    [
+        {
+        "value": 6,
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "targetX": "meetup4",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 3",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup1",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup2",
+        "targetY": "responded No",
+        "member group": "before meetup 1",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "responded No",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 10,
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup2",
+        "sourceY": "responded No",
+        "targetX": "meetup3",
+        "targetY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "early responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup3",
+        "sourceY": "responded No",
+        "targetX": "meetup4",
+        "targetY": "responded No",
+        "member group": "all members",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup3",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 2",
+        "responder type": "all responders"
+        },
+        {
+        "value": 699,
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "targetX": "meetup4",
+        "targetY": "did not respond",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 3,
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 2",
+        "responder type": "all responders"
+        },
+        {
+        "value": 14,
+        "sourceX": "meetup3",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup4",
+        "targetY": "responded No",
+        "member group": "before meetup 4",
+        "responder type": "all responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup1",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup2",
+        "targetY": "responded No",
+        "member group": "all members",
+        "responder type": "early responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup4",
+        "targetY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 7,
+        "sourceX": "meetup1",
+        "sourceY": "did not respond",
+        "targetX": "meetup2",
+        "targetY": "responded No",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup2",
+        "sourceY": "did not respond",
+        "targetX": "meetup3",
+        "targetY": "responded No",
+        "member group": "before meetup 2",
+        "responder type": "early responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 2",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 3,
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup3",
+        "targetY": "responded No",
+        "member group": "before meetup 1",
+        "responder type": "early responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup2",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup3",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 2",
+        "responder type": "early responders"
+        },
+        {
+        "value": 3,
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup3",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup2",
+        "sourceY": "did not respond",
+        "targetX": "meetup3",
+        "targetY": "did not respond",
+        "member group": "before meetup 2",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 3,
+        "sourceX": "meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup2",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 4,
+        "sourceX": "meetup2",
+        "sourceY": "responded No",
+        "targetX": "meetup3",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "early responders"
+        },
+        {
+        "value": 11,
+        "sourceX": "meetup2",
+        "sourceY": "did not respond",
+        "targetX": "meetup3",
+        "targetY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup1",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup2",
+        "targetY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 11,
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup3",
+        "targetY": "did not respond",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup4",
+        "targetY": "responded No",
+        "member group": "before meetup 4",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 3,
+        "sourceX": "meetup1",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup2",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 7,
+        "sourceX": "meetup3",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup4",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 4",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 9,
+        "sourceX": "before meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup1",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "early responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 2",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup2",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup3",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 2",
+        "responder type": "all responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 5,
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "targetX": "meetup4",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 6,
+        "sourceX": "before meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup1",
+        "targetY": "responded No",
+        "member group": "all members",
+        "responder type": "early responders"
+        },
+        {
+        "value": 3,
+        "sourceX": "meetup3",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup4",
+        "targetY": "responded No",
+        "member group": "all members",
+        "responder type": "early responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup1",
+        "sourceY": "did not respond",
+        "targetX": "meetup2",
+        "targetY": "did not respond",
+        "member group": "all members",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup4",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 3",
+        "responder type": "early responders"
+        },
+        {
+        "value": 13,
+        "sourceX": "meetup2",
+        "sourceY": "responded No",
+        "targetX": "meetup3",
+        "targetY": "did not respond",
+        "member group": "before meetup 2",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup2",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup3",
+        "targetY": "did not respond",
+        "member group": "before meetup 3",
+        "responder type": "early responders"
+        },
+        {
+        "value": 12,
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "early responders"
+        },
+        {
+        "value": 6,
+        "sourceX": "meetup3",
+        "sourceY": "responded No",
+        "targetX": "meetup4",
+        "targetY": "did not respond",
+        "member group": "before meetup 2",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup4",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 3",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 5,
+        "sourceX": "meetup2",
+        "sourceY": "did not respond",
+        "targetX": "meetup3",
+        "targetY": "responded No",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup2",
+        "sourceY": "responded No",
+        "targetX": "meetup3",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 2",
+        "responder type": "all responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup3",
+        "sourceY": "responded No",
+        "targetX": "meetup4",
+        "targetY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "early responders"
+        },
+        {
+        "value": 38,
+        "sourceX": "meetup2",
+        "sourceY": "responded No",
+        "targetX": "meetup3",
+        "targetY": "did not respond",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup4",
+        "targetY": "responded No",
+        "member group": "before meetup 2",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup4",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 1",
+        "responder type": "early responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "responded No",
+        "targetX": "meetup4",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 2",
+        "responder type": "all responders"
+        },
+        {
+        "value": 7,
+        "sourceX": "meetup1",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup2",
+        "targetY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 10,
+        "sourceX": "meetup1",
+        "sourceY": "did not respond",
+        "targetX": "meetup2",
+        "targetY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup3",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 2",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup1",
+        "sourceY": "responded No",
+        "targetX": "meetup2",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "early responders"
+        },
+        {
+        "value": 21,
+        "sourceX": "meetup1",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup2",
+        "targetY": "did not respond",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 16,
+        "sourceX": "meetup2",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup3",
+        "targetY": "responded No",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 60,
+        "sourceX": "before meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup1",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup3",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "early responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup1",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup2",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "early responders"
+        },
+        {
+        "value": 5,
+        "sourceX": "meetup3",
+        "sourceY": "responded No",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup2",
+        "sourceY": "did not respond",
+        "targetX": "meetup3",
+        "targetY": "responded No",
+        "member group": "all members",
+        "responder type": "early responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup2",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 2",
+        "responder type": "early responders"
+        },
+        {
+        "value": 16,
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup3",
+        "targetY": "responded No",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 2",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "targetX": "meetup4",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 1",
+        "responder type": "early responders"
+        },
+        {
+        "value": 3,
+        "sourceX": "meetup1",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup2",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "early responders"
+        },
+        {
+        "value": 4,
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 3",
+        "responder type": "early responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup2",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 2",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup3",
+        "sourceY": "responded No",
+        "targetX": "meetup4",
+        "targetY": "responded No",
+        "member group": "before meetup 2",
+        "responder type": "all responders"
+        },
+        {
+        "value": 4,
+        "sourceX": "meetup2",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup3",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 10,
+        "sourceX": "meetup2",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup3",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "early responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup2",
+        "sourceY": "responded No",
+        "targetX": "meetup3",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 2",
+        "responder type": "all responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup1",
+        "sourceY": "responded No",
+        "targetX": "meetup2",
+        "targetY": "responded No",
+        "member group": "before meetup 1",
+        "responder type": "early responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup3",
+        "sourceY": "responded No",
+        "targetX": "meetup4",
+        "targetY": "responded No",
+        "member group": "before meetup 2",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 416,
+        "sourceX": "meetup2",
+        "sourceY": "did not respond",
+        "targetX": "meetup3",
+        "targetY": "did not respond",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup4",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 1",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 3,
+        "sourceX": "meetup2",
+        "sourceY": "responded No",
+        "targetX": "meetup3",
+        "targetY": "responded No",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "responded No",
+        "targetX": "meetup4",
+        "targetY": "responded No",
+        "member group": "all members",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup2",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup3",
+        "targetY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup2",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup3",
+        "targetY": "did not respond",
+        "member group": "before meetup 3",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup3",
+        "targetY": "did not respond",
+        "member group": "before meetup 1",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup2",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup3",
+        "targetY": "did not respond",
+        "member group": "all members",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 2",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "targetX": "meetup4",
+        "targetY": "responded No",
+        "member group": "all members",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup3",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 4,
+        "sourceX": "meetup1",
+        "sourceY": "responded No",
+        "targetX": "meetup2",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 59,
+        "sourceX": "before meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup1",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup1",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup2",
+        "targetY": "did not respond",
+        "member group": "all members",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 4,
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup3",
+        "targetY": "did not respond",
+        "member group": "all members",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 11,
+        "sourceX": "meetup1",
+        "sourceY": "responded No",
+        "targetX": "meetup2",
+        "targetY": "responded No",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 3,
+        "sourceX": "before meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup1",
+        "targetY": "did not respond",
+        "member group": "all members",
+        "responder type": "early responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup1",
+        "sourceY": "did not respond",
+        "targetX": "meetup2",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "early responders"
+        },
+        {
+        "value": 12,
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup3",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup2",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup3",
+        "targetY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "early responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 2",
+        "responder type": "early responders"
+        },
+        {
+        "value": 26,
+        "sourceX": "meetup2",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup3",
+        "targetY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 47,
+        "sourceX": "before meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup1",
+        "targetY": "responded No",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 5,
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup3",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "early responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "before meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup1",
+        "targetY": "did not respond",
+        "member group": "all members",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 3,
+        "sourceX": "meetup2",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup3",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 2",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "before meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup1",
+        "targetY": "responded No",
+        "member group": "before meetup 1",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 7,
+        "sourceX": "meetup1",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup2",
+        "targetY": "responded No",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 165,
+        "sourceX": "meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup2",
+        "targetY": "did not respond",
+        "member group": "before meetup 2",
+        "responder type": "all responders"
+        },
+        {
+        "value": 211,
+        "sourceX": "before meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup1",
+        "targetY": "did not respond",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 300,
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "targetX": "meetup4",
+        "targetY": "did not respond",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 3,
+        "sourceX": "meetup3",
+        "sourceY": "responded No",
+        "targetX": "meetup4",
+        "targetY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 11,
+        "sourceX": "meetup1",
+        "sourceY": "responded No",
+        "targetX": "meetup2",
+        "targetY": "responded No",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 27,
+        "sourceX": "meetup1",
+        "sourceY": "responded No",
+        "targetX": "meetup2",
+        "targetY": "did not respond",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup1",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup2",
+        "targetY": "did not respond",
+        "member group": "all members",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup1",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup2",
+        "targetY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "early responders"
+        },
+        {
+        "value": 11,
+        "sourceX": "meetup3",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 4",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 3,
+        "sourceX": "meetup1",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup2",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "before meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup1",
+        "targetY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "early responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup4",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 2",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 3,
+        "sourceX": "meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup2",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 2",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 8,
+        "sourceX": "meetup2",
+        "sourceY": "did not respond",
+        "targetX": "meetup3",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup2",
+        "sourceY": "responded No",
+        "targetX": "meetup3",
+        "targetY": "did not respond",
+        "member group": "before meetup 1",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "targetX": "meetup4",
+        "targetY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "early responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup3",
+        "targetY": "did not respond",
+        "member group": "before meetup 2",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup3",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 2",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 10,
+        "sourceX": "meetup2",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup3",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 3",
+        "responder type": "early responders"
+        },
+        {
+        "value": 26,
+        "sourceX": "meetup2",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup3",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 3",
+        "responder type": "all responders"
+        },
+        {
+        "value": 3,
+        "sourceX": "meetup3",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 47,
+        "sourceX": "before meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup1",
+        "targetY": "responded No",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 5,
+        "sourceX": "meetup2",
+        "sourceY": "responded No",
+        "targetX": "meetup3",
+        "targetY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 210,
+        "sourceX": "meetup2",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup3",
+        "targetY": "did not respond",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 6,
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 3",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup4",
+        "targetY": "responded No",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup1",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup2",
+        "targetY": "did not respond",
+        "member group": "all members",
+        "responder type": "early responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup2",
+        "targetY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "early responders"
+        },
+        {
+        "value": 13,
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup3",
+        "targetY": "responded No",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "responded No",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 2",
+        "responder type": "early responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "targetX": "meetup4",
+        "targetY": "responded No",
+        "member group": "all members",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 164,
+        "sourceX": "meetup3",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup4",
+        "targetY": "did not respond",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 5,
+        "sourceX": "before meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup1",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup3",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup4",
+        "targetY": "responded No",
+        "member group": "all members",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 9,
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup4",
+        "targetY": "responded No",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 263,
+        "sourceX": "meetup2",
+        "sourceY": "did not respond",
+        "targetX": "meetup3",
+        "targetY": "did not respond",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 3",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup4",
+        "targetY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 45,
+        "sourceX": "meetup2",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup3",
+        "targetY": "did not respond",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 10,
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup1",
+        "sourceY": "responded No",
+        "targetX": "meetup2",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "early responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup3",
+        "sourceY": "responded No",
+        "targetX": "meetup4",
+        "targetY": "responded No",
+        "member group": "before meetup 1",
+        "responder type": "early responders"
+        },
+        {
+        "value": 5,
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "targetX": "meetup4",
+        "targetY": "responded No",
+        "member group": "before meetup 2",
+        "responder type": "all responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup2",
+        "sourceY": "did not respond",
+        "targetX": "meetup3",
+        "targetY": "did not respond",
+        "member group": "all members",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "responded No",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 2",
+        "responder type": "all responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup3",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup4",
+        "targetY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 9,
+        "sourceX": "meetup2",
+        "sourceY": "did not respond",
+        "targetX": "meetup3",
+        "targetY": "responded No",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup1",
+        "sourceY": "responded No",
+        "targetX": "meetup2",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 3,
+        "sourceX": "meetup2",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup3",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 4,
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 2",
+        "responder type": "early responders"
+        },
+        {
+        "value": 60,
+        "sourceX": "before meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup1",
+        "targetY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 4,
+        "sourceX": "meetup3",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup4",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 4",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup1",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup2",
+        "targetY": "did not respond",
+        "member group": "before meetup 1",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup1",
+        "sourceY": "did not respond",
+        "targetX": "meetup2",
+        "targetY": "did not respond",
+        "member group": "before meetup 1",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 3,
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup4",
+        "targetY": "responded No",
+        "member group": "before meetup 3",
+        "responder type": "early responders"
+        },
+        {
+        "value": 7,
+        "sourceX": "meetup1",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup2",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 45,
+        "sourceX": "meetup2",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup3",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 3",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "targetX": "meetup4",
+        "targetY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 5,
+        "sourceX": "meetup2",
+        "sourceY": "did not respond",
+        "targetX": "meetup3",
+        "targetY": "did not respond",
+        "member group": "before meetup 1",
+        "responder type": "early responders"
+        },
+        {
+        "value": 36,
+        "sourceX": "meetup3",
+        "sourceY": "responded No",
+        "targetX": "meetup4",
+        "targetY": "did not respond",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 3,
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup4",
+        "targetY": "did not respond",
+        "member group": "before meetup 2",
+        "responder type": "all responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "targetX": "meetup4",
+        "targetY": "responded No",
+        "member group": "before meetup 2",
+        "responder type": "early responders"
+        },
+        {
+        "value": 11,
+        "sourceX": "meetup3",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup4",
+        "targetY": "did not respond",
+        "member group": "before meetup 2",
+        "responder type": "all responders"
+        },
+        {
+        "value": 211,
+        "sourceX": "before meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup1",
+        "targetY": "did not respond",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 3,
+        "sourceX": "meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup2",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 2",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 27,
+        "sourceX": "meetup1",
+        "sourceY": "responded No",
+        "targetX": "meetup2",
+        "targetY": "did not respond",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 7,
+        "sourceX": "meetup3",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "early responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup4",
+        "targetY": "responded No",
+        "member group": "all members",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 20,
+        "sourceX": "meetup1",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup2",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 7,
+        "sourceX": "meetup1",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup2",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "before meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup1",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 1",
+        "responder type": "early responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "responded No",
+        "targetX": "meetup4",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 1",
+        "responder type": "early responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "targetX": "meetup4",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 1",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 11,
+        "sourceX": "meetup3",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 6,
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup4",
+        "targetY": "responded No",
+        "member group": "all members",
+        "responder type": "early responders"
+        },
+        {
+        "value": 6,
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 23,
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup1",
+        "sourceY": "responded No",
+        "targetX": "meetup2",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 4,
+        "sourceX": "meetup3",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup4",
+        "targetY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup1",
+        "sourceY": "responded No",
+        "targetX": "meetup2",
+        "targetY": "did not respond",
+        "member group": "before meetup 1",
+        "responder type": "early responders"
+        },
+        {
+        "value": 6,
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "targetX": "meetup4",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 3",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup2",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup3",
+        "targetY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "early responders"
+        },
+        {
+        "value": 4,
+        "sourceX": "meetup3",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 4",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup3",
+        "targetY": "responded No",
+        "member group": "before meetup 2",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 3,
+        "sourceX": "meetup1",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup2",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "early responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup3",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 1",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 28,
+        "sourceX": "meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup2",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 2",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup1",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup2",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 1",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "responded No",
+        "targetX": "meetup4",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 7,
+        "sourceX": "meetup1",
+        "sourceY": "did not respond",
+        "targetX": "meetup2",
+        "targetY": "responded No",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 3,
+        "sourceX": "before meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup1",
+        "targetY": "did not respond",
+        "member group": "before meetup 1",
+        "responder type": "early responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup4",
+        "targetY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 199,
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "targetX": "meetup4",
+        "targetY": "did not respond",
+        "member group": "before meetup 3",
+        "responder type": "all responders"
+        },
+        {
+        "value": 7,
+        "sourceX": "meetup1",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup2",
+        "targetY": "responded No",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup2",
+        "targetY": "responded No",
+        "member group": "all members",
+        "responder type": "early responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup1",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup2",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 3,
+        "sourceX": "meetup2",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup3",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 3",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup3",
+        "targetY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 4,
+        "sourceX": "before meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup1",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 1",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 3,
+        "sourceX": "meetup2",
+        "sourceY": "responded No",
+        "targetX": "meetup3",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 3,
+        "sourceX": "meetup3",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup4",
+        "targetY": "responded No",
+        "member group": "before meetup 4",
+        "responder type": "early responders"
+        },
+        {
+        "value": 31,
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup4",
+        "targetY": "did not respond",
+        "member group": "before meetup 3",
+        "responder type": "all responders"
+        },
+        {
+        "value": 4,
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup3",
+        "targetY": "responded No",
+        "member group": "all members",
+        "responder type": "early responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup4",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 2",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 3",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup2",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup3",
+        "targetY": "responded No",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 3,
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup3",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 3,
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup3",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 2",
+        "responder type": "early responders"
+        },
+        {
+        "value": 4,
+        "sourceX": "meetup3",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 6,
+        "sourceX": "before meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup1",
+        "targetY": "responded No",
+        "member group": "before meetup 1",
+        "responder type": "early responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup2",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup3",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 2",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup2",
+        "sourceY": "did not respond",
+        "targetX": "meetup3",
+        "targetY": "responded No",
+        "member group": "before meetup 1",
+        "responder type": "early responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup3",
+        "targetY": "did not respond",
+        "member group": "before meetup 1",
+        "responder type": "early responders"
+        },
+        {
+        "value": 3,
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 3,
+        "sourceX": "meetup3",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "early responders"
+        },
+        {
+        "value": 6,
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup4",
+        "targetY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup1",
+        "sourceY": "responded No",
+        "targetX": "meetup2",
+        "targetY": "responded No",
+        "member group": "all members",
+        "responder type": "early responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup2",
+        "sourceY": "did not respond",
+        "targetX": "meetup3",
+        "targetY": "did not respond",
+        "member group": "before meetup 1",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 165,
+        "sourceX": "meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup2",
+        "targetY": "did not respond",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 7,
+        "sourceX": "meetup2",
+        "sourceY": "responded No",
+        "targetX": "meetup3",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 59,
+        "sourceX": "before meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup1",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 5,
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup3",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 3",
+        "responder type": "all responders"
+        },
+        {
+        "value": 5,
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup2",
+        "targetY": "responded No",
+        "member group": "all members",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 7,
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "targetX": "meetup4",
+        "targetY": "responded No",
+        "member group": "all members",
+        "responder type": "early responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "targetX": "meetup4",
+        "targetY": "responded No",
+        "member group": "before meetup 3",
+        "responder type": "early responders"
+        },
+        {
+        "value": 4,
+        "sourceX": "before meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup1",
+        "targetY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup2",
+        "targetY": "did not respond",
+        "member group": "before meetup 2",
+        "responder type": "early responders"
+        },
+        {
+        "value": 3,
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup3",
+        "targetY": "did not respond",
+        "member group": "all members",
+        "responder type": "early responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup2",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup3",
+        "targetY": "responded No",
+        "member group": "all members",
+        "responder type": "early responders"
+        },
+        {
+        "value": 7,
+        "sourceX": "meetup3",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 4",
+        "responder type": "early responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 3",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 8,
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "targetX": "meetup4",
+        "targetY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 40,
+        "sourceX": "meetup3",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup4",
+        "targetY": "did not respond",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 3",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup2",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup3",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 3",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "responded No",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "early responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup2",
+        "sourceY": "responded No",
+        "targetX": "meetup3",
+        "targetY": "did not respond",
+        "member group": "all members",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 4,
+        "sourceX": "meetup1",
+        "sourceY": "responded No",
+        "targetX": "meetup2",
+        "targetY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 25,
+        "sourceX": "meetup2",
+        "sourceY": "responded No",
+        "targetX": "meetup3",
+        "targetY": "did not respond",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 36,
+        "sourceX": "meetup3",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 16,
+        "sourceX": "meetup3",
+        "sourceY": "responded No",
+        "targetX": "meetup4",
+        "targetY": "did not respond",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 6,
+        "sourceX": "meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup2",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "early responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "responded No",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 3",
+        "responder type": "all responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup3",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "early responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup2",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup3",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup4",
+        "targetY": "responded No",
+        "member group": "before meetup 1",
+        "responder type": "early responders"
+        },
+        {
+        "value": 4,
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup4",
+        "targetY": "responded No",
+        "member group": "before meetup 3",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup3",
+        "targetY": "responded No",
+        "member group": "before meetup 2",
+        "responder type": "early responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup2",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup3",
+        "targetY": "did not respond",
+        "member group": "before meetup 2",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup2",
+        "sourceY": "responded No",
+        "targetX": "meetup3",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 1",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup1",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup2",
+        "targetY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "early responders"
+        },
+        {
+        "value": 7,
+        "sourceX": "meetup2",
+        "sourceY": "did not respond",
+        "targetX": "meetup3",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 2",
+        "responder type": "all responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 187,
+        "sourceX": "meetup1",
+        "sourceY": "did not respond",
+        "targetX": "meetup2",
+        "targetY": "did not respond",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 14,
+        "sourceX": "meetup3",
+        "sourceY": "responded No",
+        "targetX": "meetup4",
+        "targetY": "did not respond",
+        "member group": "before meetup 3",
+        "responder type": "all responders"
+        },
+        {
+        "value": 4,
+        "sourceX": "meetup2",
+        "sourceY": "did not respond",
+        "targetX": "meetup3",
+        "targetY": "responded No",
+        "member group": "before meetup 2",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup2",
+        "sourceY": "responded No",
+        "targetX": "meetup3",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 2",
+        "responder type": "early responders"
+        },
+        {
+        "value": 3,
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "targetX": "meetup4",
+        "targetY": "responded No",
+        "member group": "before meetup 3",
+        "responder type": "all responders"
+        },
+        {
+        "value": 27,
+        "sourceX": "meetup2",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup3",
+        "targetY": "did not respond",
+        "member group": "before meetup 2",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup2",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup3",
+        "targetY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 4,
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup3",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 3,
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup3",
+        "targetY": "responded No",
+        "member group": "before meetup 2",
+        "responder type": "all responders"
+        },
+        {
+        "value": 36,
+        "sourceX": "meetup3",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 4",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup4",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 3",
+        "responder type": "all responders"
+        },
+        {
+        "value": 18,
+        "sourceX": "meetup3",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup4",
+        "targetY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 5,
+        "sourceX": "meetup1",
+        "sourceY": "responded No",
+        "targetX": "meetup2",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup2",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup3",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "early responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup2",
+        "sourceY": "responded No",
+        "targetX": "meetup3",
+        "targetY": "did not respond",
+        "member group": "before meetup 2",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup4",
+        "targetY": "responded No",
+        "member group": "before meetup 1",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 5,
+        "sourceX": "before meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup1",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 164,
+        "sourceX": "meetup3",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup4",
+        "targetY": "did not respond",
+        "member group": "before meetup 4",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup1",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup2",
+        "targetY": "responded No",
+        "member group": "before meetup 1",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 7,
+        "sourceX": "meetup3",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup4",
+        "targetY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup4",
+        "targetY": "responded No",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup2",
+        "targetY": "did not respond",
+        "member group": "all members",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 14,
+        "sourceX": "meetup3",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup4",
+        "targetY": "responded No",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup4",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "responded No",
+        "targetX": "meetup4",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 3",
+        "responder type": "all responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup2",
+        "sourceY": "did not respond",
+        "targetX": "meetup3",
+        "targetY": "did not respond",
+        "member group": "all members",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup2",
+        "sourceY": "responded No",
+        "targetX": "meetup3",
+        "targetY": "responded No",
+        "member group": "before meetup 2",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup1",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup2",
+        "targetY": "responded No",
+        "member group": "all members",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 4,
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup4",
+        "targetY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "early responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup1",
+        "sourceY": "responded No",
+        "targetX": "meetup2",
+        "targetY": "did not respond",
+        "member group": "all members",
+        "responder type": "early responders"
+        },
+        {
+        "value": 19,
+        "sourceX": "meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup2",
+        "targetY": "responded No",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 3,
+        "sourceX": "meetup3",
+        "sourceY": "responded No",
+        "targetX": "meetup4",
+        "targetY": "responded No",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 32,
+        "sourceX": "meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup2",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 2",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup2",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup3",
+        "targetY": "responded No",
+        "member group": "before meetup 2",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup4",
+        "targetY": "responded No",
+        "member group": "all members",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup2",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup3",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup2",
+        "sourceY": "did not respond",
+        "targetX": "meetup3",
+        "targetY": "did not respond",
+        "member group": "before meetup 1",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 46,
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup4",
+        "targetY": "did not respond",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 12,
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "targetX": "meetup4",
+        "targetY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 45,
+        "sourceX": "meetup1",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup2",
+        "targetY": "did not respond",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 5,
+        "sourceX": "meetup2",
+        "sourceY": "responded No",
+        "targetX": "meetup3",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 27,
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup3",
+        "targetY": "did not respond",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup2",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup3",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 3",
+        "responder type": "early responders"
+        },
+        {
+        "value": 18,
+        "sourceX": "meetup3",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup4",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 4",
+        "responder type": "all responders"
+        },
+        {
+        "value": 18,
+        "sourceX": "meetup2",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup3",
+        "targetY": "did not respond",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup2",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup3",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "early responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "responded No",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "before meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup1",
+        "targetY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 3,
+        "sourceX": "meetup1",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup2",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 45,
+        "sourceX": "meetup2",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup3",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup1",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup2",
+        "targetY": "responded No",
+        "member group": "before meetup 1",
+        "responder type": "early responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup1",
+        "sourceY": "responded No",
+        "targetX": "meetup2",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 3,
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup4",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 3",
+        "responder type": "early responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "targetX": "meetup4",
+        "targetY": "responded No",
+        "member group": "before meetup 2",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup2",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup3",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 2",
+        "responder type": "early responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "before meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup1",
+        "targetY": "did not respond",
+        "member group": "before meetup 1",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 7,
+        "sourceX": "meetup1",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup2",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 5,
+        "sourceX": "meetup2",
+        "sourceY": "responded No",
+        "targetX": "meetup3",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "early responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 3",
+        "responder type": "all responders"
+        },
+        {
+        "value": 200,
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "targetX": "meetup4",
+        "targetY": "did not respond",
+        "member group": "before meetup 2",
+        "responder type": "all responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup1",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup2",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 16,
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup3",
+        "targetY": "did not respond",
+        "member group": "before meetup 2",
+        "responder type": "all responders"
+        },
+        {
+        "value": 4,
+        "sourceX": "meetup3",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup4",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 4",
+        "responder type": "early responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup2",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup3",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 1",
+        "responder type": "early responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup3",
+        "targetY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "early responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup2",
+        "targetY": "did not respond",
+        "member group": "all members",
+        "responder type": "early responders"
+        },
+        {
+        "value": 19,
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup3",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 10,
+        "sourceX": "meetup1",
+        "sourceY": "did not respond",
+        "targetX": "meetup2",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 11,
+        "sourceX": "meetup1",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup2",
+        "targetY": "responded No",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup3",
+        "targetY": "responded No",
+        "member group": "before meetup 1",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 19,
+        "sourceX": "meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup2",
+        "targetY": "responded No",
+        "member group": "before meetup 2",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "before meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup1",
+        "targetY": "responded No",
+        "member group": "all members",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 4,
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup4",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 3",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup2",
+        "sourceY": "responded No",
+        "targetX": "meetup3",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 2",
+        "responder type": "early responders"
+        },
+        {
+        "value": 7,
+        "sourceX": "meetup1",
+        "sourceY": "did not respond",
+        "targetX": "meetup2",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup1",
+        "sourceY": "did not respond",
+        "targetX": "meetup2",
+        "targetY": "did not respond",
+        "member group": "all members",
+        "responder type": "early responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup4",
+        "targetY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "early responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup2",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup3",
+        "targetY": "did not respond",
+        "member group": "all members",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup2",
+        "sourceY": "responded No",
+        "targetX": "meetup3",
+        "targetY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 12,
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup4",
+        "targetY": "did not respond",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "before meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup1",
+        "targetY": "responded No",
+        "member group": "before meetup 1",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup2",
+        "targetY": "responded No",
+        "member group": "before meetup 2",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "targetX": "meetup4",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 1",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 6,
+        "sourceX": "meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup2",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 2",
+        "responder type": "early responders"
+        },
+        {
+        "value": 4,
+        "sourceX": "meetup2",
+        "sourceY": "did not respond",
+        "targetX": "meetup3",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 7,
+        "sourceX": "meetup1",
+        "sourceY": "did not respond",
+        "targetX": "meetup2",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup2",
+        "targetY": "responded No",
+        "member group": "before meetup 2",
+        "responder type": "early responders"
+        },
+        {
+        "value": 20,
+        "sourceX": "meetup1",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup2",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 5,
+        "sourceX": "meetup2",
+        "sourceY": "responded No",
+        "targetX": "meetup3",
+        "targetY": "responded No",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup4",
+        "targetY": "responded No",
+        "member group": "all members",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "responded No",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 3",
+        "responder type": "early responders"
+        },
+        {
+        "value": 16,
+        "sourceX": "meetup2",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup3",
+        "targetY": "responded No",
+        "member group": "before meetup 3",
+        "responder type": "all responders"
+        },
+        {
+        "value": 3,
+        "sourceX": "meetup2",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup3",
+        "targetY": "responded No",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 153,
+        "sourceX": "meetup2",
+        "sourceY": "did not respond",
+        "targetX": "meetup3",
+        "targetY": "did not respond",
+        "member group": "before meetup 2",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup2",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup3",
+        "targetY": "responded No",
+        "member group": "before meetup 1",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup2",
+        "targetY": "did not respond",
+        "member group": "before meetup 2",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 187,
+        "sourceX": "meetup1",
+        "sourceY": "did not respond",
+        "targetX": "meetup2",
+        "targetY": "did not respond",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 7,
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 2",
+        "responder type": "all responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup3",
+        "targetY": "did not respond",
+        "member group": "before meetup 2",
+        "responder type": "early responders"
+        },
+        {
+        "value": 7,
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "targetX": "meetup4",
+        "targetY": "responded No",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 7,
+        "sourceX": "meetup2",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup3",
+        "targetY": "did not respond",
+        "member group": "before meetup 3",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "before meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup1",
+        "targetY": "responded No",
+        "member group": "all members",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 5,
+        "sourceX": "meetup3",
+        "sourceY": "responded No",
+        "targetX": "meetup4",
+        "targetY": "responded No",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 3,
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup3",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 6,
+        "sourceX": "meetup2",
+        "sourceY": "did not respond",
+        "targetX": "meetup3",
+        "targetY": "did not respond",
+        "member group": "all members",
+        "responder type": "early responders"
+        },
+        {
+        "value": 3,
+        "sourceX": "before meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup1",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 6,
+        "sourceX": "meetup3",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 21,
+        "sourceX": "meetup1",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup2",
+        "targetY": "did not respond",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "targetX": "meetup4",
+        "targetY": "responded No",
+        "member group": "before meetup 1",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 3,
+        "sourceX": "meetup3",
+        "sourceY": "responded No",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "responded No",
+        "targetX": "meetup4",
+        "targetY": "responded No",
+        "member group": "before meetup 1",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup2",
+        "sourceY": "did not respond",
+        "targetX": "meetup3",
+        "targetY": "did not respond",
+        "member group": "before meetup 2",
+        "responder type": "early responders"
+        },
+        {
+        "value": 3,
+        "sourceX": "before meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup1",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup1",
+        "sourceY": "did not respond",
+        "targetX": "meetup2",
+        "targetY": "did not respond",
+        "member group": "before meetup 1",
+        "responder type": "early responders"
+        },
+        {
+        "value": 3,
+        "sourceX": "meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup2",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 4,
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "targetX": "meetup4",
+        "targetY": "responded No",
+        "member group": "before meetup 1",
+        "responder type": "early responders"
+        },
+        {
+        "value": 23,
+        "sourceX": "meetup3",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup4",
+        "targetY": "did not respond",
+        "member group": "before meetup 3",
+        "responder type": "all responders"
+        },
+        {
+        "value": 15,
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "targetX": "meetup4",
+        "targetY": "responded No",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup3",
+        "sourceY": "responded No",
+        "targetX": "meetup4",
+        "targetY": "responded No",
+        "member group": "all members",
+        "responder type": "early responders"
+        },
+        {
+        "value": 9,
+        "sourceX": "before meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup1",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "early responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup1",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup2",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 210,
+        "sourceX": "meetup2",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup3",
+        "targetY": "did not respond",
+        "member group": "before meetup 3",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup4",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup1",
+        "sourceY": "did not respond",
+        "targetX": "meetup2",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "early responders"
+        },
+        {
+        "value": 4,
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "early responders"
+        },
+        {
+        "value": 6,
+        "sourceX": "meetup3",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup4",
+        "targetY": "did not respond",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "targetX": "meetup4",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 2",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup2",
+        "sourceY": "did not respond",
+        "targetX": "meetup3",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 2",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "targetX": "meetup4",
+        "targetY": "responded No",
+        "member group": "before meetup 2",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup2",
+        "targetY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 5,
+        "sourceX": "meetup1",
+        "sourceY": "responded No",
+        "targetX": "meetup2",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup3",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 1",
+        "responder type": "early responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup1",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup2",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 1",
+        "responder type": "early responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup1",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup2",
+        "targetY": "responded No",
+        "member group": "all members",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 3,
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup3",
+        "targetY": "responded No",
+        "member group": "all members",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup2",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup3",
+        "targetY": "responded No",
+        "member group": "before meetup 3",
+        "responder type": "early responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup2",
+        "sourceY": "responded No",
+        "targetX": "meetup3",
+        "targetY": "did not respond",
+        "member group": "all members",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "responded No",
+        "targetX": "meetup4",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 2",
+        "responder type": "early responders"
+        },
+        {
+        "value": 32,
+        "sourceX": "meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup2",
+        "targetY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 11,
+        "sourceX": "meetup1",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup2",
+        "targetY": "responded No",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 9,
+        "sourceX": "meetup2",
+        "sourceY": "did not respond",
+        "targetX": "meetup3",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup4",
+        "targetY": "responded No",
+        "member group": "before meetup 1",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup4",
+        "targetY": "responded No",
+        "member group": "before meetup 2",
+        "responder type": "early responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "before meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup1",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 1",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 7,
+        "sourceX": "meetup2",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup3",
+        "targetY": "did not respond",
+        "member group": "all members",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup1",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup2",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "early responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup1",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup2",
+        "targetY": "did not respond",
+        "member group": "before meetup 1",
+        "responder type": "early responders"
+        },
+        {
+        "value": 5,
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup3",
+        "targetY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup1",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup2",
+        "targetY": "did not respond",
+        "member group": "before meetup 1",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 3,
+        "sourceX": "meetup1",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup2",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 7,
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup3",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 2",
+        "responder type": "all responders"
+        },
+        {
+        "value": 3,
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup4",
+        "targetY": "responded No",
+        "member group": "before meetup 1",
+        "responder type": "all responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup2",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup3",
+        "targetY": "responded No",
+        "member group": "all members",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup2",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup3",
+        "targetY": "did not respond",
+        "member group": "all members",
+        "responder type": "early responders"
+        },
+        {
+        "value": 4,
+        "sourceX": "meetup3",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup4",
+        "targetY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "early responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup1",
+        "sourceY": "responded No",
+        "targetX": "meetup2",
+        "targetY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "normal responders"
+        },
+        {
+        "value": 2,
+        "sourceX": "meetup3",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup4",
+        "targetY": "responded No",
+        "member group": "before meetup 4",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 3,
+        "sourceX": "meetup3",
+        "sourceY": "responded No",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "early responders"
+        },
+        {
+        "value": 1,
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "targetX": "meetup4",
+        "targetY": "responded but did not show up",
+        "member group": "before meetup 2",
+        "responder type": "very late responders"
+        },
+        {
+        "value": 28,
+        "sourceX": "meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup2",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "all responders"
+        },
+        {
+        "value": 45,
+        "sourceX": "meetup1",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup2",
+        "targetY": "did not respond",
+        "member group": "all members",
+        "responder type": "all responders"
+        }
+  ],
+"dataNodes" :
+    [
+        {
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "all responders",
+        "intro": 5,
+        "photo": 24,
+        "from Munich": 24
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "responded No",
+        "member group": "before meetup 2",
+        "responder type": "very late responders",
+        "intro": 0,
+        "photo": 0,
+        "from Munich": 1
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "joined meetup group",
+        "member group": "all members",
+        "responder type": "early responders",
+        "intro": 1,
+        "photo": 12,
+        "from Munich": 13
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "responded No",
+        "member group": "all members",
+        "responder type": "early responders",
+        "intro": 0,
+        "photo": 6,
+        "from Munich": 7
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "member group": "before meetup 2",
+        "responder type": "all responders",
+        "intro": 2,
+        "photo": 20,
+        "from Munich": 27
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "all responders",
+        "intro": 8,
+        "photo": 57,
+        "from Munich": 64
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "responded but did not show up",
+        "member group": "before meetup 2",
+        "responder type": "early responders",
+        "intro": 0,
+        "photo": 1,
+        "from Munich": 0
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "member group": "before meetup 3",
+        "responder type": "very late responders",
+        "intro": 0,
+        "photo": 6,
+        "from Munich": 7
+        },
+        {
+        "sourceX": "meetup1",
+        "sourceY": "did not respond",
+        "member group": "all members",
+        "responder type": "early responders",
+        "intro": 0,
+        "photo": 3,
+        "from Munich": 3
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "member group": "all members",
+        "responder type": "early responders",
+        "intro": 1,
+        "photo": 8,
+        "from Munich": 10
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "joined meetup group",
+        "member group": "before meetup 4",
+        "responder type": "all responders",
+        "intro": 1,
+        "photo": 191,
+        "from Munich": 2194
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "member group": "before meetup 1",
+        "responder type": "early responders",
+        "intro": 1,
+        "photo": 6,
+        "from Munich": 6
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded and showed up",
+        "member group": "before meetup 4",
+        "responder type": "all responders",
+        "intro": 0,
+        "photo": 26,
+        "from Munich": 29
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "responded but did not show up",
+        "member group": "before meetup 3",
+        "responder type": "all responders",
+        "intro": 0,
+        "photo": 20,
+        "from Munich": 21
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "responded but did not show up",
+        "member group": "before meetup 1",
+        "responder type": "all responders",
+        "intro": 0,
+        "photo": 20,
+        "from Munich": 20
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "very late responders",
+        "intro": 0,
+        "photo": 2,
+        "from Munich": 2
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "joined meetup group",
+        "member group": "before meetup 3",
+        "responder type": "early responders",
+        "intro": 0,
+        "photo": 8,
+        "from Munich": 12
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "responded No",
+        "member group": "before meetup 1",
+        "responder type": "early responders",
+        "intro": 0,
+        "photo": 3,
+        "from Munich": 3
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "early responders",
+        "intro": 2,
+        "photo": 17,
+        "from Munich": 19
+        },
+        {
+        "sourceX": "before meetup1",
+        "sourceY": "joined meetup group",
+        "member group": "all members",
+        "responder type": "all responders",
+        "intro": 19,
+        "photo": 327,
+        "from Munich": 338
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "member group": "before meetup 2",
+        "responder type": "early responders",
+        "intro": 0,
+        "photo": 1,
+        "from Munich": 3
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "member group": "before meetup 2",
+        "responder type": "very late responders",
+        "intro": 1,
+        "photo": 1,
+        "from Munich": 3
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "did not respond",
+        "member group": "all members",
+        "responder type": "all responders",
+        "intro": 9,
+        "photo": 365,
+        "from Munich": 387
+        },
+        {
+        "sourceX": "meetup1",
+        "sourceY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "very late responders",
+        "intro": 0,
+        "photo": 4,
+        "from Munich": 4
+        },
+        {
+        "sourceX": "meetup1",
+        "sourceY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "normal responders",
+        "intro": 0,
+        "photo": 1,
+        "from Munich": 1
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded No",
+        "member group": "before meetup 3",
+        "responder type": "early responders",
+        "intro": 0,
+        "photo": 4,
+        "from Munich": 4
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded No",
+        "member group": "before meetup 4",
+        "responder type": "all responders",
+        "intro": 0,
+        "photo": 12,
+        "from Munich": 13
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "responded No",
+        "member group": "before meetup 1",
+        "responder type": "all responders",
+        "intro": 4,
+        "photo": 32,
+        "from Munich": 35
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "member group": "before meetup 2",
+        "responder type": "all responders",
+        "intro": 2,
+        "photo": 163,
+        "from Munich": 180
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded No",
+        "member group": "all members",
+        "responder type": "normal responders",
+        "intro": 0,
+        "photo": 2,
+        "from Munich": 4
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "responded No",
+        "member group": "all members",
+        "responder type": "very late responders",
+        "intro": 0,
+        "photo": 0,
+        "from Munich": 1
+        },
+        {
+        "sourceX": "meetup1",
+        "sourceY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "all responders",
+        "intro": 12,
+        "photo": 53,
+        "from Munich": 57
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "early responders",
+        "intro": 1,
+        "photo": 11,
+        "from Munich": 12
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "responded but did not show up",
+        "member group": "before meetup 1",
+        "responder type": "very late responders",
+        "intro": 0,
+        "photo": 1,
+        "from Munich": 1
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "did not respond",
+        "member group": "before meetup 2",
+        "responder type": "all responders",
+        "intro": 1,
+        "photo": 175,
+        "from Munich": 190
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded but did not show up",
+        "member group": "before meetup 3",
+        "responder type": "all responders",
+        "intro": 0,
+        "photo": 8,
+        "from Munich": 12
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "joined meetup group",
+        "member group": "before meetup 4",
+        "responder type": "early responders",
+        "intro": 1,
+        "photo": 12,
+        "from Munich": 13
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded and showed up",
+        "member group": "before meetup 3",
+        "responder type": "normal responders",
+        "intro": 1,
+        "photo": 3,
+        "from Munich": 4
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "all responders",
+        "intro": 0,
+        "photo": 48,
+        "from Munich": 47
+        },
+        {
+        "sourceX": "before meetup1",
+        "sourceY": "joined meetup group",
+        "member group": "before meetup 1",
+        "responder type": "very late responders",
+        "intro": 1,
+        "photo": 9,
+        "from Munich": 9
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded but did not show up",
+        "member group": "before meetup 3",
+        "responder type": "very late responders",
+        "intro": 0,
+        "photo": 5,
+        "from Munich": 6
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "responded No",
+        "member group": "before meetup 1",
+        "responder type": "all responders",
+        "intro": 3,
+        "photo": 23,
+        "from Munich": 23
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded but did not show up",
+        "member group": "before meetup 4",
+        "responder type": "very late responders",
+        "intro": 0,
+        "photo": 6,
+        "from Munich": 7
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "all responders",
+        "intro": 8,
+        "photo": 68,
+        "from Munich": 72
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "member group": "all members",
+        "responder type": "very late responders",
+        "intro": 1,
+        "photo": 12,
+        "from Munich": 15
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "member group": "before meetup 1",
+        "responder type": "very late responders",
+        "intro": 0,
+        "photo": 4,
+        "from Munich": 4
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "did not respond",
+        "member group": "before meetup 4",
+        "responder type": "all responders",
+        "intro": 0,
+        "photo": 138,
+        "from Munich": 136
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "normal responders",
+        "intro": 1,
+        "photo": 12,
+        "from Munich": 13
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded No",
+        "member group": "before meetup 4",
+        "responder type": "early responders",
+        "intro": 0,
+        "photo": 2,
+        "from Munich": 3
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "responded No",
+        "member group": "before meetup 2",
+        "responder type": "early responders",
+        "intro": 0,
+        "photo": 2,
+        "from Munich": 2
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded No",
+        "member group": "before meetup 2",
+        "responder type": "all responders",
+        "intro": 1,
+        "photo": 4,
+        "from Munich": 9
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "joined meetup group",
+        "member group": "before meetup 3",
+        "responder type": "very late responders",
+        "intro": 0,
+        "photo": 6,
+        "from Munich": 7
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "responded No",
+        "member group": "all members",
+        "responder type": "very late responders",
+        "intro": 0,
+        "photo": 1,
+        "from Munich": 1
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded but did not show up",
+        "member group": "before meetup 3",
+        "responder type": "early responders",
+        "intro": 0,
+        "photo": 1,
+        "from Munich": 4
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "member group": "before meetup 2",
+        "responder type": "very late responders",
+        "intro": 0,
+        "photo": 1,
+        "from Munich": 2
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "member group": "before meetup 2",
+        "responder type": "normal responders",
+        "intro": 0,
+        "photo": 1,
+        "from Munich": 1
+        },
+        {
+        "sourceX": "meetup1",
+        "sourceY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "early responders",
+        "intro": 0,
+        "photo": 1,
+        "from Munich": 1
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "responded No",
+        "member group": "before meetup 1",
+        "responder type": "early responders",
+        "intro": 0,
+        "photo": 4,
+        "from Munich": 4
+        },
+        {
+        "sourceX": "meetup1",
+        "sourceY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "very late responders",
+        "intro": 1,
+        "photo": 3,
+        "from Munich": 3
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "responded but did not show up",
+        "member group": "before meetup 2",
+        "responder type": "very late responders",
+        "intro": 0,
+        "photo": 2,
+        "from Munich": 2
+        },
+        {
+        "sourceX": "meetup1",
+        "sourceY": "responded No",
+        "member group": "before meetup 1",
+        "responder type": "early responders",
+        "intro": 0,
+        "photo": 5,
+        "from Munich": 6
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "joined meetup group",
+        "member group": "before meetup 4",
+        "responder type": "very late responders",
+        "intro": 0,
+        "photo": 12,
+        "from Munich": 18
+        },
+        {
+        "sourceX": "meetup1",
+        "sourceY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "all responders",
+        "intro": 12,
+        "photo": 53,
+        "from Munich": 57
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "early responders",
+        "intro": 1,
+        "photo": 6,
+        "from Munich": 7
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "member group": "before meetup 3",
+        "responder type": "normal responders",
+        "intro": 0,
+        "photo": 1,
+        "from Munich": 1
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "did not respond",
+        "member group": "before meetup 2",
+        "responder type": "normal responders",
+        "intro": 0,
+        "photo": 0,
+        "from Munich": 1
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "responded No",
+        "member group": "before meetup 3",
+        "responder type": "all responders",
+        "intro": 0,
+        "photo": 14,
+        "from Munich": 15
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "responded No",
+        "member group": "all members",
+        "responder type": "early responders",
+        "intro": 1,
+        "photo": 5,
+        "from Munich": 4
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "member group": "before meetup 3",
+        "responder type": "all responders",
+        "intro": 2,
+        "photo": 35,
+        "from Munich": 36
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded No",
+        "member group": "before meetup 2",
+        "responder type": "normal responders",
+        "intro": 0,
+        "photo": 1,
+        "from Munich": 3
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "early responders",
+        "intro": 1,
+        "photo": 9,
+        "from Munich": 13
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "responded No",
+        "member group": "before meetup 1",
+        "responder type": "normal responders",
+        "intro": 0,
+        "photo": 1,
+        "from Munich": 1
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded No",
+        "member group": "all members",
+        "responder type": "early responders",
+        "intro": 1,
+        "photo": 15,
+        "from Munich": 17
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "responded No",
+        "member group": "before meetup 2",
+        "responder type": "early responders",
+        "intro": 1,
+        "photo": 2,
+        "from Munich": 1
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "responded but did not show up",
+        "member group": "before meetup 2",
+        "responder type": "early responders",
+        "intro": 0,
+        "photo": 1,
+        "from Munich": 1
+        },
+        {
+        "sourceX": "meetup1",
+        "sourceY": "joined meetup group",
+        "member group": "before meetup 2",
+        "responder type": "very late responders",
+        "intro": 1,
+        "photo": 3,
+        "from Munich": 6
+        },
+        {
+        "sourceX": "meetup1",
+        "sourceY": "joined meetup group",
+        "member group": "before meetup 2",
+        "responder type": "normal responders",
+        "intro": 0,
+        "photo": 2,
+        "from Munich": 4
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "joined meetup group",
+        "member group": "all members",
+        "responder type": "early responders",
+        "intro": 0,
+        "photo": 8,
+        "from Munich": 12
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded and showed up",
+        "member group": "before meetup 2",
+        "responder type": "normal responders",
+        "intro": 0,
+        "photo": 1,
+        "from Munich": 1
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded but did not show up",
+        "member group": "before meetup 1",
+        "responder type": "normal responders",
+        "intro": 0,
+        "photo": 2,
+        "from Munich": 2
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "responded No",
+        "member group": "all members",
+        "responder type": "normal responders",
+        "intro": 0,
+        "photo": 2,
+        "from Munich": 2
+        },
+        {
+        "sourceX": "before meetup1",
+        "sourceY": "joined meetup group",
+        "member group": "all members",
+        "responder type": "very late responders",
+        "intro": 1,
+        "photo": 9,
+        "from Munich": 9
+        },
+        {
+        "sourceX": "meetup1",
+        "sourceY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "early responders",
+        "intro": 2,
+        "photo": 9,
+        "from Munich": 8
+        },
+        {
+        "sourceX": "meetup1",
+        "sourceY": "did not respond",
+        "member group": "before meetup 1",
+        "responder type": "very late responders",
+        "intro": 0,
+        "photo": 1,
+        "from Munich": 1
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "did not respond",
+        "member group": "before meetup 1",
+        "responder type": "all responders",
+        "intro": 15,
+        "photo": 285,
+        "from Munich": 296
+        },
+        {
+        "sourceX": "meetup1",
+        "sourceY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "normal responders",
+        "intro": 0,
+        "photo": 5,
+        "from Munich": 5
+        },
+        {
+        "sourceX": "meetup1",
+        "sourceY": "responded but did not show up",
+        "member group": "before meetup 1",
+        "responder type": "very late responders",
+        "intro": 0,
+        "photo": 4,
+        "from Munich": 4
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "responded No",
+        "member group": "before meetup 1",
+        "responder type": "normal responders",
+        "intro": 0,
+        "photo": 2,
+        "from Munich": 2
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "normal responders",
+        "intro": 0,
+        "photo": 1,
+        "from Munich": 2
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "responded No",
+        "member group": "all members",
+        "responder type": "all responders",
+        "intro": 5,
+        "photo": 47,
+        "from Munich": 52
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded but did not show up",
+        "member group": "before meetup 1",
+        "responder type": "all responders",
+        "intro": 0,
+        "photo": 8,
+        "from Munich": 8
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded and showed up",
+        "member group": "before meetup 2",
+        "responder type": "all responders",
+        "intro": 1,
+        "photo": 8,
+        "from Munich": 10
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "all responders",
+        "intro": 1,
+        "photo": 34,
+        "from Munich": 39
+        },
+        {
+        "sourceX": "meetup1",
+        "sourceY": "joined meetup group",
+        "member group": "before meetup 2",
+        "responder type": "all responders",
+        "intro": 3,
+        "photo": 190,
+        "from Munich": 212
+        },
+        {
+        "sourceX": "meetup1",
+        "sourceY": "responded No",
+        "member group": "before meetup 1",
+        "responder type": "very late responders",
+        "intro": 0,
+        "photo": 1,
+        "from Munich": 1
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "responded but did not show up",
+        "member group": "before meetup 2",
+        "responder type": "all responders",
+        "intro": 0,
+        "photo": 12,
+        "from Munich": 10
+        },
+        {
+        "sourceX": "meetup1",
+        "sourceY": "responded No",
+        "member group": "before meetup 1",
+        "responder type": "normal responders",
+        "intro": 0,
+        "photo": 1,
+        "from Munich": 1
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded No",
+        "member group": "before meetup 1",
+        "responder type": "all responders",
+        "intro": 1,
+        "photo": 14,
+        "from Munich": 13
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "responded No",
+        "member group": "all members",
+        "responder type": "all responders",
+        "intro": 3,
+        "photo": 43,
+        "from Munich": 48
+        },
+        {
+        "sourceX": "meetup1",
+        "sourceY": "did not respond",
+        "member group": "before meetup 1",
+        "responder type": "all responders",
+        "intro": 2,
+        "photo": 176,
+        "from Munich": 180
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "joined meetup group",
+        "member group": "all members",
+        "responder type": "all responders",
+        "intro": 2,
+        "photo": 243,
+        "from Munich": 252
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "early responders",
+        "intro": 1,
+        "photo": 7,
+        "from Munich": 7
+        },
+        {
+        "sourceX": "meetup1",
+        "sourceY": "responded but did not show up",
+        "member group": "before meetup 1",
+        "responder type": "all responders",
+        "intro": 3,
+        "photo": 54,
+        "from Munich": 57
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "member group": "before meetup 3",
+        "responder type": "normal responders",
+        "intro": 1,
+        "photo": 3,
+        "from Munich": 3
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded No",
+        "member group": "all members",
+        "responder type": "very late responders",
+        "intro": 1,
+        "photo": 6,
+        "from Munich": 7
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "member group": "before meetup 1",
+        "responder type": "all responders",
+        "intro": 10,
+        "photo": 269,
+        "from Munich": 280
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "did not respond",
+        "member group": "all members",
+        "responder type": "all responders",
+        "intro": 17,
+        "photo": 820,
+        "from Munich": 845
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "very late responders",
+        "intro": 0,
+        "photo": 14,
+        "from Munich": 16
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded and showed up",
+        "member group": "before meetup 4",
+        "responder type": "early responders",
+        "intro": 0,
+        "photo": 7,
+        "from Munich": 6
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "joined meetup group",
+        "member group": "all members",
+        "responder type": "very late responders",
+        "intro": 0,
+        "photo": 12,
+        "from Munich": 18
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "early responders",
+        "intro": 1,
+        "photo": 6,
+        "from Munich": 6
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded No",
+        "member group": "before meetup 2",
+        "responder type": "very late responders",
+        "intro": 1,
+        "photo": 1,
+        "from Munich": 1
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "responded but did not show up",
+        "member group": "before meetup 1",
+        "responder type": "very late responders",
+        "intro": 1,
+        "photo": 2,
+        "from Munich": 2
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "did not respond",
+        "member group": "before meetup 1",
+        "responder type": "very late responders",
+        "intro": 0,
+        "photo": 2,
+        "from Munich": 2
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "did not respond",
+        "member group": "before meetup 1",
+        "responder type": "all responders",
+        "intro": 9,
+        "photo": 238,
+        "from Munich": 246
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "all responders",
+        "intro": 1,
+        "photo": 43,
+        "from Munich": 42
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded and showed up",
+        "member group": "before meetup 2",
+        "responder type": "early responders",
+        "intro": 1,
+        "photo": 6,
+        "from Munich": 5
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "did not respond",
+        "member group": "before meetup 1",
+        "responder type": "early responders",
+        "intro": 1,
+        "photo": 6,
+        "from Munich": 6
+        },
+        {
+        "sourceX": "meetup1",
+        "sourceY": "joined meetup group",
+        "member group": "before meetup 2",
+        "responder type": "early responders",
+        "intro": 1,
+        "photo": 8,
+        "from Munich": 9
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "very late responders",
+        "intro": 1,
+        "photo": 10,
+        "from Munich": 17
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "member group": "before meetup 3",
+        "responder type": "early responders",
+        "intro": 0,
+        "photo": 1,
+        "from Munich": 1
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "member group": "before meetup 2",
+        "responder type": "all responders",
+        "intro": 1,
+        "photo": 9,
+        "from Munich": 12
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded but did not show up",
+        "member group": "before meetup 3",
+        "responder type": "normal responders",
+        "intro": 0,
+        "photo": 1,
+        "from Munich": 1
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded No",
+        "member group": "before meetup 1",
+        "responder type": "early responders",
+        "intro": 1,
+        "photo": 8,
+        "from Munich": 7
+        },
+        {
+        "sourceX": "before meetup1",
+        "sourceY": "joined meetup group",
+        "member group": "before meetup 1",
+        "responder type": "all responders",
+        "intro": 19,
+        "photo": 327,
+        "from Munich": 338
+        },
+        {
+        "sourceX": "meetup1",
+        "sourceY": "responded but did not show up",
+        "member group": "before meetup 1",
+        "responder type": "early responders",
+        "intro": 0,
+        "photo": 1,
+        "from Munich": 1
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "very late responders",
+        "intro": 1,
+        "photo": 6,
+        "from Munich": 6
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "member group": "all members",
+        "responder type": "normal responders",
+        "intro": 0,
+        "photo": 3,
+        "from Munich": 4
+        },
+        {
+        "sourceX": "meetup1",
+        "sourceY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "very late responders",
+        "intro": 1,
+        "photo": 3,
+        "from Munich": 3
+        },
+        {
+        "sourceX": "meetup1",
+        "sourceY": "responded No",
+        "member group": "all members",
+        "responder type": "normal responders",
+        "intro": 0,
+        "photo": 1,
+        "from Munich": 1
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "all responders",
+        "intro": 5,
+        "photo": 61,
+        "from Munich": 70
+        },
+        {
+        "sourceX": "meetup1",
+        "sourceY": "did not respond",
+        "member group": "all members",
+        "responder type": "very late responders",
+        "intro": 0,
+        "photo": 1,
+        "from Munich": 1
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "normal responders",
+        "intro": 1,
+        "photo": 7,
+        "from Munich": 7
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "did not respond",
+        "member group": "before meetup 2",
+        "responder type": "all responders",
+        "intro": 0,
+        "photo": 127,
+        "from Munich": 141
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "member group": "before meetup 3",
+        "responder type": "all responders",
+        "intro": 0,
+        "photo": 174,
+        "from Munich": 180
+        },
+        {
+        "sourceX": "meetup1",
+        "sourceY": "responded No",
+        "member group": "all members",
+        "responder type": "very late responders",
+        "intro": 0,
+        "photo": 1,
+        "from Munich": 1
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded and showed up",
+        "member group": "before meetup 3",
+        "responder type": "all responders",
+        "intro": 1,
+        "photo": 7,
+        "from Munich": 10
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded No",
+        "member group": "before meetup 2",
+        "responder type": "early responders",
+        "intro": 0,
+        "photo": 1,
+        "from Munich": 3
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "member group": "before meetup 2",
+        "responder type": "early responders",
+        "intro": 1,
+        "photo": 4,
+        "from Munich": 4
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded and showed up",
+        "member group": "before meetup 4",
+        "responder type": "very late responders",
+        "intro": 0,
+        "photo": 5,
+        "from Munich": 9
+        },
+        {
+        "sourceX": "meetup1",
+        "sourceY": "did not respond",
+        "member group": "all members",
+        "responder type": "all responders",
+        "intro": 2,
+        "photo": 176,
+        "from Munich": 180
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded but did not show up",
+        "member group": "before meetup 4",
+        "responder type": "early responders",
+        "intro": 1,
+        "photo": 3,
+        "from Munich": 4
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "responded No",
+        "member group": "before meetup 2",
+        "responder type": "all responders",
+        "intro": 1,
+        "photo": 15,
+        "from Munich": 17
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "did not respond",
+        "member group": "before meetup 3",
+        "responder type": "all responders",
+        "intro": 1,
+        "photo": 222,
+        "from Munich": 223
+        },
+        {
+        "sourceX": "meetup1",
+        "sourceY": "responded No",
+        "member group": "before meetup 1",
+        "responder type": "all responders",
+        "intro": 2,
+        "photo": 44,
+        "from Munich": 44
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded No",
+        "member group": "before meetup 1",
+        "responder type": "very late responders",
+        "intro": 0,
+        "photo": 4,
+        "from Munich": 4
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "responded but did not show up",
+        "member group": "before meetup 3",
+        "responder type": "early responders",
+        "intro": 0,
+        "photo": 0,
+        "from Munich": 1
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "responded but did not show up",
+        "member group": "before meetup 1",
+        "responder type": "early responders",
+        "intro": 0,
+        "photo": 2,
+        "from Munich": 2
+        },
+        {
+        "sourceX": "meetup1",
+        "sourceY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "all responders",
+        "intro": 3,
+        "photo": 54,
+        "from Munich": 57
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded No",
+        "member group": "before meetup 4",
+        "responder type": "very late responders",
+        "intro": 0,
+        "photo": 1,
+        "from Munich": 2
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "responded but did not show up",
+        "member group": "before meetup 1",
+        "responder type": "early responders",
+        "intro": 0,
+        "photo": 2,
+        "from Munich": 2
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded but did not show up",
+        "member group": "before meetup 1",
+        "responder type": "very late responders",
+        "intro": 0,
+        "photo": 1,
+        "from Munich": 1
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded and showed up",
+        "member group": "before meetup 2",
+        "responder type": "very late responders",
+        "intro": 0,
+        "photo": 0,
+        "from Munich": 3
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "did not respond",
+        "member group": "before meetup 2",
+        "responder type": "early responders",
+        "intro": 0,
+        "photo": 1,
+        "from Munich": 2
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded No",
+        "member group": "before meetup 3",
+        "responder type": "all responders",
+        "intro": 0,
+        "photo": 6,
+        "from Munich": 7
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded and showed up",
+        "member group": "before meetup 4",
+        "responder type": "normal responders",
+        "intro": 0,
+        "photo": 3,
+        "from Munich": 3
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "responded but did not show up",
+        "member group": "before meetup 1",
+        "responder type": "normal responders",
+        "intro": 0,
+        "photo": 1,
+        "from Munich": 1
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded and showed up",
+        "member group": "before meetup 3",
+        "responder type": "early responders",
+        "intro": 0,
+        "photo": 3,
+        "from Munich": 4
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "responded No",
+        "member group": "before meetup 3",
+        "responder type": "early responders",
+        "intro": 0,
+        "photo": 0,
+        "from Munich": 1
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "very late responders",
+        "intro": 1,
+        "photo": 2,
+        "from Munich": 2
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "did not respond",
+        "member group": "all members",
+        "responder type": "normal responders",
+        "intro": 0,
+        "photo": 1,
+        "from Munich": 2
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "responded No",
+        "member group": "before meetup 1",
+        "responder type": "very late responders",
+        "intro": 0,
+        "photo": 1,
+        "from Munich": 1
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded but did not show up",
+        "member group": "before meetup 4",
+        "responder type": "all responders",
+        "intro": 1,
+        "photo": 15,
+        "from Munich": 16
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "normal responders",
+        "intro": 0,
+        "photo": 6,
+        "from Munich": 7
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "member group": "before meetup 2",
+        "responder type": "normal responders",
+        "intro": 0,
+        "photo": 2,
+        "from Munich": 3
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded No",
+        "member group": "all members",
+        "responder type": "all responders",
+        "intro": 2,
+        "photo": 36,
+        "from Munich": 42
+        },
+        {
+        "sourceX": "meetup1",
+        "sourceY": "responded No",
+        "member group": "all members",
+        "responder type": "early responders",
+        "intro": 0,
+        "photo": 5,
+        "from Munich": 6
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "early responders",
+        "intro": 0,
+        "photo": 3,
+        "from Munich": 3
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "normal responders",
+        "intro": 0,
+        "photo": 3,
+        "from Munich": 3
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "member group": "before meetup 1",
+        "responder type": "normal responders",
+        "intro": 0,
+        "photo": 2,
+        "from Munich": 2
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "did not respond",
+        "member group": "all members",
+        "responder type": "very late responders",
+        "intro": 0,
+        "photo": 2,
+        "from Munich": 2
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "responded but did not show up",
+        "member group": "before meetup 1",
+        "responder type": "all responders",
+        "intro": 1,
+        "photo": 11,
+        "from Munich": 11
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "did not respond",
+        "member group": "before meetup 1",
+        "responder type": "normal responders",
+        "intro": 0,
+        "photo": 1,
+        "from Munich": 1
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "joined meetup group",
+        "member group": "before meetup 3",
+        "responder type": "normal responders",
+        "intro": 1,
+        "photo": 4,
+        "from Munich": 5
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "member group": "before meetup 2",
+        "responder type": "normal responders",
+        "intro": 0,
+        "photo": 0,
+        "from Munich": 1
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded No",
+        "member group": "before meetup 4",
+        "responder type": "normal responders",
+        "intro": 0,
+        "photo": 1,
+        "from Munich": 1
+        },
+        {
+        "sourceX": "meetup1",
+        "sourceY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "early responders",
+        "intro": 2,
+        "photo": 9,
+        "from Munich": 8
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "responded No",
+        "member group": "before meetup 2",
+        "responder type": "all responders",
+        "intro": 0,
+        "photo": 6,
+        "from Munich": 10
+        },
+        {
+        "sourceX": "before meetup1",
+        "sourceY": "joined meetup group",
+        "member group": "before meetup 1",
+        "responder type": "normal responders",
+        "intro": 0,
+        "photo": 7,
+        "from Munich": 7
+        },
+        {
+        "sourceX": "before meetup1",
+        "sourceY": "joined meetup group",
+        "member group": "all members",
+        "responder type": "normal responders",
+        "intro": 0,
+        "photo": 7,
+        "from Munich": 7
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded but did not show up",
+        "member group": "before meetup 1",
+        "responder type": "early responders",
+        "intro": 0,
+        "photo": 4,
+        "from Munich": 4
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "very late responders",
+        "intro": 1,
+        "photo": 4,
+        "from Munich": 4
+        },
+        {
+        "sourceX": "meetup1",
+        "sourceY": "joined meetup group",
+        "member group": "all members",
+        "responder type": "early responders",
+        "intro": 1,
+        "photo": 8,
+        "from Munich": 9
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "responded but did not show up",
+        "member group": "before meetup 2",
+        "responder type": "all responders",
+        "intro": 0,
+        "photo": 28,
+        "from Munich": 27
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "responded but did not show up",
+        "member group": "before meetup 3",
+        "responder type": "normal responders",
+        "intro": 0,
+        "photo": 0,
+        "from Munich": 1
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "all responders",
+        "intro": 6,
+        "photo": 37,
+        "from Munich": 37
+        },
+        {
+        "sourceX": "meetup1",
+        "sourceY": "responded No",
+        "member group": "all members",
+        "responder type": "all responders",
+        "intro": 2,
+        "photo": 44,
+        "from Munich": 44
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "responded No",
+        "member group": "before meetup 2",
+        "responder type": "normal responders",
+        "intro": 0,
+        "photo": 1,
+        "from Munich": 2
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "joined meetup group",
+        "member group": "before meetup 4",
+        "responder type": "normal responders",
+        "intro": 0,
+        "photo": 8,
+        "from Munich": 7
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "joined meetup group",
+        "member group": "all members",
+        "responder type": "normal responders",
+        "intro": 0,
+        "photo": 8,
+        "from Munich": 7
+        },
+        {
+        "sourceX": "meetup1",
+        "sourceY": "did not respond",
+        "member group": "before meetup 1",
+        "responder type": "early responders",
+        "intro": 0,
+        "photo": 3,
+        "from Munich": 3
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded but did not show up",
+        "member group": "before meetup 2",
+        "responder type": "very late responders",
+        "intro": 0,
+        "photo": 2,
+        "from Munich": 2
+        },
+        {
+        "sourceX": "meetup1",
+        "sourceY": "joined meetup group",
+        "member group": "all members",
+        "responder type": "normal responders",
+        "intro": 0,
+        "photo": 2,
+        "from Munich": 4
+        },
+        {
+        "sourceX": "meetup1",
+        "sourceY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "normal responders",
+        "intro": 0,
+        "photo": 5,
+        "from Munich": 5
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "joined meetup group",
+        "member group": "all members",
+        "responder type": "normal responders",
+        "intro": 1,
+        "photo": 4,
+        "from Munich": 5
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "all responders",
+        "intro": 3,
+        "photo": 20,
+        "from Munich": 21
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "joined meetup group",
+        "member group": "all members",
+        "responder type": "very late responders",
+        "intro": 0,
+        "photo": 6,
+        "from Munich": 7
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "normal responders",
+        "intro": 0,
+        "photo": 5,
+        "from Munich": 5
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "member group": "before meetup 2",
+        "responder type": "very late responders",
+        "intro": 1,
+        "photo": 2,
+        "from Munich": 4
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "normal responders",
+        "intro": 0,
+        "photo": 7,
+        "from Munich": 6
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "member group": "before meetup 3",
+        "responder type": "early responders",
+        "intro": 0,
+        "photo": 7,
+        "from Munich": 9
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "early responders",
+        "intro": 0,
+        "photo": 3,
+        "from Munich": 3
+        },
+        {
+        "sourceX": "meetup1",
+        "sourceY": "joined meetup group",
+        "member group": "all members",
+        "responder type": "all responders",
+        "intro": 3,
+        "photo": 190,
+        "from Munich": 212
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded but did not show up",
+        "member group": "before meetup 2",
+        "responder type": "all responders",
+        "intro": 0,
+        "photo": 3,
+        "from Munich": 3
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "joined meetup group",
+        "member group": "all members",
+        "responder type": "all responders",
+        "intro": 1,
+        "photo": 191,
+        "from Munich": 194
+        },
+        {
+        "sourceX": "meetup1",
+        "sourceY": "responded but did not show up",
+        "member group": "before meetup 1",
+        "responder type": "normal responders",
+        "intro": 0,
+        "photo": 1,
+        "from Munich": 1
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "responded No",
+        "member group": "all members",
+        "responder type": "normal responders",
+        "intro": 0,
+        "photo": 2,
+        "from Munich": 3
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "very late responders",
+        "intro": 0,
+        "photo": 3,
+        "from Munich": 3
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded but did not show up",
+        "member group": "before meetup 4",
+        "responder type": "normal responders",
+        "intro": 0,
+        "photo": 4,
+        "from Munich": 3
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "member group": "before meetup 1",
+        "responder type": "normal responders",
+        "intro": 0,
+        "photo": 4,
+        "from Munich": 4
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "member group": "before meetup 2",
+        "responder type": "early responders",
+        "intro": 0,
+        "photo": 4,
+        "from Munich": 5
+        },
+        {
+        "sourceX": "before meetup1",
+        "sourceY": "joined meetup group",
+        "member group": "all members",
+        "responder type": "early responders",
+        "intro": 2,
+        "photo": 18,
+        "from Munich": 18
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "very late responders",
+        "intro": 0,
+        "photo": 3,
+        "from Munich": 4
+        },
+        {
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "member group": "all members",
+        "responder type": "all responders",
+        "intro": 12,
+        "photo": 606,
+        "from Munich": 640
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded and showed up",
+        "member group": "before meetup 3",
+        "responder type": "very late responders",
+        "intro": 0,
+        "photo": 1,
+        "from Munich": 1
+        },
+        {
+        "sourceX": "meetup1",
+        "sourceY": "joined meetup group",
+        "member group": "all members",
+        "responder type": "very late responders",
+        "intro": 1,
+        "photo": 3,
+        "from Munich": 6
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "very late responders",
+        "intro": 2,
+        "photo": 7,
+        "from Munich": 9
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "early responders",
+        "intro": 2,
+        "photo": 22,
+        "from Munich": 22
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "joined meetup group",
+        "member group": "before meetup 3",
+        "responder type": "all responders",
+        "intro": 2,
+        "photo": 243,
+        "from Munich": 252
+        },
+        {
+        "sourceX": "before meetup1",
+        "sourceY": "joined meetup group",
+        "member group": "before meetup 1",
+        "responder type": "early responders",
+        "intro": 2,
+        "photo": 18,
+        "from Munich": 18
+        },
+        {
+        "sourceX": "meetup4",
+        "sourceY": "responded but did not show up",
+        "member group": "before meetup 2",
+        "responder type": "early responders",
+        "intro": 0,
+        "photo": 1,
+        "from Munich": 1
+        },
+        {
+        "sourceX": "meetup2",
+        "sourceY": "did not respond",
+        "member group": "all members",
+        "responder type": "early responders",
+        "intro": 1,
+        "photo": 7,
+        "from Munich": 8
+        }
+    ],
+"paths" :
+    [
+        {
+        "value": 5,
+        "sourceX": "before meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup1",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "all responders",
+        "name": "attendees"
+        },
+        {
+        "value": 5,
+        "sourceX": "meetup1",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup2",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "all responders",
+        "name": "attendees"
+        },
+        {
+        "value": 5,
+        "sourceX": "meetup2",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup3",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "all responders",
+        "name": "attendees"
+        },
+        {
+        "value": 5,
+        "sourceX": "meetup3",
+        "sourceY": "responded and showed up",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "all responders",
+        "name": "attendees"
+        },
+        {
+        "value": 10,
+        "sourceX": "before meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup1",
+        "targetY": "responded but did not show up",
+        "member group": "all members",
+        "responder type": "all responders",
+        "name": "converters"
+        },
+        {
+        "value": 10,
+        "sourceX": "meetup1",
+        "sourceY": "responded but did not show up",
+        "targetX": "meetup2",
+        "targetY": "did not respond",
+        "member group": "all members",
+        "responder type": "all responders",
+        "name": "converters"
+        },
+        {
+        "value": 10,
+        "sourceX": "meetup2",
+        "sourceY": "did not respond",
+        "targetX": "meetup3",
+        "targetY": "responded No",
+        "member group": "all members",
+        "responder type": "all responders",
+        "name": "converters"
+        },
+        {
+        "value": 10,
+        "sourceX": "meetup3",
+        "sourceY": "responded No",
+        "targetX": "meetup4",
+        "targetY": "responded and showed up",
+        "member group": "all members",
+        "responder type": "all responders",
+        "name": "converters"
+        },
+        {
+        "value": 100,
+        "sourceX": "before meetup1",
+        "sourceY": "joined meetup group",
+        "targetX": "meetup1",
+        "targetY": "did not respond",
+        "member group": "all members",
+        "responder type": "all responders",
+        "name": "absentees"
+        },
+        {
+        "value": 100,
+        "sourceX": "meetup1",
+        "sourceY": "did not respond",
+        "targetX": "meetup2",
+        "targetY": "did not respond",
+        "member group": "all members",
+        "responder type": "all responders",
+        "name": "absentees"
+        },
+        {
+        "value": 100,
+        "sourceX": "meetup2",
+        "sourceY": "did not respond",
+        "targetX": "meetup3",
+        "targetY": "did not respond",
+        "member group": "all members",
+        "responder type": "all responders",
+        "name": "absentees"
+        },
+        {
+        "value": 100,
+        "sourceX": "meetup3",
+        "sourceY": "did not respond",
+        "targetX": "meetup4",
+        "targetY": "did not respond",
+        "member group": "all members",
+        "responder type": "all responders",
+        "name": "absentees"
+        }
+    ]
+}
