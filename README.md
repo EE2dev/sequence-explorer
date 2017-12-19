@@ -25,10 +25,12 @@ Here is a link to a video explaining how to use sequence explorer with your own 
 Complete list of examples:
 
   * [single chart](http://bl.ocks.org/EE2dev/52b57438d4e017eefac1765e5727459a)
+  * [single chart - JSON version](http://bl.ocks.org/EE2dev/6b68884490d70aa0092b351e33741d96)
   * [hightlight a path](http://bl.ocks.org/ee2dev/325fdb28bfcba4369ff364c7e5224c35)
   * [hightlight a vertical path](http://bl.ocks.org/EE2dev/b9a20ef36c2a3caf5d7b0374a2d677a7)
   * [small multiples](http://bl.ocks.org/EE2dev/0e709563a63ddfd5c7152e3441593093)
   * [main example](http://bl.ocks.org/EE2dev/91abcc611b66aaed6403bca1d48aedbf)
+  * [main example - JSON version](http://bl.ocks.org/EE2dev/5d9aaf31c72caf16d632253629235372)
   * [demo without web server](http://bl.ocks.org/EE2dev/1a4a65727e2e55ac6ae93a9aaef2f312)
 
 ### 3. Data formatting
@@ -162,7 +164,7 @@ If you are running sequence explorer without a web server, you can put the data 
 The optional node infos have to be put into the `<pre id="dataNodes"></pre>` tag and the optional path info have to reside within the `<pre id="paths"></pre>` tag.
 
 ### 4. Using sequence explorer
-If a csv file with data in the correct format exists, the typical call of sequence explorer from your html file is typically as simple as follows:
+If a csv file with data in the correct format exists, the typical call of sequence explorer from your html file is as simple as follows:
 
 ```
 <!DOCTYPE html>
@@ -199,8 +201,8 @@ function | parameter | explanation
 `nodeWidth()` | *integer* | e.g. `sequenceExplorer.chart().nodeWidth(20)` sets the width of a node in pixels. The default width is 15.
 `particleMin()` | *float* | e.g. `sequenceExplorer.chart().particleMin(0.2)` sets the minimum value for the particle scale which determines the minimum number of particles. The default value is 0.05.
 `particleMax()` | *float* | e.g. `sequenceExplorer.chart().particleMax(1)` sets the maximum value for the particle scale which determines the maximum number of particles. The default value is 1.
-`particleShape()` | *float* | e.g. `sequenceExplorer.chart().particleShape("person")` sets the shape of the particles. The default shape is "circle".
-`particleSize()` | *float* | e.g. `sequenceExplorer.chart().particleSize(2)` sets the size of the particles. The default size is 1.
+`particleShape()` | *string* | e.g. `sequenceExplorer.chart().particleShape("person")` sets the shape of the particles. The default shape is "circle".
+`particleSize()` | *integer* | e.g. `sequenceExplorer.chart().particleSize(2)` sets the size of the particles. The default size is 1.
 `particleSpeed()` | *float* | e.g. `sequenceExplorer.chart().particleSpeed(0.4)` sets the speed of the particles. The default speed is 0.1.
 `percentages()` | *array* | e.g. `sequenceExplorer.chart().percentages(["%sameTime","%sameEvent"])` sets the output of the tooltip text to add a %-line for each element. For valid elements, see [Valid percentages for the tooltip text](#7-valid-percentages-for-the-tooltip-text).The first percentage element is used for labeling when transitioning on event. The default is `["%sameTime"]`. 
 `rowOrder()` | *array* | e.g. `sequenceExplorer.chart().rowOrder(["USA", "Canada", "Africa"])` sets the order of the rows (first additional dimension) based on an array. The default order is ascending.
