@@ -224,7 +224,7 @@ Nodes and links can be styled individually with CSS by using the following selec
    * selector for node infos: `"rect.sankeyNodeInfo"`
    
 where `<sourceX>`, `<sourceY>`, `<targetX>`, `<targetY>` have to be replaced by their corresponding instances.
-These instances can just contain letters, numbers and spaces, where the spaces will be replaced by `"_"`. Note that nodes are `<rect>` and links are `<path>` elements.
+These instances can just contain letters, numbers, and underscore `"_"` where spaces have been used in the data (which are replaced by `"_"`). Note that nodes are `<rect>` and links are `<path>` elements.
 E.g. if your data looks like this:
 ```
 value,sourceX,sourceY,targetX,targetY
