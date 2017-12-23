@@ -63,17 +63,6 @@ export default function() {
     categories = _;
     return sankey;
   };
- 
-  // returns a function that returns an array of categories 
-  // for the transitions and tooltip  
-  /*
-  sankey.correspondingCategories = function(_) { 
-    if (!arguments.length) return corrCategories();
-    corrCategories = _;
-    // corrCategories = function() {return _;};
-    return sankey;
-  };
-  */
 
   sankey.correspondingCategories = function(_) {  
     if (!arguments.length) return corrCategories();
@@ -271,13 +260,31 @@ export default function() {
     if (debugOn) {console.log(nodes);}
   }
   
+  // changed to paths from the bottom not from the top
   function computeLinkDepths() {
     nodes.forEach(function(node) {
       node.sourceLinks.sort(ascendingTargetDepth);
       node.targetLinks.sort(ascendingSourceDepth);
     });
-    nodes.forEach(function(node) {
-      var sy = 0, ty = 0;
+    
+    // compute sum of path heights for source and target paths
+    var nodeSy = [];
+    var nodeTy = [];
+    nodes.forEach(function(node, i) {
+      nodeSy[i] = 0;
+      nodeTy[i] = 0;
+      node.sourceLinks.forEach(function(link) {
+        nodeSy[i] += link.dy;
+      });
+      node.targetLinks.forEach(function(link) {
+        nodeTy[i] += link.dy;
+      });
+    });
+
+    nodes.forEach(function(node, i) {
+      // var sy = 0, ty = 0;
+      var sy = node.dy - nodeSy[i]; 
+      var ty = node.dy - nodeTy[i];
       node.sourceLinks.forEach(function(link) {
         link.sy = sy;
         sy += link.dy;
@@ -289,10 +296,14 @@ export default function() {
     });
  
     function ascendingSourceDepth(a, b) {
+      if (a.source.name === a.target.name) {return -1;}
+      if (b.source.name === b.target.name) {return 1;}
       return a.source.y - b.source.y;
     }
  
     function ascendingTargetDepth(a, b) {
+      if (a.source.name === a.target.name) {return -1;}
+      if (b.source.name === b.target.name) {return 1;}
       return a.target.y - b.target.y;
     }
   }
