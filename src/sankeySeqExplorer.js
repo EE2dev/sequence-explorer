@@ -437,7 +437,7 @@ export default function(_myData) {
       }
       myParticles = myParticles.init(classPaths.get(key), props.particleStart, _pathName, 
         myPath, sequenceStart, mySankey.maxValue(), myPathValue, 
-        particleMin, particleMax, particleSpeed, particleShape, particleSize, nodeWidth)
+        particleMin, particleMax, particleSpeed, particleShape, particleSize, nodeWidth, debugOn)
         .start();
     }
     return;

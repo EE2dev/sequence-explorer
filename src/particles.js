@@ -17,6 +17,7 @@ export function particles() {
   let context;
   let canvasTranslate;
   let nodeWidth;
+  let debugOn;
   
   /*
     @args
@@ -33,12 +34,14 @@ export function particles() {
     _particleShape: sets the shape of the particles. The default is "circle".
     _particleSize: size of particle (circle or person)
     _nodeWidth: width of the sankey node in pixels.
+    _debugOn: debug option true or false
   */ 
   publicAPI.init = function (_svgPaths, _canvasTL, _pathName, _myPath, _sequenceStart, _linkMax,
-    _linkValue, _particleMin, _particleMax, _particleSpeed, _particleShape, _particleSize, _nodeWidth){
+    _linkValue, _particleMin, _particleMax, _particleSpeed, _particleShape, _particleSize, _nodeWidth,_debugOn){
     
     if (d3.select("div.sankeyChart").selectAll("canvas").size() === 0) {
-      initializeCanvas(_canvasTL, _linkMax, _particleMin, _particleMax, _particleSpeed, _particleShape, _particleSize, _nodeWidth);
+      initializeCanvas(_canvasTL, _linkMax, _particleMin, _particleMax, _particleSpeed, 
+        _particleShape, _particleSize, _nodeWidth, _debugOn);
     } 
 
     let pathExists = false;
@@ -82,10 +85,11 @@ export function particles() {
   }
 
   function initializeCanvas(_canvasTranslate, _linkMax, _particleMin, _particleMax, 
-      _particleSpeed, _particleShape, _particleSize, _nodeWidth) { 
+      _particleSpeed, _particleShape, _particleSize, _nodeWidth, _debugOn) { 
     particleSpeed = _particleSpeed;
     particleShape = _particleShape;
     particleSize = _particleSize;
+    debugOn = _debugOn;
     canvasTranslate = _canvasTranslate;
     nodeWidth = _nodeWidth;
     allPaths.remove = -1;
@@ -98,6 +102,10 @@ export function particles() {
         .attr("height", ch)
         .attr("class", "particles");
     
+    if (debugOn) {
+      console.log("canvas (width, height): (" + cw + ", " + ch + ")");
+      console.log("canvas translate(x, y): (" + _canvasTranslate.x + ", " + _canvasTranslate.y + ")");
+    } 
     context = d3.select("canvas").node().getContext("2d");
     context.clearRect(0,0,cw,ch);
     context.translate(_canvasTranslate.x, _canvasTranslate.y);
@@ -154,7 +162,7 @@ export function particles() {
       _path["particles"].forEach(function (d) {
         if (d.current >= d.path.getTotalLength() ){
           _path["links"]
-            .filter(l => d.path.__data__.target.nameX === l.sourceX && d.path.__data__.target.nameY === l.sourceY)
+            .filter(l => d.path.__data__.target.nameX === l.sourceX && d.path.__data__.target.nameY === l.sourceY) // just links starting at that node
             .forEach(function (l) {
               if (d.current - d.path.getTotalLength() <= nodeWidth) { // continue moving upon node
                 d.current = 0;
@@ -214,6 +222,10 @@ export function particles() {
         } else { 
           currentPos = particles[x].path.getPointAtLength(particles[x].current);
           relativePos = particles[x].current/particles[x].path.getTotalLength();
+        }
+        if (debugOn) {
+          console.log("current Position: (" + currentPos.x + ", " + currentPos.y + ")");
+          console.log("current Position with offset [" + particles[x].offset + "]: (" + currentPos.x + ", " + (currentPos.y + particles[x].offset) + ")");
         }
 
         context.fillStyle = particles[x].link.particleColor(relativePos);
