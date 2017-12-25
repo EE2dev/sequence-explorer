@@ -108,7 +108,7 @@ sourceX,sourceY,info1,info2
 You might add paths which can be highlighted with flying particles.
 The file structure is similar to the data file plus one extra column called `name`. The only difference is that the first column must be named ```value```, the four columns refering to the path have to be named ```sourceX,sourceY,targetX,targetY```.
 This additional file has to be in the same directory as the main csv file and has to be named as the main file with "_paths" added to the file name.
-E.g. original file: `my_sankey_file.csv`--> `my_sankey_file_paths.csv`
+E.g. original file: `my_sankey_file.csv`--> `my_sankey_file_paths.csv`.
 Please note that
 * each path must be unambiguous. That means for each node there can just be one link going out. 
 * paths which are selected (meaning particles are flowing) prevents other mouse events from firing. To continue with interactive responses of sequence explorer all paths must be deselected.
