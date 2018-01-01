@@ -422,7 +422,7 @@ export default function(_myData) {
 
       pathFile.forEach( function(ele){
         if (ele.name === _pathName) {
-          myPath.push({sx: ele.sourceX, sy: ele.sourceY, tx: ele.targetX, ty: ele.targetY});
+          myPath.push({sx: ele.sourceX, sy: ele.sourceY, tx: ele.targetX, ty: ele.targetY, value: +ele.value});
           if (!myPathValue) {myPathValue = +ele.value;}
           if (sequence.indexOf(ele.sourceX) < sequenceStartIndex) {
             sequenceStartIndex = sequence.indexOf(ele.sourceX);

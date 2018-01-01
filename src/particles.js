@@ -132,6 +132,7 @@ export function particles() {
           myLink = {}; 
           myLink.freq = (_linkValue === undefined) ? frequencyScale(link.value) : frequencyScale(_linkValue);
           myLink.dy = link.dy;
+          myLink.value = ele.value;
           myLink.particleSize = 2.5 * particleSize;
           myLink.particleColor = d3.scaleLinear().domain([0,1]).range([link.source.color, link.target.color]);
           myLink.particleAlpha = d3.scaleLinear().domain([0,1]).range([link.source.alpha, link.target.alpha]);
@@ -151,6 +152,25 @@ export function particles() {
     allPaths.push(thisPath);
   }
 
+  // gets index of array based on random draw weighted by value of each element
+  function getIndex(_array){
+    var sumOfValues = 0;
+    var num = Math.random();
+    var index = -1;
+    
+    _array.forEach(function(ele) {
+      sumOfValues += ele.value;
+    });
+
+    for(var i = 0; i < _array.length; i++) {
+      if (i === _array.length - 1) { index = i; break; }
+      else if (num < _array[i].value / sumOfValues) { index = i; break; }
+      else { num = num - _array[i].value / sumOfValues; }
+    }
+
+    return index;
+  }
+  
   function tick(elapsed) {
     if (allPaths.remove !== -1) {
       allPaths.splice(allPaths.remove,1); 
@@ -161,24 +181,41 @@ export function particles() {
     allPaths.forEach(function(_path){
       _path["particles"].forEach(function (d) {
         if (d.current >= d.path.getTotalLength() ){
+          if (d.needsNewLinkIndex) {
+            var relevantPaths =  _path["links"]
+              .filter(l => d.path.__data__.target.nameX === l.sourceX && d.path.__data__.target.nameY === l.sourceY); // just links starting at that node
+            // d.linkIndex = Math.floor(Math.random() * relevantPaths.length);
+            if (relevantPaths.length > 0) {
+              d.linkIndex = getIndex(relevantPaths);
+              if (debugOn) {
+                console.log("linkIndex(" + relevantPaths.length +"): " + d.linkIndex);
+              }
+              d.needsNewLinkIndex = false;
+            }
+          } 
           _path["links"]
             .filter(l => d.path.__data__.target.nameX === l.sourceX && d.path.__data__.target.nameY === l.sourceY) // just links starting at that node
-            .forEach(function (l) {
-              if (d.current - d.path.getTotalLength() <= nodeWidth) { // continue moving upon node
-                d.current = 0;
-                d.diffToNextY = (l.svgPath.getPointAtLength(0).y + d.offsetFactor * l.dy) - (d.lastPosition.y + d.offsetFactor * d.link.dy);
-                d.node = true;
-              } else { // follow new path
-                d.link = l;
-                d.offset = d.offsetFactor * l.dy;
-                d.current = 0;
-                d.time = elapsed;
-                d.path = l.svgPath;
-                d.lastPosition = d.path.getPointAtLength(d.path.getTotalLength());
-                d.node = false;
+            .forEach(function (l, i) {
+              if (i === d.linkIndex) {
+                if (d.current - d.path.getTotalLength() <= nodeWidth) { // continue moving upon node
+                  d.current = 0;
+                  d.diffToNextY = (l.svgPath.getPointAtLength(0).y + d.offsetFactor * l.dy) - (d.lastPosition.y + d.offsetFactor * d.link.dy);
+                  d.node = true;
+                } else { // follow new path
+                  d.link = l;
+                  d.offset = d.offsetFactor * l.dy;
+                  d.current = 0;
+                  d.time = elapsed;
+                  d.path = l.svgPath;
+                  d.lastPosition = d.path.getPointAtLength(d.path.getTotalLength());
+                  d.node = false;
+                }
               }
             });
-        } // end if       
+        } // end if
+        else {
+          if (!d.needsNewLinkIndex) { d.needsNewLinkIndex = true; }
+        }      
       });
 
       _path["particles"] = _path["particles"].filter(function(d){return d.current < d.path.getTotalLength();});
@@ -191,7 +228,8 @@ export function particles() {
           var offset = factor * d.dy;
           var lastPos = d.svgPath.getPointAtLength(d.svgPath.getTotalLength());
           _path["particles"].push({link: d, time: elapsed, offset: offset, offsetFactor: factor, 
-            path: d.svgPath, node: false, lastPosition: lastPos, diffToNextY: 0});
+            path: d.svgPath, node: false, lastPosition: lastPos, diffToNextY: 0, 
+            linkIndex: -1, needsNewLinkIndex: true});
         }
       });
     });

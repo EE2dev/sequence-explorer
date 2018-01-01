@@ -1,0 +1,5 @@
+value,sourceX,sourceY,targetX,targetY,name
+1,1,home,2,product,myPath
+100,2,product,3,other,myPath
+2,2,product,3,home,myPath
+3,2,product,3,account,myPath
