@@ -74,9 +74,11 @@ export default function(_myData) {
         createChart(selection, d);
       }
       else { // data processing here
-        if (typeof _myData !== "undefined") { 
+        if (typeof _myData == "object") {
+          loadData(_myData, selection);
+        } else if (typeof _myData !== "undefined") {
           readData(_myData, selection);
-        } 
+        }
         else {
           readData("<pre>", selection);
         }
@@ -725,7 +727,7 @@ export default function(_myData) {
             .style("fill-opacity", 0);
           
           // tooltip
-          tooltip = d3.select("body").append("div").attr("class", "tooltip");
+          tooltip = d3.select("body").append("div").attr("class", "tooltipSankeySeq");
             
           // drawing links
           sankeyG.append("g")
@@ -1099,7 +1101,7 @@ export default function(_myData) {
     });
   }
 
-  // 5.3 reads data from a json file
+  // 5.3.a reads data from a json file
   function readJson (csvFile, selection) {
     d3.json(csvFile, function(error1, f) {
       if (debugOn) {
@@ -1107,19 +1109,25 @@ export default function(_myData) {
         console.log(error1);
         console.log(f);
         console.log("end");
-      } 
-      if (!f["data"]) {console.log (" --> No data key found in JSON file"); } 
-      else { file = f["data"]; file.columns = Object.keys(file[0]); }
-      
-      if (!f["dataNodes"]) {console.log (" --> No dataNodes key found in JSON file"); } 
-      else { nodeFile = f["dataNodes"]; nodeFile.columns = Object.keys(nodeFile[0]); }
-      
-      if (!f["paths"]) {console.log (" --> No paths key found in JSON file"); } 
-      else { pathFile = f["paths"]; pathFile.columns = Object.keys(pathFile[0]); }
-
-      allGraphs = constructSankeyFromCSV(file); // main data structure build from JSON file           
-      createChart(selection);
+      }
+      loadData(f, selection);
     });      
+  }
+
+  // 5.3.b load the Data
+  function loadData (f, selection){
+
+    if (!f["data"]) {console.log (" --> No data key found in JSON file"); }
+    else { file = f["data"]; file.columns = Object.keys(file[0]); }
+
+    if (!f["dataNodes"]) {console.log (" --> No dataNodes key found in JSON file"); }
+    else { nodeFile = f["dataNodes"]; nodeFile.columns = Object.keys(nodeFile[0]); }
+
+    if (!f["paths"]) {console.log (" --> No paths key found in JSON file"); }
+    else { pathFile = f["paths"]; pathFile.columns = Object.keys(pathFile[0]); }
+
+    allGraphs = constructSankeyFromCSV(file); // main data structure build from JSON file
+    createChart(selection);
   }
 
   // 5.4 processes sankey from a csv file. Returns the necessary graph data structure. 

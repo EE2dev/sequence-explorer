@@ -8,13 +8,13 @@ export function initialize_whp_and_axes(svg, size, margin, categories, sequence,
   var height = size[1] - margin.bottom - margin.top; 
   var paddingSingle = {left: 0, bottom: 0, right: 0, top: 20};
   var paddingMultiples = {left: 20, bottom: 0, right: 0, top: 20}; // fixed
-    
+
     // drawing axes - step 1: determine size of sankey
   var axisL = svg.append("g")
       .attr("class", "dummy d1")
       .style("opacity", 0)
       .call(d3.axisLeft(d3.scalePoint().domain(categories)));
-      
+
   var axisB = svg.append("g")
       .attr("class", "dummy d2")
       .style("opacity", 0)
@@ -22,7 +22,7 @@ export function initialize_whp_and_axes(svg, size, margin, categories, sequence,
 
   var lengthOfLastEvent = d3.select("g.dummy.d2 g.tick:last-child text"); // text which can extend the width of the x axis
 
-  paddingSingle.left = axisL.node().getBBox().width; 
+  paddingSingle.left = axisL.node().getBBox().width;
   paddingSingle.bottom = axisB.node().getBBox().height;
   var extendBAxis = lengthOfLastEvent.node().getBBox().width/2;
 

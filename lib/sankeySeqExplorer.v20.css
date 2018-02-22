@@ -95,7 +95,7 @@
     stroke-opacity: .5;
   }
   
-  div.tooltip {
+  div.tooltipSankeySeq {
     position: absolute;
     z-index: 10;
     visibility: hidden;
