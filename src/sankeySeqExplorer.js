@@ -751,6 +751,9 @@ export default function(_myData) {
               var info = sequenceName + ": " + d.source.nameX + " \u21FE " + d.target.nameX;
               info += "<br>" + categoryName + ": " + d.source.nameY + " \u21FE " + d.target.nameY;
               info += "<br>" + valueName + ": " + formatNumber(d.value, thousandsSeparator, ",.0f");
+              if (d.additionalLabel != null) {
+                info += "<br>" + d.additionalLabel;
+              }
               tooltip.html(info);
               tooltip.style("visibility", "visible");
             })
@@ -1182,7 +1185,7 @@ export default function(_myData) {
         nodeInfoKeys = nodeFile.columns;
         nodeInfoKeys.splice(0,3,nodeInfoNone);  
       }
-    } else if (_file.columns.length === 7)  { // two additional dimensions
+    } else if (_file.columns.length >= 7)  { // two additional dimensions
       dataGroups = d3.nest()
         .key(function(d) { return d[columns[6]]; }).sortKeys(orderDimension(colOrder))
         .key(function(d) { return d[columns[5]]; }).sortKeys(orderDimension(rowOrder))
@@ -1240,7 +1243,9 @@ export default function(_myData) {
           graph.links.push({ "source": source,
             "target": target,
             "id": source + "->" + target,
-            "value": +d[columns[0]] });    
+            "value": +d[columns[0]],
+            "additionalLabel": d[columns[7]]
+          });
 
           // build sets for sequence and categories
           sequenceSet.add(d[columns[1]]);
