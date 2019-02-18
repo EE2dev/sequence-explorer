@@ -10,19 +10,19 @@ export default function(_myData) {
   "use strict";
   
   // 0.1 All options not accessible to caller 
-  var file; // reference to data (embedded or in file)
-  var nodeFile; // optional file with additional node infos
-  var pathFile; // optional file with paths
-  var nodeInfoKeys; // the key names of the additional node infos
-  var nodeInfoNone = "(none)"; // displayed string for no info key
-  var nodeInfoKey = nodeInfoNone; // the selected key
-  var nodeInfos = {}; // Object containing the three variables above as properties 
-  var valueName; // the column name of the frequency value
-  var scaleGlobal = true; // scale the node height for multiples over all sankeys 
-  var showNodeLabels = true; // show node labels
-  var percentages = ["%sameTime"]; // (default) format of the tooltip text
-  var allGraphs; // data structure containing columns of rows of sankey input data;
-  var tooltip;
+  let file; // reference to data (embedded or in file)
+  let nodeFile; // optional file with additional node infos
+  let pathFile; // optional file with paths
+  let nodeInfoKeys; // the key names of the additional node infos
+  let nodeInfoNone = "(none)"; // displayed string for no info key
+  let nodeInfoKey = nodeInfoNone; // the selected key
+  let nodeInfos = {}; // Object containing the three variables above as properties
+  let valueName; // the column name of the frequency value
+  let scaleGlobal = true; // scale the node height for multiples over all sankeys
+  let showNodeLabels = true; // show node labels
+  let percentages = ["%sameTime"]; // (default) format of the tooltip text
+  let allGraphs; // data structure containing columns of rows of sankey input data;
+  let tooltip;
   const SINGLE = 1; // single sankey diagram
   const MULTIPLES = 2; // small multiples diagramm
   const ZOOMX = 3; // transitioned to a zoomed display of fractions on x axis
@@ -30,7 +30,7 @@ export default function(_myData) {
   let visMode = MULTIPLES;
   let classPaths = d3.map(); // maps the class (e.g."f col-row") of g.sankeyFrame to its paths. for particles
   let pathsArray; // arry of paths for classPaths;
-  var props; // properties calculated in initialization function
+  let props; // properties calculated in initialization function
   let myParticles = particles();
 
   ///////////////////////////////////////////////////
@@ -38,7 +38,7 @@ export default function(_myData) {
   ///////////////////////////////////////////////////
   
   // 1.1 All options that should be accessible to caller  
-  var debugOn = false,
+  let debugOn = false,
     nodeWidth = 15,
     nodePadding = 8, 
     size = [700, 500],
