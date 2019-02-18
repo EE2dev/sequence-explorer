@@ -20,7 +20,7 @@ export function initialize_whp_and_axes(svg, size, margin, categories, sequence,
       .style("opacity", 0)
       .call(d3.axisBottom(d3.scalePoint().domain(sequence)));
 
-  var lengthOfLastEvent = d3.select("g.dummy.d2 g.tick:last-child text"); // text which can extend the width of the x axis
+  var lengthOfLastEvent = svg.select("g.dummy.d2 g.tick:last-child text"); // text which can extend the width of the x axis
 
   paddingSingle.left = axisL.node().getBBox().width;
   paddingSingle.bottom = axisB.node().getBBox().height;
@@ -30,7 +30,7 @@ export function initialize_whp_and_axes(svg, size, margin, categories, sequence,
   width = width - paddingSingle.left - extendBAxis - 7; // subtracting 7px for centered percentage text on top of nodes
   height = height - paddingSingle.bottom - paddingMultiples.top - 2;
         
-  d3.selectAll("g.dummy").remove();  
+  svg.selectAll("g.dummy").remove();
 
   var yScale = d3.scalePoint()
       .domain(categories) 
@@ -46,7 +46,7 @@ export function initialize_whp_and_axes(svg, size, margin, categories, sequence,
   axisSelection.attr("transform", "translate(" + (paddingSingle.left - 1.5) + ", " + paddingSingle.top + ")");
     
     // adjust axis text
-  d3.selectAll("g.axis.left text").attr("dy","");
+  svg.selectAll("g.axis.left text").attr("dy","");
 
   var xScale = d3.scalePoint()
       .domain(sequence)
@@ -73,7 +73,7 @@ export function initialize_whp_and_axes(svg, size, margin, categories, sequence,
   particleStart.y = margin.top + paddingSingle.top;
   result.particleStart = particleStart;
 
-  d3.selectAll("text").classed("unselect", true);
+  svg.selectAll("text").classed("unselect", true);
     
   return result;
 }
