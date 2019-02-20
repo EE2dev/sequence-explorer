@@ -10,19 +10,19 @@ export default function(_myData) {
   "use strict";
   
   // 0.1 All options not accessible to caller 
-  var file; // reference to data (embedded or in file)
-  var nodeFile; // optional file with additional node infos
-  var pathFile; // optional file with paths
-  var nodeInfoKeys; // the key names of the additional node infos
-  var nodeInfoNone = "(none)"; // displayed string for no info key
-  var nodeInfoKey = nodeInfoNone; // the selected key
-  var nodeInfos = {}; // Object containing the three variables above as properties 
-  var valueName; // the column name of the frequency value
-  var scaleGlobal = true; // scale the node height for multiples over all sankeys 
-  var showNodeLabels = true; // show node labels
-  var percentages = ["%sameTime"]; // (default) format of the tooltip text
-  var allGraphs; // data structure containing columns of rows of sankey input data;
-  var tooltip;
+  let file; // reference to data (embedded or in file)
+  let nodeFile; // optional file with additional node infos
+  let pathFile; // optional file with paths
+  let nodeInfoKeys; // the key names of the additional node infos
+  let nodeInfoNone = "(none)"; // displayed string for no info key
+  let nodeInfoKey = nodeInfoNone; // the selected key
+  let nodeInfos = {}; // Object containing the three variables above as properties
+  let valueName; // the column name of the frequency value
+  let scaleGlobal = true; // scale the node height for multiples over all sankeys
+  let showNodeLabels = true; // show node labels
+  let percentages = ["%sameTime"]; // (default) format of the tooltip text
+  let allGraphs; // data structure containing columns of rows of sankey input data;
+  let tooltip;
   const SINGLE = 1; // single sankey diagram
   const MULTIPLES = 2; // small multiples diagramm
   const ZOOMX = 3; // transitioned to a zoomed display of fractions on x axis
@@ -30,7 +30,7 @@ export default function(_myData) {
   let visMode = MULTIPLES;
   let classPaths = d3.map(); // maps the class (e.g."f col-row") of g.sankeyFrame to its paths. for particles
   let pathsArray; // arry of paths for classPaths;
-  var props; // properties calculated in initialization function
+  let props; // properties calculated in initialization function
   let myParticles = particles();
 
   ///////////////////////////////////////////////////
@@ -38,7 +38,7 @@ export default function(_myData) {
   ///////////////////////////////////////////////////
   
   // 1.1 All options that should be accessible to caller  
-  var debugOn = false,
+  let debugOn = false,
     nodeWidth = 15,
     nodePadding = 8, 
     size = [700, 500],
@@ -234,8 +234,8 @@ export default function(_myData) {
   ////////////////////////////////////
   
   // functions for building the menu
-  function displaySankeyMenu(selection) {
-    var div1 = selection.append("div").attr("class", "sankeyMenu");
+  function displaySankeyMenu(rootSelection) {
+    var div1 = rootSelection.append("div").attr("class", "sankeyMenu");
     
     // options menu
     var divOm = div1.append("div").attr("class", "OptionsMenu");
@@ -251,7 +251,7 @@ export default function(_myData) {
         .append("input")
         .attr("class", "nodeScaling")
         .attr("type", "checkbox")
-        .on("change", updateScaling);
+        .on("change", function(d) { updateScaling(rootSelection, d);} );
         
       div2.node().checked = scaleGlobal;
       
@@ -267,7 +267,7 @@ export default function(_myData) {
       .append("input")
       .attr("class", "labelOnOff")
       .attr("type", "checkbox")
-      .on("change", updateNodeLabels);
+      .on("change", function() { updateNodeLabels(rootSelection);});
       
     div3.node().checked = showNodeLabels;  
       
@@ -282,7 +282,7 @@ export default function(_myData) {
       console.log("nodeInfoKeys: ");
       console.log(nodeInfoKeys);
     }
-    var divNim = d3.select("div.sankeyMenu")
+    var divNim = rootSelection.select("div.sankeyMenu")
         .append("div")
         .attr("class", "NodeInfoMenu");
    
@@ -306,7 +306,7 @@ export default function(_myData) {
         nodeInfoKey = this.value;
         nodeInfos.nodeInfoKey = nodeInfoKey;
         console.log("nodeInfokey: "+ nodeInfoKey);
-        updateNodeInfo();
+        updateNodeInfo(rootSelection);
       }); 
 
     divNim.append("label")
@@ -315,7 +315,7 @@ export default function(_myData) {
     divNim.append("br");        
   }
 
-  function displayPathsMenu(){
+  function displayPathsMenu(rootSelection){
     // paths info menu  
     if (typeof pathFile === "undefined") { return;}
 
@@ -324,7 +324,7 @@ export default function(_myData) {
     let pathInfoMap;
     let pathNames;
 
-    let colRow = getColRowOfSingle();
+    let colRow = getColRowOfSingle(rootSelection);
     currentCol = allGraphs[colRow.col][colRow.row].dimCol;
     currentRow = allGraphs[colRow.col][colRow.row].dimRow;
 
@@ -363,7 +363,7 @@ export default function(_myData) {
       console.log("pathFile: ");
       console.log(pathFile);
     }
-    var divPm = d3.select("div.sankeyMenu")
+    var divPm = rootSelection.select("div.sankeyMenu")
         .append("div")
         .attr("class", "PathsMenu")
         .style("opacity", 0);
@@ -383,7 +383,7 @@ export default function(_myData) {
       .attr("type", "checkbox")
       .attr("value", function(d) { return d; })
     //  .attr("checked", function(d, i) { if (i === 0) { return "checked"; } })
-      .on("change", showRemoveParticles);
+      .on("change", function(d) { showRemoveParticles(rootSelection,d); });
     
     div4.append("label")
       .text(function(d) { return d; });
@@ -391,27 +391,27 @@ export default function(_myData) {
     div4.append("br");  
 
     let trans = d3.transition().duration(1000);
-    d3.select("div.PathsMenu").transition(trans).style("opacity", 1);    
+    rootSelection.select("div.PathsMenu").transition(trans).style("opacity", 1);
   }
 
-  function removePathsMenu() {
+  function removePathsMenu(rootSelection) {
     let trans = d3.transition().duration(1000);
-    d3.select("div.PathsMenu").transition(trans).style("opacity", 0).remove();
-    d3.selectAll("canvas.particles").remove();
+    rootSelection.select("div.PathsMenu").transition(trans).style("opacity", 0).remove();
+    rootSelection.selectAll("canvas.particles").remove();
   }
 
-  function showRemoveParticles(_pathName) {
+  function showRemoveParticles(rootSelection, _pathName) {
     if (!d3.select(this).node().checked) { 
-      myParticles = myParticles.stop(_pathName);
+      myParticles = myParticles.stop(rootSelection, _pathName);
       console.log("stopped!");
     }
     else {
-      if (d3.select("g.sankeyFrame.single").size() === 0) { return; }
+      if (rootSelection.select("g.sankeyFrame.single").size() === 0) { return; }
 
-      let colRow = getColRowOfSingle();
+      let colRow = getColRowOfSingle(rootSelection);
       var keyCol = colRow.col;
       var keyRow = colRow.row; 
-      var key = d3.select("g.sankeyFrame.single").attr("class").split(" ")[1];
+      var key = rootSelection.select("g.sankeyFrame.single").attr("class").split(" ")[1];
 
       var myPath = [];
       var sequenceStart; 
@@ -437,7 +437,7 @@ export default function(_myData) {
         console.log(myPath);
         console.log(myPathValue);
       }
-      myParticles = myParticles.init(classPaths.get(key), props.particleStart, _pathName, 
+      myParticles = myParticles.init(rootSelection, classPaths.get(key), props.particleStart, _pathName,
         myPath, sequenceStart, mySankey.maxValue(), myPathValue, 
         particleMin, particleMax, particleSpeed, particleShape, particleSize, nodeWidth, debugOn)
         .start();
@@ -446,13 +446,13 @@ export default function(_myData) {
   }
 
   // method called when menu: options-> global scaling is changed  
-  function updateScaling() {
+  function updateScaling(rootSelection) {
     var mySankey;
     var parentSelector;
     var graph;
     var trans = d3.transition().duration(1000);
 
-    scaleGlobal = d3.select(".nodeScaling").node().checked;
+    scaleGlobal = rootSelection.select(".nodeScaling").node().checked;
 
     allGraphs.forEach( function (col, colIndex) {
       col.forEach( function (container, rowIndex) {
@@ -465,23 +465,23 @@ export default function(_myData) {
       
       // transition links
         parentSelector = "g.sankeySeq.s" + colIndex + "-" + rowIndex;
-        d3.select(parentSelector).selectAll(".link")
+        rootSelection.select(parentSelector).selectAll(".link")
         .data(graph.links, function(d) { return d.id; }) // data join for clarity. Data attributes have been changed even without join!
         .transition(trans)
         .attr("d", mySankey.link())
         .style("stroke-width", function(d) { return Math.max(1, d.dy) + "px"; });
         
       // transition nodes
-        d3.select(parentSelector).selectAll(".node")
+        rootSelection.select(parentSelector).selectAll(".node")
          .data(graph.nodes)
          .transition(trans)
          .attr("transform", function(d) {return "translate(" + d.x + "," + d.y + ")"; });
         
-        d3.select(parentSelector).selectAll("rect.sankeyNode")
+        rootSelection.select(parentSelector).selectAll("rect.sankeyNode")
          .transition(trans)
          .attr("height", function(d) { return d.dy; });
    
-        d3.select(parentSelector).selectAll("text.nodeLabel")
+        rootSelection.select(parentSelector).selectAll("text.nodeLabel")
          .transition(trans)        
          .attr("y", function(d) {  // adjustment if text would cross x axis    
            if (debugOn) {
@@ -493,14 +493,14 @@ export default function(_myData) {
            return d.dy < pyHeight ? d.dy - pyHeight / 2 - 2 : Math.min(d.dy / 2, d.dy - pyHeight / 2 - 2);           
          });
         
-        d3.select(parentSelector).selectAll("rect.sankeyNodeInfo")
+        rootSelection.select(parentSelector).selectAll("rect.sankeyNodeInfo")
          .filter(function(d) { nodeInfoKeys.forEach( function(key) {
            if (key !== nodeInfoNone) {// skip case for no nodeInfo selection
              d.nodeInfos[key + "_dy"] = mySankey.getNodeHeight(+d.nodeInfos[key]);
            }
            else {
              if (nodeInfoKey === nodeInfoNone) {
-               d3.selectAll("rect.sankeyNodeInfo").attr("y", function(d) {return d.dy;});
+               rootSelection.selectAll("rect.sankeyNodeInfo").attr("y", function(d) {return d.dy;});
              }
            }
          });
@@ -527,24 +527,24 @@ export default function(_myData) {
     });
   }
   
-  function updateNodeLabels() {
-    d3.selectAll("text.nodeLabel").style("display", function() { 
-      return d3.select(".labelOnOff").node().checked ? "block" : "none";
+  function updateNodeLabels(rootSelection) {
+    rootSelection.selectAll("text.nodeLabel").style("display", function() {
+      return rootSelection.select(".labelOnOff").node().checked ? "block" : "none";
     });
   }
   
-  function updateNodeInfo() {
+  function updateNodeInfo(rootSelection) {
     var trans = d3.transition().duration(1000);
-    var borderCol = d3.select("rect.sankeyNodeInfo").style("fill");
+    var borderCol = rootSelection.select("rect.sankeyNodeInfo").style("fill");
     var backgroundCol = d3.color(borderCol).rgb(); 
     backgroundCol.opacity = 0.1; 
-    d3.select("div.NodeInfoMenu")
+    rootSelection.select("div.NodeInfoMenu")
       .transition(trans)
       .style("border-color", function() { return (nodeInfoKey === nodeInfoNone) ? "rgba(0,0,0,0.1)" : borderCol;})
       .style("background-color", function() { 
         return (nodeInfoKey === nodeInfoNone) ? "rgba(0,0,0,0.1)" : backgroundCol.toString();}); 
 
-    d3.selectAll("rect.sankeyNodeInfo")
+    rootSelection.selectAll("rect.sankeyNodeInfo")
       .style("display", "inline")  // reset style to inline if switch from none to other
       .transition(trans)
       .attr("y", function(d) { return d3.select(this).classed("zoomed") ? 
@@ -576,10 +576,11 @@ export default function(_myData) {
     var svg; 
     
     selection.each(function () {
+      var rootSelection = d3.select(this);
         // 4.1 insert code here  
-      displaySankeyMenu(selection); 
+      displaySankeyMenu(rootSelection);
         
-      svg = d3.select(this).append("div")
+      svg = rootSelection.append("div")
           .attr("class", "sankeyChart")
         .append("svg")
           .attr("width", size[0])
@@ -590,9 +591,9 @@ export default function(_myData) {
       // drawing axes
       props = initialize_whp_and_axes(svg, size, margin, categories, sequence, nodeWidth);
       if (allGraphs.cols === 1 && allGraphs.rows === 1) {
-        d3.selectAll(".axis").style("opacity", 1);
-        d3.selectAll(".sankeyNode,.sankeyNodeInfo").style("stroke-width", "1px");
-        d3.select("g.sankeyFrame").classed("single", true);
+        rootSelection.selectAll(".axis").style("opacity", 1);
+        rootSelection.selectAll(".sankeyNode,.sankeyNodeInfo").style("stroke-width", "1px");
+        rootSelection.select("g.sankeyFrame").classed("single", true);
         visMode = SINGLE; 
       }
       width = props.width;
@@ -626,25 +627,25 @@ export default function(_myData) {
           container.sankey = sankey;
           transformString = initializeFrame(svg, props, allGraphs, colIndex, rowIndex);
 
-          d3.select("div.sankeyChart > svg")
+          rootSelection.select("div.sankeyChart > svg")
           .on("click", function () { // after click anywhere in svg, return to single mode
             if (visMode === ZOOMX) { 
-              if (d3.select(".nodeScaling").size > 0) {
-                d3.select(".nodeScaling").node().disabled = false;
+              if (rootSelection.select(".nodeScaling").size > 0) {
+                rootSelection.select(".nodeScaling").node().disabled = false;
               }
-              d3.select(".labelOnOff").node().disabled = false;
-              let nameX = d3.select("g.zoomed").classed("zoomed", false).datum();
-              transitionXaxisBack(corrCategories, nameX, nodeInfos); 
-              displayPathsMenu();
+              rootSelection.select(".labelOnOff").node().disabled = false;
+              let nameX = rootSelection.select("g.zoomed").classed("zoomed", false).datum();
+              transitionXaxisBack(rootSelection, corrCategories, nameX, nodeInfos);
+              displayPathsMenu(rootSelection);
               visMode = SINGLE;
             } else if (visMode === ZOOMY) { 
-              if (d3.select(".nodeScaling").size > 0) {
-                d3.select(".nodeScaling").node().disabled = false;
+              if (rootSelection.select(".nodeScaling").size > 0) {
+                rootSelection.select(".nodeScaling").node().disabled = false;
               }
-              d3.select(".labelOnOff").node().disabled = false;
-              d3.select("g.zoomed").classed("zoomed", false);
-              transitionYaxisBack(); 
-              displayPathsMenu();
+              rootSelection.select(".labelOnOff").node().disabled = false;
+              rootSelection.select("g.zoomed").classed("zoomed", false);
+              transitionYaxisBack(rootSelection);
+              displayPathsMenu(rootSelection);
               visMode = SINGLE;
             }
           });
@@ -660,12 +661,12 @@ export default function(_myData) {
           .on("click", function () {   
             if (!(allGraphs.cols === 1 && allGraphs.rows === 1)) {
               if (visMode === MULTIPLES) {
-                transitionToSingle(this);
-                displayPathsMenu();
+                transitionToSingle(svg, this);
+                displayPathsMenu(rootSelection);
                 visMode = SINGLE;
               } else if (visMode === SINGLE) {
-                transitionToMultiples(this); 
-                removePathsMenu();
+                transitionToMultiples(svg, this);
+                removePathsMenu(rootSelection);
                 visMode = MULTIPLES;
               }
             }         
@@ -751,6 +752,9 @@ export default function(_myData) {
               var info = sequenceName + ": " + d.source.nameX + " \u21FE " + d.target.nameX;
               info += "<br>" + categoryName + ": " + d.source.nameY + " \u21FE " + d.target.nameY;
               info += "<br>" + valueName + ": " + formatNumber(d.value, thousandsSeparator, ",.0f");
+              if (d.additionalLabel != null) {
+                info += "<br>" + d.additionalLabel;
+              }
               tooltip.html(info);
               tooltip.style("visibility", "visible");
             })
@@ -827,7 +831,7 @@ export default function(_myData) {
           node.append("text")
             .attr("class", "nodeLabel")
             .style("display", function() { 
-              return d3.select(".labelOnOff").node().checked ? "block" : "none";})
+              return rootSelection.select(".labelOnOff").node().checked ? "block" : "none";})
             .attr("x", 3 + sankey.nodeWidth())
             .attr("y", function(d) { return d.dy / 2; })
             .attr("dy", ".35em")
@@ -880,33 +884,33 @@ export default function(_myData) {
             });
             
           if (container.transform === "single") { 
-            transitionToSingle(sankeyF.node(), d3.transition().duration(0));
+            transitionToSingle(svg, sankeyF.node(), d3.transition().duration(0));
           }
 
-          if (allGraphs.cols === 1 && allGraphs.rows === 1) {displayPathsMenu();}
+          if (allGraphs.cols === 1 && allGraphs.rows === 1) {displayPathsMenu(rootSelection);}
           
-          d3.selectAll("g.axis.bottom > g.tick").on("click", function(d){
+          rootSelection.selectAll("g.axis.bottom > g.tick").on("click", function(d){
             if (visMode === SINGLE) {
               if (skipX(d)) { return; }
 
-              if (d3.select(".nodeScaling").size > 0) {
-                d3.select(".nodeScaling").node().disabled = true;
+              if (rootSelection.select(".nodeScaling").size > 0) {
+                rootSelection.select(".nodeScaling").node().disabled = true;
               }
-              d3.select(".labelOnOff").node().checked = false;
-              updateNodeLabels();
-              d3.select(".labelOnOff").node().disabled = true;
+              rootSelection.select(".labelOnOff").node().checked = false;
+              updateNodeLabels(rootSelection);
+              rootSelection.select(".labelOnOff").node().disabled = true;
               d3.select(this).classed("zoomed", true);
               resort(corrCategories);
-              removePathsMenu();
-              transitionXaxis(corrCategories, d, nodeInfos, thousandsSeparator);
+              removePathsMenu(rootSelection);
+              transitionXaxis(rootSelection, corrCategories, d, nodeInfos, thousandsSeparator);
               d3.event.stopPropagation();
               visMode = ZOOMX;
             } 
           });    
 
-          d3.selectAll("g.axis.bottom > g.tick").on("mouseover", function(dFirst){   
+          rootSelection.selectAll("g.axis.bottom > g.tick").on("mouseover", function(dFirst){
             if (skipX(dFirst)) {
-              d3.select(this).style("cursor", "default"); 
+              d3.select(this).style("cursor", "default");
               return;
             }
 
@@ -932,7 +936,7 @@ export default function(_myData) {
           function skipX(da) {
             let skipYes = false;
             let cond1 = ((visMode === ZOOMY) || (visMode === ZOOMX));
-            let numberNodes = d3.select("g.sankeyFrame.single")
+            let numberNodes = rootSelection.select("g.sankeyFrame.single")
                 .selectAll("g.node")
                 .filter( d => d.nameX === da);
             let cond2 = (numberNodes.size() === 0);
@@ -952,27 +956,27 @@ export default function(_myData) {
             _corrCategories = function(){return ar2;};
           }            
 
-          d3.selectAll("g.axis.left > g.tick").on("click", function(d){
+          rootSelection.selectAll("g.axis.left > g.tick").on("click", function(d){
             if (visMode === SINGLE) {
               if (skipY(d)) { return; }
 
               d3.select(this).classed("zoomed", true);
-              if (d3.select(".nodeScaling").size > 0) {
-                d3.select(".nodeScaling").node().disabled = true;
+              if (rootSelection.select(".nodeScaling").size > 0) {
+                rootSelection.select(".nodeScaling").node().disabled = true;
               }
-              d3.select(".labelOnOff").node().checked = false;
-              updateNodeLabels();
-              d3.select(".labelOnOff").node().disabled = true;
-              removePathsMenu();
-              transitionYaxis(d, thousandsSeparator, percentages[0], sequence[0]);
+              rootSelection.select(".labelOnOff").node().checked = false;
+              updateNodeLabels(rootSelection);
+              rootSelection.select(".labelOnOff").node().disabled = true;
+              removePathsMenu(rootSelection);
+              transitionYaxis(rootSelection, d, thousandsSeparator, percentages[0], sequence[0]);
               d3.event.stopPropagation();
               visMode = ZOOMY;
             } 
           });  
 
-          d3.selectAll("g.axis.left > g.tick").on("mouseover", function(dFirst){   
+          rootSelection.selectAll("g.axis.left > g.tick").on("mouseover", function(dFirst){
             if (skipY(dFirst)) {
-              d3.select(this).style("cursor", "default"); 
+              d3.select(this).style("cursor", "default");
               return;
             }
 
@@ -998,7 +1002,7 @@ export default function(_myData) {
           function skipY(da) {
             let skipYes = false;
             let cond1 = ((visMode === ZOOMY) || (visMode === ZOOMX));
-            let numberNodes = d3.select("g.sankeyFrame.single")
+            let numberNodes = rootSelection.select("g.sankeyFrame.single")
                 .selectAll("g.node")
                 .filter( d => d.nameY === da)
                 .size();
@@ -1033,7 +1037,7 @@ export default function(_myData) {
       }
     } 
     else { // data embedded in html file
-      if (d3.select("pre#data").size() !== 0) { file = d3.csvParse(d3.select("pre#data").text()); 
+      if (d3.select("pre#data").size() !== 0) { file = d3.csvParse(d3.select("pre#data").text());
       } else { console.log("no data found in pre#data!");}
       if (d3.select("pre#dataNodes").size() !== 0) { 
         let content = d3.select("pre#dataNodes").text();
@@ -1182,7 +1186,7 @@ export default function(_myData) {
         nodeInfoKeys = nodeFile.columns;
         nodeInfoKeys.splice(0,3,nodeInfoNone);  
       }
-    } else if (_file.columns.length === 7)  { // two additional dimensions
+    } else if (_file.columns.length >= 7)  { // two additional dimensions
       dataGroups = d3.nest()
         .key(function(d) { return d[columns[6]]; }).sortKeys(orderDimension(colOrder))
         .key(function(d) { return d[columns[5]]; }).sortKeys(orderDimension(rowOrder))
@@ -1240,7 +1244,9 @@ export default function(_myData) {
           graph.links.push({ "source": source,
             "target": target,
             "id": source + "->" + target,
-            "value": +d[columns[0]] });    
+            "value": +d[columns[0]],
+            "additionalLabel": d[columns[7]]
+          });
 
           // build sets for sequence and categories
           sequenceSet.add(d[columns[1]]);

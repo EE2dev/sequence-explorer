@@ -1,7 +1,7 @@
 import * as d3 from "d3";
 
 // compute values for transition labels
-export function getPositionData(_elementsToLabel, _catSubset, height, width) {
+export function getPositionData(rootSelection, _elementsToLabel, _catSubset, height, width) {
   var labelSubset = [];
   var pData = {};
 
@@ -33,7 +33,7 @@ export function getPositionData(_elementsToLabel, _catSubset, height, width) {
     var maxWidth = 0;
     var maxHeight = 0;        
 
-    var dummy = d3.select("svg")
+    var dummy = rootSelection.select("svg")
             .append("g")
             .attr("class", "dummy l1")
             .style("opacity", 0)
@@ -51,7 +51,7 @@ export function getPositionData(_elementsToLabel, _catSubset, height, width) {
       maxHeight = (ele.getBBox().height > maxHeight) ? ele.getBBox().height : maxHeight;
       pData[d].textWidth = ele.getBBox().width + 18; // 2* (+ 6 (tick length) + 3 (space between tick and text))
     }); 
-    d3.selectAll("g.dummy").remove();
+    rootSelection.selectAll("g.dummy").remove();
         
     return { 
       width: maxWidth + 10, // add space for line 

@@ -1,9 +1,9 @@
 import * as d3 from "d3";
 
-export function transitionToSingle(clickedElement, _trans) {
+export function transitionToSingle(parent, clickedElement, _trans) {
   var trans = (typeof _trans !== "undefined") ? _trans : d3.transition().duration(1000);
     
-  d3.selectAll("g.sankeyFrame")
+  parent.selectAll("g.sankeyFrame")
     .each(function() {
       if (this === clickedElement) {
         d3.select(this) // set class
@@ -42,11 +42,11 @@ export function transitionToSingle(clickedElement, _trans) {
             .transition(trans)
             .attr("transform", function(d) {return d.single;});
             
-        d3.selectAll(".axis") // show axes for sequence and categories
+        parent.selectAll(".axis") // show axes for sequence and categories
             .transition().delay(800)
             .style("opacity", 1); 
 
-        d3.selectAll(".coverSankeySeq") // hide surrounding rectangle
+        parent.selectAll(".coverSankeySeq") // hide surrounding rectangle
             .transition(trans)
             .style("opacity", 0);                         
 
@@ -68,11 +68,11 @@ export function transitionToSingle(clickedElement, _trans) {
   return false;
 }
   
-export function transitionToMultiples(clickedElement) {
+export function transitionToMultiples(parent, clickedElement) {
   var trans = d3.transition()
       .duration(1000);
       
-  d3.selectAll("g.sankeyFrame")
+  parent.selectAll("g.sankeyFrame")
     .classed("multiples", true)
     .each(function() {
       if (this === clickedElement) {
@@ -111,11 +111,11 @@ export function transitionToMultiples(clickedElement) {
             .transition(trans)
             .attr("transform", function(d) {return d.multiples;});  
 
-        d3.selectAll(".axis")
+        parent.selectAll(".axis")
             .transition(trans)
             .style("opacity", 0);
             
-        d3.selectAll(".coverSankeySeq")
+        parent.selectAll(".coverSankeySeq")
             .transition(trans)
             .style("opacity", 1);     
                       

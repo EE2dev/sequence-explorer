@@ -3,9 +3,9 @@ import {getTranslation, formatNumber} from "./helper";
 import {getPositionData} from "./transitionLabelsInit";
 import {transitionAxis, transitionBack} from "./transitionLabels";
 
-export function transitionXaxis(transitionX, nameX, nodeInfos, _thousandsSeparator){
+export function transitionXaxis(rootSelection, transitionX, nameX, nodeInfos, _thousandsSeparator){
   const trans = d3.transition().duration(1000);
-  const myFrame = d3.select("g.sankeyFrame.single");
+  const myFrame = rootSelection.select("g.sankeyFrame.single");
   const frameY = myFrame.select(".coverSankeySeq").node().getBBox().height;
   
   hideSelection(myFrame.selectAll("g.links"), trans); // hide links  
@@ -106,7 +106,7 @@ export function transitionXaxis(transitionX, nameX, nodeInfos, _thousandsSeparat
       .each(() => catSubset.push(cat));
   });
     
-  let axis = d3.selectAll("g.axis.left");
+  let axis = rootSelection.selectAll("g.axis.left");
   let width = myFrame.selectAll(".sankeySeq").node().getBBox().width;
   let height = myFrame.selectAll(".sankeySeq").node().getBBox().height;
   
@@ -120,15 +120,15 @@ export function transitionXaxis(transitionX, nameX, nodeInfos, _thousandsSeparat
       value: tValue[d] + " " + d
     };
   });  
-  let pData = getPositionData(elementsToLabel, catSubset, height, width);
+  let pData = getPositionData(rootSelection, elementsToLabel, catSubset, height, width);
   transitionAxis(pData, axis, catSubset, trans);
 }
   
-export function transitionXaxisBack(_corrCategories, nameX, nodeInfos){
-  const myFrame = d3.select("g.sankeyFrame.single");
+export function transitionXaxisBack(rootSelection, _corrCategories, nameX, nodeInfos){
+  const myFrame = rootSelection.select("g.sankeyFrame.single");
   const trans = d3.transition().duration(1000);
       
-  let axis = d3.selectAll("g.axis.left");
+  let axis = rootSelection.selectAll("g.axis.left");
   let catSubsetInit = _corrCategories();
   let catSubset = []; // reduce catSubsetInit to the nodes which exist at the x position
   let updateNodes = myFrame.selectAll("g.node")
@@ -174,10 +174,10 @@ function showSelection(sel, trans) {
       .style("opacity", 1);
 }
   
-export function transitionYaxis(nameY, thousandsSeparator, percentage, firstSequenceEle){
+export function transitionYaxis(rootSelection, nameY, thousandsSeparator, percentage, firstSequenceEle){
   const trans = d3.transition().duration(1000);
-  const myFrame = d3.select("g.sankeyFrame.single");
-  const dx = d3.select("g.sankeyFrame.single rect.sankeyNode").attr("width") / 2; // position adjustment for text label
+  const myFrame = rootSelection.select("g.sankeyFrame.single");
+  const dx = rootSelection.select("g.sankeyFrame.single rect.sankeyNode").attr("width") / 2; // position adjustment for text label
   const dy = -5; // height adjustment for text label
   
   hideSelection(myFrame.selectAll("g.links"), trans); // hide links  
@@ -211,11 +211,11 @@ export function transitionYaxis(nameY, thousandsSeparator, percentage, firstSequ
       .style("opacity", 1);
 }
   
-export function transitionYaxisBack(){
-  const myFrame = d3.select("g.sankeyFrame.single");
+export function transitionYaxisBack(rootSelection){
+  const myFrame = rootSelection.select("g.sankeyFrame.single");
   const trans = d3.transition().duration(1000);
       
   showSelection(myFrame.selectAll("g.links"), trans); // show links  
   showSelection(myFrame.selectAll("g.node") ,trans); // show all nodes
-  hideSelection(d3.selectAll("text.percentageLabel"), trans); // hide labels
+  hideSelection(rootSelection.selectAll("text.percentageLabel"), trans); // hide labels
 }
