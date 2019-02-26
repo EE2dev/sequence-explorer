@@ -319,76 +319,78 @@ export default function(_myData) {
     // paths info menu  
     if (typeof pathFile === "undefined") { return;}
 
-    let currentRow;
-    let currentCol;
-    let pathInfoMap;
-    let pathNames;
+    if (rootSelection.select("div.PathsMenu").size() === 0){
 
-    let colRow = getColRowOfSingle(rootSelection);
-    currentCol = allGraphs[colRow.col][colRow.row].dimCol;
-    currentRow = allGraphs[colRow.col][colRow.row].dimRow;
+      let currentRow;
+      let currentCol;
+      let pathInfoMap;
+      let pathNames;
 
-    if (currentCol === "") {currentCol = 0;}
-    if (currentRow === "") {currentRow = 0;}
-    
-    if (Object.keys(pathFile[0]).length === 8) { // cols and rows
-      let row = Object.keys(pathFile[0])[5]; 
-      let col = Object.keys(pathFile[0])[6]; 
-      pathInfoMap = d3.nest()
-        .key(function(d) { return d[row]; })
-        .key(function(d) { return d[col]; })
-        .key(function(d) { return d.name; })
-        .object(pathFile);
-    } else if (Object.keys(pathFile[0]).length === 7) { // rows
-      let row = Object.keys(pathFile[0])[5];  
-      pathInfoMap = d3.nest()
-        .key(function(d) { return d[row]; })
-        .key(function() { return 0; })
-        .key(function(d) { return d.name; })
-        .object(pathFile);
-    } else if (Object.keys(pathFile[0]).length === 6) { // no rows or columns
-      pathInfoMap = d3.nest()
-        .key(function() { return 0; })
-        .key(function() { return 0; })
-        .key(function(d) { return d.name; })
-        .object(pathFile);
-    } else console.log("Error with number of attributes in paths file!");
+      let colRow = getColRowOfSingle(rootSelection);
+      currentCol = allGraphs[colRow.col][colRow.row].dimCol;
+      currentRow = allGraphs[colRow.col][colRow.row].dimRow;
 
-    if (typeof pathInfoMap[currentRow] === "undefined") { return; 
-    } else if (typeof pathInfoMap[currentRow][currentCol] === "undefined") { return; }
+      if (currentCol === "") {currentCol = 0;}
+      if (currentRow === "") {currentRow = 0;}
+      
+      if (Object.keys(pathFile[0]).length === 8) { // cols and rows
+        let row = Object.keys(pathFile[0])[5]; 
+        let col = Object.keys(pathFile[0])[6]; 
+        pathInfoMap = d3.nest()
+          .key(function(d) { return d[row]; })
+          .key(function(d) { return d[col]; })
+          .key(function(d) { return d.name; })
+          .object(pathFile);
+      } else if (Object.keys(pathFile[0]).length === 7) { // rows
+        let row = Object.keys(pathFile[0])[5];  
+        pathInfoMap = d3.nest()
+          .key(function(d) { return d[row]; })
+          .key(function() { return 0; })
+          .key(function(d) { return d.name; })
+          .object(pathFile);
+      } else if (Object.keys(pathFile[0]).length === 6) { // no rows or columns
+        pathInfoMap = d3.nest()
+          .key(function() { return 0; })
+          .key(function() { return 0; })
+          .key(function(d) { return d.name; })
+          .object(pathFile);
+      } else console.log("Error with number of attributes in paths file!");
+
+      if (typeof pathInfoMap[currentRow] === "undefined") { return; 
+      } else if (typeof pathInfoMap[currentRow][currentCol] === "undefined") { return; }
+      
+      pathNames = Object.keys(pathInfoMap[currentRow][currentCol]);
+      
+      if (debugOn) {
+        console.log("pathFile: ");
+        console.log(pathFile);
+      }
+      var divPm = rootSelection.select("div.sankeyMenu")
+          .append("div")
+          .attr("class", "PathsMenu")
+          .style("opacity", 0);
     
-    pathNames = Object.keys(pathInfoMap[currentRow][currentCol]);
-    
-    if (debugOn) {
-      console.log("pathFile: ");
-      console.log(pathFile);
+      divPm.append("div")
+          .attr("class", "titleMenu")
+          .append("label")
+          .text("show path");
+            
+      var div4 = divPm.selectAll("span")
+        .data(pathNames) 
+        .enter()
+        .append("span");
+
+      div4.append("input")
+        .attr("class", "pathInfo")
+        .attr("type", "checkbox")
+        .attr("value", function(d) { return d; })
+        .on("change", function(d) { showRemoveParticles.call(this, rootSelection,d); });
+      
+      div4.append("label")
+        .text(function(d) { return d; });
+      
+      div4.append("br");  
     }
-    var divPm = rootSelection.select("div.sankeyMenu")
-        .append("div")
-        .attr("class", "PathsMenu")
-        .style("opacity", 0);
-   
-    divPm.append("div")
-        .attr("class", "titleMenu")
-        .append("label")
-        .text("show path");
-          
-    var div4 = divPm.selectAll("span")
-      .data(pathNames) 
-      .enter()
-      .append("span");
-
-    div4.append("input")
-      .attr("class", "pathInfo")
-      .attr("type", "checkbox")
-      .attr("value", function(d) { return d; })
-    //  .attr("checked", function(d, i) { if (i === 0) { return "checked"; } })
-      .on("change", function(d) { showRemoveParticles(rootSelection,d); });
-    
-    div4.append("label")
-      .text(function(d) { return d; });
-    
-    div4.append("br");  
 
     let trans = d3.transition().duration(1000);
     rootSelection.select("div.PathsMenu").transition(trans).style("opacity", 1);
@@ -396,7 +398,7 @@ export default function(_myData) {
 
   function removePathsMenu(rootSelection) {
     let trans = d3.transition().duration(1000);
-    rootSelection.select("div.PathsMenu").transition(trans).style("opacity", 0).remove();
+    rootSelection.select("div.PathsMenu").transition(trans).style("opacity", 0);
     rootSelection.selectAll("canvas.particles").remove();
   }
 
