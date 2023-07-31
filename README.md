@@ -20,18 +20,18 @@ For additional features see section [API for sequence explorer](#5-api-for-seque
 Here is a link to a video explaining how to use sequence explorer with your own data and [here](http://www.ankerst.de/Mihael/proj/mfc/) is a web site introducing sequence explorer.
 
 ### 2. Examples
-[The main example is here](http://bl.ocks.org/ee2dev/91abcc611b66aaed6403bca1d48aedbf).
+[The main example is here](https://blocks.roadtolarissa.com/ee2dev/91abcc611b66aaed6403bca1d48aedbf).
 
 Complete list of examples:
 
-  * [single chart](http://bl.ocks.org/EE2dev/52b57438d4e017eefac1765e5727459a)
-  * [single chart - JSON version](http://bl.ocks.org/EE2dev/6b68884490d70aa0092b351e33741d96)
-  * [hightlight a path](http://bl.ocks.org/ee2dev/325fdb28bfcba4369ff364c7e5224c35)
-  * [hightlight a vertical path](http://bl.ocks.org/EE2dev/b9a20ef36c2a3caf5d7b0374a2d677a7)
-  * [small multiples](http://bl.ocks.org/EE2dev/0e709563a63ddfd5c7152e3441593093)
-  * [main example](http://bl.ocks.org/EE2dev/91abcc611b66aaed6403bca1d48aedbf)
-  * [main example - JSON version](http://bl.ocks.org/EE2dev/5d9aaf31c72caf16d632253629235372)
-  * [demo without web server](http://bl.ocks.org/EE2dev/1a4a65727e2e55ac6ae93a9aaef2f312)
+  * [single chart](https://blocks.roadtolarissa.com/ee2dev/52b57438d4e017eefac1765e5727459a)
+  * [single chart - JSON version](https://blocks.roadtolarissa.com/ee2dev/6b68884490d70aa0092b351e33741d96)
+  * [hightlight a path](https://blocks.roadtolarissa.com/ee2dev/325fdb28bfcba4369ff364c7e5224c35)
+  * [hightlight a vertical path](https://blocks.roadtolarissa.com/ee2dev/b9a20ef36c2a3caf5d7b0374a2d677a7)
+  * [small multiples](https://blocks.roadtolarissa/ee2dev/0e709563a63ddfd5c7152e3441593093)
+  * [main example](https://blocks.roadtolarissa/ee2dev/91abcc611b66aaed6403bca1d48aedbf)
+  * [main example - JSON version](https://blocks.roadtolarissa/ee2dev/5d9aaf31c72caf16d632253629235372)
+  * [demo without web server](https://blocks.roadtolarissa/ee2dev/1a4a65727e2e55ac6ae93a9aaef2f312)
 
 ### 3. Data formatting
 
