@@ -28,10 +28,10 @@ Complete list of examples:
   * [single chart - JSON version](https://blocks.roadtolarissa.com/ee2dev/6b68884490d70aa0092b351e33741d96)
   * [hightlight a path](https://blocks.roadtolarissa.com/ee2dev/325fdb28bfcba4369ff364c7e5224c35)
   * [hightlight a vertical path](https://blocks.roadtolarissa.com/ee2dev/b9a20ef36c2a3caf5d7b0374a2d677a7)
-  * [small multiples](https://blocks.roadtolarissa/ee2dev/0e709563a63ddfd5c7152e3441593093)
-  * [main example](https://blocks.roadtolarissa/ee2dev/91abcc611b66aaed6403bca1d48aedbf)
-  * [main example - JSON version](https://blocks.roadtolarissa/ee2dev/5d9aaf31c72caf16d632253629235372)
-  * [demo without web server](https://blocks.roadtolarissa/ee2dev/1a4a65727e2e55ac6ae93a9aaef2f312)
+  * [small multiples](https://blocks.roadtolarissa.com/ee2dev/0e709563a63ddfd5c7152e3441593093)
+  * [main example](https://blocks.roadtolarissa.com/ee2dev/91abcc611b66aaed6403bca1d48aedbf)
+  * [main example - JSON version](https://blocks.roadtolarissa.com/ee2dev/5d9aaf31c72caf16d632253629235372)
+  * [demo without web server](https://blocks.roadtolarissa.com/ee2dev/1a4a65727e2e55ac6ae93a9aaef2f312)
 
 ### 3. Data formatting
 
